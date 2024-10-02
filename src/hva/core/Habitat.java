@@ -61,17 +61,21 @@ public class Habitat extends NamedEntity {
     }
 
     public String toString() {
-
-        return "";
+        return "HABITAT|" + this.id() + "|" + this.name() + "|" + String.valueOf(_area) + "|" + String.valueOf(_trees.size());
     }
 
-    private String listTrees(Season currentSeason) {
-
-        return "";
+    private String listTrees(Season currentSeason) { //FIXME We dont have acess to currentSeason unless it is called from the Hotel
+        String listTrees = null;                        //Or we make this public or we pass currentSeason to the toString of the Habitat
+        List<Tree> treeOrderList = new ArrayList<>(_trees);
+        treeOrderList.sort(Comparator.comparing(Tree::id));
+        for(Tree tree : treeOrderList) {
+            listTrees += "\n" + tree.toString(currentSeason);
+        }
+        return listTrees;
     }
 
     protected void changeHabitatInflunece(Species species, int newInfluence) {
-
+        _influences.put(species, newInfluence);
     }
 
     protected void plantTree(String idTree, String name, int age, int baseCleaningDifficulty, String treeType) {
@@ -79,13 +83,17 @@ public class Habitat extends NamedEntity {
     }
 
     public String listAnimals() {
-
-        return "";
+        String listAnimals = null;
+        List<Animal> animalOrderList = new ArrayList<>(_animals);
+        animalOrderList.sort(Comparator.comparing(Animal::id));
+        for(Animal animal : animalOrderList) {
+            listAnimals += "\n" + animal.toString(); //Needs to add a new line to generate the complete String a list of all Animals one per line
+        }
+        return listAnimals;
     }
 
     public boolean equals(Habitat otherHabitat) {
-
-        return false;
+        return this.id().equals(otherHabitat.id()); //TODO Check if we shouldnt put this equals in the NamedEntity
     }
     
 }
