@@ -5,6 +5,7 @@ public abstract class Tree extends NamedEntity{
     private int _age;
     private int _baseCleaningDifficulty;
     private Season _seasonAtCreation;
+    private Habitat _habitat;
 
     public Tree(String idTree, String name, int baseCleaningDifficulty, Season currentSeason) {
         super(name, idTree);
