@@ -1,4 +1,5 @@
 package hva.core;
+import static java.lang.Math.log;
 
 public abstract class Tree extends NamedEntity{
     private int _age;
@@ -11,9 +12,20 @@ public abstract class Tree extends NamedEntity{
         _seasonAtCreation = currentSeason;
     }
 
-    public float calculateCleaningEffort() {
-        // TODO Implement Tree.calculateCleaningEffort
-        return 0;
+    public int age() {
+        return _age;
+    }
+
+    public int getBaseCleaningDifficulty() {
+        return _baseCleaningDifficulty;
+    }
+
+    public Season getSeasonAtCreation() {
+        return _seasonAtCreation;
+    }
+
+    public double calculateCleaningEffort() {
+        return _baseCleaningDifficulty * seasonalEffort(_seasonAtCreation) * log(age() + 1);
     }
 
     protected abstract int seasonalEffort(Season currentSeason);
