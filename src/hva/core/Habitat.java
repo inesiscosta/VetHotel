@@ -2,14 +2,16 @@ package hva.core;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.TreeSet;;
-
+import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Comparator;
 public class Habitat extends NamedEntity {
     private int _area;
     private Collection<Animal> _animals;
     private Collection<ZooKeeper> _assignedKeeper;
     private Collection<Tree> _trees;
-    private HashMap<Species, Integer> _influences; //Não sei se a melhor maneira de fazer, temos de ver isto
+    private HashMap<Species, Integer> _influences; //TODO Não sei se a melhor maneira de fazer, temos de ver isto
 
     public Habitat(String idHabitat, String name, int area) {
         super(idHabitat, name);
