@@ -1,5 +1,6 @@
 package hva.core;
-
+import java.util.Collection;
+import java.util.TreeSet;
 public class Species extends NamedEntity{
       
     private Collection<Animal> _animals;
@@ -10,6 +11,6 @@ public class Species extends NamedEntity{
     }
 
     public boolean equals(Species otherSpecies) {
-        return this.id.equals(otherSpecies.id);
+        return this.id().equals(otherSpecies.id());
     }
 }
