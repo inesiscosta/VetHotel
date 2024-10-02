@@ -7,17 +7,34 @@ public class Evergreen extends Tree{
     }
     
     protected int seasonalEffort(Season currentSeason){
-        // TODO Implement Evergreen.seasonalEffort
-        return 0;
+        switch (currentSeason) {
+            case SPRING:
+            case SUMMER:
+            case FALL:
+                return 1;
+            case WINTER:
+                return 2;
+            default:
+                return -1;
+        }
     }
 
     protected Leaf getBioCycle(Season currentSeason){
-        // TODO Implement Evergreen.getBioCycle
-        return null;
+        switch (currentSeason) {
+            case SPRING:
+                return Leaf.GENERATING_LEAVES;
+            case SUMMER:
+                return Leaf.WITH_LEAVES;
+            case FALL:
+                return Leaf.WITH_LEAVES;
+            case WINTER:
+                return Leaf.SHEDDING_LEAVES;
+            default:
+                return null;
+        }
     }
 
-    public String toString(){
-        // TODO Implement Evergreen.toString
-        return null;
+    public String toString(Season currentSeason){
+        return "ÁVORE | " + id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + "PERENE" + " | " + getBioCycle(currentSeason);
     }
 }

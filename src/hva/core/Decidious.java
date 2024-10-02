@@ -6,16 +6,36 @@ public class Decidious extends Tree {
     }
 
     protected int seasonalEffort(Season currentSeason){
-        // TODO Implement Decidious.seasonalEffort
-        return 0;
+        switch (currentSeason) {
+            case SPRING:
+                return 1;
+            case SUMMER:
+                return 2;
+            case FALL:
+                return 5;
+            case WINTER:
+                return 0;
+            default:
+                return -1;
+        }
     }
 
     protected Leaf getBioCycle(Season currentSeason){
-        return null;
+        switch (currentSeason) {
+            case SPRING:
+                return Leaf.GENERATING_LEAVES;
+            case SUMMER:
+                return Leaf.WITH_LEAVES;
+            case FALL:
+                return Leaf.SHEDDING_LEAVES;
+            case WINTER:
+                return Leaf.WITHOUT_LEAVES;
+            default:
+                return null;
+        }
     }
 
-    public String toString(){
-        // TODO Implement Decidious.toString
-        return null;
+    public String toString(Season currentSeason){
+        return "ÁVORE | " + id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + "CADUCA" + " | " + getBioCycle(currentSeason);
     }
 }
