@@ -1,13 +1,10 @@
 package hva.core;
 
-public abstract class Employee {
-    private String _idEmployee;
-    private String _name;
+public abstract class Employee extends NamedEntity{
     private String _employeeType;
 
     public Employee(String idEmployee, String name, String employeeType) {
-        _idEmployee = idEmployee;
-        _name = name;
+        super(idEmployee, name);
         _employeeType = employeeType;
     }
 

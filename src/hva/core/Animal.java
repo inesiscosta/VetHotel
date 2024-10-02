@@ -1,13 +1,10 @@
 package hva.core;
 
-public class Animal {
-    private String _idAnminal;
-    private String _name;
+public class Animal extends NamedEntity {
     private String _healthHistory;
 
     public Animal(String idAnminal, String name) {
-        _idAnminal = idAnminal;
-        _name = name;
+        super(idAnminal, name);
     }
 
     public int calculateSatisfactionLevel() {

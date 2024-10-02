@@ -1,13 +1,10 @@
 package hva.core;
 
-public class Habitat {
-    private String _idHabitat;
-    private String _name;
+public class Habitat extends NamedEntity {
     private int _area;
 
     public Habitat(String idHabitat, String name, int area) {
-        _idHabitat = idHabitat;
-        _name = name;
+        super(idHabitat, name);
         _area = area;
     }
     

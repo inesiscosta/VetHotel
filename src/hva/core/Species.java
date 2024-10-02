@@ -1,12 +1,9 @@
 package hva.core;
 
-public class Species {
-    private String _idSpecies;
-    private String _name;
+public class Species extends NamedEntity{
 
     public Species(String idSpecies, String name) {
-        _idSpecies = idSpecies;
-        _name = name;
+        super(idSpecies, name);
     }
 
     public boolean equals(Species otherSpecies) {
