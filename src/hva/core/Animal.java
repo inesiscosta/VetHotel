@@ -26,7 +26,7 @@ public class Animal extends NamedEntity {
 
     protected void changeHabitat(Habitat newHabitat) {
         // TODO Add execptions (try ctach) to Animal.changeHabitat
-       Animal animal = _habitat.identifyAnimal(newHabitat);
+       Animal animal = _habitat.identifyAnimal(this.id());
        _habitat.removeAnimal(animal);
        newHabitat.addAnimal(animal);
        _habitat = newHabitat;
