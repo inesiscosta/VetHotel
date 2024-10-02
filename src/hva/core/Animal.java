@@ -13,7 +13,7 @@ public class Animal extends NamedEntity {
     }
 
     protected void setHealthHistory(HealthStatus healthStatus) {
-        _healthHistory += "," + healthStatus.toString();
+        _healthHistory += "," + healthStatus;
     }
 
     public String toString() {
