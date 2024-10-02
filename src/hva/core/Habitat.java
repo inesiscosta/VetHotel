@@ -1,14 +1,20 @@
 package hva.core;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.TreeSet;;
+
 public class Habitat extends NamedEntity {
     private int _area;
     private Collection<Animal> _animals;
+    private Collection<ZooKeeper> _assignedKeeper;
+    private Collection<Tree> _trees;
+    private HashMap<Species, Integer> _influences; //Não sei se a melhor maneira de fazer, temos de ver isto
 
     public Habitat(String idHabitat, String name, int area) {
         super(idHabitat, name);
         _animals = new TreeSet<Animal>();
+        _influences = new HashMap<>();
         _area = area;
     }
 
@@ -18,8 +24,13 @@ public class Habitat extends NamedEntity {
     }
 
     public int identifyInfluence(Species species) {
-        
-        return 0;
+      try {
+        return  _influences.get(species);
+      } catch (NullPointerException e) {
+        return 0; //Returns 0 of it doesnt have a specefic influence its neutral??
+      } catch (Exception e) {
+        return -1; //Maybe we need to catch another exceptions idknow we need to see?
+      }
     }
 
     protected int cleaningEffort() {
