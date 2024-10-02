@@ -19,17 +19,21 @@ public class Habitat extends NamedEntity {
     }
 
     protected int getNumAnimalSameSpecies(Species species) {
-
-        return 0;
+        int numAnimalSameSpecies = 0;
+        for(Animal animal : _animals) {
+            if(animal.getSpecie().equals(species))  
+                numAnimalSameSpecies++;
+        }
+        return numAnimalSameSpecies;
     }
 
     public int identifyInfluence(Species species) {
       try {
         return  _influences.get(species);
       } catch (NullPointerException e) {
-        return 0; //Returns 0 of it doesnt have a specefic influence its neutral??
+        return 0; //TODO Returns 0 of it doesnt have a specefic influence its neutral??
       } catch (Exception e) {
-        return -1; //Maybe we need to catch another exceptions idknow we need to see?
+        return -1; //TODO Maybe we need to catch another exceptions idknow we need to see?
       }
     }
 
