@@ -2,9 +2,11 @@ package hva.core;
 
 public class Animal extends NamedEntity {
     private String _healthHistory;
+    private Habitat _habitat;
 
     public Animal(String idAnminal, String name) {
         super(idAnminal, name);
+        _healthHistory = "VOID";
     }
 
     public int calculateSatisfactionLevel() {
@@ -13,16 +15,21 @@ public class Animal extends NamedEntity {
     }
 
     protected void setHealthHistory(HealthStatus healthStatus) {
+        if(_healthHistory == "VOID")
+            _healthHistory = null;
         _healthHistory += "," + healthStatus;
     }
 
     public String toString() {
-        // TODO Implement Animal.toString
-        return "";
+        return "ANIMAL|" + this.id() + "|" + this.name() + "|" + _healthHistory + "|" + _habitat.id();
     }
 
     protected void changeHabitat(Habitat newHabitat) {
-        // TODO Implement Animal.changeHabitat
+        // TODO Add execptions (try ctach) to Animal.changeHabitat
+       Animal animal = _habitat.identifyAnimal(newHabitat);
+       _habitat.removeAnimal(animal);
+       newHabitat.addAnimal(animal);
+       _habitat = newHabitat;
     }
 
     public String listVaccinationReccord(Hotel hotel) {
