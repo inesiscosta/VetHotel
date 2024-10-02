@@ -1,13 +1,11 @@
 package hva.core;
 
-public class Vaccine {
-    private String _idVaccine;
-    private String _name;
+public class Vaccine extends NamedEntity{
+
     private int _numApplications;
 
     public Vaccine(String idVaccine, String name) {
-        _idVaccine = idVaccine;
-        _name = name;
+        super(name, idVaccine);
     }
 
     protected HealthStatus determineVaccineEffect(Animal animal){

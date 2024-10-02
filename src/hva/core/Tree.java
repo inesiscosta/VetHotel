@@ -1,15 +1,12 @@
 package hva.core;
 
-public abstract class Tree {
-    private String _idTree;
-    private String _name;
+public abstract class Tree extends NamedEntity{
     private int _age;
     private int _baseCleaningDifficulty;
     private Season _seasonAtCreation;
 
     public Tree(String idTree, String name, int baseCleaningDifficulty, Season currentSeason) {
-        _idTree = idTree;
-        _name = name;
+        super(name, idTree);
         _baseCleaningDifficulty = baseCleaningDifficulty;
         _seasonAtCreation = currentSeason;
     }
