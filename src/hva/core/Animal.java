@@ -3,9 +3,12 @@ package hva.core;
 public class Animal extends NamedEntity {
     private String _healthHistory;
     private Habitat _habitat;
+    private Species _specie;
 
-    public Animal(String idAnminal, String name) {
+    public Animal(String idAnminal, String name, Species specie, Habitat habitat) {
         super(idAnminal, name);
+        _habitat = habitat;
+        _specie = specie;
         _healthHistory = "VOID";
     }
 
@@ -29,7 +32,7 @@ public class Animal extends NamedEntity {
        Animal animal = _habitat.identifyAnimal(this.id());
        _habitat.removeAnimal(animal);
        newHabitat.addAnimal(animal);
-       _habitat = newHabitat;
+       _habitat = newHabitat; //FIXME Maybe use a seter??
     }
 
     public String listVaccinationReccord(Hotel hotel) {
@@ -39,5 +42,13 @@ public class Animal extends NamedEntity {
 
     protected void registerNewSpecies(String idSpecie, String name) {
         // TODO Implement Animal.registerNewSpecies
+    }
+
+    protected Species getSpecie() {
+        return _specie;
+    }
+
+    protected Habitat geHabitat() {
+        return _habitat;
     }
 }
