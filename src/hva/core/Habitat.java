@@ -14,23 +14,23 @@ public class Habitat extends NamedEntity {
 
     protected int getNumAnimalSameSpecies(Species species) {
 
-        return null;
+        return 0;
     }
 
     public int identifyInfluence(Species species) {
         
-        return null;
+        return 0;
     }
 
     protected int cleaningEffort() {
 
-        return null;
+        return 0;
     }
 
     public Animal identifyAnimal(String idAnimal) {
         for(Animal animal : _animals) {
             if(animal.id().equals(idAnimal))
-                return a;
+                return animal;
         }
         return null;
     }
@@ -41,6 +41,34 @@ public class Habitat extends NamedEntity {
 
     protected void removeAnimal(Animal animal) {
         _animals.remove(animal);
+    }
+
+    public String toString() {
+
+        return "";
+    }
+
+    private String listTrees(Season currentSeason) {
+
+        return "";
+    }
+
+    protected void changeHabitatInflunece(Species species, int newInfluence) {
+
+    }
+
+    protected void plantTree(String idTree, String name, int age, int baseCleaningDifficulty, String treeType) {
+
+    }
+
+    public String listAnimals() {
+
+        return "";
+    }
+
+    public boolean equals(Habitat otherHabitat) {
+
+        return false;
     }
     
 }
