@@ -79,7 +79,14 @@ public class Habitat extends NamedEntity {
     }
 
     protected void plantTree(String idTree, String name, int age, int baseCleaningDifficulty, String treeType) {
-
+        if(treeType == "EVERGREEN") {
+            Tree tree = new Evergreen(idTree, name, baseCleaningDifficulty, null); //FIXME Where do we get the currentSeason maybe pass from the hotel
+            _trees.add(tree);
+            return;
+        }
+        Tree tree = new Decidious(idTree, name, baseCleaningDifficulty, null); //FIXME Where do we get the currentSeason maybe pass from the hotel
+        _trees.add(tree);
+        return;
     }
 
     public String listAnimals() {
