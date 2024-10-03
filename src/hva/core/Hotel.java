@@ -14,6 +14,10 @@ import hva.core.NamedEntity;
 import hva.core.Season;
 import hva.core.Species;
 import hva.core.Tree;
+import hva.core.VaccinationRecord;
+import hva.core.Vaccine;
+import hva.core.Veterinary;
+import hva.core.ZooKeeper;
 
 public class Hotel implements Serializable {
 
