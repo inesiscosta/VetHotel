@@ -29,6 +29,7 @@ public class Hotel implements Serializable {
   private HashSet<Vaccine> _vaccines;
   private List<VaccinationRecord> _vaccinationRecords;
 
+  //TODO Add Hotel contructor!!
   public void nextSeason() {
     //TODO Implement Hotel.nextSeason
   }
@@ -39,8 +40,13 @@ public class Hotel implements Serializable {
   }
 
   public String listAnimals() {
-    //TODO Implement Hotel.listAnimals
-    return "";
+    List<Habitat> habitats = new ArrayList<>(_habitats);
+    habitats.sort(Comparator.comparing(Habitat::id)); //Dont know if its is the best way??
+    StringBuilder allAnimals = new StringBuilder();
+    for(Habitat habitat : habitats) {
+      allAnimals.append(habitat.listAnimals()).append("\n");
+    }
+    return allAnimals.toString();
   }
 
   protected void registerNewAnimal(String idAnimal, String name, String idSpecies, String idHabitat) {
@@ -48,13 +54,22 @@ public class Hotel implements Serializable {
   }
   
   public Animal identifyAnimal(String idAnimal) {
-    //TODO Implement Hotel.identifyAimal
+    for(Habitat habitat : _habitats) {
+      Animal animal = habitat.identifyAnimal(idAnimal);
+      if(animal != null)
+        return animal;
+    }
     return null;
   }
 
   public String listEmployee() {
-    //TODO Implement Hotel.listEmployee
-    return "";
+    List<Employee> employees = new ArrayList<>(_employees);
+    employees.sort(Comparator.comparing(Employee::id)); //Dont know if its is the best way??
+    StringBuilder listEmployee = new StringBuilder();
+    for(Employee employee : _employees) {
+      listEmployee.append(employee.toString()).append("\n");
+    }
+    return listEmployee.toString();
   }
 
   protected void registerNewEmployee(String idEmployee, String name, String type) {
@@ -77,7 +92,6 @@ public class Hotel implements Serializable {
   }
 
   public Habitat identifyHabitat(String idHabitat) {
-    //TODO Implement Hotel.identifyHabitat
     return null;
   }
 
@@ -96,31 +110,31 @@ public class Hotel implements Serializable {
     return null;
   }
 
-  public String listAnimalVaccinationHistory(String idAnimal) {
-    String animalVaccinationHistory = null;
+  public String listAnimalVaccinationHistory(Animal animal) {
+    StringBuilder animalVaccinationHistory = new StringBuilder();
     for(VaccinationRecord record : _vaccinationRecords) {
-      if(record.getAnimal().equals(identifyAnimal(idAnimal)))
-        animalVaccinationHistory += record.toString() + "\n";
+      if(record.getAnimal().equals(animal))
+        animalVaccinationHistory.append(record.toString()).append("\n");
     }
-    return animalVaccinationHistory;
+    return animalVaccinationHistory.toString();
   }
 
   public String listVetVaccinationRecords(Veterinary veterinary) {
-    String vetVaccinationRecords = null;
+    StringBuilder vetVaccinationRecords = new StringBuilder();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.getVet().equals(veterinary))
-        vetVaccinationRecords += record.toString() + "\n";
+        vetVaccinationRecords.append(record.toString()).append("\n");
     }
-    return vetVaccinationRecords;
+    return vetVaccinationRecords.toString();
   }
 
   public String listErroneousVaccination() {
-    String erroneousVaccination = null;
+    StringBuilder erroneousVaccination = new StringBuilder();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.getDamage() != "NORMAL")
-        erroneousVaccination += record.toString() + "\n" ; //FIXME Do we need to print the Damage??
+        erroneousVaccination.append(record.toString()).append("\n");
     }
-    return erroneousVaccination;
+    return erroneousVaccination.toString();
   }
 
   protected void addVaccinationRecord(VaccinationRecord record) {

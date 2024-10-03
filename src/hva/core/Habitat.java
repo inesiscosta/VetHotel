@@ -10,13 +10,14 @@ import java.util.Comparator;
 public class Habitat extends NamedEntity {
     private int _area;
     private Collection<Animal> _animals;
-    private Collection<ZooKeeper> _assignedKeeper;
+    private Collection<ZooKeeper> _assignedKeepers;
     private Collection<Tree> _trees;
-    private HashMap<Species, Integer> _influences; //TODO Não sei se a melhor maneira de fazer, temos de ver isto
-
+    private HashMap<Species, Integer> _influences;
     public Habitat(String idHabitat, String name, int area) {
         super(idHabitat, name);
         _animals = new TreeSet<Animal>();
+        _assignedKeepers = new TreeSet<ZooKeeper>();
+        _trees = new TreeSet<Tree>();
         _influences = new HashMap<>();
         _area = area;
     }
@@ -71,13 +72,13 @@ public class Habitat extends NamedEntity {
     }
 
     private String listTrees(Season currentSeason) { //FIXME We dont have acess to currentSeason unless it is called from the Hotel
-        String listTrees = null;                        //Or we make this public or we pass currentSeason to the toString of the Habitat
+        StringBuilder listTrees = new StringBuilder();                        //Or we make this public or we pass currentSeason to the toString of the Habitat
         List<Tree> treeOrderList = new ArrayList<>(_trees);
         treeOrderList.sort(Comparator.comparing(Tree::id));
         for(Tree tree : treeOrderList) {
-            listTrees += "\n" + tree.toString(currentSeason);
+            listTrees.append(tree.toString(currentSeason)).append("\n");
         }
-        return listTrees;
+        return listTrees.toString();
     }
 
     protected void changeHabitatInflunece(Species species, int newInfluence) {
