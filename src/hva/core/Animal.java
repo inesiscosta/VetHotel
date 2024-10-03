@@ -26,6 +26,7 @@ public class Animal extends NamedEntity {
         _healthHistory += "," + healthStatus;
     }
 
+    @Override
     public String toString() {
         return "ANIMAL|" + this.id() + "|" + this.name() + "|" + _healthHistory + "|" + _habitat.id();
     }

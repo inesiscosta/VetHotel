@@ -65,6 +65,7 @@ public class Habitat extends NamedEntity {
         _animals.remove(animal);
     }
 
+    @Override
     public String toString() {
         return "HABITAT|" + this.id() + "|" + this.name() + "|" + String.valueOf(_area) + "|" + String.valueOf(_trees.size());
     }
@@ -103,7 +104,7 @@ public class Habitat extends NamedEntity {
         }
         return listAnimals;
     }
-
+    
     public boolean equals(Habitat otherHabitat) {
         return this.id().equals(otherHabitat.id()); //TODO Check if we shouldnt put this equals in the NamedEntity
     }
