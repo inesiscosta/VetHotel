@@ -13,8 +13,11 @@ public class Animal extends NamedEntity {
     }
 
     public int calculateSatisfactionLevel() {
-        //TODO Implement Animal.calculateSatisfactionLevel
-        return 0;
+        return 20 
+        + 3 * _habitat.getNumAnimalSameSpecies(_specie) 
+        - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_specie) 
+        + (_habitat.getArea() / _habitat.getNumAnimals()) 
+        + _habitat.identifyInfluence(_specie));
     }
 
     protected void setHealthHistory(HealthStatus healthStatus) {
