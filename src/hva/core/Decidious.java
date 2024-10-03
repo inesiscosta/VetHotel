@@ -36,6 +36,6 @@ public class Decidious extends Tree {
     }
 
     public String toString(Season currentSeason){
-        return "ÁVORE | " + id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + "CADUCA" + " | " + getBioCycle(currentSeason);
+        return "ÁVORE | " + this.id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + "CADUCA" + " | " + getBioCycle(currentSeason);
     }
 }
