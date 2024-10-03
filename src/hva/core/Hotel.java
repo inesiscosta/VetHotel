@@ -23,11 +23,97 @@ public class Hotel implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
+  private Season _currentSeason;
+  private HashSet<Employee> _employees;
+  private HashSet<Habitat> _habitats;
+  private HashSet<Vaccine> _vaccines;
+  private List<VaccinationRecord> _vaccinationRecords;
+
+  public void nextSeason() {
+    //TODO Implement Hotel.nextSeason
+  }
+
+  public int calculateGlobalSatisfaction() {
+    //TODO Implement Hotel.calculateGlobalSatisfaction
+    return 0;
+  }
+
+  public String listAnimals() {
+    //TODO Implement Hotel.listAnimals
+    return "";
+  }
+
+  protected void registerNewAnimal(String idAnimal, String name, String idSpecies, String idHabitat) {
+    //TODO Implement Hotel.registerNewAnimal
+  }
   
-  // FIXME define attributes
-  // FIXME define contructor(s)
-  // FIXME define more methods
-  
+  public Animal identifyAnimal(String idAnimal) {
+    //TODO Implement Hotel.identifyAimal
+    return null;
+  }
+
+  public String listEmployee() {
+    //TODO Implement Hotel.listEmployee
+    return "";
+  }
+
+  protected void registerNewEmployee(String idEmployee, String name, String type) {
+    //TODO Implement Hotel.registerNewEmployee
+  }
+
+  public Species identifySpecies(String Species) {
+    //TODO Implement Hotel.identifySpecies
+    return null;
+  }
+
+  protected String addResponsibility(Employee employee, String idResponsability) {
+    //TODO Implement Hotel.addResponsibility
+    return "";
+  }
+
+  public String listHabitats(Season currentSeason) {
+    //TODO Implement Hotel.listHabitats
+    return "";
+  }
+
+  public Habitat identifyHabitat(String idHabitat) {
+    //TODO Implement Hotel.identifyHabitat
+    return null;
+  }
+
+  public String listVaccines() {
+    //TODO Implement Hotel.listVaccines
+    return "";
+  }
+
+  public Veterinary identifyVet(String idVet) {
+    //TODO Implement Hotel.identifyVet
+    return null;
+  }
+
+  public Vaccine identifyVaccine(String idVaccine) {
+    //TODO Implement Hotel.identifyVaccine
+    return null;
+  }
+
+  public String listAnimalVaccinationHistory(String idAnimal) {
+    //TODO Implement Hotel.listAnimalVaccinationHistory
+    return "";
+  }
+
+  public String listVetVaccinationRecords(Veterinary veterinary) {
+    //TODO Implement Hotel.listVetVaccinationRecords
+    return "";
+  }
+
+  public String listErroneousVaccination() {
+    //TODO Implement Hotel.listErroneousVaccination
+    return "";
+  }
+
+  protected void addVaccinationRecord(VaccinationRecord record) {
+    //TODO Implement Hotel.addVaccinationRecord
+  }
   /**
    * Read text input file and create corresponding domain entities.
    * 
