@@ -108,4 +108,11 @@ public class Habitat extends NamedEntity {
         return this.id().equals(otherHabitat.id()); //TODO Check if we shouldnt put this equals in the NamedEntity
     }
     
+    protected int getNumAnimals() {
+        return _animals.size();
+    }
+
+    protected int getArea() {
+        return _area;
+    }
 }
