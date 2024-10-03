@@ -10,6 +10,7 @@ public class Animal extends NamedEntity {
         _habitat = habitat;
         _specie = specie;
         _healthHistory = "VOID";
+        _specie.addAnimalToSpecies(this); //Adds itself to the Collection TreeSet of all Animals of the same Species that the Specie holds
     }
 
     public int calculateSatisfactionLevel() {
@@ -54,5 +55,9 @@ public class Animal extends NamedEntity {
 
     protected Habitat geHabitat() {
         return _habitat;
+    }
+
+    public boolean equals(Animal otherAnimal) {
+        return this.id() == otherAnimal.id() && this.name() == otherAnimal.name();
     }
 }

@@ -96,15 +96,15 @@ public class Habitat extends NamedEntity {
     }
 
     public String listAnimals() {
-        String listAnimals = null;
+        StringBuilder listAnimals = new StringBuilder();
         List<Animal> animalOrderList = new ArrayList<>(_animals);
         animalOrderList.sort(Comparator.comparing(Animal::id));
         for(Animal animal : animalOrderList) {
-            listAnimals += "\n" + animal.toString(); //Needs to add a new line to generate the complete String a list of all Animals one per line
+            listAnimals.append(animal.toString()).append("\n"); //Needs to add a new line to generate the complete String a list of all Animals one per line
         }
-        return listAnimals;
+        return listAnimals.toString();
     }
-    
+
     public boolean equals(Habitat otherHabitat) {
         return this.id().equals(otherHabitat.id()); //TODO Check if we shouldnt put this equals in the NamedEntity
     }
