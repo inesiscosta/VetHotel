@@ -97,18 +97,30 @@ public class Hotel implements Serializable {
   }
 
   public String listAnimalVaccinationHistory(String idAnimal) {
-    //TODO Implement Hotel.listAnimalVaccinationHistory
-    return "";
+    String animalVaccinationHistory = null;
+    for(VaccinationRecord record : _vaccinationRecords) {
+      if(record.getAnimal().equals(identifyAnimal(idAnimal)))
+        animalVaccinationHistory += record.toString() + "\n";
+    }
+    return animalVaccinationHistory;
   }
 
   public String listVetVaccinationRecords(Veterinary veterinary) {
-    //TODO Implement Hotel.listVetVaccinationRecords
-    return "";
+    String vetVaccinationRecords = null;
+    for(VaccinationRecord record : _vaccinationRecords) {
+      if(record.getVet().equals(veterinary))
+        vetVaccinationRecords += record.toString() + "\n";
+    }
+    return vetVaccinationRecords;
   }
 
   public String listErroneousVaccination() {
-    //TODO Implement Hotel.listErroneousVaccination
-    return "";
+    String erroneousVaccination = null;
+    for(VaccinationRecord record : _vaccinationRecords) {
+      if(record.getDamage() != "NORMAL")
+        erroneousVaccination += record.toString() + "\n" ; //FIXME Do we need to print the Damage??
+    }
+    return erroneousVaccination;
   }
 
   protected void addVaccinationRecord(VaccinationRecord record) {
