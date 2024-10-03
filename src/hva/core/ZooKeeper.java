@@ -5,10 +5,12 @@ public class ZooKeeper extends Employee{
         super(idEmployee, name, employeeType);
     }
 
+    @Override
     public int calculateSatisfactionLevel() {
         return 0;
     }
 
+    @Override
     public String toString() {
         return null;
     }
