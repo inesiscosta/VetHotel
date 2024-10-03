@@ -3,7 +3,17 @@ package hva.core;
 import hva.core.exception.*;
 import java.io.*;
 import java.util.*;
-// FIXME import classes
+import hva.core.Animal;
+import hva.core.Decidious;
+import hva.core.Employee;
+import hva.core.Evergreen;
+import hva.core.Habitat;
+import hva.core.HealthStatus;
+import hva.core.Leaf;
+import hva.core.NamedEntity;
+import hva.core.Season;
+import hva.core.Species;
+import hva.core.Tree;
 
 public class Hotel implements Serializable {
 
