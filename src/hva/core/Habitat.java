@@ -6,6 +6,7 @@ import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
+
 public class Habitat extends NamedEntity {
     private int _area;
     private Collection<Animal> _animals;
@@ -39,9 +40,13 @@ public class Habitat extends NamedEntity {
       }
     }
 
-    protected int cleaningEffort() {
-
-        return 0;
+    protected int cleaningEffort() { //TODO Maybe change name to trabalho_no_habitat something related
+        double cleaningEffortTree = 0;
+        for(Tree tree : _trees) {
+             cleaningEffortTree += tree.calculateCleaningEffort();
+        }
+        int cleaningEffort = (int) Math.round(cleaningEffortTree);
+        return _area + 3 * _animals.size() + cleaningEffort;
     }
 
     public Animal identifyAnimal(String idAnimal) {
