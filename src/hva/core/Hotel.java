@@ -27,9 +27,11 @@ public class Hotel implements Serializable {
   private HashSet<Employee> _employees;
   private HashSet<Habitat> _habitats;
   private HashSet<Vaccine> _vaccines;
+  private HashMap<String,Species> _species;
   private List<VaccinationRecord> _vaccinationRecords;
 
   //TODO Add Hotel contructor!!
+
   public void nextSeason() {
     //TODO Implement Hotel.nextSeason
   }
@@ -47,6 +49,11 @@ public class Hotel implements Serializable {
       allAnimals.append(habitat.listAnimals()).append("\n");
     }
     return allAnimals.toString();
+  }
+
+  protected void registerNewSpecies(String idSpecie, String name) { //Think is makes more sense here than on Animal Class because from the serialization its way easier for the Hotel to know the species
+    Species specie = new Species(idSpecie, name);
+    _species.put(idSpecie, specie);
   }
 
   protected void registerNewAnimal(String idAnimal, String name, String idSpecies, String idHabitat) {

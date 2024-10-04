@@ -45,7 +45,7 @@ public class Animal extends NamedEntity {
         return "";
     }
 
-    protected void registerNewSpecies(String idSpecie, String name) {
+    protected void registerNewSpecies(String idSpecie, String name) { //Maybe remove view reason on comment from Hotel.registerNewSpecies
         // TODO Implement Animal.registerNewSpecies
     }
 
