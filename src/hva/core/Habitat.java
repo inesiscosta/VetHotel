@@ -9,13 +9,13 @@ import java.util.Comparator;
 
 public class Habitat extends NamedEntity {
     private int _area;
-    private Collection<Animal> _animals;
+    private HashMap<String,Animal> _animals;
     private Collection<ZooKeeper> _assignedKeepers;
     private Collection<Tree> _trees;
     private HashMap<Species, Integer> _influences;
     public Habitat(String idHabitat, String name, int area) {
         super(idHabitat, name);
-        _animals = new TreeSet<Animal>();
+        _animals = new HashMap<String,Animal>();
         _assignedKeepers = new TreeSet<ZooKeeper>();
         _trees = new TreeSet<Tree>();
         _influences = new HashMap<>();
@@ -24,7 +24,7 @@ public class Habitat extends NamedEntity {
 
     protected int getNumAnimalSameSpecies(Species species) {
         int numAnimalSameSpecies = 0;
-        for(Animal animal : _animals) {
+        for(Animal animal : _animals.values()) {
             if(animal.getSpecie().equals(species))  
                 numAnimalSameSpecies++;
         }
@@ -51,24 +51,19 @@ public class Habitat extends NamedEntity {
     }
 
     public Animal identifyAnimal(String idAnimal) {
-        for(Animal animal : _animals) {
-            if(animal.id().equals(idAnimal))
-                return animal;
-        }
-        return null;
+       return _animals.get(idAnimal);
     }
     
     protected void addAnimal(Animal animal) {
-        _animals.add(animal);
+        _animals.put(animal.id(), animal);
     }
 
     protected void removeAnimal(Animal animal) {
-        _animals.remove(animal);
+        _animals.remove(animal.id());
     }
 
-    @Override
-    public String toString() {
-        return "HABITAT|" + this.id() + "|" + this.name() + "|" + String.valueOf(_area) + "|" + String.valueOf(_trees.size());
+    public String toString(Season currentSeason) {
+        return "HABITAT|" + this.id() + "|" + this.name() + "|" + String.valueOf(_area) + "|" + String.valueOf(_trees.size()) + "\n" + listTrees(currentSeason);
     }
 
     private String listTrees(Season currentSeason) { //FIXME We dont have acess to currentSeason unless it is called from the Hotel
@@ -98,7 +93,7 @@ public class Habitat extends NamedEntity {
 
     public String listAnimals() {
         StringBuilder listAnimals = new StringBuilder();
-        List<Animal> animalOrderList = new ArrayList<>(_animals);
+        List<Animal> animalOrderList = new ArrayList<>(_animals.values());
         animalOrderList.sort(Comparator.comparing(Animal::id));
         for(Animal animal : animalOrderList) {
             listAnimals.append(animal.toString()).append("\n"); //Needs to add a new line to generate the complete String a list of all Animals one per line
