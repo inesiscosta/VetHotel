@@ -24,9 +24,9 @@ public class Hotel implements Serializable {
   @Serial
   private static final long serialVersionUID = 202407081733L;
   private Season _currentSeason;
-  private HashSet<Employee> _employees;
-  private HashSet<Habitat> _habitats;
-  private HashSet<Vaccine> _vaccines;
+  private HashMap<String,Employee> _employees;
+  private HashMap<String,Habitat> _habitats;
+  private HashMap<String,Vaccine> _vaccines;
   private HashMap<String,Species> _species;
   private List<VaccinationRecord> _vaccinationRecords;
 
@@ -42,7 +42,7 @@ public class Hotel implements Serializable {
   }
 
   public String listAnimals() {
-    List<Habitat> habitats = new ArrayList<>(_habitats);
+    List<Habitat> habitats = new ArrayList<>(_habitats.values());
     habitats.sort(Comparator.comparing(Habitat::id)); //Dont know if its is the best way??
     StringBuilder allAnimals = new StringBuilder();
     for(Habitat habitat : habitats) {
@@ -61,19 +61,19 @@ public class Hotel implements Serializable {
   }
   
   public Animal identifyAnimal(String idAnimal) {
-    for(Habitat habitat : _habitats) {
-      Animal animal = habitat.identifyAnimal(idAnimal);
-      if(animal != null)
+    for(Habitat habitat : _habitats.values()) {
+      Animal animal =  habitat.identifyAnimal(idAnimal);
+      if (animal != null)
         return animal;
     }
     return null;
   }
 
   public String listEmployee() {
-    List<Employee> employees = new ArrayList<>(_employees);
+    List<Employee> employees = new ArrayList<>(_employees.values());
     employees.sort(Comparator.comparing(Employee::id)); //Dont know if its is the best way??
     StringBuilder listEmployee = new StringBuilder();
-    for(Employee employee : _employees) {
+    for(Employee employee : _employees.values()) {
       listEmployee.append(employee.toString()).append("\n");
     }
     return listEmployee.toString();
@@ -83,9 +83,8 @@ public class Hotel implements Serializable {
     //TODO Implement Hotel.registerNewEmployee
   }
 
-  public Species identifySpecies(String Species) {
-    //TODO Implement Hotel.identifySpecies
-    return null;
+  public Species identifySpecies(String idSpecies) {
+    return _species.get(idSpecies);
   }
 
   protected String addResponsibility(Employee employee, String idResponsability) {
@@ -94,27 +93,39 @@ public class Hotel implements Serializable {
   }
 
   public String listHabitats(Season currentSeason) {
-    //TODO Implement Hotel.listHabitats
-    return "";
+    List<Habitat> habitats = new ArrayList<>(_habitats.values());
+    habitats.sort(Comparator.comparing(Habitat::id));
+    StringBuilder listHabitats = new StringBuilder();
+    for(Habitat habitat : habitats) {
+      listHabitats.append(habitat.toString());
+    }
+    return habitats.toString();
   }
 
   public Habitat identifyHabitat(String idHabitat) {
-    return null;
+    return _habitats.get(idHabitat);
   }
 
   public String listVaccines() {
-    //TODO Implement Hotel.listVaccines
-    return "";
+    List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
+    vaccines.sort(Comparator.comparing(Vaccine::id));
+    StringBuilder listHabitats = new StringBuilder();
+    for(Vaccine vaccine : vaccines) {
+      listHabitats.append(vaccine.toString());
+    }
+    return vaccines.toString();
   }
 
   public Veterinary identifyVet(String idVet) {
-    //TODO Implement Hotel.identifyVet
+    Employee employee =  _employees.get(idVet);
+    if (employee.employeeType() == "VET") {
+      return (Veterinary) employee;
+    }
     return null;
   }
 
   public Vaccine identifyVaccine(String idVaccine) {
-    //TODO Implement Hotel.identifyVaccine
-    return null;
+    return _vaccines.get(idVaccine);
   }
 
   public String listAnimalVaccinationHistory(Animal animal) {
