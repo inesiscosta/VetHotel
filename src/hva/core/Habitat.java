@@ -112,4 +112,13 @@ public class Habitat extends NamedEntity {
     protected int getArea() {
         return _area;
     }
+
+    //TODO Maybe not the best way to do this view Hotel.addResponsability
+    protected void addZooKeeper(ZooKeeper keeper) {
+        _assignedKeepers.add(keeper);
+    }
+
+    protected void removeZooKeeper(ZooKeeper Keeper) {
+        _assignedKeepers.remove(Keeper);
+    }
 }

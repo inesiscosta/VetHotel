@@ -3,11 +3,11 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class ZooKeeper extends Employee{
-    private Collection<Habitat> _habitat;
+    private Collection<Habitat> __assignedHabitats;
 
     public ZooKeeper(String idEmployee, String name, String employeeType) {
         super(idEmployee, name, employeeType);
-        _habitat = new HashSet<Habitat>();
+        __assignedHabitats = new HashSet<Habitat>();
     }
 
     @Override
@@ -21,11 +21,11 @@ public class ZooKeeper extends Employee{
     }
 
     protected void addHabitat(Habitat habitat){
-        _habitat.add(habitat);
+        __assignedHabitats.add(habitat);
     }
 
     protected void removeHabitat(Habitat habitat){
-        _habitat.remove(habitat);
+        __assignedHabitats.remove(habitat);
     }
 
     private int workEffort(){

@@ -1,9 +1,13 @@
 package hva.core;
+import java.util.Collection;
+import java.util.HashSet;
 
 public class Veterinary extends Employee{
+    private Collection<Species> _knowsHowToVaccinate;
 
     public Veterinary(String idEmployee, String name, String employeeType) {
         super(idEmployee, name, employeeType);
+        _knowsHowToVaccinate = new HashSet<Species>();
     }
     
     @Override
@@ -17,11 +21,11 @@ public class Veterinary extends Employee{
     }
 
     protected void addSpecies(Species species){
-        
+        _knowsHowToVaccinate.add(species);
     }
 
     protected void removeSpecies(Species species){
-        
+        _knowsHowToVaccinate.remove(species);
     }
 
     protected VaccinationRecord vaccinate(Vaccine vaccine, Animal animal){

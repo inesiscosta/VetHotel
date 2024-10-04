@@ -29,6 +29,7 @@ public class Hotel implements Serializable {
   private HashMap<String,Vaccine> _vaccines;
   private HashMap<String,Species> _species;
   private List<VaccinationRecord> _vaccinationRecords;
+  private Collection<String> _usedIds;
 
   public Hotel() {
     _currentSeason = Season.getSeason(0); //The app starts in the Spring(Primavera)
@@ -37,6 +38,7 @@ public class Hotel implements Serializable {
     _vaccines = new HashMap<>();
     _species = new HashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
+    _usedIds = new HashSet<String>();
   }
 
   public void nextSeason() {
@@ -97,8 +99,16 @@ public class Hotel implements Serializable {
   }
 
   protected String addResponsibility(Employee employee, String idResponsability) {
-    //TODO Implement Hotel.addResponsibility
-    return "";
+    if (employee instanceof Veterinary) { //A bit cursedd but I think better than employeeType() == "VET"
+      Veterinary vet = (Veterinary) employee;
+      vet.addSpecies(identifySpecies(idResponsability));
+      identifySpecies(idResponsability).addQualifiedVet(vet);
+    } else if (employee instanceof ZooKeeper) {
+      ZooKeeper keeper = (ZooKeeper) employee;
+      keeper.addHabitat(identifyHabitat(idResponsability));
+      identifyHabitat(idResponsability).addZooKeeper(keeper);
+    }
+    return idResponsability; //FIXME Maybe we need to think about this 
   }
 
   public String listHabitats(Season currentSeason) {
