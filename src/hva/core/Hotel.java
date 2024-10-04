@@ -23,6 +23,7 @@ public class Hotel implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
+  
   private Season _currentSeason;
   private HashMap<String,Employee> _employees;
   private HashMap<String,Habitat> _habitats;
@@ -62,6 +63,7 @@ public class Hotel implements Serializable {
     return allAnimals.toString();
   }
 
+  //TODO add expections and use _usedIds all ids are unique
   protected void registerNewSpecies(String idSpecie, String name) { //Think is makes more sense here than on Animal Class because from the serialization its way easier for the Hotel to know the species
     Species specie = new Species(idSpecie, name);
     _species.put(idSpecie, specie);
