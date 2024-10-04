@@ -35,5 +35,4 @@ public enum Season {
                 return 0;
         }
     }
-
 }

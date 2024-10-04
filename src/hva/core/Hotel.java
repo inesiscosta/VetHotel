@@ -30,10 +30,19 @@ public class Hotel implements Serializable {
   private HashMap<String,Species> _species;
   private List<VaccinationRecord> _vaccinationRecords;
 
-  //TODO Add Hotel contructor!!
+  public Hotel() {
+    _currentSeason = Season.getSeason(0); //The app starts in the Spring(Primavera)
+    _employees = new HashMap<>();
+    _habitats = new HashMap<>();
+    _vaccines = new HashMap<>();
+    _species = new HashMap<>();
+    _vaccinationRecords = new ArrayList<VaccinationRecord>();
+  }
 
   public void nextSeason() {
-    //TODO Implement Hotel.nextSeason
+    Season[] seasons = Season.values();
+    int idCurrentSeason = Season.getSeason(_currentSeason);
+    _currentSeason = seasons[(idCurrentSeason + 1) % seasons.length];
   }
 
   public int calculateGlobalSatisfaction() {
