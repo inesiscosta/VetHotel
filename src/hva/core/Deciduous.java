@@ -5,6 +5,7 @@ public class Deciduous extends Tree {
         super(idTree, name, age, baseCleaningDifficulty, TreeType.DECIDUOUS, currentSeason);
     }
 
+    @Override
     protected int seasonalEffort(Season currentSeason) throws IllegalStateException{
         switch (currentSeason) {
             case Spring:
@@ -20,6 +21,7 @@ public class Deciduous extends Tree {
         }
     }
 
+    @Override
     protected Leaf getBioCycle(Season currentSeason) throws IllegalStateException{
         switch (currentSeason) {
             case Spring:
@@ -30,25 +32,6 @@ public class Deciduous extends Tree {
                 return Leaf.SHEDDING_LEAVES;
             case Winter:
                 return Leaf.WITHOUT_LEAVES;
-            default:
-                throw new IllegalStateException("Unexpected value: " + currentSeason); // Check Exception
-        }
-    }
-
-    protected String getTreeTypeInPT(){
-        return "CADUCA";
-    }
-
-    protected String getBioCycleInPT(Season currentSeason) throws IllegalStateException{
-        switch (currentSeason) {
-            case Spring:
-                return "GERARFOLHAS";
-            case Summer:
-                return "COMFOLHAS";
-            case Fall:
-                return "PERDERFOLHAS";
-            case Winter:
-                return "SEMFOLHAS";
             default:
                 throw new IllegalStateException("Unexpected value: " + currentSeason); // Check Exception
         }

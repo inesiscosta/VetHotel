@@ -5,49 +5,53 @@ public abstract class Tree extends NamedEntity{
     private int _age;
     private int _baseCleaningDifficulty;
     private final TreeType _treeType;
-    private final Season _seasonAtCreation;
+    private final Season _creationSeason;
 
     public Tree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType , Season currentSeason) {
         super(name, id);
         _age = age;
         _baseCleaningDifficulty = baseCleaningDifficulty;
         _treeType = treeType;
-        _seasonAtCreation = currentSeason;
+        _creationSeason = currentSeason;
     }
 
-    public int age() {
+    int age() {
         return _age;
     }
 
-    public int getBaseCleaningDifficulty() {
+    int baseCleaningDifficulty() {
         return _baseCleaningDifficulty;
     }
 
-    public TreeType getTreeType() {
+    TreeType treeType() {
         return _treeType;
     }
 
-    public Season getSeasonAtCreation() {
-        return _seasonAtCreation;
+    Season seasonAtCreation() {
+        return _creationSeason;
     }
 
-    public double calculateCleaningEffort(Season currentSeason) {
+    public String toString(Season currentSeason){
+        StringBuilder result = new StringBuilder();
+        result.append("ÁRVORE | ")
+            .append(id()).append(" | ")
+            .append(name()).append(" | ")
+            .append(age()).append(" | ")
+            .append(baseCleaningDifficulty()).append(" | ")
+            .append(treeType()).append(" | ")
+            .append(getBioCycle(currentSeason));
+        return result.toString();
+    }
+
+    double calculateCleaningEffort(Season currentSeason) {
         return _baseCleaningDifficulty * seasonalEffort(currentSeason) * log(age() + 1);
     }
 
     protected abstract int seasonalEffort(Season currentSeason);
 
-    public boolean equalsSeasonAtCreation(Season currentSeason) {
-        return _seasonAtCreation == currentSeason;
-    }
-
     protected abstract Leaf getBioCycle(Season currentSeason);
 
-    public String toString(Season currentSeason){
-        return "ÁRVORE | " + id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + getTreeTypeInPT() + " | " + getBioCycleInPT(currentSeason);
+    boolean equalsCreationSeason(Season currentSeason) {
+        return _creationSeason == currentSeason;
     }
-
-    protected abstract String getTreeTypeInPT();
-
-    protected abstract String getBioCycleInPT(Season currentSeason);
 }

@@ -14,11 +14,11 @@ public class Animal extends NamedEntity {
         _species.addAnimalToSpecies(this);
     }
 
-    protected Species species() {
+    Species species() {
         return _species;
     }
 
-    protected Habitat habitat() {
+    Habitat habitat() {
         return _habitat;
     }
 
@@ -34,7 +34,7 @@ public class Animal extends NamedEntity {
         return result.toString();
     }
 
-    public int calculateSatisfactionLevel() {
+    int calculateSatisfactionLevel() {
         return 20 
         + 3 * _habitat.getNumAnimalSameSpecies(_species) 
         - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_species) 
@@ -42,7 +42,7 @@ public class Animal extends NamedEntity {
         + _habitat.identifyInfluence(_species));
     }
 
-    protected void updateHealthHistory(HealthStatus healthStatus) {
+    void updateHealthHistory(HealthStatus healthStatus) {
         if(_healthHistory == "VOID") {
             _healthHistory = healthStatus.toString();
             return;
@@ -50,7 +50,7 @@ public class Animal extends NamedEntity {
         _healthHistory += "," + healthStatus;
     }
 
-    protected void changeHabitat(Habitat newHabitat) throws IllegalStateException { 
+    void changeHabitat(Habitat newHabitat) throws IllegalStateException { 
         _habitat.removeAnimal(this);
         newHabitat.addAnimal(this);
         _habitat = newHabitat;
