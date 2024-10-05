@@ -8,7 +8,7 @@ public class VaccinationRecord {
 
     @Override
     public String toString() {
-        return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.getSpecie().id();
+        return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.getSpecies().id();
     }
 
     protected String getDamage() {

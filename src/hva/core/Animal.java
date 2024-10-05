@@ -3,41 +3,40 @@ package hva.core;
 public class Animal extends NamedEntity {
     private String _healthHistory;
     private Habitat _habitat;
-    private Species _specie;
+    private Species _species; //species singular
 
-    public Animal(String idAnminal, String name, Species specie, Habitat habitat) {
-        super(idAnminal, name);
+    public Animal(String id, String name, Species species, Habitat habitat) {
+        super(id, name);
         _habitat = habitat;
-        _specie = specie;
+        _species = species;
         _healthHistory = "VOID";
-        _specie.addAnimalToSpecies(this); //Adds itself to the Collection TreeSet of all Animals of the same Species that the Specie holds
+        _species.addAnimalToSpecies(this); //Adds itself to the Collection TreeSet of all Animals of the same Species that the Specie holds
     }
 
     public int calculateSatisfactionLevel() {
         return 20 
-        + 3 * _habitat.getNumAnimalSameSpecies(_specie) 
-        - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_specie) 
+        + 3 * _habitat.getNumAnimalSameSpecies(_species) 
+        - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_species) 
         + (_habitat.getArea() / _habitat.getNumAnimals()) 
-        + _habitat.identifyInfluence(_specie));
+        + _habitat.identifyInfluence(_species));
     }
 
-    protected void setHealthHistory(HealthStatus healthStatus) {
+    protected void updateHealthHistory(HealthStatus healthStatus) {
         if(_healthHistory == "VOID")
-            _healthHistory = null;
+            _healthHistory = healthStatus.toString();
         _healthHistory += "," + healthStatus;
     }
 
     @Override
     public String toString() {
-        return "ANIMAL|" + this.id() + "|" + this.name() + "|" + _healthHistory + "|" + _habitat.id();
+        return "ANIMAL|" + this.id() + "|" + this.name() + "|" + _species.id() + "|" + _healthHistory + "|" + _habitat.id();
     }
 
     protected void changeHabitat(Habitat newHabitat) {
-        // TODO Add execptions (try ctach) to Animal.changeHabitat
-       Animal animal = _habitat.identifyAnimal(this.id());
-       _habitat.removeAnimal(animal);
-       newHabitat.addAnimal(animal);
-       _habitat = newHabitat; //FIXME Maybe use a seter??
+        // TODO Add execptions (try catch) to Animal.changeHabitat
+       _habitat.removeAnimal(this);
+       newHabitat.addAnimal(this);
+       setHabitat(newHabitat);
     }
 
     public String listVaccinationReccord(Hotel hotel) {
@@ -45,16 +44,20 @@ public class Animal extends NamedEntity {
         return "";
     }
 
-    protected void registerNewSpecies(String idSpecie, String name) { //Maybe remove view reason on comment from Hotel.registerNewSpecies
+    protected void registerNewSpecies(String id, String name) { //Maybe remove view reason on comment from Hotel.registerNewSpecies
         // TODO Implement Animal.registerNewSpecies
     }
 
-    protected Species getSpecie() {
-        return _specie;
+    protected Species getSpecies() {
+        return _species;
     }
 
     protected Habitat geHabitat() {
         return _habitat;
+    }
+
+    private void setHabitat(Habitat habitat) {
+        _habitat = habitat;
     }
 
     public boolean equals(Animal otherAnimal) {

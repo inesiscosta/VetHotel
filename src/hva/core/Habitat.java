@@ -25,7 +25,7 @@ public class Habitat extends NamedEntity {
     protected int getNumAnimalSameSpecies(Species species) {
         int numAnimalSameSpecies = 0;
         for(Animal animal : _animals.values()) {
-            if(animal.getSpecie().equals(species))  
+            if(animal.getSpecies().equals(species))  
                 numAnimalSameSpecies++;
         }
         return numAnimalSameSpecies;
