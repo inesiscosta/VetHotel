@@ -24,6 +24,13 @@ public class Habitat extends NamedEntity {
         _influences = new HashMap<>();
     }
 
+    protected int calculateSatisfactionLevel() {
+        int satisfaction = 0;
+        for (Animal animal : _animals.values())
+           satisfaction += animal.calculateSatisfactionLevel();
+        return satisfaction;
+    }
+
     protected int getNumAnimalSameSpecies(Species species) {
         int numAnimalSameSpecies = 0;
         for(Animal animal : _animals.values()) {

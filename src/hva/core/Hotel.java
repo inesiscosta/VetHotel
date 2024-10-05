@@ -33,7 +33,7 @@ public class Hotel implements Serializable {
   private Collection<String> _usedIds;
 
   public Hotel() {
-    _currentSeason = Season.getSeason(0); //The app starts in the Spring(Primavera)
+    _currentSeason = Season.Spring;
     _employees = new HashMap<>();
     _habitats = new HashMap<>();
     _vaccines = new HashMap<>();
@@ -42,19 +42,23 @@ public class Hotel implements Serializable {
     _usedIds = new HashSet<String>();
   }
 
-  public Season getCurrentSeason() {
+  public Season currentSeason() {
     return _currentSeason;
   }
 
   public void nextSeason() {
-    Season[] seasons = Season.values();
-    int idCurrentSeason = Season.getSeason(_currentSeason);
-    _currentSeason = seasons[(idCurrentSeason + 1) % seasons.length];
+    _currentSeason = _currentSeason.nextSeason();
   }
 
   public int calculateGlobalSatisfaction() {
-    //TODO Implement Hotel.calculateGlobalSatisfaction
-    return 0;
+    double globalSatisfaction = 0;
+    for (Employee employee : _employees.values()) {
+      globalSatisfaction += employee.calculateSatisfactionLevel();
+    }
+    for (Habitat habitat : _habitats.values()) {
+      globalSatisfaction += habitat.calculateSatisfactionLevel();
+    }
+    return (int) globalSatisfaction;
   }
 
   public String listAnimals() {
