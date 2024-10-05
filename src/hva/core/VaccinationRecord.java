@@ -18,15 +18,15 @@ public class VaccinationRecord {
         return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.species().id();
     }
 
-    protected String getDamage() {
+    protected String damage() {
         return _damage.toString();
     }
 
-    protected Veterinarian getVet() {
+    protected Veterinarian vet() {
         return _administeringVet;
     }
 
-    protected Animal getAnimal() {
+    protected Animal animal() {
         return _vaccinatedAnimal;
     }
 }

@@ -47,9 +47,9 @@ public abstract class Tree extends NamedEntity{
         return _baseCleaningDifficulty * seasonalEffort(currentSeason) * log(age() + 1);
     }
 
-    protected abstract int seasonalEffort(Season currentSeason);
+    abstract int seasonalEffort(Season currentSeason);
 
-    protected abstract Leaf getBioCycle(Season currentSeason);
+    abstract Leaf getBioCycle(Season currentSeason);
 
     boolean equalsCreationSeason(Season currentSeason) {
         return _creationSeason == currentSeason;

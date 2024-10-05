@@ -7,7 +7,7 @@ public class Evergreen extends Tree{
     }
     
     @Override
-    protected int seasonalEffort(Season currentSeason) throws IllegalStateException{
+    int seasonalEffort(Season currentSeason) throws IllegalStateException{
         switch (currentSeason) {
             case Spring:
             case Summer:
@@ -21,7 +21,7 @@ public class Evergreen extends Tree{
     }
 
     @Override
-    protected Leaf getBioCycle(Season currentSeason) throws IllegalStateException{
+    Leaf getBioCycle(Season currentSeason) throws IllegalStateException{
         switch (currentSeason) {
             case Spring:
                 return Leaf.GENERATING_LEAVES;

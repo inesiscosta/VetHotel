@@ -11,33 +11,34 @@ public class ZooKeeper extends Employee{
     }
 
     @Override
-    public double calculateSatisfactionLevel() {
+    double calculateSatisfaction() {
         double work = 0;
-        for (Habitat habitat : _assignedHabitats) {
+        for (Habitat habitat : _assignedHabitats)
             work += (workEffort(habitat) / habitat.getNumKeepers());
-        }
         return 300 - work;
     }
 
     private double workEffort(Habitat habitat) {
-        return habitat.getArea() + 3 * habitat.getNumAnimals() + habitat.cleaningEffort(getHotel().currentSeason());
+        return habitat.getArea() 
+        + 3 * habitat.getNumAnimals() 
+        + habitat.cleaningEffort(hotel().currentSeason());
     }
 
     @Override
-    protected void addResponsibility(String id) {
-        _assignedHabitats.add(this.getHotel().identifyHabitat(id));
+    void addResponsibility(String id) {
+        _assignedHabitats.add(this.hotel().identifyHabitat(id));
     }
 
     @Override
-    protected void removeResponsibility(String id) {
-        _assignedHabitats.remove(this.getHotel().identifyHabitat(id));
+    void removeResponsibility(String id) {
+        _assignedHabitats.remove(this.hotel().identifyHabitat(id));
     }
 
     @Override
-    public String getIdResponsibilities() {
-        String idResponsibilities = null;
+    String getIdResponsibilities() {
+        StringBuilder idResponsibilities = new StringBuilder();
         for (Habitat habitat : _assignedHabitats)
-            idResponsibilities += habitat.id();
-        return idResponsibilities;
+            idResponsibilities.append(habitat.id());
+        return idResponsibilities.toString();
     }
 }

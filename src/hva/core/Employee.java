@@ -9,34 +9,33 @@ public abstract class Employee extends NamedEntity{
         _employeeType = employeeType;
     }
 
-    protected EmployeeType getEmployeeType() {
+    EmployeeType type() {
         return _employeeType;
     }
 
-    public Hotel getHotel() {
+    public Hotel hotel() {
         return _hotel;
     }
-
-    public abstract double calculateSatisfactionLevel();
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append(this.getEmployeeType())
-          .append("|")
-          .append(this.id())
-          .append("|")
-          .append(this.name());
-        
+        result.append(this.type())
+            .append("|")
+            .append(this.id())
+            .append("|")
+            .append(this.name());
         String responsibilities = this.getIdResponsibilities();
         if (responsibilities != null)
             result.append("|").append(responsibilities);
         return result.toString();
     }
 
-    abstract protected String getIdResponsibilities();
+    abstract double calculateSatisfaction();
 
-    protected abstract void addResponsibility(String id);
+    abstract void addResponsibility(String id);
 
-    protected abstract void removeResponsibility(String id);
+    abstract void removeResponsibility(String id);
+
+    abstract String getIdResponsibilities();
 }

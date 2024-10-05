@@ -11,33 +11,34 @@ public class Veterinarian extends Employee{
     }
     
     @Override
-    public double calculateSatisfactionLevel() {
+    double calculateSatisfaction() {
         int work = 0;
-        for (Species species : _knowsHowToVaccinate) {
+        for (Species species : _knowsHowToVaccinate)
             work += (species.getNumAnimals()) / species.getNumQualifiedVets();
-        }
         return 300 - work;
     }
 
     @Override
-    protected void addResponsibility(String id) {
-        _knowsHowToVaccinate.add(this.getHotel().identifySpecies(id));
+    void addResponsibility(String id) {
+        _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     }
 
     @Override
-    protected void removeResponsibility(String id) {
-        _knowsHowToVaccinate.remove(this.getHotel().identifySpecies(id));
+    void removeResponsibility(String id) {
+        _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
     }
 
     @Override
-    public String getIdResponsibilities() {
+    String getIdResponsibilities() {
         String idResponsibilities = null;
         for (Species species : _knowsHowToVaccinate)
             idResponsibilities += species.id();
         return idResponsibilities;
     }
 
-    protected VaccinationRecord vaccinate(Vaccine vaccine, Animal animal){
+    VaccinationRecord vaccinate(Vaccine vaccine, Animal animal){
+        HealthStatus animalHealthStatus = vaccine.determineVaccineEffect(animal);
+        animal.updateHealthHistory(animalHealthStatus);
         return new VaccinationRecord(vaccine, this, animal);
     }
 }
