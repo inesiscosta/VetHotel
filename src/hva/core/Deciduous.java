@@ -7,13 +7,13 @@ public class Deciduous extends Tree {
 
     protected int seasonalEffort(Season currentSeason){
         switch (currentSeason) {
-            case SPRING:
+            case Spring:
                 return 1;
-            case SUMMER:
+            case Summer:
                 return 2;
-            case FALL:
+            case Fall:
                 return 5;
-            case WINTER:
+            case Winter:
                 return 0;
             default:
                 return -1;
@@ -22,20 +22,35 @@ public class Deciduous extends Tree {
 
     protected Leaf getBioCycle(Season currentSeason){
         switch (currentSeason) {
-            case SPRING:
+            case Spring:
                 return Leaf.GENERATING_LEAVES;
-            case SUMMER:
+            case Summer:
                 return Leaf.WITH_LEAVES;
-            case FALL:
+            case Fall:
                 return Leaf.SHEDDING_LEAVES;
-            case WINTER:
+            case Winter:
                 return Leaf.WITHOUT_LEAVES;
             default:
                 return null;
         }
     }
 
-    public String toString(Season currentSeason){
-        return "ÁVORE | " + this.id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + "CADUCA" + " | " + getBioCycle(currentSeason);
+    protected String getTreeTypeInPT(){
+        return "CADUCA";
+    }
+
+    protected String getBioCycleInPT(Season currentSeason){
+        switch (currentSeason) {
+            case Spring:
+                return "GERARFOLHAS";
+            case Summer:
+                return "COMFOLHAS";
+            case Fall:
+                return "PERDERFOLHAS";
+            case Winter:
+                return "SEMFOLHAS";
+            default:
+                return null;
+        }
     }
 }

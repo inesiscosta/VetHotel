@@ -1,38 +1,53 @@
 package hva.core;
 
 public enum Season {
-    SPRING,
-    SUMMER,
-    FALL,
-    WINTER;
+    Spring,
+    Summer,
+    Fall,
+    Winter;
 
-    protected static Season getSeason(int id) {
+    protected static Season getSeason(int id) throws IllegalStateException {
         switch (id) {
             case 0:
-                return SPRING;
+                return Spring;
             case 1:
-                return SUMMER;
+                return Summer;
             case 2:
-                return FALL;
+                return Fall;
             case 3:
-                return WINTER;
+                return Winter;
             default:
-                return SPRING;
+                throw new IllegalStateException("Unexpected value: " + id); // Check Exception
         }
     }
 
-    protected static int getSeason(Season season) {
+    protected static int getSeason(Season season) throws IllegalStateException{
         switch (season) {
-            case SPRING:
+            case Spring:
                 return 0;
-            case SUMMER:
+            case Summer:
                 return 1;
-            case FALL:
+            case Fall:
                 return 2;
-            case WINTER:
+            case Winter:
                 return 3;
             default:
-                return 0;
+                throw new IllegalStateException("Unexpected value: " + season); // Check Exception
+        }
+    }
+
+    public Season nextSeason() throws IllegalStateException {
+        switch (this) {
+            case Spring:
+                return Season.Summer;
+            case Summer:
+                return Season.Fall;
+            case Fall:
+                return Season.Winter;
+            case Winter:
+                return Season.Spring;
+            default:
+                throw new IllegalStateException("Unexpected value: " + this); // Check Exception
         }
     }
 }

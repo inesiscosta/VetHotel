@@ -16,4 +16,14 @@ public class NamedEntity {
     public String id() {
         return _id;
     }
+
+    @Override
+    //TODO if we need to check if the object type is NamedEntity
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return false;
+        }
+        NamedEntity other = (NamedEntity) obj;
+        return this._id.equals(other.id());
+    }
 }

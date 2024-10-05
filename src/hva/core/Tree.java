@@ -41,7 +41,13 @@ public abstract class Tree extends NamedEntity{
         return _seasonAtCreation == currentSeason;
     }
 
-    public abstract String toString(Season currentSeason);
-
     protected abstract Leaf getBioCycle(Season currentSeason);
+
+    public String toString(Season currentSeason){
+        return "ÁRVORE | " + id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + getTreeTypeInPT() + " | " + getBioCycleInPT(currentSeason);
+    }
+
+    protected abstract String getTreeTypeInPT();
+
+    protected abstract String getBioCycleInPT(Season currentSeason);
 }

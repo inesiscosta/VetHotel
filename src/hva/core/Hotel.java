@@ -4,7 +4,7 @@ import hva.core.exception.*;
 import java.io.*;
 import java.util.*;
 import hva.core.Animal;
-import hva.core.Decidious;
+import hva.core.Deciduous;
 import hva.core.Employee;
 import hva.core.Evergreen;
 import hva.core.Habitat;

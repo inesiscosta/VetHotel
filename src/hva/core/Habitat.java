@@ -18,7 +18,7 @@ public class Habitat extends NamedEntity {
     public Habitat(String id, String name, int area) {
         super(id, name);
         _area = area;
-        _animals = new TreeMap<String,Animal>(); // Note comparing by animal
+        _animals = new TreeMap<String,Animal>(); //Note comparing by animal
         _assignedKeepers = new TreeSet<ZooKeeper>();
         _trees = new TreeSet<Tree>(Comparator.comparing(Tree::id));
         _influences = new HashMap<>();
@@ -33,7 +33,6 @@ public class Habitat extends NamedEntity {
         return numAnimalSameSpecies;
     }
 
-    // Dont know if this is going to be needed but we'll see
     protected void addInfluence(Species species, int influence) {
         _influences.put(species, influence);
     }
@@ -42,16 +41,15 @@ public class Habitat extends NamedEntity {
         return _influences.getOrDefault(species, 0); // Returns 0 if the species isn't in the map, indicating neutral influence
     }
 
-    protected double cleaningEffort(Season currentSeason) { //FIXME We dont have acess to currentSeason unless it is called from the Hotel
+    protected double cleaningEffort(Season currentSeason) {
         double cleaningEffort = 0;
         for(Tree tree : _trees)
              cleaningEffort += tree.calculateCleaningEffort(currentSeason);
         return cleaningEffort;
     }
 
-    // Should we make this a double to avoid rounding errors? Do we ever sum this value with something else? We could round only when we need to print the value.
-    protected int habitatWork(Season currentSeason) {
-        return this.getArea() + 3 * _animals.size() + (int) Math.round(this.cleaningEffort(currentSeason));
+    protected double habitatWork(Season currentSeason) {
+        return this.getArea() + 3 * _animals.size() + this.cleaningEffort(currentSeason);
     }
 
     public Animal identifyAnimal(String id) {
@@ -66,12 +64,6 @@ public class Habitat extends NamedEntity {
         _animals.remove(animal.id());
     }
 
-    //We need to maybe find a way to know the currentSeason without passing it as a parameter prof redefines the toString method included in NamedEntity which doesn't have the currentSeason parameter
-    //Also should we use a StringBuilder here?
-    public String toString(Season currentSeason) {
-        return "HABITAT|" + this.id() + "|" + this.name() + "|" + String.valueOf(this.getArea()) + "|" + String.valueOf(_trees.size()) + "\n" + listTrees(currentSeason);
-    }
-    /*
     public String toString(Season currentSeason) {
         StringBuilder result = new StringBuilder();
         result.append("HABITAT|")
@@ -82,7 +74,6 @@ public class Habitat extends NamedEntity {
           .append(listTrees(currentSeason));
         return result.toString();
     }
-     */
 
     private String listTrees(Season currentSeason) { 
         StringBuilder listTrees = new StringBuilder();
@@ -95,7 +86,7 @@ public class Habitat extends NamedEntity {
         _influences.put(species, newInfluence);
     }
 
-    protected void plantTree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType, Season currentSeason) {
+    protected void plantTree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType, Season currentSeason) throws IllegalArgumentException {
         Tree tree;
         switch (treeType) {
             case EVERGREEN:
@@ -113,29 +104,15 @@ public class Habitat extends NamedEntity {
     public String listAnimals() {
         StringBuilder listAnimals = new StringBuilder();
         for(Animal animal : _animals.values())
-            listAnimals.append(animal.toString()).append("\n"); // Needs to add a new line to generate the complete String a list of all Animals one per line
+            listAnimals.append(animal.toString()).append("\n"); //Needs to add a new line to generate the complete String a list of all Animals one per line
         return listAnimals.toString();
     }
 
-    //TODO Check if we shouldnt put this equals in the NamedEntity. Same happens in other classes so I think so. - Inês
-    public boolean equals(Habitat otherHabitat) {
-        return this.id().equals(otherHabitat.id());
-    }
-    
     protected int getNumAnimals() {
         return _animals.size();
     }
 
     protected int getArea() {
         return _area;
-    }
-
-    //TODO Maybe not the best way to do this view Hotel.addResponsibility. Agreed - Inês
-    protected void addZooKeeper(ZooKeeper keeper) {
-        _assignedKeepers.add(keeper);
-    }
-
-    protected void removeZooKeeper(ZooKeeper Keeper) {
-        _assignedKeepers.remove(Keeper);
     }
 }
