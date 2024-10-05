@@ -6,16 +6,15 @@ public enum HealthStatus {
     ACCIDENT,
     ERROR;
 
-    protected HealthStatus determineHealthStatus(int damage, boolean correctSpecies) {
-        if (damage == 0) {
-            if (correctSpecies) {
-                return NORMAL;
-            }
-            return CONFUSION;
-        } else if (1 <= damage && damage <= 4) {
-            return ACCIDENT;
-        } else {
-            return ERROR;
-        }
+    protected static HealthStatus determineHealthStatus(int damage, boolean correctSpecies) {
+        if (correctSpecies)
+            return HealthStatus.NORMAL;
+        if (damage == 0)
+            return HealthStatus.CONFUSION;
+        else if (damage >= 1 && damage <= 4)
+            return HealthStatus.ACCIDENT;
+        else if (damage >= 5)
+            return HealthStatus.ERROR;
+        throw new IllegalStateException("Invalid damage value"); // Check Exception
     }
 }

@@ -6,7 +6,7 @@ public class Evergreen extends Tree{
         super(idTree, name, age, baseCleaningDifficulty, TreeType.EVERGREEN, currentSeason);
     }
     
-    protected int seasonalEffort(Season currentSeason){
+    protected int seasonalEffort(Season currentSeason) throws IllegalStateException{
         switch (currentSeason) {
             case Spring:
             case Summer:
@@ -15,11 +15,11 @@ public class Evergreen extends Tree{
             case Winter:
                 return 2;
             default:
-                return -1;
+                throw new IllegalStateException("Unexpected value: " + currentSeason); // Check Exception
         }
     }
 
-    protected Leaf getBioCycle(Season currentSeason){
+    protected Leaf getBioCycle(Season currentSeason) throws IllegalStateException{
         switch (currentSeason) {
             case Spring:
                 return Leaf.GENERATING_LEAVES;
@@ -30,7 +30,7 @@ public class Evergreen extends Tree{
             case Winter:
                 return Leaf.SHEDDING_LEAVES;
             default:
-                return null;
+                throw new IllegalStateException("Unexpected value: " + currentSeason); // Check Exception
         }
     }
     protected String getTreeTypeInPT(){

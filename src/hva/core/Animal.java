@@ -31,7 +31,14 @@ public class Animal extends NamedEntity {
 
     @Override
     public String toString() {
-        return "ANIMAL|" + this.id() + "|" + this.name() + "|" + _species.id() + "|" + _healthHistory + "|" + _habitat.id();
+        StringBuilder result = new StringBuilder();
+        result.append("ANIMAL|")
+          .append(this.id()).append("|")
+          .append(this.name()).append("|")
+          .append(_species.id()).append("|")
+          .append(_healthHistory).append("|")
+          .append(_habitat.id());
+        return result.toString();
     }
 
     protected void changeHabitat(Habitat newHabitat) {
@@ -50,7 +57,7 @@ public class Animal extends NamedEntity {
         // TODO Implement Animal.registerNewSpecies
     }
 
-    protected Species getSpecies() {
+    protected Species species() {
         return _species;
     }
 

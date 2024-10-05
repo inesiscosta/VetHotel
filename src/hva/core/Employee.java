@@ -19,6 +19,7 @@ public abstract class Employee extends NamedEntity{
 
     public abstract double calculateSatisfactionLevel();
 
+    @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
         result.append(this.getEmployeeType())

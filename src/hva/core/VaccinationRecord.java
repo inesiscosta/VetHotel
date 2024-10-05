@@ -10,12 +10,12 @@ public class VaccinationRecord {
         _administeredVaccine = vaccine;
         _administeringVet = vet;
         _vaccinatedAnimal = animal;
-        _damage = vaccine.calculateVacineDamage(animal);
+        _damage = vaccine.determineVaccineEffect(animal);
     }
 
     @Override
     public String toString() {
-        return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.getSpecies().id();
+        return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.species().id();
     }
 
     protected String getDamage() {
