@@ -3,33 +3,41 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class ZooKeeper extends Employee{
-    private Collection<Habitat> __assignedHabitats;
+    private Collection<Habitat> _assignedHabitats;
 
-    public ZooKeeper(String idEmployee, String name, String employeeType) {
-        super(idEmployee, name, employeeType);
-        __assignedHabitats = new HashSet<Habitat>();
+    public ZooKeeper(String idEmployee, String name) {
+        super(idEmployee, name, EmployeeType.ZOOKEEPER);
+        _assignedHabitats = new HashSet<Habitat>();
     }
 
     @Override
-    public int calculateSatisfactionLevel() {
-        return 0;
+    public double calculateSatisfactionLevel() {
+        double work = 0;
+        for (Habitat habitat : _assignedHabitats) {
+            work += (workEffort(habitat) / habitat.getNumKeepers());
+        }
+        return 300 - work;
+    }
+
+    private double workEffort(Habitat habitat) {
+        return habitat.getArea() + 3 * habitat.getNumAnimals() + habitat.cleaningEffort(getHotel().getCurrentSeason());
     }
 
     @Override
-    public String toString() {
-        return null;
+    protected void addResponsibility(String id) {
+        _assignedHabitats.add(this.getHotel().identifyHabitat(id));
     }
 
-    protected void addHabitat(Habitat habitat){
-        __assignedHabitats.add(habitat);
+    @Override
+    protected void removeResponsibility(String id) {
+        _assignedHabitats.remove(this.getHotel().identifyHabitat(id));
     }
 
-    protected void removeHabitat(Habitat habitat){
-        __assignedHabitats.remove(habitat);
-    }
-
-    private int workEffort(){
-        // TODO Implement ZooKeeper.workEffort
-        return 0;
+    @Override
+    public String getIdResponsibilities() {
+        String idResponsibilities = null;
+        for (Habitat habitat : _assignedHabitats)
+            idResponsibilities += habitat.id();
+        return idResponsibilities;
     }
 }

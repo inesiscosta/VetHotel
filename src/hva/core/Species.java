@@ -13,6 +13,14 @@ public class Species extends NamedEntity{
         _qualifiedVets = new HashSet<Veterinarian>();
     }
 
+    public int getNumAnimals() {
+        return _animals.size();
+    }
+
+    public int getNumQualifiedVets() {
+        return _qualifiedVets.size();
+    }
+
     public boolean equals(Species otherSpecies) {
         return this.id().equals(otherSpecies.id());
     }

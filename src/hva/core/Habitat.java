@@ -33,6 +33,10 @@ public class Habitat extends NamedEntity {
         return numAnimalSameSpecies;
     }
 
+    protected int getNumKeepers() {
+        return _assignedKeepers.size();
+    }
+
     protected void addInfluence(Species species, int influence) {
         _influences.put(species, influence);
     }
@@ -46,10 +50,6 @@ public class Habitat extends NamedEntity {
         for(Tree tree : _trees)
              cleaningEffort += tree.calculateCleaningEffort(currentSeason);
         return cleaningEffort;
-    }
-
-    protected double habitatWork(Season currentSeason) {
-        return this.getArea() + 3 * _animals.size() + this.cleaningEffort(currentSeason);
     }
 
     public Animal identifyAnimal(String id) {

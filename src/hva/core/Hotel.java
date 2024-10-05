@@ -42,6 +42,10 @@ public class Hotel implements Serializable {
     _usedIds = new HashSet<String>();
   }
 
+  public Season getCurrentSeason() {
+    return _currentSeason;
+  }
+
   public void nextSeason() {
     Season[] seasons = Season.values();
     int idCurrentSeason = Season.getSeason(_currentSeason);

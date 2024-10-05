@@ -6,6 +6,13 @@ public class VaccinationRecord {
     private Veterinarian _administeringVet;
     private Animal _vaccinatedAnimal;
 
+    public VaccinationRecord(Vaccine vaccine, Veterinarian vet, Animal animal) {
+        _administeredVaccine = vaccine;
+        _administeringVet = vet;
+        _vaccinatedAnimal = animal;
+        _damage = vaccine.calculateVacineDamage(animal);
+    }
+
     @Override
     public String toString() {
         return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.getSpecies().id();
