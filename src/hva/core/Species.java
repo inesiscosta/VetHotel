@@ -5,12 +5,12 @@ import java.util.HashSet;
 public class Species extends NamedEntity{
       
     private Collection<Animal> _animals;
-    private Collection<Veterinary> _qualifiedVets;
+    private Collection<Veterinarian> _qualifiedVets;
     
-    public Species(String idSpecies, String name) {
-        super(idSpecies, name);
+    public Species(String id, String name) {
+        super(id, name);
         _animals = new TreeSet<Animal>();
-        _qualifiedVets = new HashSet<Veterinary>();
+        _qualifiedVets = new HashSet<Veterinarian>();
     }
 
     public boolean equals(Species otherSpecies) {
@@ -21,12 +21,12 @@ public class Species extends NamedEntity{
         _animals.add(animal);
     }
 
-    //TODO Maybe not the best way see Hotel.addResponsability
-    protected void addQualifiedVet(Veterinary vet) {
+    //TODO Maybe not the best way see Hotel.addResponsibility
+    protected void addQualifiedVet(Veterinarian vet) {
         _qualifiedVets.add(vet);
     }
 
-    protected void removeQualifiedVet(Veterinary vet) {
+    protected void removeQualifiedVet(Veterinarian vet) {
         _qualifiedVets.remove(vet);
     }
 }

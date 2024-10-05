@@ -3,7 +3,7 @@ package hva.core;
 public class VaccinationRecord {
     private HealthStatus _damage;
     private Vaccine _administeredVaccine;
-    private Veterinary _administeringVet;
+    private Veterinarian _administeringVet;
     private Animal _vaccinatedAnimal;
 
     @Override
@@ -15,7 +15,7 @@ public class VaccinationRecord {
         return _damage.toString();
     }
 
-    protected Veterinary getVet() {
+    protected Veterinarian getVet() {
         return _administeringVet;
     }
 

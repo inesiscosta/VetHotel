@@ -7,8 +7,9 @@ public abstract class Tree extends NamedEntity{
     private Season _seasonAtCreation;
     private Habitat _habitat;
 
-    public Tree(String idTree, String name, int baseCleaningDifficulty, Season currentSeason) {
+    public Tree(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason) {
         super(name, idTree);
+        _age = age;
         _baseCleaningDifficulty = baseCleaningDifficulty;
         _seasonAtCreation = currentSeason;
     }

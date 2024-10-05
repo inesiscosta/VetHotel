@@ -2,10 +2,10 @@ package hva.core;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class Veterinary extends Employee{
+public class Veterinarian extends Employee{
     private Collection<Species> _knowsHowToVaccinate;
 
-    public Veterinary(String idEmployee, String name, String employeeType) {
+    public Veterinarian(String idEmployee, String name, String employeeType) {
         super(idEmployee, name, employeeType);
         _knowsHowToVaccinate = new HashSet<Species>();
     }

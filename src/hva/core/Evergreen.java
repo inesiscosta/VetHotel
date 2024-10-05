@@ -2,8 +2,8 @@ package hva.core;
 
 public class Evergreen extends Tree{
 
-    public Evergreen(String idTree, String name, int baseCleaningDifficulty, Season currentSeason){
-        super(idTree, name, baseCleaningDifficulty, currentSeason);
+    public Evergreen(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason){
+        super(idTree, name, age, baseCleaningDifficulty, currentSeason);
     }
     
     protected int seasonalEffort(Season currentSeason){

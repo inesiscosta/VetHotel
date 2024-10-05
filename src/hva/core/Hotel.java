@@ -16,7 +16,7 @@ import hva.core.Species;
 import hva.core.Tree;
 import hva.core.VaccinationRecord;
 import hva.core.Vaccine;
-import hva.core.Veterinary;
+import hva.core.Veterinarian;
 import hva.core.ZooKeeper;
 
 public class Hotel implements Serializable {
@@ -101,8 +101,8 @@ public class Hotel implements Serializable {
   }
 
   protected String addResponsibility(Employee employee, String idResponsability) {
-    if (employee instanceof Veterinary) { //A bit cursedd but I think better than employeeType() == "VET"
-      Veterinary vet = (Veterinary) employee;
+    if (employee instanceof Veterinarian) { //A bit cursedd but I think better than employeeType() == "VET"
+      Veterinarian vet = (Veterinarian) employee;
       vet.addSpecies(identifySpecies(idResponsability));
       identifySpecies(idResponsability).addQualifiedVet(vet);
     } else if (employee instanceof ZooKeeper) {
@@ -137,10 +137,10 @@ public class Hotel implements Serializable {
     return vaccines.toString();
   }
 
-  public Veterinary identifyVet(String idVet) {
+  public Veterinarian identifyVet(String idVet) {
     Employee employee =  _employees.get(idVet);
     if (employee.employeeType() == "VET") {
-      return (Veterinary) employee;
+      return (Veterinarian) employee;
     }
     return null;
   }
@@ -158,7 +158,7 @@ public class Hotel implements Serializable {
     return animalVaccinationHistory.toString();
   }
 
-  public String listVetVaccinationRecords(Veterinary veterinary) {
+  public String listVetVaccinationRecords(Veterinarian veterinary) {
     StringBuilder vetVaccinationRecords = new StringBuilder();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.getVet().equals(veterinary))

@@ -10,7 +10,7 @@ public class Animal extends NamedEntity {
         _habitat = habitat;
         _species = species;
         _healthHistory = "VOID";
-        _species.addAnimalToSpecies(this); //Adds itself to the Collection TreeSet of all Animals of the same Species that the Specie holds
+        _species.addAnimalToSpecies(this); //Adds itself to the Collection TreeSet of all Animals of the same Species that the Species holds
     }
 
     public int calculateSatisfactionLevel() {
@@ -22,8 +22,10 @@ public class Animal extends NamedEntity {
     }
 
     protected void updateHealthHistory(HealthStatus healthStatus) {
-        if(_healthHistory == "VOID")
+        if(_healthHistory == "VOID") {
             _healthHistory = healthStatus.toString();
+            return;
+        }
         _healthHistory += "," + healthStatus;
     }
 
