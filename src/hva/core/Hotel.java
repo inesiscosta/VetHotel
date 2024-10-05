@@ -58,7 +58,7 @@ public class Hotel implements Serializable {
     for (Habitat habitat : _habitats.values()) {
       globalSatisfaction += habitat.calculateSatisfactionLevel();
     }
-    return (int) globalSatisfaction;
+    return ;
   }
 
   public String listAnimals() {
@@ -187,6 +187,18 @@ public class Hotel implements Serializable {
   protected void addVaccinationRecord(VaccinationRecord record) {
     //TODO Implement Hotel.addVaccinationRecord
   }
+
+  protected String listAnimalVaccinationRecord(String id){
+    Animal animal = identifyAnimal(id);
+    StringBuilder animalVaxRecord = new StringBuilder();
+    for (VaccinationRecord record : _vaccinationRecords) {
+      if (record.getAnimal().equals(animal)) {
+        animalVaxRecord.append(record.toString()).append("\n");
+      }
+    }
+    return animalVaxRecord.toString();
+  }
+
   /**
    * Read text input file and create corresponding domain entities.
    * 
