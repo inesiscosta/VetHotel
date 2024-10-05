@@ -18,7 +18,7 @@ public class Habitat extends NamedEntity {
     public Habitat(String id, String name, int area) {
         super(id, name);
         _area = area;
-        _animals = new TreeMap<String,Animal>();
+        _animals = new TreeMap<String,Animal>(); // Note comparing by animal
         _assignedKeepers = new TreeSet<ZooKeeper>();
         _trees = new TreeSet<Tree>(Comparator.comparing(Tree::id));
         _influences = new HashMap<>();
@@ -38,21 +38,20 @@ public class Habitat extends NamedEntity {
         _influences.put(species, influence);
     }
 
-    // Maybe we need to check for null type of species but I think that exception should be caught before this method is called
     public int identifyInfluence(Species species) {
         return _influences.getOrDefault(species, 0); // Returns 0 if the species isn't in the map, indicating neutral influence
     }
 
-    protected double cleaningEffort() { //FIXME We dont have acess to currentSeason unless it is called from the Hotel
+    protected double cleaningEffort(Season currentSeason) { //FIXME We dont have acess to currentSeason unless it is called from the Hotel
         double cleaningEffort = 0;
         for(Tree tree : _trees)
-             cleaningEffort += tree.calculateCleaningEffort();
+             cleaningEffort += tree.calculateCleaningEffort(currentSeason);
         return cleaningEffort;
     }
 
     // Should we make this a double to avoid rounding errors? Do we ever sum this value with something else? We could round only when we need to print the value.
-    protected int habitatWork() { //FIXME We dont have acess to currentSeason unless it is called from the Hotel problem comes from the cleaningEffort method.
-        return this.getArea() + 3 * _animals.size() + (int) Math.round(this.cleaningEffort());
+    protected int habitatWork(Season currentSeason) {
+        return this.getArea() + 3 * _animals.size() + (int) Math.round(this.cleaningEffort(currentSeason));
     }
 
     public Animal identifyAnimal(String id) {
@@ -96,14 +95,18 @@ public class Habitat extends NamedEntity {
         _influences.put(species, newInfluence);
     }
 
-    //FIXME We dont have acess to currentSeason unless it is called from the Hotel
-    protected void plantTree(String id, String name, int age, int baseCleaningDifficulty, String treeType, Season currentSeason) {
-        if(treeType == "EVERGREEN") { // Should we maybe use an enum for this? For employeeType too? Expecially if we have more than 2 types also we could use a switch case. That would also eliminate the repeat of addTree method.
-            Tree tree = new Evergreen(id, name, age, baseCleaningDifficulty, currentSeason);
-            _trees.add(tree);
-            return;
+    protected void plantTree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType, Season currentSeason) {
+        Tree tree;
+        switch (treeType) {
+            case EVERGREEN:
+                tree = new Evergreen(id, name, age, baseCleaningDifficulty, currentSeason);
+                break;
+            case DECIDUOUS:
+                tree = new Deciduous(id, name, age, baseCleaningDifficulty, currentSeason);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid tree type"); //Check this exception.
         }
-        Tree tree = new Decidious(id, name, age, baseCleaningDifficulty, currentSeason);
         _trees.add(tree);
     }
 

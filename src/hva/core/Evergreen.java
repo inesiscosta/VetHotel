@@ -3,7 +3,7 @@ package hva.core;
 public class Evergreen extends Tree{
 
     public Evergreen(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason){
-        super(idTree, name, age, baseCleaningDifficulty, currentSeason);
+        super(idTree, name, age, baseCleaningDifficulty, TreeType.EVERGREEN, currentSeason);
     }
     
     protected int seasonalEffort(Season currentSeason){
@@ -35,6 +35,6 @@ public class Evergreen extends Tree{
     }
 
     public String toString(Season currentSeason){
-        return "ÁVORE | " + id() + " | " + name() + " | " + age() + " | " + getBaseCleaningDifficulty() + " | " + "PERENE" + " | " + getBioCycle(currentSeason);
+        return "ÁVORE|" + id() + "|" + name() + "|" + age() + "|" + getBaseCleaningDifficulty() + "|" + "PERENE" + "|" + getBioCycle(currentSeason);
     }
 }

@@ -1,8 +1,8 @@
 package hva.core;
 
-public class Decidious extends Tree {
-    public Decidious(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason){
-        super(idTree, name, age, baseCleaningDifficulty, currentSeason);
+public class Deciduous extends Tree {
+    public Deciduous(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason){
+        super(idTree, name, age, baseCleaningDifficulty, TreeType.DECIDUOUS, currentSeason);
     }
 
     protected int seasonalEffort(Season currentSeason){
