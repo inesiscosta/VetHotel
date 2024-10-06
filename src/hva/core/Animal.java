@@ -1,7 +1,7 @@
 package hva.core;
 
 /**
- * Represents an Animal in the system.
+ * Represents an Animal a the Vet Hotel.
  */
 public class Animal extends NamedEntity {
   private String _healthHistory;
@@ -9,7 +9,7 @@ public class Animal extends NamedEntity {
   private Habitat _habitat;
 
   /**
-   * Constructs a new Animal.
+   * Creates a new Animal.
    *
    * @param id the animal's unique identifier
    * @param name the animal's name
@@ -46,9 +46,9 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Gets the animal's health history.
+   * Gets the Animal object representation as a string containing information that describes the animal.
    *
-   * @return the animal's health history
+   * @return the Animal object string representation
    */
   @Override
   public String toString() {
@@ -63,8 +63,10 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Calculates the animal's satisfaction level.
-   *
+   * Calculates the animal's satisfaction level based on the number of animals
+   * of the same species in the habitat, the number of animals in the habitat,
+   * the area of the habitat, and the influence of the habitat on the animal's species.
+   * 
    * @return the animal's satisfaction level
    */
   int calculateSatisfaction() {
@@ -76,20 +78,20 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Updates the animal's health history.
+   * Updates the animal's health history after vaccination with the effect of the vaccine.
    *
-   * @param healthStatus the health status to add to the history
+   * @param vaccineEffect the health status to add to the history
    */
-  void updateHealthHistory(HealthStatus healthStatus) {
+  void updateHealthHistory(HealthStatus vaccineEffect) {
     if(_healthHistory == "VOID") {
-      _healthHistory = healthStatus.toString();
+      _healthHistory = vaccineEffect.toString();
       return;
     }
-    _healthHistory += "," + healthStatus;
+    _healthHistory += "," + vaccineEffect;
   }
 
   /**
-   * Changes the animal's habitat.
+   * Changes the animal to a different habitat.
    *
    * @param newHabitat the new habitat to move the animal to
    * @throws IllegalStateException if the habitat doesn't exist??? MIGUEL CHECK THIS 
