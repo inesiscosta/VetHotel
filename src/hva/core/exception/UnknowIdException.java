@@ -12,6 +12,8 @@ public class UnknowIdException extends Exception {
   
   private static final String ERROR_MESSAGE = "Id not found: ";
   private static final String ERROR_MESSAGE_HABITAT = "Habitat doesnt exists: ";
+  private static final String ERROR_MESSAGE_EMPLOYEE = "Employee doesnt exists: ";
+  private static final String ERROR_MESSAGE_SPECIES = "Species doesnt exists: ";
 
   
   /**
@@ -41,5 +43,18 @@ public class UnknowIdException extends Exception {
    **/
   public static String errorMessageHabitat() {
     return ERROR_MESSAGE_HABITAT;
+  }
+
+      /**
+   * Used to construct the error message
+   **/
+  public static String errorMessageEmployee() {
+    return ERROR_MESSAGE_EMPLOYEE;
+  }
+    /**
+   * Used to construct the error message
+   **/
+  public static String errorMessageSpecies() {
+    return ERROR_MESSAGE_SPECIES;
   }
 }

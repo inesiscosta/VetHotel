@@ -190,8 +190,8 @@ public class Hotel implements Serializable {
     Employee employee;
     try {
       employee = _employees.get(idEmployee);
-    } catch (UnknowIdException e) {
-      throw new UnknowIdException(UnknowIdException.errorMessageEmployee() + idEmployee, e); //Check this exception.
+    } catch (NullPointerException e) {
+      throw new UnknowIdException(UnknowIdException.errorMessageEmployee() + idEmployee, e);
     }
     employee.addResponsibility(idReponsibility);
   }
