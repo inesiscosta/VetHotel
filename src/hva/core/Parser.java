@@ -9,10 +9,10 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import hva.core.exception.DucplicatedIdException;
 import hva.core.exception.InvalidTypeException;
+import hva.core.exception.UnknowIdException;
 import hva.core.exception.UnrecognizedEntryException;
-
-// FIXME add other imports if needed
 
 /**
  * Esta solução assume que a classe Hotel já tem a seguinte funcionalidade
@@ -43,7 +43,7 @@ public class Parser {
   }
 
   public void parseFile(String filename) throws IOException, UnrecognizedEntryException {
-    try (BufferedReader reader = new BufferedReader(FileReader(filename))) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { //Small correction 
       String line;
 
       while ((line = reader.readLine()) != null)
@@ -75,8 +75,8 @@ public class Parser {
       String speciesId = components[3];
 
       _hotel.registerAnimal(id, name, habitatId, speciesId);
-    } catch (excCore1 | excpCore 2 | ...) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
+    } catch (UnknowIdException | DucplicatedIdException e) {
+      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
 
@@ -87,8 +87,8 @@ public class Parser {
       String name = components[2];
 
       _hotel.registerSpecies(id, name);
-    } catch (ExceptionCore1 e) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
+    } catch (UnknowIdException | DucplicatedIdException e) {
+      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
   
@@ -105,46 +105,48 @@ public class Parser {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
       }
-    } catch (excCore1 | excpCore 2 | ...) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
+		} catch (UnknowIdException | DucplicatedIdException | InvalidTypeException e) {
+      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
 
   // Parse a line with format VACINA|id|nome|idEspécie1,...,idEspécieN
-  private void parseVaccine(String[] components, String empType) {
+  private void parseVaccine(String[] components) throws UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
       String[] speciesIds = components.length == 4 ? components[3].split(",") : new String[0];
       _hotel.registerVaccine(id, name, speciesIds);
-    } catch (excCore1 | excpCore 2 | ...) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
+    } catch (DucplicatedIdException | UnknowIdException e) {
+      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
 
   // Parse a line with format ÁRVORE|id|nome|idade|dificuldade|tipo
-  private void parseTree(String[] components, String line) throws UnrecognizedEntryException {
+  private void parseTree(String[] components) throws UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
       int age = Integer.parseInt(components[3]);
       int diff = Integer.parseInt(components[4]);
       String type = components[5];
-      Tree tree;
-      if(type == "PER")
-        tree = new Evergreen(id, name, age, diff, _hotel.currentSeason());
-      
-      if(type == "CAD")  
-        tree = new Deciduous(id, name, age, diff, _hotel.currentSeason());
-
+	    Tree tree;
+	    if(type != "PERENE" || type != "CADUCA")
+		    throw new InvalidTypeException(InvalidTypeException.ErrorMessage());
+	    if(_hotel.isIdUsed(id)) //We need to add this to Hotel and the plantTree Method and maybe remove from here the Tree is the only object that is not created by the Hotel
+		    throw new DucplicatedIdException(DucplicatedIdException.errorMessage()); //Should we only verify in the plantTree ??
+	    if(type == "PERENE")
+        tree = new Evergreen(id, name, age, diff, null);
+      if(type == "CADUCA")  
+        tree = new Deciduous(id, name, age, diff, null);
       _tempTreesNoHabitat.put(id, tree);
-    } catch (excCore1 | excpCore 2 | ...) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
+    } catch (InvalidTypeException | DucplicatedIdException e) {
+      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
 
   // Parse a line with format HABITAT|id|nome|área|idÁrvore1,...,idÁrvoreN
-  private void parseHabitat(String[] components, String line) throws UnrecognizedEntryException {
+  private void parseHabitat(String[] components) throws UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
@@ -159,8 +161,8 @@ public class Parser {
           hab.plantTree(tree.id(), tree.name(), tree.age(), tree.baseCleaningDifficulty(), tree.treeType(), _hotel.currentSeason());
         }
       }
-    } catch (excCore1 | excpCore 2 | ...) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
+    } catch (InvalidTypeException | DucplicatedIdException e) {
+      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
 }
