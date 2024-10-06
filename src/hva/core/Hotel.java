@@ -75,9 +75,8 @@ public class Hotel implements Serializable {
     if(!_employees.containsKey(idVet))
       throw new UnknowIdException(UnknowIdException.errorMessage() + idVet);
     Employee employee =  _employees.get(idVet);
-    if (employee.type().toString() == "VET") {
+    if (employee.type().toString() == "VET")
       return (Veterinarian) employee;
-    }
     return null;
   }
 
@@ -251,12 +250,10 @@ public class Hotel implements Serializable {
 
   public int calculateGlobalSatisfaction() {
     double globalSatisfaction = 0;
-    for (Employee employee : _employees.values()) {
+    for (Employee employee : _employees.values())
       globalSatisfaction += employee.calculateSatisfaction();
-    }
-    for (Habitat habitat : _habitats.values()) {
+    for (Habitat habitat : _habitats.values())
       globalSatisfaction += habitat.calculateAnimalsSatisfaction();
-    }
     return (int) Math.round(globalSatisfaction);
   }
 
