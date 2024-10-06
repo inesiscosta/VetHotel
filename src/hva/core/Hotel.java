@@ -170,6 +170,21 @@ public class Hotel implements Serializable {
     _usedIds.add(vaccineId);
   }
 
+  public void addResponsibility(String idEmployee, String idReponsibility) throws UnknowIdException {
+    Employee employee;
+    try {
+      employee = _employees.get(idEmployee);
+    } catch (NullPointerException e) {
+      throw new UnknowIdException(UnknowIdException.errorMessageEmployee() + idEmployee, e);
+    }
+    employee.addResponsibility(idReponsibility);
+  }
+
+  protected void addVaccinationRecord(Veterinarian vet, Animal animal, Vaccine vaccine) {
+    VaccinationRecord record = vet.vaccinate(vaccine, animal);
+    _vaccinationRecords.add(record);
+  }
+
   public String listHabitats(Season currentSeason) {
     StringBuilder listHabitats = new StringBuilder();
     for(Habitat habitat : _habitats.values())
@@ -182,6 +197,13 @@ public class Hotel implements Serializable {
     for (Habitat habitat : _habitats.values())
       allAnimals.append(habitat.listAnimals()).append("\n");
     return allAnimals.toString();
+  }
+
+  public String listSpecies() {
+    StringBuilder listSpecies = new StringBuilder();
+    for (Species species : _species.values())
+      listSpecies.append(species.toString()).append("\n");
+    return listSpecies.toString();
   }
 
   public String listEmployee() {
@@ -198,21 +220,6 @@ public class Hotel implements Serializable {
     for(Vaccine vaccine : vaccines)
       listHabitats.append(vaccine.toString());
     return vaccines.toString();
-  }
-
-  public void addResponsibility(String idEmployee, String idReponsibility) throws UnknowIdException {
-    Employee employee;
-    try {
-      employee = _employees.get(idEmployee);
-    } catch (NullPointerException e) {
-      throw new UnknowIdException(UnknowIdException.errorMessageEmployee() + idEmployee, e);
-    }
-    employee.addResponsibility(idReponsibility);
-  }
-
-  protected void addVaccinationRecord(Veterinarian vet, Animal animal, Vaccine vaccine) {
-    VaccinationRecord record = vet.vaccinate(vaccine, animal);
-    _vaccinationRecords.add(record);
   }
 
   public String listAnimalVaccinationHistory(Animal animal) {
@@ -240,16 +247,6 @@ public class Hotel implements Serializable {
         erroneousVaccination.append(record.toString()).append("\n");
     }
     return erroneousVaccination.toString();
-  }
-
-  protected String listAnimalVaccinationRecord(String id) throws UnknowIdException {
-    Animal animal = identifyAnimal(id);
-    StringBuilder animalVaxRecord = new StringBuilder();
-    for (VaccinationRecord record : _vaccinationRecords) {
-      if (record.animal().equals(animal))
-        animalVaxRecord.append(record.toString()).append("\n");
-    }
-    return animalVaxRecord.toString();
   }
 
   public int calculateGlobalSatisfaction() {
