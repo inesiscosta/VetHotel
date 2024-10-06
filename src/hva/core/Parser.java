@@ -3,35 +3,18 @@ package hva.core;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+/*
 import java.io.Reader;
-
+TODO Maybe this import are not necessary
 import java.util.Collection;
 import java.util.ArrayList;
+*/
 import java.util.HashMap;
 
 import hva.core.exception.DucplicatedIdException;
 import hva.core.exception.InvalidTypeException;
 import hva.core.exception.UnknowIdException;
 import hva.core.exception.UnrecognizedEntryException;
-
-/**
- * Esta solução assume que a classe Hotel já tem a seguinte funcionalidade
-
-public class Hotel {
-  DONE public void registerAnimal(animalId, name, habitatId, speciesId) throws OneOrMoreCoreExceptions { ... }
-  DONE public void registerSpecies(speciesId, name) throws OneOrMoreCoreExceptions { ... }
-  DONE public void registerEmployee(employeeId, name, empType) throws OneOrMoreCoreExceptions { ... }
-  public void addResponsibility(employeeId, responsibility) throws OneOrMoreCoreExceptions { ... }
-  DONE public void registerVaccine(vaccineId, name, String[] speciesIds) throws someCoreExceptionsOneOrMoreCoreExceptions { ... }
-  public void createTree(TreeId, name, type, age, diff) throws OneOrMoreCoreExceptions { ... }
-  public Habitat registerHabitat(habitatId, name, area) throws OneOrMoreCoreExceptions { ... }
-
-Note-se que esta funcionalidade pode ser utilizada na concretização de alguns dos comandos.
-Caso Hotel não tenha esta funcionalidade, então deverão substituir a invocação destes métodos
-na classe Parser por uma ou mais linhas com uma funcionalidade semelhante.
-Cada um destes métodos pode lançar uma ou mais excepções que irão corresponder aos erros que
-podem acontecer ao nível do domínio surante a concretização da funcionalidade em causa.
-**/
 
 public class Parser {
   private Hotel _hotel;
@@ -135,11 +118,14 @@ public class Parser {
 		    throw new InvalidTypeException(InvalidTypeException.ErrorMessage());
 	    if(_hotel.isIdUsed(id)) //We need to add this to Hotel and the plantTree Method and maybe remove from here the Tree is the only object that is not created by the Hotel
 		    throw new DucplicatedIdException(DucplicatedIdException.errorMessage()); //Should we only verify in the plantTree ??
-	    if(type == "PERENE")
+	    if(type == "PERENE") {
         tree = new Evergreen(id, name, age, diff, null);
-      if(type == "CADUCA")  
+        _tempTreesNoHabitat.put(id, tree);
+      }
+      if(type == "CADUCA") {
         tree = new Deciduous(id, name, age, diff, null);
-      _tempTreesNoHabitat.put(id, tree);
+        _tempTreesNoHabitat.put(id, tree);
+      }
     } catch (InvalidTypeException | DucplicatedIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
@@ -166,10 +152,3 @@ public class Parser {
     }
   }
 }
-
-/**
- * Nota: O bloco catch presente nos vários métodos parse desta classe deverá ter em conta
- * as várias excepções que podem acontecer no contexto do bloco try em questão.
- * Estas excepções do domínio têm que ser definidas por cada grupo e devem representar situações
- * de erro específicas do domínio.
- **/
