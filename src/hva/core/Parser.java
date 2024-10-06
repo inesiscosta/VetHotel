@@ -7,7 +7,9 @@ import java.io.Reader;
 
 import java.util.Collection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import hva.core.exception.InvalidTypeException;
 import hva.core.exception.UnrecognizedEntryException;
 
 // FIXME add other imports if needed
@@ -33,9 +35,11 @@ podem acontecer ao nível do domínio surante a concretização da funcionalidad
 
 public class Parser {
   private Hotel _hotel;
+  private HashMap<String,Tree> _tempTreesNoHabitat;
 
   Parser(Hotel h) {
     _hotel = h;
+    _tempTreesNoHabitat = new HashMap<>();
   }
 
   public void parseFile(String filename) throws IOException, UnrecognizedEntryException {
@@ -126,8 +130,14 @@ public class Parser {
       int age = Integer.parseInt(components[3]);
       int diff = Integer.parseInt(components[4]);
       String type = components[5];
+      Tree tree;
+      if(type == "PER")
+        tree = new Evergreen(id, name, age, diff, _hotel.currentSeason());
+      
+      if(type == "CAD")  
+        tree = new Deciduous(id, name, age, diff, _hotel.currentSeason());
 
-      _hotel.createTree(id, name, type, age, diff);
+      _tempTreesNoHabitat.put(id, tree);
     } catch (excCore1 | excpCore 2 | ...) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
     }
@@ -144,8 +154,10 @@ public class Parser {
 
       if (components.length == 5) {
         String[] listOfTree = components[4].split(",");
-        for (String treeKey : listOfTree)
-          // adicionar a árvore com id treeKey ao habitat referenciado por hab
+        for (String treeKey : listOfTree) {
+          Tree tree =_tempTreesNoHabitat.get(treeKey);
+          hab.plantTree(tree.id(), tree.name(), tree.age(), tree.baseCleaningDifficulty(), tree.treeType(), _hotel.currentSeason());
+        }
       }
     } catch (excCore1 | excpCore 2 | ...) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
