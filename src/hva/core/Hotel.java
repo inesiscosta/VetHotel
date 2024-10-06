@@ -34,7 +34,7 @@ public class Hotel implements Serializable {
 
   public Hotel() {
     _currentSeason = Season.Spring;
-    _employees = new TreeMap<>();
+    _employees = new TreeMap<>(); //Dont know wich is better being already sorted in natural order or the .get being O(log n) and not O(1), we need to see this
     _habitats = new TreeMap<>();
     _vaccines = new HashMap<>();
     _species = new HashMap<>();
