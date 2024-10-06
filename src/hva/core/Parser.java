@@ -16,11 +16,11 @@ import hva.core.exception.UnrecognizedEntryException;
  * Esta solução assume que a classe Hotel já tem a seguinte funcionalidade
 
 public class Hotel {
-  public void registerAnimal(animalId, name, habitatId, speciesId) throws OneOrMoreCoreExceptions { ... }
-  public void registerSpecies(speciesId, name) throws OneOrMoreCoreExceptions { ... }
-  public void registerEmployee(employeeId, name, empType) throws OneOrMoreCoreExceptions { ... }
+  DONE public void registerAnimal(animalId, name, habitatId, speciesId) throws OneOrMoreCoreExceptions { ... }
+  DONE public void registerSpecies(speciesId, name) throws OneOrMoreCoreExceptions { ... }
+  DONE public void registerEmployee(employeeId, name, empType) throws OneOrMoreCoreExceptions { ... }
   public void addResponsibility(employeeId, responsibility) throws OneOrMoreCoreExceptions { ... }
-  public void registerVaccine(vaccineId, name, String[] speciesIds) throws someCoreExceptionsOneOrMoreCoreExceptions { ... }
+  DONE public void registerVaccine(vaccineId, name, String[] speciesIds) throws someCoreExceptionsOneOrMoreCoreExceptions { ... }
   public void createTree(TreeId, name, type, age, diff) throws OneOrMoreCoreExceptions { ... }
   public Habitat registerHabitat(habitatId, name, area) throws OneOrMoreCoreExceptions { ... }
 
