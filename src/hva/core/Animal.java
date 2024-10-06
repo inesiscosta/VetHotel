@@ -11,8 +11,8 @@ public class Animal extends NamedEntity {
   /**
    * Constructs a new Animal.
    *
-   * @param id the unique identifier of the animal
-   * @param name the name of the animal
+   * @param id the animal's unique identifier
+   * @param name the animal's name
    * @param species the species the animal belongs to
    * @param habitat the habitat the animal is in
    */
@@ -63,9 +63,9 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Calculates the animal's satisfaction.
+   * Calculates the animal's satisfaction level.
    *
-   * @return the animal's satisfaction
+   * @return the animal's satisfaction level
    */
   int calculateSatisfaction() {
     return 20 
