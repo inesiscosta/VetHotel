@@ -2,7 +2,7 @@ package hva.core;
 
 import hva.core.exception.*;
 import java.io.*;
-import java.util.*; // We need to specify each import from java.util I think.
+import java.util.*; // We need to specify each import from java.util I think. Ja estava no modelo do prof. - Miguel
 import hva.core.Animal;
 import hva.core.Deciduous;
 import hva.core.Employee;
@@ -50,24 +50,30 @@ public class Hotel implements Serializable {
     _currentSeason = _currentSeason.nextSeason();
   }
 
-  public Animal identifyAnimal(String idAnimal) {
+  public Animal identifyAnimal(String idAnimal) throws UnknowIdException {
     for(Habitat habitat : _habitats.values()) {
       Animal animal =  habitat.identifyAnimal(idAnimal);
       if (animal != null)
         return animal;
     }
-    return null;
+    throw new UnknowIdException(UnknowIdException.errorMessage() + idAnimal);
   }
 
-  public Species identifySpecies(String idSpecies) {
+  public Species identifySpecies(String idSpecies) throws UnknowIdException {
+    if(!_species.containsKey(idSpecies))
+      throw new UnknowIdException(UnknowIdException.errorMessage() + idSpecies);
     return _species.get(idSpecies);
   }
 
-  public Habitat identifyHabitat(String idHabitat) {
+  public Habitat identifyHabitat(String idHabitat) throws UnknowIdException {
+    if(!_habitats.containsKey(idHabitat))
+      throw new UnknowIdException(UnknowIdException.errorMessage() + idHabitat);
     return _habitats.get(idHabitat);
   }
 
-  public Veterinarian identifyVet(String idVet) {
+  public Veterinarian identifyVet(String idVet) throws UnknowIdException {
+    if(!_employees.containsKey(idVet))
+      throw new UnknowIdException(UnknowIdException.errorMessage() + idVet);
     Employee employee =  _employees.get(idVet);
     if (employee.type().toString() == "VET") {
       return (Veterinarian) employee;
@@ -75,7 +81,9 @@ public class Hotel implements Serializable {
     return null;
   }
 
-  public Vaccine identifyVaccine(String idVaccine) {
+  public Vaccine identifyVaccine(String idVaccine) throws UnknowIdException {
+    if(!_vaccines.containsKey(idVaccine))
+      throw new UnknowIdException(UnknowIdException.errorMessage() + idVaccine);
     return _vaccines.get(idVaccine);
   }
 
@@ -97,25 +105,36 @@ public class Hotel implements Serializable {
     return allAnimals.toString();
   }
 
-  protected void registerNewSpecies(String id, String name) {
-    if (_species.containsKey(id))
-      throw new IllegalArgumentException("Species already exists"); //Check this exception.
-    if (_usedIds.contains(id))
-      throw new IllegalArgumentException("Id already in use"); //Check this exception.
-    Species specie = new Species(id, name);
-    _species.put(id, specie);
+  protected void registerNewSpecies(String id, String name) throws UnknowIdException, DucplicatedIdException {
+    try {
+      identifySpecies(id); //If the species exist it doesnt throw a exception, else it is catched
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessageSpecies() + id);
+    } catch (UnknowIdException e) { //If the species doesnt exist it add a new one
+      if (_usedIds.contains(id))
+        throw new DucplicatedIdException(id);
+      Species specie = new Species(id, name);
+      _species.put(id, specie);
+      _usedIds.add(id);
+    }
+
   }
 
-  protected void registerNewAnimal(String idAnimal, String name, String idSpecies, String idHabitat) {
-    // Different Exception for id used for animal specifically ??? (Like done in Species)
+  protected void registerNewAnimal(String idAnimal, String name, String idSpecies, String idHabitat) throws UnknowIdException, DucplicatedIdException {
     if (_usedIds.contains(idAnimal))
-      throw new IllegalArgumentException("Id already in use"); //Check this exception.
-    Habitat habitat = identifyHabitat(idHabitat);
-    if (habitat == null)
-      throw new IllegalArgumentException("Habitat does not exist"); 
-    Species species = identifySpecies(idSpecies);
-    if (species == null)
-      registerNewSpecies(idHabitat, name);
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + idAnimal);
+    Habitat habitat;
+    try {
+      habitat = identifyHabitat(idHabitat);
+    } catch (UnknowIdException e) {
+      throw new UnknowIdException(UnknowIdException.errorMessageHabitat() + idHabitat, e);
+    }
+    Species species;
+    try {
+      species = identifySpecies(idSpecies);
+    } catch (UnknowIdException e) { //If the species doesnt exists it call the registerNewSpecies
+      registerNewSpecies(idSpecies, name);
+      species = identifySpecies(idSpecies); //After the new species is created it needs to make the object available
+    } 
     new Animal(idAnimal, name, species, habitat);
     _usedIds.add(idAnimal);
   }
@@ -127,11 +146,11 @@ public class Hotel implements Serializable {
     return listEmployee.toString();
   }
 
-  protected void registerNewEmployee(String id, String name, String type) {
+  protected void registerNewEmployee(String id, String name, String type) throws DucplicatedIdException, InvalidTypeException {
     if (_employees.containsKey(id))
-      throw new IllegalArgumentException("Employee already exists"); //Check this exception.
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessageEmployee() + id);
     if (_usedIds.contains(id))
-      throw new IllegalArgumentException("Id already in use"); //Check this exception.
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + id);
     Employee employee = null;
     switch (type) {
       case "VET":
@@ -141,19 +160,17 @@ public class Hotel implements Serializable {
         employee = new ZooKeeper(id, name);
         break;
       default:
-        throw new IllegalArgumentException("Invalid employee type"); //Check this exception.
+        throw new InvalidTypeException(InvalidTypeException.ErrorMessageEmployee() + type);
     }
     _employees.put(id, employee);
     _usedIds.add(id);
   }
 
   public String listHabitats(Season currentSeason) {
-    List<Habitat> habitats = new ArrayList<>(_habitats.values());
-    habitats.sort(Comparator.comparing(Habitat::id));
     StringBuilder listHabitats = new StringBuilder();
-    for(Habitat habitat : habitats)
+    for(Habitat habitat : _habitats.values())
       listHabitats.append(habitat.toString());
-    return habitats.toString();
+    return listHabitats.toString();
   }
 
   public String listVaccines() {
@@ -198,8 +215,8 @@ public class Hotel implements Serializable {
     _vaccinationRecords.add(record);
   }
 
-  protected String listAnimalVaccinationRecord(String id){
-    Animal animal = identifyAnimal(id);
+  protected String listAnimalVaccinationRecord(String id) throws UnknowIdException {
+    Animal animal = identifyAnimal(id); //Here we dont need to try catch right??
     StringBuilder animalVaxRecord = new StringBuilder();
     for (VaccinationRecord record : _vaccinationRecords) {
       if (record.animal().equals(animal))

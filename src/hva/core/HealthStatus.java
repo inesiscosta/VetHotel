@@ -1,4 +1,5 @@
 package hva.core;
+import hva.core.exception.InvalidDamageValueException;
 
 public enum HealthStatus {
     NORMAL,
@@ -7,7 +8,7 @@ public enum HealthStatus {
     ERROR;
 
     // Professor doesn't like static methods.
-    protected static HealthStatus determineHealthStatus(int damage, boolean correctSpecies) {
+    protected static HealthStatus determineHealthStatus(int damage, boolean correctSpecies) throws InvalidDamageValueException{
         if (correctSpecies)
             return HealthStatus.NORMAL;
         if (damage == 0)
@@ -16,6 +17,6 @@ public enum HealthStatus {
             return HealthStatus.ACCIDENT;
         else if (damage >= 5)
             return HealthStatus.ERROR;
-        throw new IllegalStateException("Invalid damage value"); // Check Exception
+        throw new InvalidDamageValueException(damage);
     }
 }

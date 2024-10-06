@@ -2,6 +2,8 @@ package hva.core;
 import java.util.Collection;
 import java.util.HashSet;
 
+import hva.core.exception.*;
+
 public class Veterinarian extends Employee{
     private Collection<Species> _knowsHowToVaccinate;
 
@@ -19,12 +21,12 @@ public class Veterinarian extends Employee{
     }
 
     @Override
-    void addResponsibility(String id) {
+    void addResponsibility(String id) throws UnknowIdException{
         _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     }
 
     @Override
-    void removeResponsibility(String id) {
+    void removeResponsibility(String id) throws UnknowIdException{
         _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
     }
 

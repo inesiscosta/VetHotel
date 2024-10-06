@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Comparator;
-
+import hva.core.exception.*;
 public class Habitat extends NamedEntity {
     private int _area;
     private Map<String,Animal> _animals;
@@ -47,7 +47,9 @@ public class Habitat extends NamedEntity {
     }
 
     Animal identifyAnimal(String id) {
-        return _animals.get(id);
+        if (_animals.containsKey(id)) //Used to prevent a exception, all exception from core handeld in the Hotel class.
+            return _animals.get(id);
+        return null;
     }
     
     int identifyInfluence(Species species) {
@@ -95,7 +97,7 @@ public class Habitat extends NamedEntity {
         _influences.put(species, newInfluence);
     }
 
-    void plantTree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType, Season currentSeason) throws IllegalArgumentException {
+    void plantTree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType, Season currentSeason) throws InvalidTypeException {
         Tree tree;
         switch (treeType) {
             case EVERGREEN:
@@ -105,7 +107,7 @@ public class Habitat extends NamedEntity {
                 tree = new Deciduous(id, name, age, baseCleaningDifficulty, currentSeason);
                 break;
             default:
-                throw new IllegalArgumentException("Invalid tree type"); //Check this exception.
+                throw new InvalidTypeException(InvalidTypeException.ErrorMessage() + treeType);
         }
         _trees.add(tree);
     }

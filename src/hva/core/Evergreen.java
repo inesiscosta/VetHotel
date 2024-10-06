@@ -1,4 +1,5 @@
 package hva.core;
+import hva.core.exception.InvalidSeasonException;
 
 public class Evergreen extends Tree{
 
@@ -7,7 +8,7 @@ public class Evergreen extends Tree{
     }
     
     @Override
-    int seasonalEffort(Season currentSeason) throws IllegalStateException{
+    int seasonalEffort(Season currentSeason) throws InvalidSeasonException{
         switch (currentSeason) {
             case Spring:
             case Summer:
@@ -16,12 +17,12 @@ public class Evergreen extends Tree{
             case Winter:
                 return 2;
             default:
-                throw new IllegalStateException("Unexpected value: " + currentSeason); // Check Exception
+                throw new InvalidSeasonException(currentSeason);
         }
     }
 
     @Override
-    Leaf getBioCycle(Season currentSeason) throws IllegalStateException{
+    Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException{
         switch (currentSeason) {
             case Spring:
                 return Leaf.GENERATING_LEAVES;
@@ -32,7 +33,7 @@ public class Evergreen extends Tree{
             case Winter:
                 return Leaf.SHEDDING_LEAVES;
             default:
-                throw new IllegalStateException("Unexpected value: " + currentSeason); // Check Exception
+                throw new InvalidSeasonException(currentSeason);
         }
     }
 }

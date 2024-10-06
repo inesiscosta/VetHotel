@@ -1,5 +1,7 @@
 package hva.core;
 
+import hva.core.exception.UnknowIdException;
+
 public abstract class Employee extends NamedEntity{
     private final EmployeeType _employeeType;
     private Hotel _hotel;
@@ -33,9 +35,9 @@ public abstract class Employee extends NamedEntity{
 
     abstract double calculateSatisfaction();
 
-    abstract void addResponsibility(String id);
+    abstract void addResponsibility(String id) throws UnknowIdException;
 
-    abstract void removeResponsibility(String id);
+    abstract void removeResponsibility(String id)throws UnknowIdException;
 
     abstract String getIdResponsibilities();
 }

@@ -2,6 +2,8 @@ package hva.core;
 import java.util.Collection;
 import java.util.HashSet;
 
+import hva.core.exception.UnknowIdException;
+
 public class ZooKeeper extends Employee{
     private Collection<Habitat> _assignedHabitats;
 
@@ -25,12 +27,12 @@ public class ZooKeeper extends Employee{
     }
 
     @Override
-    void addResponsibility(String id) {
+    void addResponsibility(String id) throws UnknowIdException{
         _assignedHabitats.add(this.hotel().identifyHabitat(id));
     }
 
     @Override
-    void removeResponsibility(String id) {
+    void removeResponsibility(String id) throws UnknowIdException{
         _assignedHabitats.remove(this.hotel().identifyHabitat(id));
     }
 
