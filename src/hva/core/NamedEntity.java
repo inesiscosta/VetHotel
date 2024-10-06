@@ -4,7 +4,7 @@ public class NamedEntity {
     private final String _id;
     private final String _name;
 
-    public NamedEntity(String name, String id) {
+    public NamedEntity(String id, String name) {
         _name = name;
         _id = id;
     }
