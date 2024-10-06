@@ -12,7 +12,25 @@ public class Vaccine extends NamedEntity{
         _appropiateSpecies = new TreeSet<Species>();
     }
 
-    protected HealthStatus determineVaccineEffect(Animal animal) throws IllegalStateException {
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        result.append("VACINA|")
+          .append(this.id()).append("|")
+          .append(this.name()).append("|")
+          .append(_numApplications).append("|")
+          .append(suitableSpeciesToString());
+        return result.toString();
+    }
+
+    private String suitableSpeciesToString(){
+        StringBuilder suitableSpecies = new StringBuilder();
+        for (Species specie: _appropiateSpecies)
+            suitableSpecies.append( specie.id()).append(",");
+        return suitableSpecies.toString();
+    }
+
+    HealthStatus determineVaccineEffect(Animal animal) throws IllegalStateException {
         boolean correctSpecies = _appropiateSpecies.contains(animal.species());
         return HealthStatus.determineHealthStatus(calculateVaccineDamage(animal), correctSpecies);
     }
@@ -36,22 +54,4 @@ public class Vaccine extends NamedEntity{
         }
         return biggestSpecies;
     }
-
-    public String toString(){
-        StringBuilder result = new StringBuilder();
-        result.append("VACINA|")
-          .append(this.id()).append("|")
-          .append(this.name()).append("|")
-          .append(_numApplications).append("|")
-          .append(suitableSpeciesToString());
-        return result.toString();
-    }
-
-    private String suitableSpeciesToString(){
-        StringBuilder suitableSpecies = new StringBuilder();
-        for (Species specie: _appropiateSpecies)
-            suitableSpecies.append( specie.id()).append(",");
-        return suitableSpecies.toString();
-    }
-
 }

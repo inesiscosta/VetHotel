@@ -9,12 +9,12 @@ public class NamedEntity {
         _id = id;
     }
 
-    public String name(){
-        return _name;
+    protected String id() {
+        return _id;
     }
 
-    public String id() {
-        return _id;
+    protected String name(){
+        return _name;
     }
 
     @Override
@@ -26,4 +26,6 @@ public class NamedEntity {
         NamedEntity other = (NamedEntity) obj;
         return this._id.equals(other.id());
     }
+
+    //Hashcode?
 }

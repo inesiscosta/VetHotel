@@ -13,20 +13,25 @@ public class VaccinationRecord {
         _damage = vaccine.determineVaccineEffect(animal);
     }
 
-    @Override
-    public String toString() {
-        return "REGISTO-VACINA|" + _administeredVaccine.id() + "|" + _administeringVet.id() + "|" + _vaccinatedAnimal.species().id();
-    }
-
-    protected String damage() {
+    String damage() {
         return _damage.toString();
     }
 
-    protected Veterinarian vet() {
+    Veterinarian vet() {
         return _administeringVet;
     }
 
-    protected Animal animal() {
+    Animal animal() {
         return _vaccinatedAnimal;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("REGISTO-VACINA|")
+            .append(_administeredVaccine.id()).append("|")
+            .append(_administeringVet.id()).append("|")
+            .append(_vaccinatedAnimal.species().id());
+        return result.toString();
     }
 }

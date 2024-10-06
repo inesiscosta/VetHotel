@@ -3,9 +3,8 @@ import java.util.Collection;
 import java.util.TreeSet;
 import java.util.HashSet;
 public class Species extends NamedEntity{
-      
     private Collection<Animal> _animals;
-    private Collection<Veterinarian> _qualifiedVets;
+    private Collection<Veterinarian> _qualifiedVets; // Teacher doesn't have this association in his UML diagram. How to calculate vet's satisfaction?
     
     public Species(String id, String name) {
         super(id, name);
@@ -13,28 +12,15 @@ public class Species extends NamedEntity{
         _qualifiedVets = new HashSet<Veterinarian>();
     }
 
-    public int getNumAnimals() {
+    int getNumAnimals() {
         return _animals.size();
     }
 
-    public int getNumQualifiedVets() {
+    int getNumQualifiedVets() {
         return _qualifiedVets.size();
     }
 
-    public boolean equals(Species otherSpecies) {
-        return this.id().equals(otherSpecies.id());
-    }
-
-    protected void addAnimalToSpecies(Animal animal) { //FIXME Made sense in my head dont know yet if it is needed
+    void addAnimalToSpecies(Animal animal) {
         _animals.add(animal);
-    }
-
-    //TODO Maybe not the best way see Hotel.addResponsibility
-    protected void addQualifiedVet(Veterinarian vet) {
-        _qualifiedVets.add(vet);
-    }
-
-    protected void removeQualifiedVet(Veterinarian vet) {
-        _qualifiedVets.remove(vet);
     }
 }
