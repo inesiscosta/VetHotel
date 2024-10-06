@@ -53,10 +53,10 @@ public class Hotel implements Serializable {
   public int calculateGlobalSatisfaction() {
     double globalSatisfaction = 0;
     for (Employee employee : _employees.values()) {
-      globalSatisfaction += employee.calculateSatisfactionLevel();
+      globalSatisfaction += employee.calculateSatisfaction();
     }
     for (Habitat habitat : _habitats.values()) {
-      globalSatisfaction += habitat.calculateSatisfactionLevel();
+      globalSatisfaction += habitat.calculateAnimalsSatisfaction();
     }
     return ;
   }

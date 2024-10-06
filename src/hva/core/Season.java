@@ -9,5 +9,5 @@ public enum Season {
     public Season nextSeason() {
         Season[] seasonsArray = Season.values();
         return seasonsArray[(this.ordinal() + 1) % seasonsArray.length];
-      }
+    }
 }

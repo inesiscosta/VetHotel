@@ -18,7 +18,7 @@ public class NamedEntity {
     }
 
     @Override
-    //TODO if we need to check if the object type is NamedEntity
+    //TODO do we need to check if the object type is NamedEntity?
     public boolean equals(Object obj) {
         if (this == obj) {
             return false;

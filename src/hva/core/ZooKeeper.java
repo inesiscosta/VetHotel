@@ -19,7 +19,7 @@ public class ZooKeeper extends Employee{
     }
 
     private double workEffort(Habitat habitat) {
-        return habitat.getArea() 
+        return habitat.area() 
         + 3 * habitat.getNumAnimals() 
         + habitat.cleaningEffort(hotel().currentSeason());
     }

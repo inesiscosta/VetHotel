@@ -6,6 +6,7 @@ public enum HealthStatus {
     ACCIDENT,
     ERROR;
 
+    // Professor doesn't like static methods.
     protected static HealthStatus determineHealthStatus(int damage, boolean correctSpecies) {
         if (correctSpecies)
             return HealthStatus.NORMAL;

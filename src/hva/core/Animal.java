@@ -10,7 +10,7 @@ public class Animal extends NamedEntity {
         _species = species;
         _habitat = habitat;
         _healthHistory = "VOID";
-        //Adds itself to the TreeSet of all Animals of the same Species that the Class Species holds
+        //Adds itself to the TreeSet of all Animals of the same Species that the Class Species holds.
         _species.addAnimalToSpecies(this);
     }
 
@@ -34,11 +34,11 @@ public class Animal extends NamedEntity {
         return result.toString();
     }
 
-    int calculateSatisfactionLevel() {
+    int calculateSatisfaction() {
         return 20 
         + 3 * _habitat.getNumAnimalSameSpecies(_species) 
         - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_species) 
-        + (_habitat.getArea() / _habitat.getNumAnimals()) 
+        + (_habitat.area() / _habitat.getNumAnimals()) 
         + _habitat.identifyInfluence(_species));
     }
 
