@@ -12,6 +12,7 @@ public class InvalidTypeException extends Exception {
   
   private static final String ERROR_MESSAGE = "Invalid Tree type: ";
   private static final String ERROR_MESSAGE_EMPLOYEE = "Invalid Employee type: ";
+  private static final String ERROR_MESSAGE_ENTITY = "Invalid NamedEntity: ";
   
   
   /**
@@ -34,5 +35,12 @@ public class InvalidTypeException extends Exception {
   public static String ErrorMessageEmployee() {
       return ERROR_MESSAGE_EMPLOYEE;
   }
+
+        /**
+   * Used to construct the error message
+   **/
+  public static String ErrorMessageNamedEntity() {
+    return ERROR_MESSAGE_ENTITY;
+}
 
 }

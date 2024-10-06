@@ -1,5 +1,7 @@
 package hva.core;
 
+import hva.core.exception.InvalidTypeException;
+
 public class NamedEntity {
     private final String _id;
     private final String _name;
@@ -18,11 +20,11 @@ public class NamedEntity {
     }
 
     @Override
-    //TODO do we need to check if the object type is NamedEntity?
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return false;
-        }
+    public boolean equals(Object obj) throws InvalidTypeException {
+        if (this == obj)
+            throw new InvalidTypeException(InvalidTypeException.ErrorMessageNamedEntity());
+        if (obj == null || this.getClass() != obj.getClass())
+            throw new InvalidTypeException(InvalidTypeException.ErrorMessageNamedEntity());
         NamedEntity other = (NamedEntity) obj;
         return this._id.equals(other.id());
     }
