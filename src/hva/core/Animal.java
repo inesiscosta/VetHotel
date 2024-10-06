@@ -1,7 +1,7 @@
 package hva.core;
 
 /**
- * Represents an Animal a the Vet Hotel.
+ * Represents an Animal in a Vet Hotel.
  */
 public class Animal extends NamedEntity {
   private String _healthHistory;

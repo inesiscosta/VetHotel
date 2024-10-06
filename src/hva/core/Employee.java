@@ -5,7 +5,7 @@ import hva.core.exception.UnknowIdException;
 /**
  * Represents an employee working in a Vet Hotel.
  */
-public abstract class Employee extends NamedEntity{
+public abstract class Employee extends NamedEntity {
   private final EmployeeType _employeeType;
   private Hotel _hotel;
 

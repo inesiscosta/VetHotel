@@ -13,7 +13,7 @@ public class Deciduous extends Tree {
    * @param baseCleaningDifficulty the tree's base cleaning difficulty (used to calculate how much effort is required by the employee to clean the tree)
    * @param currentSeason the current season in the Hotel the tree belongs to
    */
-  public Deciduous(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason){
+  public Deciduous(String idTree, String name, int age, int baseCleaningDifficulty, Season currentSeason) {
     super(idTree, name, age, baseCleaningDifficulty, TreeType.DECIDUOUS, currentSeason);
   }
 
@@ -25,7 +25,7 @@ public class Deciduous extends Tree {
    * @throws InvalidSeasonException if the current season is not a valid season (not one of the four seasons Spring, Summer, Fall, Winter)
    */
   @Override
-  int seasonalEffort(Season currentSeason) throws InvalidSeasonException{
+  int seasonalEffort(Season currentSeason) throws InvalidSeasonException {
     switch (currentSeason) {
       case Spring:
         return 1;
@@ -48,7 +48,7 @@ public class Deciduous extends Tree {
    * @throws InvalidSeasonException if the current season is not a valid season (not one of the four seasons Spring, Summer, Fall, Winter)
    */
   @Override
-  Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException{
+  Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException {
     switch (currentSeason) {
       case Spring:
         return Leaf.GENERATING_LEAVES;
