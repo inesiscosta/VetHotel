@@ -14,7 +14,7 @@ public class DucplicatedIdException extends Exception {
   private static final String ERROR_MESSAGE_SPECIES_EXISTS = "The Species already exists: ";
   private static final String ERROR_MESSAGE_EMPLOYEE_EXISTS = "The Employee already exists: ";
   private static final String ERROR_MESSAGE_VACCINE_EXISTS = "The Vaccine already exists: ";
-
+  private static final String ERROR_MESSAGE_HABITAT_EXISTS = "The Habitat already exists: ";
   
   
     /**
@@ -58,5 +58,12 @@ public class DucplicatedIdException extends Exception {
    **/
   public static String errorMessageVaccine() {
     return ERROR_MESSAGE_VACCINE_EXISTS;
+  }
+
+      /**
+   * Used to construct the error message
+   **/
+  public static String errorMessageHabitat() {
+    return ERROR_MESSAGE_HABITAT_EXISTS;
   }
 }

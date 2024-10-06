@@ -25,19 +25,19 @@ public class Hotel implements Serializable {
   private static final long serialVersionUID = 202407081733L;
   
   private Season _currentSeason;
-  private Map<String,Employee> _employees;
   private Map<String,Habitat> _habitats;
-  private Map<String,Vaccine> _vaccines;
+  private Map<String,Employee> _employees;
   private Map<String,Species> _species;
+  private Map<String,Vaccine> _vaccines;
   private List<VaccinationRecord> _vaccinationRecords;
   private Collection<String> _usedIds;
 
   public Hotel() {
     _currentSeason = Season.Spring;
-    _employees = new TreeMap<>(); //Dont know wich is better being already sorted in natural order or the .get being O(log n) and not O(1), we need to see this
     _habitats = new TreeMap<>();
-    _vaccines = new HashMap<>();
+    _employees = new TreeMap<>(); //Dont know wich is better being already sorted in natural order or the .get being O(log n) and not O(1), we need to see this
     _species = new HashMap<>();
+    _vaccines = new HashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
     _usedIds = new HashSet<String>();
   }
@@ -48,6 +48,12 @@ public class Hotel implements Serializable {
 
   public void nextSeason() {
     _currentSeason = _currentSeason.nextSeason();
+  }
+
+  public Habitat identifyHabitat(String idHabitat) throws UnknowIdException {
+    if(!_habitats.containsKey(idHabitat))
+      throw new UnknowIdException(UnknowIdException.errorMessage() + idHabitat);
+    return _habitats.get(idHabitat);
   }
 
   public Animal identifyAnimal(String idAnimal) throws UnknowIdException {
@@ -63,12 +69,6 @@ public class Hotel implements Serializable {
     if(!_species.containsKey(idSpecies))
       throw new UnknowIdException(UnknowIdException.errorMessage() + idSpecies);
     return _species.get(idSpecies);
-  }
-
-  public Habitat identifyHabitat(String idHabitat) throws UnknowIdException {
-    if(!_habitats.containsKey(idHabitat))
-      throw new UnknowIdException(UnknowIdException.errorMessage() + idHabitat);
-    return _habitats.get(idHabitat);
   }
 
   public Veterinarian identifyVet(String idVet) throws UnknowIdException {
@@ -87,36 +87,14 @@ public class Hotel implements Serializable {
     return _vaccines.get(idVaccine);
   }
 
-  public int calculateGlobalSatisfaction() {
-    double globalSatisfaction = 0;
-    for (Employee employee : _employees.values()) {
-      globalSatisfaction += employee.calculateSatisfaction();
-    }
-    for (Habitat habitat : _habitats.values()) {
-      globalSatisfaction += habitat.calculateAnimalsSatisfaction();
-    }
-    return (int) Math.round(globalSatisfaction);
-  }
-
-  public String listAnimals() {
-    StringBuilder allAnimals = new StringBuilder();
-    for (Habitat habitat : _habitats.values())
-      allAnimals.append(habitat.listAnimals()).append("\n");
-    return allAnimals.toString();
-  }
-
-  protected void registerSpecies(String id, String name) throws UnknowIdException, DucplicatedIdException {
-    try {
-      identifySpecies(id); //If the species exist it doesnt throw a exception, else it is catched
-      throw new DucplicatedIdException(DucplicatedIdException.errorMessageSpecies() + id);
-    } catch (UnknowIdException e) { //If the species doesnt exist it add a new one
-      if (_usedIds.contains(id))
-        throw new DucplicatedIdException(id);
-      Species specie = new Species(id, name);
-      _species.put(id, specie);
-      _usedIds.add(id);
-    }
-
+  public Habitat registerHabitat(String id, String name, int area) throws DucplicatedIdException {
+    if (_habitats.containsKey(id))
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessageHabitat() + id);
+    else if (_usedIds.contains(id))
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + id);
+    Habitat habitat = new Habitat(id, name, area);
+    _habitats.put(id, habitat);
+    return habitat;
   }
 
   protected void registerAnimal(String idAnimal, String name, String idHabitat, String idSpecies) throws UnknowIdException, DucplicatedIdException {
@@ -139,31 +117,17 @@ public class Hotel implements Serializable {
     _usedIds.add(idAnimal);
   }
 
-  public void registerVaccine(String vaccineId, String name, String[] speciesIds) throws UnknowIdException, DucplicatedIdException {
-    if (_vaccines.containsKey(vaccineId))
-      throw new DucplicatedIdException(DucplicatedIdException.errorMessageVaccine() + vaccineId);
-    if (_usedIds.contains(vaccineId))
-      throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + vaccineId);
-    List<Species> speciesList = new ArrayList<>();
-    for (String id : speciesIds) {
-      Species species;
-      try {
-        species = identifySpecies(id);
-      } catch (UnknowIdException e) {
-        throw new UnknowIdException(UnknowIdException.errorMessageSpecies() + id, e);
-      }
-      speciesList.add(species);
+  protected void registerSpecies(String id, String name) throws UnknowIdException, DucplicatedIdException {
+    try {
+      identifySpecies(id); //If the species exist it doesnt throw a exception, else it is catched
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessageSpecies() + id);
+    } catch (UnknowIdException e) { //If the species doesnt exist it add a new one
+      if (_usedIds.contains(id))
+        throw new DucplicatedIdException(id);
+      Species specie = new Species(id, name);
+      _species.put(id, specie);
+      _usedIds.add(id);
     }
-    Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
-    _vaccines.put(vaccineId, vaccine);
-    _usedIds.add(vaccineId);
-  }
-
-  public String listEmployee() {
-    StringBuilder listEmployee = new StringBuilder();
-    for (Employee employee : _employees.values())
-      listEmployee.append(employee.toString()).append("\n");
-    return listEmployee.toString();
   }
 
   protected void registerEmployee(String id, String name, String type) throws DucplicatedIdException, InvalidTypeException {
@@ -186,6 +150,56 @@ public class Hotel implements Serializable {
     _usedIds.add(id);
   }
 
+  public void registerVaccine(String vaccineId, String name, String[] speciesIds) throws UnknowIdException, DucplicatedIdException {
+    if (_vaccines.containsKey(vaccineId))
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessageVaccine() + vaccineId);
+    if (_usedIds.contains(vaccineId))
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + vaccineId);
+    List<Species> speciesList = new ArrayList<>();
+    for (String id : speciesIds) {
+      Species species;
+      try {
+        species = identifySpecies(id);
+      } catch (UnknowIdException e) {
+        throw new UnknowIdException(UnknowIdException.errorMessageSpecies() + id, e);
+      }
+      speciesList.add(species);
+    }
+    Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
+    _vaccines.put(vaccineId, vaccine);
+    _usedIds.add(vaccineId);
+  }
+
+  public String listHabitats(Season currentSeason) {
+    StringBuilder listHabitats = new StringBuilder();
+    for(Habitat habitat : _habitats.values())
+      listHabitats.append(habitat.toString());
+    return listHabitats.toString();
+  }
+
+  public String listAnimals() {
+    StringBuilder allAnimals = new StringBuilder();
+    for (Habitat habitat : _habitats.values())
+      allAnimals.append(habitat.listAnimals()).append("\n");
+    return allAnimals.toString();
+  }
+
+  public String listEmployee() {
+    StringBuilder listEmployee = new StringBuilder();
+    for (Employee employee : _employees.values())
+      listEmployee.append(employee.toString()).append("\n");
+    return listEmployee.toString();
+  }
+
+  public String listVaccines() {
+    List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
+    vaccines.sort(Comparator.comparing(Vaccine::id));
+    StringBuilder listHabitats = new StringBuilder();
+    for(Vaccine vaccine : vaccines)
+      listHabitats.append(vaccine.toString());
+    return vaccines.toString();
+  }
+
   public void addResponsibility(String idEmployee, String idReponsibility) throws UnknowIdException {
     Employee employee;
     try {
@@ -196,20 +210,9 @@ public class Hotel implements Serializable {
     employee.addResponsibility(idReponsibility);
   }
 
-  public String listHabitats(Season currentSeason) {
-    StringBuilder listHabitats = new StringBuilder();
-    for(Habitat habitat : _habitats.values())
-      listHabitats.append(habitat.toString());
-    return listHabitats.toString();
-  }
-
-  public String listVaccines() {
-    List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
-    vaccines.sort(Comparator.comparing(Vaccine::id));
-    StringBuilder listHabitats = new StringBuilder();
-    for(Vaccine vaccine : vaccines)
-      listHabitats.append(vaccine.toString());
-    return vaccines.toString();
+  protected void addVaccinationRecord(Veterinarian vet, Animal animal, Vaccine vaccine) {
+    VaccinationRecord record = vet.vaccinate(vaccine, animal);
+    _vaccinationRecords.add(record);
   }
 
   public String listAnimalVaccinationHistory(Animal animal) {
@@ -239,12 +242,6 @@ public class Hotel implements Serializable {
     return erroneousVaccination.toString();
   }
 
-  // Not sure if this is the best way to implement this method. But i dont want to pass Hotel as an argument in vaccinate. If this is the case when the user want's to vaccinate we need to call this method instead of vaccinate as well of course as identity all the arguments.
-  protected void addVaccinationRecord(Veterinarian vet, Animal animal, Vaccine vaccine) {
-    VaccinationRecord record = vet.vaccinate(vaccine, animal);
-    _vaccinationRecords.add(record);
-  }
-
   protected String listAnimalVaccinationRecord(String id) throws UnknowIdException {
     Animal animal = identifyAnimal(id);
     StringBuilder animalVaxRecord = new StringBuilder();
@@ -253,6 +250,17 @@ public class Hotel implements Serializable {
         animalVaxRecord.append(record.toString()).append("\n");
     }
     return animalVaxRecord.toString();
+  }
+
+  public int calculateGlobalSatisfaction() {
+    double globalSatisfaction = 0;
+    for (Employee employee : _employees.values()) {
+      globalSatisfaction += employee.calculateSatisfaction();
+    }
+    for (Habitat habitat : _habitats.values()) {
+      globalSatisfaction += habitat.calculateAnimalsSatisfaction();
+    }
+    return (int) Math.round(globalSatisfaction);
   }
 
   /**
