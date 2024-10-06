@@ -3,7 +3,8 @@ package hva.core;
 import hva.core.exception.*;
 import java.io.*;
 import java.util.*;
-import hva.core.Animal;
+//TODO Maybe this import are not necessary
+/*import hva.core.Animal;
 import hva.core.Deciduous;
 import hva.core.Employee;
 import hva.core.Evergreen;
@@ -18,7 +19,7 @@ import hva.core.VaccinationRecord;
 import hva.core.Vaccine;
 import hva.core.Veterinarian;
 import hva.core.ZooKeeper;
-
+*/
 public class Hotel implements Serializable {
 
   @Serial
@@ -44,6 +45,10 @@ public class Hotel implements Serializable {
 
   Season currentSeason() {
     return _currentSeason;
+  }
+
+  boolean isIdUsed(String id) {
+    return _usedIds.contains(id);
   }
 
   public void nextSeason() {
@@ -184,10 +189,10 @@ public class Hotel implements Serializable {
     _vaccinationRecords.add(record);
   }
 
-  public String listHabitats(Season currentSeason) {
+  public String listHabitats() {
     StringBuilder listHabitats = new StringBuilder();
     for(Habitat habitat : _habitats.values())
-      listHabitats.append(habitat.toString());
+      listHabitats.append(habitat.toString(this.currentSeason()));
     return listHabitats.toString();
   }
 

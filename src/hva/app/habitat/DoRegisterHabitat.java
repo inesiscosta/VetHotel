@@ -1,10 +1,12 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
+import hva.core.exception.DucplicatedIdException;
 import hva.app.exception.DuplicateHabitatKeyException;
+import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-//FIXME add more imports if needed
+import hva.core.Hotel;
 
 /**
  * Add a new habitat to this zoo hotel.
@@ -13,11 +15,21 @@ class DoRegisterHabitat extends Command<Hotel> {
 
   DoRegisterHabitat(Hotel receiver) {
     super(Label.REGISTER_HABITAT, receiver);
-    //FIXME add command fields
+    addStringField("id", Prompt.habitatKey());
+    addStringField("name", Prompt.habitatName());
+    addIntegerField("area", Prompt.habitatArea());
   }
   
   @Override
   protected void execute() throws CommandException {
-    //FIXME implement command
+    var id = stringField("id");
+    var name = stringField("name");
+    var area = integerField("area");
+
+    try {
+      _receiver.registerHabitat(id, name, area);
+    } catch (DucplicatedIdException e) {
+      throw new DuplicateHabitatKeyException(id);
+    }
   }
 }
