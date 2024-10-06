@@ -5,8 +5,8 @@ import java.util.HashSet;
 public class Veterinarian extends Employee{
     private Collection<Species> _knowsHowToVaccinate;
 
-    public Veterinarian(String idEmployee, String name, EmployeeType employeeType) {
-        super(idEmployee, name, employeeType);
+    public Veterinarian(String idEmployee, String name) {
+        super(idEmployee, name, EmployeeType.VETERINARIAN);
         _knowsHowToVaccinate = new HashSet<Species>();
     }
     

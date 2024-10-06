@@ -11,7 +11,9 @@ public class Animal extends NamedEntity {
         _habitat = habitat;
         _healthHistory = "VOID";
         //Adds itself to the TreeSet of all Animals of the same Species that the Class Species holds.
-        _species.addAnimalToSpecies(this);
+        _species.addAnimal(this);
+        //Adds itself to the Map of all Animals in the Habitat that the Class Habitat holds.
+        _habitat.addAnimal(this);
     }
 
     Species species() {

@@ -20,7 +20,7 @@ public class Species extends NamedEntity{
         return _qualifiedVets.size();
     }
 
-    void addAnimalToSpecies(Animal animal) {
+    void addAnimal(Animal animal) {
         _animals.add(animal);
     }
 }
