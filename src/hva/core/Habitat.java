@@ -47,13 +47,13 @@ public class Habitat extends NamedEntity {
     }
 
     Animal identifyAnimal(String id) {
-        if (_animals.containsKey(id)) //Used to prevent a exception, all exception from core handeld in the Hotel class.
+        if (_animals.containsKey(id)) //Used to prevent a exception, all exception from core handled in the Hotel class.
             return _animals.get(id);
         return null;
     }
     
     int identifyInfluence(Species species) {
-        // Returns 0 if the species isn't in the map, indicating neutral influence.
+        //Returns 0 if the species isn't in the map, indicating neutral influence.
         return _influences.getOrDefault(species, 0);
     }
 

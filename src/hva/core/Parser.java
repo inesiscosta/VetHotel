@@ -70,7 +70,7 @@ public class Parser {
       String habitatId = components[4];
       String speciesId = components[3];
 
-      _hotel.registerNewAnimal(id, name, habitatId, speciesId);
+      _hotel.registerAnimal(id, name, habitatId, speciesId);
     } catch (excCore1 | excpCore 2 | ...) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
     }
@@ -82,7 +82,7 @@ public class Parser {
       String id = components[1];
       String name = components[2];
 
-      _hotel.registerNewSpecies(id, name);
+      _hotel.registerSpecies(id, name);
     } catch (ExceptionCore1 e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage);
     }
@@ -95,7 +95,7 @@ public class Parser {
       String id = components[1];
       String name = components[2];
 
-      _hotel.registerNewEmployee(id, name, empType);
+      _hotel.registerEmployee(id, name, empType);
 
       if (components.length == 4) {
         for(String responsibility : components[3].split(","))

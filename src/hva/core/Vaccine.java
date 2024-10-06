@@ -1,15 +1,16 @@
 package hva.core;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Vaccine extends NamedEntity{
     private int _numApplications;
     private Collection<Species> _appropiateSpecies;
 
-    public Vaccine(String id, String name) {
+    public Vaccine(String id, String name, List<Species> appropiateSpecies) {
         super(id, name);
-        _appropiateSpecies = new TreeSet<Species>();
+        _appropiateSpecies = new TreeSet<Species>(appropiateSpecies);
     }
 
     @Override

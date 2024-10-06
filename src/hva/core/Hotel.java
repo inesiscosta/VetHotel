@@ -2,7 +2,7 @@ package hva.core;
 
 import hva.core.exception.*;
 import java.io.*;
-import java.util.*; // We need to specify each import from java.util I think. Ja estava no modelo do prof. - Miguel
+import java.util.*;
 import hva.core.Animal;
 import hva.core.Deciduous;
 import hva.core.Employee;
@@ -105,7 +105,7 @@ public class Hotel implements Serializable {
     return allAnimals.toString();
   }
 
-  protected void registerNewSpecies(String id, String name) throws UnknowIdException, DucplicatedIdException {
+  protected void registerSpecies(String id, String name) throws UnknowIdException, DucplicatedIdException {
     try {
       identifySpecies(id); //If the species exist it doesnt throw a exception, else it is catched
       throw new DucplicatedIdException(DucplicatedIdException.errorMessageSpecies() + id);
@@ -119,7 +119,7 @@ public class Hotel implements Serializable {
 
   }
 
-  protected void registerNewAnimal(String idAnimal, String name, String idSpecies, String idHabitat) throws UnknowIdException, DucplicatedIdException {
+  protected void registerAnimal(String idAnimal, String name, String idHabitat, String idSpecies) throws UnknowIdException, DucplicatedIdException {
     if (_usedIds.contains(idAnimal))
       throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + idAnimal);
     Habitat habitat;
@@ -131,12 +131,32 @@ public class Hotel implements Serializable {
     Species species;
     try {
       species = identifySpecies(idSpecies);
-    } catch (UnknowIdException e) { //If the species doesnt exists it call the registerNewSpecies
-      registerNewSpecies(idSpecies, name);
+    } catch (UnknowIdException e) { //If the species doesn't exist it calls registerSpecies
+      registerSpecies(idSpecies, name);
       species = identifySpecies(idSpecies); //After the new species is created it needs to make the object available
     } 
     new Animal(idAnimal, name, species, habitat);
     _usedIds.add(idAnimal);
+  }
+
+  public void registerVaccine(String vaccineId, String name, String[] speciesIds) throws UnknowIdException, DucplicatedIdException {
+    if (_vaccines.containsKey(vaccineId))
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessageVaccine() + vaccineId);
+    if (_usedIds.contains(vaccineId))
+      throw new DucplicatedIdException(DucplicatedIdException.errorMessage() + vaccineId);
+    List<Species> speciesList = new ArrayList<>();
+    for (String id : speciesIds) {
+      Species species;
+      try {
+        species = identifySpecies(id);
+      } catch (UnknowIdException e) {
+        throw new UnknowIdException(UnknowIdException.errorMessageSpecies() + id, e);
+      }
+      speciesList.add(species);
+    }
+    Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
+    _vaccines.put(vaccineId, vaccine);
+    _usedIds.add(vaccineId);
   }
 
   public String listEmployee() {
@@ -146,7 +166,7 @@ public class Hotel implements Serializable {
     return listEmployee.toString();
   }
 
-  protected void registerNewEmployee(String id, String name, String type) throws DucplicatedIdException, InvalidTypeException {
+  protected void registerEmployee(String id, String name, String type) throws DucplicatedIdException, InvalidTypeException {
     if (_employees.containsKey(id))
       throw new DucplicatedIdException(DucplicatedIdException.errorMessageEmployee() + id);
     if (_usedIds.contains(id))
@@ -164,6 +184,16 @@ public class Hotel implements Serializable {
     }
     _employees.put(id, employee);
     _usedIds.add(id);
+  }
+
+  public void addResponsibility(String idEmployee, String idReponsibility) throws UnknowIdException {
+    Employee employee;
+    try {
+      employee = _employees.get(idEmployee);
+    } catch (UnknowIdException e) {
+      throw new UnknowIdException(UnknowIdException.errorMessageEmployee() + idEmployee, e); //Check this exception.
+    }
+    employee.addResponsibility(idReponsibility);
   }
 
   public String listHabitats(Season currentSeason) {
@@ -209,14 +239,14 @@ public class Hotel implements Serializable {
     return erroneousVaccination.toString();
   }
 
-  // Not sure if this is the best way to implement this method. But i dont want to pass Hotel as an argument in vaccinate.
+  // Not sure if this is the best way to implement this method. But i dont want to pass Hotel as an argument in vaccinate. If this is the case when the user want's to vaccinate we need to call this method instead of vaccinate as well of course as identity all the arguments.
   protected void addVaccinationRecord(Veterinarian vet, Animal animal, Vaccine vaccine) {
     VaccinationRecord record = vet.vaccinate(vaccine, animal);
     _vaccinationRecords.add(record);
   }
 
   protected String listAnimalVaccinationRecord(String id) throws UnknowIdException {
-    Animal animal = identifyAnimal(id); //Here we dont need to try catch right??
+    Animal animal = identifyAnimal(id);
     StringBuilder animalVaxRecord = new StringBuilder();
     for (VaccinationRecord record : _vaccinationRecords) {
       if (record.animal().equals(animal))
@@ -232,7 +262,9 @@ public class Hotel implements Serializable {
    * @throws UnrecognizedEntryException if some entry is not correct
    * @throws IOException if there is an IO erro while processing the text file
    **/
-  void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
-    //FIXME implement method
+  //  UnallowedTypeException, DuplicateException, UnallowedKeyException,
+  void importFile(String filename) throws UnrecognizedEntryException, IOException, ImportFileException {
+    //var parser = new Parser(this);
+    //parser.parseFile(filename);
   }
 }

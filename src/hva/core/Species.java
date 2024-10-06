@@ -4,7 +4,7 @@ import java.util.TreeSet;
 import java.util.HashSet;
 public class Species extends NamedEntity{
     private Collection<Animal> _animals;
-    private Collection<Veterinarian> _qualifiedVets; // Teacher doesn't have this association in his UML diagram. How to calculate vet's satisfaction?
+    private Collection<Veterinarian> _qualifiedVets;
     
     public Species(String id, String name) {
         super(id, name);
