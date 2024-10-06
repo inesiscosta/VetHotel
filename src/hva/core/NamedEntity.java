@@ -5,8 +5,8 @@ public class NamedEntity {
     private final String _name;
 
     public NamedEntity(String id, String name) {
-        _name = name;
         _id = id;
+        _name = name;
     }
 
     protected String id() {
