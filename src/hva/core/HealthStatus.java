@@ -18,7 +18,7 @@ public enum HealthStatus {
    * @return the animal's health status (effect on animal's health) as a result of the vaccine
    * @throws InvalidDamageValueException if the damage is invalid (less than 0)
    */
-  protected static HealthStatus determineHealthStatus(int damage, boolean correctSpecies) throws InvalidDamageValueException{
+  protected static HealthStatus determineHealthStatus(int damage, boolean correctSpecies) throws InvalidDamageValueException {
     if (correctSpecies)
       return HealthStatus.NORMAL;
     else if (damage == 0)

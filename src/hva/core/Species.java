@@ -2,25 +2,50 @@ package hva.core;
 import java.util.Collection;
 import java.util.TreeSet;
 import java.util.HashSet;
-public class Species extends NamedEntity{
-    private Collection<Animal> _animals;
-    private Collection<Veterinarian> _qualifiedVets;
+
+/**
+ * Represents a species of animals found in a Vet Hotel.
+ */
+public class Species extends NamedEntity {
+  private Collection<Animal> _animals;
+  private Collection<Veterinarian> _qualifiedVets;
     
-    public Species(String id, String name) {
-        super(id, name);
-        _animals = new TreeSet<Animal>();
-        _qualifiedVets = new HashSet<Veterinarian>();
-    }
+  /**
+   * Creates a new Species.
+   *
+   * @param id the species' unique identifier
+   * @param name the species' name
+   */
+  public Species(String id, String name) {
+    super(id, name);
+    _animals = new TreeSet<Animal>();
+    _qualifiedVets = new HashSet<Veterinarian>();
+  }
 
-    int getNumAnimals() {
-        return _animals.size();
-    }
+  /**
+   * Gets the number of animals of the species.
+   *
+   * @return the total number of animals of the species
+   */
+  int getNumAnimals() {
+    return _animals.size();
+  }
 
-    int getNumQualifiedVets() {
-        return _qualifiedVets.size();
-    }
+  /**
+   * Gets the number of veterinarians qualified to treat the species. Used to calculate vet satisfaction.
+   *
+   * @return the number of veterinarians qualified to treat the species
+   */
+  int getNumQualifiedVets() {
+    return _qualifiedVets.size();
+  }
 
-    void addAnimal(Animal animal) {
-        _animals.add(animal);
-    }
+  /**
+   * Adds a veterinarian to the collection of veterinarians qualified to treat the species.
+   *
+   * @param vet the veterinarian to add as a qualified vet
+   */
+  void addAnimal(Animal animal) {
+    _animals.add(animal);
+  }
 }

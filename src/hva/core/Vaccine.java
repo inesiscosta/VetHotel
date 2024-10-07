@@ -4,55 +4,107 @@ import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
 
-public class Vaccine extends NamedEntity{
-    private int _numApplications;
-    private Collection<Species> _appropiateSpecies;
+/**
+ * Represents a vaccine in a Vet Hotel.
+ */
+public class Vaccine extends NamedEntity {
+  private int _numApplications;
+  private Collection<Species> _appropiateSpecies;
 
-    public Vaccine(String id, String name, List<Species> appropiateSpecies) {
-        super(id, name);
-        _appropiateSpecies = new TreeSet<Species>(appropiateSpecies);
+  /**
+   * Creates a new Vaccine.
+   *
+   * @param id the vaccine's unique identifier
+   * @param name the vaccine's name
+   * @param appropiateSpecies a list of the species the vaccine is suitable for
+   */
+  public Vaccine(String id, String name, List<Species> appropiateSpecies) {
+    super(id, name);
+    _appropiateSpecies = new TreeSet<Species>(appropiateSpecies);
+  }
+
+  /**
+   * Gets the number of applications of the vaccine.
+   */
+  int numApplications() {
+    return _numApplications;
+  }
+
+  /**
+   * Gets the Vaccine object representation as a string containing information that describes said Vaccine.
+   * 
+   * @return the Vaccine object string representation
+   */
+  @Override
+  public String toString() {
+    StringBuilder result = new StringBuilder();
+    result.append("VACINA|")
+      .append(this.id()).append("|")
+      .append(this.name()).append("|")
+      .append(_numApplications).append("|")
+      .append(suitableSpeciesToString());
+    return result.toString();
+  }
+
+  /**
+   * Gets the ids of the suitable species for the vaccine. Used for the String representation of the Vaccine object.
+   * 
+   * @return a string with the ids of the suitable species for the vaccine
+   */
+  private String suitableSpeciesToString() {
+    StringBuilder suitableSpecies = new StringBuilder();
+    for (Species specie: _appropiateSpecies)
+      suitableSpecies.append( specie.id()).append(",");
+    return suitableSpecies.toString();
+  }
+
+  /**
+   * Increments the number of applications of the vaccine.
+   * 
+   */
+  void incrementNumApplications() {
+    _numApplications++;
+  }
+
+  /**
+   * Determines the effect of the vaccine on an animal and returns it.
+   * 
+   * @param animal the animal to determine the effect of the vaccine on
+   * @return the effect of the vaccine on the animal
+   * @throws IllegalStateException if the Health Status cannot be determined // MIGUEL CHECK THIS
+   */
+  HealthStatus determineVaccineEffect(Animal animal) throws IllegalStateException {
+    boolean correctSpecies = _appropiateSpecies.contains(animal.species());
+      return HealthStatus.determineHealthStatus(calculateVaccineDamage(animal), correctSpecies);
     }
 
-    @Override
-    public String toString(){
-        StringBuilder result = new StringBuilder();
-        result.append("VACINA|")
-          .append(this.id()).append("|")
-          .append(this.name()).append("|")
-          .append(_numApplications).append("|")
-          .append(suitableSpeciesToString());
-        return result.toString();
-    }
+  /**
+   * Calculates the damage caused by the vaccine to an animal.
+   * @param animal the vaccinated animal
+   * @return the damage caused by the vaccine as an integer
+   */
+  private int calculateVaccineDamage(Animal animal){
+    Species speciesBiggestName =  biggestSpeciesName();
+    int commonCharacters = 0;
+    String speciesName = animal.species().name();
+    for (int i = 0; i < Math.min(speciesBiggestName.name().length(), speciesName.length()); i++) {
+      if (speciesBiggestName.name().charAt(i) == speciesName.charAt(i))
+        commonCharacters++;
+      }
+    return biggestSpeciesName().name().length() - commonCharacters;
+  }
 
-    private String suitableSpeciesToString(){
-        StringBuilder suitableSpecies = new StringBuilder();
-        for (Species specie: _appropiateSpecies)
-            suitableSpecies.append( specie.id()).append(",");
-        return suitableSpecies.toString();
-    }
-
-    HealthStatus determineVaccineEffect(Animal animal) throws IllegalStateException {
-        boolean correctSpecies = _appropiateSpecies.contains(animal.species());
-        return HealthStatus.determineHealthStatus(calculateVaccineDamage(animal), correctSpecies);
-    }
-
-    private int calculateVaccineDamage(Animal animal){
-        Species speciesBiggestName =  biggestSpeciesName();
-        int commonCharacters = 0;
-        String speciesName = animal.species().name();
-        for (int i = 0; i < Math.min(speciesBiggestName.name().length(), speciesName.length()); i++) {
-            if (speciesBiggestName.name().charAt(i) == speciesName.charAt(i))
-            commonCharacters++;
-        }
-        return biggestSpeciesName().name().length() - commonCharacters;
-    }
-
-    private Species biggestSpeciesName(){
-        Species biggestSpecies = null;
-        for (Species species : _appropiateSpecies) {
-            if (biggestSpecies == null || species.name().length() > biggestSpecies.name().length())
-                biggestSpecies = species;
-        }
-        return biggestSpecies;
-    }
+  /**
+   * Gets the species with the biggest name in the list of suitable species. Used to calculate the damage caused by the vaccine.
+   * 
+   * @return the species with the biggest name in the list of suitable species
+   */
+  private Species biggestSpeciesName(){
+    Species biggestSpecies = null;
+    for (Species species : _appropiateSpecies) {
+      if (biggestSpecies == null || species.name().length() > biggestSpecies.name().length())
+        biggestSpecies = species;
+      }
+    return biggestSpecies;
+  }
 }
