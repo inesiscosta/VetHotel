@@ -41,11 +41,29 @@ public class Species extends NamedEntity {
   }
 
   /**
+   * Adds an animal to the collection of animals of the species.
+   *
+   * @param animal the animal to add to the collection
+   */
+  void addAnimal(Animal animal) {
+    _animals.add(animal);
+  }
+
+  /**
    * Adds a veterinarian to the collection of veterinarians qualified to treat the species.
    *
    * @param vet the veterinarian to add as a qualified vet
    */
-  void addAnimal(Animal animal) {
-    _animals.add(animal);
+  void addQualifiedVet(Veterinarian vet) {
+    _qualifiedVets.add(vet);
+  }
+
+  /**
+   * Removes a veterinarian from the collection of veterinarians qualified to treat the species.
+   * 
+   * @param vet the veterinarian to remove as a qualified vet
+   */
+  void removeQualifiedVet(Veterinarian vet) {
+    _qualifiedVets.remove(vet);
   }
 }

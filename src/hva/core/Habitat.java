@@ -119,6 +119,34 @@ public class Habitat extends NamedEntity {
   }
 
   /**
+   * Adds a new keeper to the list of keepers assigned to the habitat.
+   * 
+   * @param keeper the keeper to be added to the habitat
+   */
+  void addKeeper(ZooKeeper keeper) {
+    _assignedKeepers.add(keeper);
+  }
+  
+  /**
+   * Removes a keeper from the list of keepers assigned to the habitat.
+   * 
+   * @param keeper the keeper to be removed from the habitat
+   */
+  void removeKeeper(ZooKeeper keeper) {
+    _assignedKeepers.remove(keeper);
+  }
+
+  /**
+   * Advances the season of all trees in the habitat. 
+   */
+  void nextSeason(Season currentSeason) {
+    for(Tree tree : _trees) {
+      if (tree.equalsCreationSeason(currentSeason))
+        tree.incrementAge();
+    }
+  }
+
+  /**
    * Lists all animals in the habitat. 
    * 
    * @return a String containing the Animal object string representation of all animals in the habitat

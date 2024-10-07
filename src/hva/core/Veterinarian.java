@@ -43,6 +43,7 @@ public class Veterinarian extends Employee {
   @Override
   void addResponsibility(String id) throws UnknowIdException {
     _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
+    this.hotel().identifySpecies(id).addQualifiedVet(this);
   }
 
   /**
@@ -54,6 +55,7 @@ public class Veterinarian extends Employee {
   @Override
   void removeResponsibility(String id) throws UnknowIdException {
     _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
+    this.hotel().identifySpecies(id).removeQualifiedVet(this);
   }
 
   /**

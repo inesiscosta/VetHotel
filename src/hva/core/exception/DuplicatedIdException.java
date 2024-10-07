@@ -5,7 +5,7 @@ import java.io.Serial;
 /**
  * Class for representing an Duplicated Id entry.
  */
-public class DucplicatedIdException extends Exception {
+public class DuplicatedIdException extends Exception {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -20,7 +20,7 @@ public class DucplicatedIdException extends Exception {
     /**
    * @param message the id that already exists
    **/
-  public DucplicatedIdException(String message) {
+  public DuplicatedIdException(String message) {
     super(message);
   }
 
@@ -28,7 +28,7 @@ public class DucplicatedIdException extends Exception {
    * @param message the id that already exists
    * @param cause exception that triggered this one
    **/
-  public DucplicatedIdException(String message, Exception cause) {
+  public DuplicatedIdException(String message, Exception cause) {
     super(message, cause);
   }
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 */
 import java.util.HashMap;
 
-import hva.core.exception.DucplicatedIdException;
+import hva.core.exception.DuplicatedIdException;
 import hva.core.exception.InvalidTypeException;
 import hva.core.exception.UnknowIdException;
 import hva.core.exception.UnrecognizedEntryException;
@@ -82,7 +82,7 @@ public class Parser {
       String speciesId = components[3];
 
       _hotel.registerAnimal(id, name, habitatId, speciesId);
-    } catch (UnknowIdException | DucplicatedIdException e) {
+    } catch (UnknowIdException | DuplicatedIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -98,7 +98,7 @@ public class Parser {
       String name = components[2];
 
       _hotel.registerSpecies(id, name);
-    } catch (UnknowIdException | DucplicatedIdException e) {
+    } catch (UnknowIdException | DuplicatedIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -121,7 +121,7 @@ public class Parser {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
       }
-		} catch (UnknowIdException | DucplicatedIdException | InvalidTypeException e) {
+		} catch (UnknowIdException | DuplicatedIdException | InvalidTypeException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -138,7 +138,7 @@ public class Parser {
       String name = components[2];
       String[] speciesIds = components.length == 4 ? components[3].split(",") : new String[0];
       _hotel.registerVaccine(id, name, speciesIds);
-    } catch (DucplicatedIdException | UnknowIdException e) {
+    } catch (DuplicatedIdException | UnknowIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -159,7 +159,7 @@ public class Parser {
 	    if(type != "PERENE" || type != "CADUCA")
 		    throw new InvalidTypeException(InvalidTypeException.ErrorMessage());
 	    if(_hotel.isIdUsed(id)) //We need to add this to Hotel and the plantTree Method and maybe remove from here the Tree is the only object that is not created by the Hotel
-		    throw new DucplicatedIdException(DucplicatedIdException.errorMessage()); //Should we only verify in the plantTree ??
+		    throw new DuplicatedIdException(DuplicatedIdException.errorMessage()); //Should we only verify in the plantTree ??
 	    if(type == "PERENE") {
         tree = new Evergreen(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
@@ -168,7 +168,7 @@ public class Parser {
         tree = new Deciduous(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
       }
-    } catch (InvalidTypeException | DucplicatedIdException e) {
+    } catch (InvalidTypeException | DuplicatedIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -193,7 +193,7 @@ public class Parser {
           hab.plantTree(tree.id(), tree.name(), tree.age(), tree.baseCleaningDifficulty(), tree.treeType(), _hotel.currentSeason());
         }
       }
-    } catch (InvalidTypeException | DucplicatedIdException e) {
+    } catch (InvalidTypeException | DuplicatedIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }

@@ -116,4 +116,11 @@ public abstract class Tree extends NamedEntity {
   boolean equalsCreationSeason(Season currentSeason) {
     return _creationSeason == currentSeason;
   }
+
+  /**
+   * Increments the tree's age by one. Only used when the season changes and it matches the tree's season at creation.
+   */
+  void incrementAge() {
+    _age++;
+  }
 }

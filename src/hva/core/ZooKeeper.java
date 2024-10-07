@@ -55,6 +55,7 @@ public class ZooKeeper extends Employee {
   @Override
   void addResponsibility(String id) throws UnknowIdException {
     _assignedHabitats.add(this.hotel().identifyHabitat(id));
+    this.hotel().identifyHabitat(id).addKeeper(this);
   }
 
   /**
@@ -66,6 +67,7 @@ public class ZooKeeper extends Employee {
   @Override
   void removeResponsibility(String id) throws UnknowIdException {
     _assignedHabitats.remove(this.hotel().identifyHabitat(id));
+    this.hotel().identifyHabitat(id).removeKeeper(this);
   }
 
   /**
