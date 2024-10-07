@@ -40,7 +40,8 @@ public abstract class Employee extends NamedEntity {
   }
 
   /**
-   * Gets the Employee object representation as a string containing information that describes said employee.
+   * Gets the Employee object representation as a string containing 
+   * information that describes said employee.
    *  
    * @return the Employee object string representation
    */
@@ -59,14 +60,16 @@ public abstract class Employee extends NamedEntity {
   }
 
   /**
-   * Calculates the employee's satisfaction level. Calculations differ based on the type of employee.
+   * Calculates the employee's satisfaction level. 
+   * Calculations differ based on the type of employee.
    * 
    * @return the employee's satisfaction level
    */
   abstract double calculateSatisfaction();
 
   /**
-   * Adds a responsibility to the employee. Responsibility type differs based on the type of employee.
+   * Adds a responsibility to the employee. 
+   * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be added
    * @throws UnknowIdException if the id cannot be used to identify a responsibility
@@ -74,7 +77,8 @@ public abstract class Employee extends NamedEntity {
   abstract void addResponsibility(String id) throws UnknowIdException;
   
   /**
-   * Removes a responsibility from the employee. Responsibility type differs based on the type of employee.
+   * Removes a responsibility from the employee. 
+   * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be removed
    * @throws UnknowIdException if the id cannot be used to identify a responsibility
@@ -82,7 +86,8 @@ public abstract class Employee extends NamedEntity {
   abstract void removeResponsibility(String id)throws UnknowIdException;
   
   /**
-   * Gets the unique identifiers of the employee's responsibilities in a String representation.
+   * Gets the unique identifiers of the employee's responsibilities
+   * in a String representation.
    * 
    * @return the unique identifiers of the employee's responsibilities
    */

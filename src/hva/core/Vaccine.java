@@ -31,7 +31,8 @@ public class Vaccine extends NamedEntity {
   }
 
   /**
-   * Gets the Vaccine object representation as a string containing information that describes said Vaccine.
+   * Gets the Vaccine object representation as a string containing
+   * information that describes said Vaccine.
    * 
    * @return the Vaccine object string representation
    */
@@ -47,7 +48,8 @@ public class Vaccine extends NamedEntity {
   }
 
   /**
-   * Gets the ids of the suitable species for the vaccine. Used for the String representation of the Vaccine object.
+   * Gets the ids of the suitable species for the vaccine.
+   * Used for the String representation of the Vaccine object.
    * 
    * @return a string with the ids of the suitable species for the vaccine
    */
@@ -73,9 +75,11 @@ public class Vaccine extends NamedEntity {
    * @return the effect of the vaccine on the animal
    * @throws IllegalStateException if the Health Status cannot be determined // MIGUEL CHECK THIS
    */
-  HealthStatus determineVaccineEffect(Animal animal) throws IllegalStateException {
+  HealthStatus determineVaccineEffect(Animal animal) throws
+  IllegalStateException {
     boolean correctSpecies = _appropiateSpecies.contains(animal.species());
-      return HealthStatus.determineHealthStatus(calculateVaccineDamage(animal), correctSpecies);
+      return HealthStatus.determineHealthStatus(calculateVaccineDamage(
+      animal), correctSpecies);
     }
 
   /**
@@ -87,7 +91,8 @@ public class Vaccine extends NamedEntity {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
     String speciesName = animal.species().name();
-    for (int i = 0; i < Math.min(speciesBiggestName.name().length(), speciesName.length()); i++) {
+    for (int i = 0; i < Math.min(speciesBiggestName.name().length(),
+    speciesName.length()); i++) {
       if (speciesBiggestName.name().charAt(i) == speciesName.charAt(i))
         commonCharacters++;
       }
@@ -95,14 +100,16 @@ public class Vaccine extends NamedEntity {
   }
 
   /**
-   * Gets the species with the biggest name in the list of suitable species. Used to calculate the damage caused by the vaccine.
+   * Gets the species with the biggest name in the list of suitable species.
+   * Used to calculate the damage caused by the vaccine.
    * 
    * @return the species with the biggest name in the list of suitable species
    */
   private Species biggestSpeciesName(){
     Species biggestSpecies = null;
     for (Species species : _appropiateSpecies) {
-      if (biggestSpecies == null || species.name().length() > biggestSpecies.name().length())
+      if (biggestSpecies == null ||
+      species.name().length() > biggestSpecies.name().length())
         biggestSpecies = species;
       }
     return biggestSpecies;

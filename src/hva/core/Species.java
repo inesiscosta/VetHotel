@@ -32,7 +32,8 @@ public class Species extends NamedEntity {
   }
 
   /**
-   * Gets the number of veterinarians qualified to treat the species. Used to calculate vet satisfaction.
+   * Gets the number of veterinarians qualified to treat the species.
+   * Used to calculate vet satisfaction.
    *
    * @return the number of veterinarians qualified to treat the species
    */
@@ -50,7 +51,8 @@ public class Species extends NamedEntity {
   }
 
   /**
-   * Adds a veterinarian to the collection of veterinarians qualified to treat the species.
+   * Adds a veterinarian to the collection of veterinarians
+   * qualified to treat the species.
    *
    * @param vet the veterinarian to add as a qualified vet
    */
@@ -59,7 +61,8 @@ public class Species extends NamedEntity {
   }
 
   /**
-   * Removes a veterinarian from the collection of veterinarians qualified to treat the species.
+   * Removes a veterinarian from the collection of veterinarians
+   * qualified to treat the species.
    * 
    * @param vet the veterinarian to remove as a qualified vet
    */

@@ -40,8 +40,9 @@ public class Parser {
    * @throws IOException if an I/O error occurs
    * @throws UnrecognizedEntryException if the file contains an invalid entry
    */
-  public void parseFile(String filename) throws IOException, UnrecognizedEntryException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { //Small correction 
+  public void parseFile(String filename) throws IOException,
+  UnrecognizedEntryException {
+    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { 
       String line;
 
       while ((line = reader.readLine()) != null)
@@ -64,17 +65,20 @@ public class Parser {
     case "TRATADOR" -> parseEmployee(components, "TRT");
     case "VETERINÁRIO" -> parseEmployee(components, "VET");
     case "VACINA" -> parseVaccine(components);
-    default -> throw new UnrecognizedEntryException ("tipo de entrada inválido: " + components[0]);
+    default -> throw new UnrecognizedEntryException ("tipo de entrada inválido: "
+    + components[0]);
     }
   }
 
   /**
    * Parses a line with format ANIMAL|id|name|idSpecies|idHabitat
    * 
-   * @param components the components of the line to parse (id, name, speciesId, habitatId)
+   * @param components the components of the line to parse
+   * (id, name, speciesId, habitatId)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
-  private void parseAnimal(String[] components) throws UnrecognizedEntryException {
+  private void parseAnimal(String[] components) throws
+  UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
@@ -92,7 +96,8 @@ public class Parser {
    * @param components the components of the line to parse (id, name)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
-  private void parseSpecies(String[] components) throws UnrecognizedEntryException {
+  private void parseSpecies(String[] components) throws
+  UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
@@ -106,11 +111,13 @@ public class Parser {
   /**
    * Parses a line with format TRATADOR|id|name|idHabitat1,...,idHabitatN or
    * VETERINÁRIO|id|nome|idEspécie1,...,idEspécieN
-   * @param components the components of the line to parse (id, name, habitatIds or speciesIds)
+   * @param components the components of the line to parse (id, name, 
+   * habitatIds or speciesIds)
    * @param empType the type of employee to parse (TRT or VET)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
-  private void parseEmployee(String[] components, String empType) throws UnrecognizedEntryException {
+  private void parseEmployee(String[] components, String empType) throws
+  UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
@@ -121,7 +128,8 @@ public class Parser {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
       }
-		} catch (UnknowIdException | DuplicatedIdException | InvalidTypeException e) {
+		} catch (UnknowIdException | DuplicatedIdException | 
+        InvalidTypeException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -129,14 +137,17 @@ public class Parser {
   /**
    * Parses a line with format VACINA|id|name|idSpecies1,...,idSpeciesN
    * 
-   * @param components the components of the line to parse (id, name, speciesIds)
+   * @param components the components of the line to parse 
+   * (id, name, speciesIds)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
-  private void parseVaccine(String[] components) throws UnrecognizedEntryException {
+  private void parseVaccine(String[] components) throws
+  UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
-      String[] speciesIds = components.length == 4 ? components[3].split(",") : new String[0];
+      String[] speciesIds = components.length == 4 ?
+      components[3].split(",") : new String[0];
       _hotel.registerVaccine(id, name, speciesIds);
     } catch (DuplicatedIdException | UnknowIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
@@ -145,10 +156,12 @@ public class Parser {
 
   /**
    * Parses a line with format ÁRVORE|id|name|age|difficulty|type
-   * @param components the components of the line to parse (id, name, age, diff, type)
+   * @param components the components of the line to parse 
+   * (id, name, age, diff, type)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
-  private void parseTree(String[] components) throws UnrecognizedEntryException {
+  private void parseTree(String[] components) throws
+  UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
@@ -158,8 +171,8 @@ public class Parser {
 	    Tree tree;
 	    if(type != "PERENE" || type != "CADUCA")
 		    throw new InvalidTypeException(InvalidTypeException.ErrorMessage());
-	    if(_hotel.isIdUsed(id)) //We need to add this to Hotel and the plantTree Method and maybe remove from here the Tree is the only object that is not created by the Hotel
-		    throw new DuplicatedIdException(DuplicatedIdException.errorMessage()); //Should we only verify in the plantTree ??
+	    if(_hotel.isIdUsed(id)) 
+		    throw new DuplicatedIdException(DuplicatedIdException.errorMessage());
 	    if(type == "PERENE") {
         tree = new Evergreen(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
@@ -175,10 +188,12 @@ public class Parser {
 
   /**
    * Parses a line with format HABITAT|id|name|area|treeId1,...,treeIdN
-   * @param components the components of the line to parse (id, name, area, treeIds)
+   * @param components the components of the line to parse
+   * (id, name, area, treeIds)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
-  private void parseHabitat(String[] components) throws UnrecognizedEntryException {
+  private void parseHabitat(String[] components) throws
+  UnrecognizedEntryException {
     try {
       String id = components[1];
       String name = components[2];
@@ -190,7 +205,9 @@ public class Parser {
         String[] listOfTree = components[4].split(",");
         for (String treeKey : listOfTree) {
           Tree tree =_tempTreesNoHabitat.get(treeKey);
-          hab.plantTree(tree.id(), tree.name(), tree.age(), tree.baseCleaningDifficulty(), tree.treeType(), _hotel.currentSeason());
+          hab.plantTree(tree.id(), tree.name(), tree.age(),
+          tree.baseCleaningDifficulty(), tree.treeType(),
+          _hotel.currentSeason());
         }
       }
     } catch (InvalidTypeException | DuplicatedIdException e) {

@@ -37,7 +37,8 @@ public class NamedEntity {
   }
 
   /**
-   * Determine whether two namedEntity objects are equal. Two namedEntity objects are equal if their identifiers are equal.
+   * Determine whether two namedEntity objects are equal. 
+   * Two namedEntity objects are equal if their identifiers are equal.
    *
    * @return true if the two namedEntity objects are equal, false otherwise
    */

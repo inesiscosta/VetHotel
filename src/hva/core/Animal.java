@@ -21,9 +21,11 @@ public class Animal extends NamedEntity {
     _species = species;
     _habitat = habitat;
     _healthHistory = "VOID";
-    //Adds itself to the TreeSet of all Animals of the same Species that the Class Species holds.
+    /* Adds itself to the TreeSet of all Animals of the same Species that 
+    the Class Species holds.*/
     _species.addAnimal(this);
-    //Adds itself to the Map of all Animals in the Habitat that the Class Habitat holds.
+    /*Adds itself to the TreeMap of all Animals in the Habitat that
+    the Class Habitat holds.*/
     _habitat.addAnimal(this);
   }
 
@@ -46,7 +48,8 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Gets the Animal object representation as a string containing information that describes the animal.
+   * Gets the Animal object representation as a string containing information
+   * that describes the animal.
    *
    * @return the Animal object string representation
    */
@@ -65,20 +68,22 @@ public class Animal extends NamedEntity {
   /**
    * Calculates the animal's satisfaction level based on the number of animals
    * of the same species in the habitat, the number of animals in the habitat,
-   * the area of the habitat, and the influence of the habitat on the animal's species.
+   * the area of the habitat, and the influence of the habitat on the animal's
+   * species.
    * 
    * @return the animal's satisfaction level
    */
   int calculateSatisfaction() {
     return 20 
       + 3 * _habitat.getNumAnimalSameSpecies(_species) 
-      - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_species) 
+      - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_species)
       + (_habitat.area() / _habitat.getNumAnimals()) 
       + _habitat.identifyInfluence(_species));
   }
 
   /**
-   * Updates the animal's health history after vaccination with the effect of the vaccine.
+   * Updates the animal's health history after vaccination
+   * with the effect of the vaccine.
    *
    * @param vaccineEffect the health status to add to the history
    */

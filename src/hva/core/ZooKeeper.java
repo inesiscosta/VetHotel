@@ -22,7 +22,9 @@ public class ZooKeeper extends Employee {
   }
 
   /**
-   * Calculates the ZooKeeper's satisfaction level which depends on the work effort of the assigned habitats and the number of other keepers in the habitat.
+   * Calculates the ZooKeeper's satisfaction level which depends on the 
+   * work effort of the assigned habitats and
+   * the number of other keepers in the habitat.
    * 
    * @return the ZooKeeper's satisfaction level
    */
@@ -35,9 +37,9 @@ public class ZooKeeper extends Employee {
   }
 
   /**
-   * Calculates the effort it requires to clean a habitat.
+   * Calculates the effort it requires to clean / mantain a habitat.
    * 
-   * @param habitat the habitat for which to calculate the effort to clean / mantain it
+   * @param habitat the habitat for which to calculate the effort to clean it
    * @return the effort it takes to clean the habitat
    */
   private double workEffort(Habitat habitat) {
@@ -47,7 +49,7 @@ public class ZooKeeper extends Employee {
   }
 
   /**
-   * Adds a new habitat to the list of habitats the zookeeper is responsible for.
+   * Adds a habitat to the list of habitats the zookeeper is responsible for.
    * 
    * @param id the habitat's unique identifier
    * @throws UnknowIdException if the habitat's identifier is unknown
@@ -71,9 +73,10 @@ public class ZooKeeper extends Employee {
   }
 
   /**
-   * Gets the ids of the habitats the zookeeper is responsible for. Used for the String representation of the ZooKeeper object.
+   * Gets the ids of the habitats the zookeeper is responsible for.
+   * Used for the String representation of the ZooKeeper object.
    * 
-   * @return a string with the ids of the habitats the zookeeper is responsible for
+   * @return a string with the ids of the habitats
    */
   @Override
   String getIdResponsibilities() {

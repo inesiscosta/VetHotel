@@ -22,7 +22,9 @@ public class Veterinarian extends Employee {
   }
     
   /**
-   * Calculates the Vet's satisfaction level which depends on the number of animals it knows how to vaccinate and the number of other veterinarians that know how to vaccinate the same species of animals.
+   * Calculates the Vet's satisfaction level which depends on the number of
+   * animals it knows how to vaccinate and the number of other veterinarians
+   * that know how to vaccinate the same species of animals.
    * 
    * @return the Vet's satisfaction level
    */
@@ -35,7 +37,8 @@ public class Veterinarian extends Employee {
   }
 
   /**
-   * Adds a new species to the list of species the veterinarian knows how to vaccinate.
+   * Adds a new species to the list of species the veterinarian
+   * knows how to vaccinate.
    * 
    * @param id the species' unique identifier
    * @throws UnknowIdException if the species' identifier is unknown
@@ -47,7 +50,8 @@ public class Veterinarian extends Employee {
   }
 
   /**
-   * Removes a species from the list of species the veterinarian knows how to vaccinate.
+   * Removes a species from the list of species the veterinarian
+   * knows how to vaccinate.
    * 
    * @param id the species' unique identifier
    * @throws UnknowIdException if the species' identifier is unknown
@@ -59,9 +63,11 @@ public class Veterinarian extends Employee {
   }
 
   /**
-   * Gets the ids of the species the veterinarian knows how to vaccinate. Used for the String representation of the Veterinarian object.
+   * Gets the ids of the species the veterinarian knows how to vaccinate.
+   * Used for the String representation of the Veterinarian object.
    * 
-   * @return a string with the ids of the species the veterinarian knows how to vaccinate
+   * @return a string with the ids of the species the veterinarian
+   * knows how to vaccinate
    */
   @Override
   String getIdResponsibilities() {
@@ -76,7 +82,8 @@ public class Veterinarian extends Employee {
    * 
    * @param vaccine the vaccine to be applied
    * @param animal the animal to be vaccinated
-   * @return a new VaccinationRecord object to be added to the list of vaccination records stored in the hotel
+   * @return a new VaccinationRecord object to be added to the list of
+   * vaccination records stored in the hotel
    */
   VaccinationRecord vaccinate(Vaccine vaccine, Animal animal) {
     HealthStatus animalHealthStatus = vaccine.determineVaccineEffect(animal);

@@ -62,7 +62,8 @@ public class Habitat extends NamedEntity {
   }
 
   /**
-   * Gets the Habitat object representation as a string containing information that describes the habitat.
+   * Gets the Habitat object representation as a string containing
+   * information that describes the habitat.
    *
    * @param currentSeason the current season in the Vet Hotel
    * @return the Habitat object string representation
@@ -90,7 +91,8 @@ public class Habitat extends NamedEntity {
   } 
 
   /**
-   * Gets the influence of the habitat on a species. Used to calculate an animal's satisfaction.
+   * Gets the influence of the habitat on a species. 
+   * Used to calculate an animal's satisfaction.
    *
    * @param species the species to get the influence of the habitat on
    * @return the influence of the habitat on the species
@@ -139,7 +141,7 @@ public class Habitat extends NamedEntity {
   /**
    * Adds the influence value a habitat has on a given species.
    * 
-   * @param species the species influenced positively or negatively by the habitat
+   * @param species the species influenced (POS, NEG, NEU) by the habitat
    * @param influence the influence value the habitat has on the species
    */
   void addInfluence(Species species, int influence) {
@@ -149,7 +151,7 @@ public class Habitat extends NamedEntity {
   /**
    * Changes the influence value a habitat has on a given species.
    * 
-   * @param species the species influenced positively or negatively by the habitat
+   * @param species the species influenced (POS, NEG, NEU) by the habitat
    * @param newInfluence the new influence value the habitat has on the species
    */
   void changeHabitatInflunece(Species species, int newInfluence) {
@@ -161,22 +163,28 @@ public class Habitat extends NamedEntity {
    * @param id the tree's unique identifier
    * @param name the tree's name
    * @param age the tree's age
-   * @param baseCleaningDifficulty the tree's base cleaning difficulty (used to calculate how much effort is required by the employee to clean the tree)
+   * @param baseCleaningDifficulty the tree's base cleaning difficulty
+   * (used to calculate how much effort is required by to clean the tree)
    * @param treeType the type of tree (Evergreen or Deciduous)
    * @param currentSeason the current season in the Vet Hotel
-   * @throws InvalidTypeException if the tree type is not a valid type (not one of the two types Evergreen or Deciduous)
+   * @throws InvalidTypeException if the tree type is not a valid type
+   * (not one of the two types Evergreen or Deciduous)
    */
-  void plantTree(String id, String name, int age, int baseCleaningDifficulty, TreeType treeType, Season currentSeason) throws InvalidTypeException {
+  void plantTree(String id, String name, int age, int baseCleaningDifficulty,
+  TreeType treeType, Season currentSeason) throws InvalidTypeException {
     Tree tree;
     switch (treeType) {
       case EVERGREEN:
-        tree = new Evergreen(id, name, age, baseCleaningDifficulty, currentSeason);
+        tree = new Evergreen(id, name, age, baseCleaningDifficulty,
+        currentSeason);
         break;
       case DECIDUOUS:
-        tree = new Deciduous(id, name, age, baseCleaningDifficulty, currentSeason);
+        tree = new Deciduous(id, name, age, baseCleaningDifficulty,
+        currentSeason);
         break;
       default:
-        throw new InvalidTypeException(InvalidTypeException.ErrorMessage() + treeType);
+        throw new InvalidTypeException(InvalidTypeException.ErrorMessage()
+        + treeType);
     }
     _trees.add(tree);
   }
@@ -194,20 +202,22 @@ public class Habitat extends NamedEntity {
   /**
    * Lists all animals in the habitat. 
    * 
-   * @return a String containing the Animal object string representation of all animals in the habitat
+   * @return a String containing the Animal object string representation of
+   * all animals in the habitat
    */
   String listAnimals() {
     StringBuilder listAnimals = new StringBuilder();
     for(Animal animal : _animals.values())
-      //Needs to add a new line to generate the complete String a list of all Animals one per line.
       listAnimals.append(animal.toString()).append("\n");
     return listAnimals.toString();
   }
 
   /**
-   * Lists all trees in the habitat in a string containing information about each tree.
+   * Lists all trees in the habitat in a string 
+   * containing information about each tree.
    * @param currentSeason the current season in the Vet Hotel
-   * @return a String containing the Tree object string representation of all trees in the habitat
+   * @return a String containing the Tree object string representation
+   * of all trees in the habitat
    */
   private String listTrees(Season currentSeason) { 
     StringBuilder listTrees = new StringBuilder();
@@ -217,9 +227,9 @@ public class Habitat extends NamedEntity {
   }
 
   /**
-   * Calculates the total cleaning effort required to clean all trees in the habitat.
+   * Calculates the total effort required to clean all trees in the habitat.
    * @param currentSeason the current season in the Vet Hotel
-   * @return the total cleaning effort required to clean all trees in the habitat
+   * @return the total effort required to clean all trees in the habitat
    */
   double cleaningEffort(Season currentSeason) {
     double cleaningEffort = 0;

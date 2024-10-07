@@ -33,9 +33,11 @@ public class VaccinationRecord {
   }
 
   /**
-   * Gets the damage caused by the vaccine (HEALTHY, CONFUSION, ACCIDENT ,ERROR).
+   * Gets the damage caused by the vaccine
+   * (HEALTHY, CONFUSION, ACCIDENT ,ERROR).
    *
-   * @return the damage caused by the vaccine / the effect of the vaccine on the animal's health
+   * @return the damage caused by the vaccine /
+   * the effect of the vaccine on the animal's health
    */
   String damage() {
     return _damage.toString();
@@ -60,7 +62,8 @@ public class VaccinationRecord {
   }
 
   /**
-   * Gets the VaccinationRecord object representation as a string containing information that describes the vaccination event.
+   * Gets the VaccinationRecord object representation as a string containing
+   * information that describes the vaccination event.
    *
    * @return the VaccinationRecord object string representation
    */
