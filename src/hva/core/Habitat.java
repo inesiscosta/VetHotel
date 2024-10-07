@@ -137,56 +137,6 @@ public class Habitat extends NamedEntity {
   }
 
   /**
-   * Advances the season of all trees in the habitat. 
-   */
-  void nextSeason(Season currentSeason) {
-    for(Tree tree : _trees) {
-      if (tree.equalsCreationSeason(currentSeason))
-        tree.incrementAge();
-    }
-  }
-
-  /**
-   * Lists all animals in the habitat. 
-   * 
-   * @return a String containing the Animal object string representation of all animals in the habitat
-   */
-  String listAnimals() {
-    StringBuilder listAnimals = new StringBuilder();
-    for(Animal animal : _animals.values())
-      //Needs to add a new line to generate the complete String a list of all Animals one per line.
-      listAnimals.append(animal.toString()).append("\n");
-    return listAnimals.toString();
-  }
-
-  /**
-   * Calculates the satisfaction of all animals in the habitat.
-   * 
-   * @return the sum of the satisfaction of each animals in the habitat
-   */
-  int calculateAnimalsSatisfaction() {
-    int satisfaction = 0;
-    for (Animal animal : _animals.values())
-      satisfaction += animal.calculateSatisfaction();
-    return satisfaction;
-  }
-
-  /**
-   * Counts the number of animals of a given species in a habitat.
-   * 
-   * @param species the species to count the number of animals of
-   * @return the total number of animals of the given species in the habitat
-   */
-  int getNumAnimalSameSpecies(Species species) {
-    int numAnimalSameSpecies = 0;
-    for(Animal animal : _animals.values()) {
-      if(animal.species().equals(species))  
-        numAnimalSameSpecies++;
-    }
-    return numAnimalSameSpecies;
-  }
-
-  /**
    * Adds the influence value a habitat has on a given species.
    * 
    * @param species the species influenced positively or negatively by the habitat
@@ -232,6 +182,29 @@ public class Habitat extends NamedEntity {
   }
 
   /**
+   * Advances the season of all trees in the habitat. 
+   */
+  void nextSeason(Season currentSeason) {
+    for(Tree tree : _trees) {
+      if (tree.equalsCreationSeason(currentSeason))
+        tree.incrementAge();
+    }
+  }
+
+  /**
+   * Lists all animals in the habitat. 
+   * 
+   * @return a String containing the Animal object string representation of all animals in the habitat
+   */
+  String listAnimals() {
+    StringBuilder listAnimals = new StringBuilder();
+    for(Animal animal : _animals.values())
+      //Needs to add a new line to generate the complete String a list of all Animals one per line.
+      listAnimals.append(animal.toString()).append("\n");
+    return listAnimals.toString();
+  }
+
+  /**
    * Lists all trees in the habitat in a string containing information about each tree.
    * @param currentSeason the current season in the Vet Hotel
    * @return a String containing the Tree object string representation of all trees in the habitat
@@ -253,5 +226,32 @@ public class Habitat extends NamedEntity {
     for(Tree tree : _trees)
       cleaningEffort += tree.calculateCleaningEffort(currentSeason);
     return cleaningEffort;
+  }
+
+  /**
+   * Calculates the satisfaction of all animals in the habitat.
+   * 
+   * @return the sum of the satisfaction of each animals in the habitat
+   */
+  int calculateAnimalsSatisfaction() {
+    int satisfaction = 0;
+    for (Animal animal : _animals.values())
+      satisfaction += animal.calculateSatisfaction();
+    return satisfaction;
+  }
+
+  /**
+   * Counts the number of animals of a given species in a habitat.
+   * 
+   * @param species the species to count the number of animals of
+   * @return the total number of animals of the given species in the habitat
+   */
+  int getNumAnimalSameSpecies(Species species) {
+    int numAnimalSameSpecies = 0;
+    for(Animal animal : _animals.values()) {
+      if(animal.species().equals(species))  
+        numAnimalSameSpecies++;
+    }
+    return numAnimalSameSpecies;
   }
 }
