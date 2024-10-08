@@ -18,14 +18,16 @@ import java.io.IOException;
 class DoOpenFile extends Command<HotelManager> {
   DoOpenFile(HotelManager receiver) {
     super(Label.OPEN_FILE, receiver);
+    addStringField("filename", Prompt.openFile());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    //try {
-      //_reciever.load(stringField("filename"));
-    //} catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
-    //  throw new FileOpenFailedException(efe);
-    //}
+    try {
+      _receiver.load(stringField("filename"));
+   // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
+      } catch (UnavailableFileException e) {
+        throw new FileOpenFailedException(e);
+    }
   }
 }

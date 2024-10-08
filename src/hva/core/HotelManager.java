@@ -26,7 +26,7 @@ public class HotelManager {
    **/
   public void save() throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
+    saveAs("appState.dat");
   }
   
   /**
@@ -43,7 +43,10 @@ public class HotelManager {
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
+      FileOutputStream file = new FileOutputStream(filename);
+      ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
+      exportedHotel.writeObject(_hotel);
+      exportedHotel.close(); 
   }
   
   /**
@@ -53,7 +56,16 @@ public class HotelManager {
    * not exist or there is an error while processing this file.
    **/
   public void load(String filename) throws UnavailableFileException {
-    // FIXME implement serialization method
+    try {
+      FileInputStream file = new FileInputStream(filename);
+      ObjectInputStream importedHotel = new ObjectInputStream(file);
+      _hotel = (Hotel)importedHotel.readObject();
+      importedHotel.close();
+    } catch (IOException | ClassNotFoundException e) {
+        throw new UnavailableFileException(filename);
+    }
+   
+
   }
   
   /**
