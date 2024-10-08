@@ -230,7 +230,7 @@ public class Habitat extends NamedEntity {
    * @return a String containing the Tree object string representation
    * of all trees in the habitat
    */
-  private String listTrees(Season currentSeason) { 
+  String listTrees(Season currentSeason) { 
     StringBuilder listTrees = new StringBuilder();
     for(Tree tree : _trees)
       listTrees.append(tree.toString(currentSeason)).append("\n");

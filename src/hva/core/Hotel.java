@@ -71,7 +71,7 @@ public class Hotel implements Serializable {
    */
   public Habitat identifyHabitat(String idHabitat) throws UnknownIdException {
     if(!_habitats.containsKey(idHabitat))
-      throw new UnknownIdException(UnknownIdException.errorMessage() + idHabitat);
+      throw new UnknownIdException(UnknownIdException.errorMessageHabitat() + idHabitat);
     return _habitats.get(idHabitat);
   }
 
@@ -100,7 +100,7 @@ public class Hotel implements Serializable {
    */
   public Species identifySpecies(String idSpecies) throws UnknownIdException {
     if(!_species.containsKey(idSpecies))
-      throw new UnknownIdException(UnknownIdException.errorMessage() + idSpecies);
+      throw new UnknownIdException(UnknownIdException.errorMessageSpecies() + idSpecies);
     return _species.get(idSpecies);
   }
 
@@ -319,6 +319,29 @@ public class Hotel implements Serializable {
   }
 
   /**
+   * 
+   * @param habitat
+   * @param species
+   * @param influenceString
+   */
+  public void changeHabitatInflunece(Habitat habitat, Species species, String influenceString) {
+    int influence;
+    switch (influenceString) {
+      case "POS":
+        influence = 20;
+        break;
+      case "NEG":
+        influence = -20;
+      default:
+        influence = 0;
+        break;
+    }
+    if(habitat.identifyInfluence(species) == 0)
+      habitat.addInfluence(species, influence);
+    habitat.changeHabitatInflunece(species, influence);
+  }
+
+  /**
    * Lists all habitats in the hotel in a string containing 
    * information about each habitat.
    * 
@@ -330,6 +353,17 @@ public class Hotel implements Serializable {
     for(Habitat habitat : _habitats.values())
       listHabitats.append(habitat.toString(this.currentSeason()));
     return listHabitats.toString();
+  }
+
+  /**
+   * List all the Trees of an habitat in a string containing 
+   * information about each tree.
+   * @param habitat The specific habitat
+   * @return  a String containing the Tree information of all
+   * trees in the habitat
+   */
+  public String listTreesHabitat(Habitat habitat) {
+    return habitat.listTrees(this.currentSeason());
   }
 
   /**
