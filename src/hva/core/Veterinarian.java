@@ -71,10 +71,13 @@ public class Veterinarian extends Employee {
    */
   @Override
   String getIdResponsibilities() {
-    String idResponsibilities = null;
+    if(_knowsHowToVaccinate.isEmpty())
+      return null;
+    StringBuilder idResponsibilities = new StringBuilder();
     for (Species species : _knowsHowToVaccinate)
-      idResponsibilities += species.id();
-    return idResponsibilities;
+      idResponsibilities.append(species.id()).append(",");
+    idResponsibilities.setLength(idResponsibilities.length()-1);
+    return idResponsibilities.toString();
   }
 
   /**

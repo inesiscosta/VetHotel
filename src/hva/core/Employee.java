@@ -48,7 +48,7 @@ public abstract class Employee extends NamedEntity {
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder();
-    result.append(this.type())
+    result.append(EmployeeType.enumToString(this.type()))
       .append("|")
       .append(this.id())
       .append("|")

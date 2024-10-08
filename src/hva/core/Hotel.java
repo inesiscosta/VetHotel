@@ -236,7 +236,7 @@ public class Hotel implements Serializable {
     if (_usedIds.contains(id))
       throw new DuplicateIdException(DuplicateIdException.errorMessage() + id);
     Employee employee = null;
-    switch (type) {
+    switch (type) {   //TODO Maybe also use a method from the enum or change the TreeType and DoAddTreehabitat, DoShowAllEmployees and DoShowHabitats and DoShowTrees for consistent across the project
       case "VET":
         employee = new Veterinarian(id, name);
         break;
@@ -397,6 +397,8 @@ public class Hotel implements Serializable {
     StringBuilder allAnimals = new StringBuilder();
     for (Habitat habitat : _habitats.values())
       allAnimals.append(habitat.listAnimals()).append("\n");
+    if(!allAnimals.isEmpty())
+      allAnimals.setLength(allAnimals.length()-1);
     return allAnimals.toString();
   }
 
@@ -438,10 +440,11 @@ public class Hotel implements Serializable {
   public String listVaccines() {
     List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
     vaccines.sort(Comparator.comparing(Vaccine::id));
-    StringBuilder listHabitats = new StringBuilder();
+    StringBuilder listVaccines = new StringBuilder();
     for(Vaccine vaccine : vaccines)
-      listHabitats.append(vaccine.toString());
-    return vaccines.toString();
+      listVaccines.append(vaccine.toString());
+    listVaccines.setLength(listVaccines.length()-1);
+    return listVaccines.toString();
   }
 
   /**

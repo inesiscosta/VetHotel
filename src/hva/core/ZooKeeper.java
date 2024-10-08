@@ -80,9 +80,12 @@ public class ZooKeeper extends Employee {
    */
   @Override
   String getIdResponsibilities() {
+    if(_assignedHabitats.isEmpty())
+      return null;
     StringBuilder idResponsibilities = new StringBuilder();
     for (Habitat habitat : _assignedHabitats)
-      idResponsibilities.append(habitat.id());
+      idResponsibilities.append(habitat.id()).append(",");
+    idResponsibilities.setLength(idResponsibilities.length()-1);
     return idResponsibilities.toString();
   }
 }

@@ -6,4 +6,27 @@ package hva.core;
 public enum EmployeeType {
   VETERINARIAN,
   ZOOKEEPER;
+
+  /**
+     * A method for returning the employee type representation used by the app layer
+     *
+     * @param type The enum of EmployeeType
+     * @return String that correspond to the internal employee type representation
+     */
+    public static String enumToString(EmployeeType type) {  //FIXME Ines temos de ver ser fazemos isto ou other way maybe override valueOf? 
+      String employeeType = null;
+      switch (type) {
+          case EmployeeType.VETERINARIAN:
+            employeeType = "VET";
+            return employeeType;
+
+          case EmployeeType.ZOOKEEPER:
+              employeeType = "TRT";
+              return employeeType;
+
+          default:
+              return employeeType;
+      }
+  }
+
 }

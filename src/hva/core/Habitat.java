@@ -220,6 +220,8 @@ public class Habitat extends NamedEntity {
     StringBuilder listAnimals = new StringBuilder();
     for(Animal animal : _animals.values())
       listAnimals.append(animal.toString()).append("\n");
+    if(!listAnimals.isEmpty())
+      listAnimals.setLength(listAnimals.length()-1);
     return listAnimals.toString();
   }
 
@@ -234,6 +236,8 @@ public class Habitat extends NamedEntity {
     StringBuilder listTrees = new StringBuilder();
     for(Tree tree : _trees)
       listTrees.append(tree.toString(currentSeason)).append("\n");
+    if(!listTrees.isEmpty())
+      listTrees.setLength(listTrees.length() - 1);
     return listTrees.toString();
   }
 

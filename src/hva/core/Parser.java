@@ -85,7 +85,7 @@ public class Parser {
       String habitatId = components[4];
       String speciesId = components[3];
 
-      _hotel.registerAnimal(id, name, habitatId, speciesId);
+      _hotel.registerAnimal(id, name, speciesId, habitatId);
     } catch (UnknownIdException | DuplicateIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }

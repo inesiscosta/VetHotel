@@ -42,8 +42,9 @@ public class Vaccine extends NamedEntity {
     result.append("VACINA|")
       .append(this.id()).append("|")
       .append(this.name()).append("|")
-      .append(_numApplications).append("|")
-      .append(suitableSpeciesToString());
+      .append(_numApplications)
+      .append(suitableSpeciesToString())
+      .append("\n");
     return result.toString();
   }
 
@@ -55,8 +56,11 @@ public class Vaccine extends NamedEntity {
    */
   private String suitableSpeciesToString() {
     StringBuilder suitableSpecies = new StringBuilder();
+    suitableSpecies.append("|");
     for (Species specie: _appropiateSpecies)
       suitableSpecies.append( specie.id()).append(",");
+    if(suitableSpecies.length() > 0)
+      suitableSpecies.setLength(suitableSpecies.length()-1);
     return suitableSpecies.toString();
   }
 
