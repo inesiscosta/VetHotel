@@ -65,7 +65,7 @@ public abstract class Employee extends NamedEntity {
    * 
    * @return the employee's satisfaction level
    */
-  abstract double calculateSatisfaction();
+  public abstract double calculateSatisfaction();
 
   /**
    * Adds a responsibility to the employee. 

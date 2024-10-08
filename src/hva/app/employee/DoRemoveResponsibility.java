@@ -1,6 +1,7 @@
 package hva.app.employee;
 
 import hva.core.Hotel;
+import hva.core.exception.UnknownIdException;
 import hva.app.exception.NoResponsibilityException;
 import hva.app.exception.UnknownEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -14,11 +15,21 @@ class DoRemoveResponsibility extends Command<Hotel> {
 
   DoRemoveResponsibility(Hotel receiver) {
     super(Label.REMOVE_RESPONSABILITY, receiver);
-    //FIXME add command fields
+    addStringField("id", Prompt.employeeKey());
+    addStringField("responsibility", Prompt.responsibilityKey());
   }
   
   @Override
   protected void execute() throws CommandException {
-    //FIXME implement command
+    var id = stringField("id");
+    var responsibility = stringField("responsibility");
+
+    /*
+    try {
+      _receiver.removeResponsibility(id, responsibility);
+    } catch (UnknownIdException e) {
+      throw new UnknownEmployeeKeyException(id);
+    }
+    */
   }
 }

@@ -31,4 +31,5 @@ echo "Total Tests = " $total
 echo "Passed = " $res"%"
 printf "$failures"
 echo "Done."
+find .  -name "*.class" -type f -delete
 

@@ -2,7 +2,6 @@ package hva.app.employee;
 
 import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
-//FIXME add more imports if needed
 
 /**
  * Show all employees of this zoo hotel.
@@ -15,6 +14,6 @@ class DoShowAllEmployees extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    //FIXME implement command
+    _display.popup(_receiver.listEmployees());
   }
 }

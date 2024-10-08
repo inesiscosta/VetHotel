@@ -159,6 +159,15 @@ public class Habitat extends NamedEntity {
   }
 
   /**
+   * Changes the area of the habitat.
+   * 
+   * @param newArea the new area of the habitat
+   */
+  public void changeArea(int newArea) {
+    _area = newArea;
+  }
+
+  /**
    * Adds a new tree to the habitat.
    * @param id the tree's unique identifier
    * @param name the tree's name

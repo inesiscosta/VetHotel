@@ -120,6 +120,12 @@ public class Hotel implements Serializable {
     return null;
   }
 
+  public Employee identifyEmployee(String idEmployee) throws UnknownIdException {
+    if(!_employees.containsKey(idEmployee))
+      throw new UnknownIdException(UnknownIdException.errorMessage() + idEmployee);
+    return _employees.get(idEmployee);
+  }
+
   /**
    * Identifies a vaccine by its id.
    * 
@@ -222,8 +228,8 @@ public class Hotel implements Serializable {
    * @throws DuplicateIdException if the id is already used
    * @throws InvalidTypeException if the type is not valid
    */
-  protected void registerEmployee(String id, String name, String type) 
-  throws DuplicateIdException, InvalidTypeException {
+  public void registerEmployee(String id, String name, String type) 
+  throws DuplicateIdException {
     if (_employees.containsKey(id))
       throw new DuplicateIdException(DuplicateIdException.errorMessageEmployee()
       + id);
@@ -237,9 +243,10 @@ public class Hotel implements Serializable {
       case "TRT":
         employee = new ZooKeeper(id, name);
         break;
-      default:
-        throw new InvalidTypeException(InvalidTypeException.ErrorMessageEmployee()
-        + type);
+//      default:
+//        throw new InvalidTypeException(InvalidTypeException.ErrorMessageEmployee()
+//        + type);
+// Stor não tem isto do lado da App nenhuma exceção para isto idk MIGUEL check
     }
     _employees.put(id, employee);
     _usedIds.add(id);
@@ -360,7 +367,7 @@ public class Hotel implements Serializable {
    * @return a String containing the Employee object string
    * representation of all employees in the hotel
    */
-  public String listEmployee() {
+  public String listEmployees() {
     StringBuilder listEmployee = new StringBuilder();
     for (Employee employee : _employees.values())
       listEmployee.append(employee.toString()).append("\n");

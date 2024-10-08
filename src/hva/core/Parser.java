@@ -128,8 +128,7 @@ public class Parser {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
       }
-		} catch (UnknownIdException | DuplicateIdException | 
-        InvalidTypeException e) {
+		} catch (UnknownIdException | DuplicateIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
