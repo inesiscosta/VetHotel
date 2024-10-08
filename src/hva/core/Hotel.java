@@ -3,22 +3,6 @@ package hva.core;
 import hva.core.exception.*;
 import java.io.*;
 import java.util.*;
-//TODO Maybe this import are not necessary
-import hva.core.Animal;
-import hva.core.Deciduous;
-import hva.core.Employee;
-import hva.core.Evergreen;
-import hva.core.Habitat;
-import hva.core.HealthStatus;
-import hva.core.Leaf;
-import hva.core.NamedEntity;
-import hva.core.Season;
-import hva.core.Species;
-import hva.core.Tree;
-import hva.core.VaccinationRecord;
-import hva.core.Vaccine;
-import hva.core.Veterinarian;
-import hva.core.ZooKeeper;
 
 /**
  * Represents a Vet Hotel.
@@ -83,11 +67,11 @@ public class Hotel implements Serializable {
    * 
    * @param idHabitat the id of the habitat to identify
    * @return the habitat object with the given id
-   * @throws UnknowIdException if the habitat with the given id is not found
+   * @throws UnknownIdException if the habitat with the given id is not found
    */
-  public Habitat identifyHabitat(String idHabitat) throws UnknowIdException {
+  public Habitat identifyHabitat(String idHabitat) throws UnknownIdException {
     if(!_habitats.containsKey(idHabitat))
-      throw new UnknowIdException(UnknowIdException.errorMessage() + idHabitat);
+      throw new UnknownIdException(UnknownIdException.errorMessage() + idHabitat);
     return _habitats.get(idHabitat);
   }
 
@@ -96,15 +80,15 @@ public class Hotel implements Serializable {
    * 
    * @param idAnimal the id of the animal to identify
    * @return the animal object with the given id
-   * @throws UnknowIdException if the animal with the given id is not found
+   * @throws UnknownIdException if the animal with the given id is not found
    */
-  public Animal identifyAnimal(String idAnimal) throws UnknowIdException {
+  public Animal identifyAnimal(String idAnimal) throws UnknownIdException {
     for(Habitat habitat : _habitats.values()) {
       Animal animal =  habitat.identifyAnimal(idAnimal);
       if (animal != null)
         return animal;
     }
-    throw new UnknowIdException(UnknowIdException.errorMessage() + idAnimal);
+    throw new UnknownIdException(UnknownIdException.errorMessage() + idAnimal);
   }
 
   /**
@@ -112,11 +96,11 @@ public class Hotel implements Serializable {
    * 
    * @param idSpecies the id of the species to identify
    * @return the species object with the given id
-   * @throws UnknowIdException if the species with the given id is not found
+   * @throws UnknownIdException if the species with the given id is not found
    */
-  public Species identifySpecies(String idSpecies) throws UnknowIdException {
+  public Species identifySpecies(String idSpecies) throws UnknownIdException {
     if(!_species.containsKey(idSpecies))
-      throw new UnknowIdException(UnknowIdException.errorMessage() + idSpecies);
+      throw new UnknownIdException(UnknownIdException.errorMessage() + idSpecies);
     return _species.get(idSpecies);
   }
 
@@ -125,11 +109,11 @@ public class Hotel implements Serializable {
    * 
    * @param idVet the id of the veterinarian to identify
    * @return the veterinarian object with the given id
-   * @throws UnknowIdException if the veterinarian with the given id is not found
+   * @throws UnknownIdException if the veterinarian with the given id is not found
    */
-  public Veterinarian identifyVet(String idVet) throws UnknowIdException {
+  public Veterinarian identifyVet(String idVet) throws UnknownIdException {
     if(!_employees.containsKey(idVet))
-      throw new UnknowIdException(UnknowIdException.errorMessage() + idVet);
+      throw new UnknownIdException(UnknownIdException.errorMessage() + idVet);
     Employee employee =  _employees.get(idVet);
     if (employee.type().toString() == "VET")
       return (Veterinarian) employee;
@@ -141,11 +125,11 @@ public class Hotel implements Serializable {
    * 
    * @param idVaccine the id of the vaccine to identify
    * @return the vaccine object with the given id
-   * @throws UnknowIdException if the vaccine with the given id is not found
+   * @throws UnknownIdException if the vaccine with the given id is not found
    */
-  public Vaccine identifyVaccine(String idVaccine) throws UnknowIdException {
+  public Vaccine identifyVaccine(String idVaccine) throws UnknownIdException {
     if(!_vaccines.containsKey(idVaccine))
-      throw new UnknowIdException(UnknowIdException.errorMessage() + idVaccine);
+      throw new UnknownIdException(UnknownIdException.errorMessage() + idVaccine);
     return _vaccines.get(idVaccine);
   }
 
@@ -156,15 +140,15 @@ public class Hotel implements Serializable {
    * @param name the habitat's name
    * @param area the habitat's area
    * @return the new habitat object
-   * @throws DuplicatedIdException if the id is already used
+   * @throws DuplicateIdException if the id is already used
    */
   public Habitat registerHabitat(String id, String name, int area)
-    throws DuplicatedIdException {
+    throws DuplicateIdException {
     if (_habitats.containsKey(id))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessageHabitat()
+      throw new DuplicateIdException(DuplicateIdException.errorMessageHabitat()
         + id);
     else if (_usedIds.contains(id))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessage() + id);
+      throw new DuplicateIdException(DuplicateIdException.errorMessage() + id);
     Habitat habitat = new Habitat(id, name, area);
     _habitats.put(id, habitat);
     return habitat;
@@ -177,25 +161,25 @@ public class Hotel implements Serializable {
    * @param name the animal's name
    * @param idHabitat the habitat's id where the animal is
    * @param idSpecies the species' id of the animal
-   * @throws UnknowIdException if the habitat or species with the given id is not found
-   * @throws DuplicatedIdException if the id is already used
+   * @throws UnknownIdException if the habitat or species with the given id is not found
+   * @throws DuplicateIdException if the id is already used
    */
-  protected void registerAnimal(String idAnimal, String name, String idHabitat,
-  String idSpecies) throws UnknowIdException, DuplicatedIdException {
+  public void registerAnimal(String idAnimal, String name, String idSpecies,
+  String idHabitat) throws UnknownIdException, DuplicateIdException {
     if (_usedIds.contains(idAnimal))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessage()
+      throw new DuplicateIdException(DuplicateIdException.errorMessage()
       + idAnimal);
     Habitat habitat;
     try {
       habitat = identifyHabitat(idHabitat);
-    } catch (UnknowIdException e) {
-      throw new UnknowIdException(UnknowIdException.errorMessageHabitat()
+    } catch (UnknownIdException e) {
+      throw new UnknownIdException(UnknownIdException.errorMessageHabitat()
       + idHabitat, e);
     }
     Species species;
     try {
       species = identifySpecies(idSpecies);
-    } catch (UnknowIdException e) {
+    } catch (UnknownIdException e) {
       //If the species doesn't exist it calls registerSpecies
       registerSpecies(idSpecies, name);
       //After the new species is created it needs to make the object available
@@ -210,20 +194,19 @@ public class Hotel implements Serializable {
    * 
    * @param id the species' unique identifier
    * @param name the species' name
-   * @throws UnknowIdException if the species with the given id is not found
-   * @throws DuplicatedIdException if the id is already used
+   * @throws DuplicateIdException if the id is already used
    */
   protected void registerSpecies(String id, String name)
-  throws UnknowIdException, DuplicatedIdException {
+  throws DuplicateIdException {
     try {
       identifySpecies(id);
       //If the species exist it doesnt throw a exception, else it is catched
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessageSpecies()
+      throw new DuplicateIdException(DuplicateIdException.errorMessageSpecies()
       + id);
-    } catch (UnknowIdException e) { 
+    } catch (UnknownIdException e) { 
       //If the species doesnt exist it add a new one
       if (_usedIds.contains(id))
-        throw new DuplicatedIdException(id);
+        throw new DuplicateIdException(id);
       Species specie = new Species(id, name);
       _species.put(id, specie);
       _usedIds.add(id);
@@ -236,16 +219,16 @@ public class Hotel implements Serializable {
    * @param id the employee's unique identifier
    * @param name the employee's name
    * @param type the employee's type (VET or TRT)
-   * @throws DuplicatedIdException if the id is already used
+   * @throws DuplicateIdException if the id is already used
    * @throws InvalidTypeException if the type is not valid
    */
   protected void registerEmployee(String id, String name, String type) 
-  throws DuplicatedIdException, InvalidTypeException {
+  throws DuplicateIdException, InvalidTypeException {
     if (_employees.containsKey(id))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessageEmployee()
+      throw new DuplicateIdException(DuplicateIdException.errorMessageEmployee()
       + id);
     if (_usedIds.contains(id))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessage() + id);
+      throw new DuplicateIdException(DuplicateIdException.errorMessage() + id);
     Employee employee = null;
     switch (type) {
       case "VET":
@@ -268,24 +251,24 @@ public class Hotel implements Serializable {
    * @param vaccineId the vaccine's unique identifier
    * @param name the vaccine's name
    * @param speciesIds the species' ids that the vaccine is suitable for
-   * @throws UnknowIdException if the species with the given id is not found
-   * @throws DuplicatedIdException if the id is already used
+   * @throws UnknownIdException if the species with the given id is not found
+   * @throws DuplicateIdException if the id is already used
    */
   public void registerVaccine(String vaccineId, String name, String[] speciesIds)
-  throws UnknowIdException, DuplicatedIdException {
+  throws UnknownIdException, DuplicateIdException {
     if (_vaccines.containsKey(vaccineId))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessageVaccine()
+      throw new DuplicateIdException(DuplicateIdException.errorMessageVaccine()
       + vaccineId);
     if (_usedIds.contains(vaccineId))
-      throw new DuplicatedIdException(DuplicatedIdException.errorMessage()
+      throw new DuplicateIdException(DuplicateIdException.errorMessage()
       + vaccineId);
     List<Species> speciesList = new ArrayList<>();
     for (String id : speciesIds) {
       Species species;
       try {
         species = identifySpecies(id);
-      } catch (UnknowIdException e) {
-        throw new UnknowIdException(UnknowIdException.errorMessageSpecies()
+      } catch (UnknownIdException e) {
+        throw new UnknownIdException(UnknownIdException.errorMessageSpecies()
         + id, e);
       }
       speciesList.add(species);
@@ -300,16 +283,16 @@ public class Hotel implements Serializable {
    * 
    * @param idEmployee the employee's unique identifier
    * @param idReponsibility the responsibility's unique identifier
-   * @throws UnknowIdException if the employee or responsibility with the 
+   * @throws UnknownIdException if the employee or responsibility with the 
    * given id is not found //MIGUEL CHECK
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
-  throws UnknowIdException {
+  throws UnknownIdException {
     Employee employee;
     try {
       employee = _employees.get(idEmployee);
     } catch (NullPointerException e) {
-      throw new UnknowIdException(UnknowIdException.errorMessageEmployee()
+      throw new UnknownIdException(UnknownIdException.errorMessageEmployee()
       + idEmployee, e);
     }
     employee.addResponsibility(idReponsibility);
@@ -475,7 +458,7 @@ public class Hotel implements Serializable {
   //  UnallowedTypeException, DuplicateException, UnallowedKeyException,
   void importFile(String filename) throws UnrecognizedEntryException,
   IOException, ImportFileException {
-    //var parser = new Parser(this);
-    //parser.parseFile(filename);
+    var parser = new Parser(this);
+    parser.parseFile(filename);
   }
 }

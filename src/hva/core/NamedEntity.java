@@ -3,7 +3,7 @@ package hva.core;
 /**
  * Represents an entity with a name and an identifier. Inherited by most entities in the Vet Hotel.
  */
-public class NamedEntity {
+public class NamedEntity implements Comparable<NamedEntity> {
   private final String _id;
   private final String _name;
 
@@ -49,5 +49,24 @@ public class NamedEntity {
     NamedEntity other = (NamedEntity) obj;
     return this._id.equals(other.id());
   }
-    //Hashcode?
+
+    /**
+   * Compares this entity to another entity by their IDs, ignoring case.
+   *
+   * @param other the other entity to compare to
+   * @return a negative integer, zero, or a positive integer as this entity's ID
+   *         is less than, equal to, or greater than the other entity's ID.
+   */
+  @Override
+  public int compareTo(NamedEntity other) {
+    return this._id.compareToIgnoreCase(other._id);
+  }
+  
+  /**
+   * Returns a hash code value for the object.
+   */
+  @Override
+  public int hashCode() {
+    return _id.hashCode();
+  }
 }

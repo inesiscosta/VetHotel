@@ -1,12 +1,11 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
-import hva.core.exception.DuplicatedIdException;
+import hva.core.exception.DuplicateIdException;
 import hva.app.exception.DuplicateHabitatKeyException;
-import pt.tecnico.uilib.forms.Form;
+// import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-import hva.core.Hotel;
 
 /**
  * Add a new habitat to this zoo hotel.
@@ -28,7 +27,7 @@ class DoRegisterHabitat extends Command<Hotel> {
 
     try {
       _receiver.registerHabitat(id, name, area);
-    } catch (DuplicatedIdException e) {
+    } catch (DuplicateIdException e) {
       throw new DuplicateHabitatKeyException(id);
     }
   }

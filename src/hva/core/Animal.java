@@ -73,7 +73,7 @@ public class Animal extends NamedEntity {
    * 
    * @return the animal's satisfaction level
    */
-  int calculateSatisfaction() {
+  public int calculateSatisfaction() {
     return 20 
       + 3 * _habitat.getNumAnimalSameSpecies(_species) 
       - 2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalSameSpecies(_species)
@@ -101,7 +101,7 @@ public class Animal extends NamedEntity {
    * @param newHabitat the new habitat to move the animal to
    * @throws IllegalStateException if the habitat doesn't exist??? MIGUEL CHECK THIS 
    */
-  void changeHabitat(Habitat newHabitat) throws IllegalStateException { 
+  public void changeHabitat(Habitat newHabitat) throws IllegalStateException { 
     _habitat.removeAnimal(this);
     newHabitat.addAnimal(this);
     _habitat = newHabitat;

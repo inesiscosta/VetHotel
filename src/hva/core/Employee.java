@@ -1,6 +1,6 @@
 package hva.core;
 
-import hva.core.exception.UnknowIdException;
+import hva.core.exception.UnknownIdException;
 
 /**
  * Represents an employee working in a Vet Hotel.
@@ -72,18 +72,18 @@ public abstract class Employee extends NamedEntity {
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be added
-   * @throws UnknowIdException if the id cannot be used to identify a responsibility
+   * @throws UnknownIdException if the id cannot be used to identify a responsibility
    */
-  abstract void addResponsibility(String id) throws UnknowIdException;
+  abstract void addResponsibility(String id) throws UnknownIdException;
   
   /**
    * Removes a responsibility from the employee. 
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be removed
-   * @throws UnknowIdException if the id cannot be used to identify a responsibility
+   * @throws UnknownIdException if the id cannot be used to identify a responsibility
    */
-  abstract void removeResponsibility(String id)throws UnknowIdException;
+  abstract void removeResponsibility(String id)throws UnknownIdException;
   
   /**
    * Gets the unique identifiers of the employee's responsibilities

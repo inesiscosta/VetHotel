@@ -11,9 +11,9 @@ import java.util.ArrayList;
 */
 import java.util.HashMap;
 
-import hva.core.exception.DuplicatedIdException;
+import hva.core.exception.DuplicateIdException;
 import hva.core.exception.InvalidTypeException;
-import hva.core.exception.UnknowIdException;
+import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnrecognizedEntryException;
 
 /**
@@ -86,7 +86,7 @@ public class Parser {
       String speciesId = components[3];
 
       _hotel.registerAnimal(id, name, habitatId, speciesId);
-    } catch (UnknowIdException | DuplicatedIdException e) {
+    } catch (UnknownIdException | DuplicateIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -103,7 +103,7 @@ public class Parser {
       String name = components[2];
 
       _hotel.registerSpecies(id, name);
-    } catch (UnknowIdException | DuplicatedIdException e) {
+    } catch (DuplicateIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -128,7 +128,7 @@ public class Parser {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
       }
-		} catch (UnknowIdException | DuplicatedIdException | 
+		} catch (UnknownIdException | DuplicateIdException | 
         InvalidTypeException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
@@ -149,7 +149,7 @@ public class Parser {
       String[] speciesIds = components.length == 4 ?
       components[3].split(",") : new String[0];
       _hotel.registerVaccine(id, name, speciesIds);
-    } catch (DuplicatedIdException | UnknowIdException e) {
+    } catch (DuplicateIdException | UnknownIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -172,7 +172,7 @@ public class Parser {
 	    if(type != "PERENE" || type != "CADUCA")
 		    throw new InvalidTypeException(InvalidTypeException.ErrorMessage());
 	    if(_hotel.isIdUsed(id)) 
-		    throw new DuplicatedIdException(DuplicatedIdException.errorMessage());
+		    throw new DuplicateIdException(DuplicateIdException.errorMessage());
 	    if(type == "PERENE") {
         tree = new Evergreen(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
@@ -181,7 +181,7 @@ public class Parser {
         tree = new Deciduous(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
       }
-    } catch (InvalidTypeException | DuplicatedIdException e) {
+    } catch (InvalidTypeException | DuplicateIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -210,7 +210,7 @@ public class Parser {
           _hotel.currentSeason());
         }
       }
-    } catch (InvalidTypeException | DuplicatedIdException e) {
+    } catch (InvalidTypeException | DuplicateIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }

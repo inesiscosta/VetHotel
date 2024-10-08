@@ -2,7 +2,7 @@ package hva.core;
 import java.util.Collection;
 import java.util.HashSet;
 
-import hva.core.exception.UnknowIdException;
+import hva.core.exception.UnknownIdException;
 
 /**
  * Represents a ZooKeeper that works in a Vet Hotel.
@@ -55,7 +55,7 @@ public class ZooKeeper extends Employee {
    * @throws UnknowIdException if the habitat's identifier is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknowIdException {
+  void addResponsibility(String id) throws UnknownIdException {
     _assignedHabitats.add(this.hotel().identifyHabitat(id));
     this.hotel().identifyHabitat(id).addKeeper(this);
   }
@@ -67,7 +67,7 @@ public class ZooKeeper extends Employee {
    * @throws UnknowIdException if the habitat's identifier is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknowIdException {
+  void removeResponsibility(String id) throws UnknownIdException {
     _assignedHabitats.remove(this.hotel().identifyHabitat(id));
     this.hotel().identifyHabitat(id).removeKeeper(this);
   }

@@ -5,7 +5,7 @@ import java.io.Serial;
 /**
  * Class for representing an invalid ID entry.
  */
-public class UnknowIdException extends Exception {
+public class UnknownIdException extends Exception {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -19,7 +19,7 @@ public class UnknowIdException extends Exception {
   /**
    * @param message the error message
    **/
-  public UnknowIdException(String message) {
+  public UnknownIdException(String message) {
     super(message);
   }
 
@@ -27,7 +27,7 @@ public class UnknowIdException extends Exception {
    * @param message the error message
    * @param cause The cause of the exception
    **/
-  public UnknowIdException(String message, Exception cause) {
+  public UnknownIdException(String message, Exception cause) {
     super(message, cause);
   }
 

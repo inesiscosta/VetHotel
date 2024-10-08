@@ -20,4 +20,8 @@ public interface Prompt {
   static String speciesName() {
     return "Nome da espécie: ";
   }
+
+  static String habitatKey() {
+    return "Identificador único do habitat: ";
+  }
 }

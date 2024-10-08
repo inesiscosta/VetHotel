@@ -44,7 +44,7 @@ public class Veterinarian extends Employee {
    * @throws UnknowIdException if the species' identifier is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknowIdException {
+  void addResponsibility(String id) throws UnknownIdException {
     _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     this.hotel().identifySpecies(id).addQualifiedVet(this);
   }
@@ -57,7 +57,7 @@ public class Veterinarian extends Employee {
    * @throws UnknowIdException if the species' identifier is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknowIdException {
+  void removeResponsibility(String id) throws UnknownIdException {
     _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
     this.hotel().identifySpecies(id).removeQualifiedVet(this);
   }
