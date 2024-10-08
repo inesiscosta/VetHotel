@@ -96,12 +96,15 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Changes the animal to a different habitat.
-   *
+   * Changes the animal to a different habitat. 
+   * If the animal already is in the destination habitat it doesnt 
+   * change anything.
+   * 
    * @param newHabitat the new habitat to move the animal to
-   * @throws IllegalStateException if the habitat doesn't exist??? MIGUEL CHECK THIS 
    */
-  public void changeHabitat(Habitat newHabitat) throws IllegalStateException { 
+  public void changeHabitat(Habitat newHabitat) { 
+    if(_habitat.identifyAnimal(this.id()) == null)
+      return;
     _habitat.removeAnimal(this);
     newHabitat.addAnimal(this);
     _habitat = newHabitat;

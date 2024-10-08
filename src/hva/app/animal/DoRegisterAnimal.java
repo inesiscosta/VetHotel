@@ -5,7 +5,7 @@ import hva.core.exception.UnknownIdException;
 import hva.core.exception.DuplicateIdException;
 import hva.app.exception.DuplicateAnimalKeyException;
 import hva.app.exception.UnknownHabitatKeyException;
-// import pt.tecnico.uilib.forms.Form; We don't use this import but I don't know if we should.
+// import pt.tecnico.uilib.forms.Form; We don't use this import but I don't know if we should. The forms.Form is called from the menus.Command so??
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 

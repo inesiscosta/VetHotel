@@ -18,7 +18,7 @@ class DoTransferToHabitat extends Command<Hotel> {
     addStringField("habitat", Prompt.habitatKey());
   }
   
-  // No error if tries to transfer to the habitat that its already in. Should it?
+  // No error if tries to transfer to the habitat that its already in. Should it? Nop no enunciado diz em caso de erro o habitat nao e alterado
   @Override
   protected final void execute() throws CommandException {
     var id = stringField("id");
