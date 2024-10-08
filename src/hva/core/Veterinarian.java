@@ -29,7 +29,7 @@ public class Veterinarian extends Employee {
    * @return the Vet's satisfaction level
    */
   @Override
-  double calculateSatisfaction() {
+  public double calculateSatisfaction() {
     int work = 0;
     for (Species species : _knowsHowToVaccinate)
       work += (species.getNumAnimals()) / species.getNumQualifiedVets();

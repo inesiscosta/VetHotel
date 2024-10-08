@@ -29,7 +29,7 @@ public class ZooKeeper extends Employee {
    * @return the ZooKeeper's satisfaction level
    */
   @Override
-  double calculateSatisfaction() {
+  public double calculateSatisfaction() {
     double work = 0;
     for (Habitat habitat : _assignedHabitats)
       work += (workEffort(habitat) / habitat.getNumKeepers()); // Check if the getNumKeepers should count with the Keeper itself

@@ -39,7 +39,7 @@ public class Hotel implements Serializable {
    *
    * @return the current season of the hotel
    */
-  Season currentSeason() {
+  public Season currentSeason() {
     return _currentSeason;
   }
 
