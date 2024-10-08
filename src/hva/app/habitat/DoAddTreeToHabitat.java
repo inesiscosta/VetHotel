@@ -4,7 +4,9 @@ import hva.core.Hotel;
 import hva.app.exception.UnknownHabitatKeyException;
 import hva.app.exception.DuplicateTreeKeyException;
 import hva.core.TreeType;
+import hva.core.exception.DuplicateIdException;
 import hva.core.exception.InvalidTypeException;
+import hva.core.exception.UnknownIdException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 //FIXME add more imports if needed
@@ -21,7 +23,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     addStringField("name", Prompt.treeName());
     addIntegerField("age", Prompt.treeAge());
     addIntegerField("difficulty", Prompt.treeDifficulty());
-    addStringField("type", Prompt.treeType());
+    addOptionField("type", Prompt.treeType(), "PER", "CAD");
   }
   
   @Override
@@ -31,12 +33,15 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     var name = stringField("name");
     var age = integerField("age");
     var difficulty = integerField("difficulty");
-    var type = TreeType.valueOf(stringField("type").toUpperCase());
+    var type = TreeType.stringToEnum(optionField("type"));
+    
 
     try {
-      _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty, type, _receiver.currentSeason());
-    } catch (InvalidTypeException e) {
-      throw e;
+      _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty, type, _receiver.currentSeason(), _receiver);
+    } catch (InvalidTypeException | UnknownIdException e) {
+      throw new UnknownHabitatKeyException(habitat);
+    } catch (DuplicateIdException e) {
+      throw new DuplicateTreeKeyException(id);
     }
   }
 }

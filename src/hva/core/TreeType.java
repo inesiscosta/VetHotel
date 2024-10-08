@@ -6,4 +6,27 @@ package hva.core;
 public enum TreeType {
     DECIDUOUS,
     EVERGREEN;
+
+
+    /**
+     * A method for processing the string input from the App to the enum used internally
+     *
+     * @param type The input string
+     * @return treeType the Enum that corresponds to the string
+     */
+    public static TreeType stringToEnum(String type) {  //FIXME Ines temos de ver ser fazemos isto ou other way maybe override valueOf? 
+        TreeType treeType = null;
+        switch (type) {
+            case "CAD":
+              treeType = TreeType.DECIDUOUS;
+              return treeType;
+
+            case "PER":
+                treeType = TreeType.EVERGREEN;
+                return treeType;
+
+            default:
+                return treeType;
+        }
+    }
 }

@@ -206,7 +206,7 @@ public class Parser {
           Tree tree =_tempTreesNoHabitat.get(treeKey);
           hab.plantTree(tree.id(), tree.name(), tree.age(),
           tree.baseCleaningDifficulty(), tree.treeType(),
-          _hotel.currentSeason());
+          _hotel.currentSeason(), _hotel);
         }
       }
     } catch (InvalidTypeException | DuplicateIdException e) {
