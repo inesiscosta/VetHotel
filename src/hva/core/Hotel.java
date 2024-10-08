@@ -4,7 +4,7 @@ import hva.core.exception.*;
 import java.io.*;
 import java.util.*;
 //TODO Maybe this import are not necessary
-/*import hva.core.Animal;
+import hva.core.Animal;
 import hva.core.Deciduous;
 import hva.core.Employee;
 import hva.core.Evergreen;
@@ -19,7 +19,6 @@ import hva.core.VaccinationRecord;
 import hva.core.Vaccine;
 import hva.core.Veterinarian;
 import hva.core.ZooKeeper;
-*/
 
 /**
  * Represents a Vet Hotel.
