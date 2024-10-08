@@ -5,7 +5,6 @@ import hva.core.exception.DuplicateIdException;
 import hva.app.exception.DuplicateEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-//FIXME add more imports if needed
 
 /**
  * Adds a new employee to this zoo hotel.
@@ -16,7 +15,7 @@ class DoRegisterEmployee extends Command<Hotel> {
     super(Label.REGISTER_EMPLOYEE, receiver);
     addStringField("id", Prompt.employeeKey());
     addStringField("name", Prompt.employeeName());
-    addStringField("type", Prompt.employeeType());
+    addOptionField("type", Prompt.employeeType(), "TRT", "VET");
   }
   
   @Override

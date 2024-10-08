@@ -27,7 +27,11 @@ class DoAddResponsibility extends Command<Hotel> {
     try {
       _receiver.addResponsibility(id, responsibility);
     } catch (UnknownIdException e) {
-      throw new UnknownEmployeeKeyException(id);
+      if(e.getMessage().contains("Habitat") || e.getMessage().contains("Species")) {
+        throw new NoResponsibilityException(id, responsibility);
+      } else {
+        throw new UnknownEmployeeKeyException(id);
+      }
     }
   }
 }

@@ -10,10 +10,12 @@ public class UnknownIdException extends Exception {
   @Serial
   private static final long serialVersionUID = 202407081733L;
   
-  private static final String ERROR_MESSAGE = "Id not found: ";
+  private static final String ERROR_MESSAGE = "id not found: ";
   private static final String ERROR_MESSAGE_HABITAT = "Habitat doesnt exists: ";
   private static final String ERROR_MESSAGE_EMPLOYEE = "Employee doesnt exists: ";
   private static final String ERROR_MESSAGE_SPECIES = "Species doesnt exists: ";
+  private static final String ERROR_MESSAGE_ANIMAL = "Animal doesnt exists: ";
+  private static final String ERROR_MESSAGE_VACCINE = "Vaccine doesnt exists: ";
 
   
   /**
@@ -56,5 +58,19 @@ public class UnknownIdException extends Exception {
    **/
   public static String errorMessageSpecies() {
     return ERROR_MESSAGE_SPECIES;
+  }
+
+      /**
+   * Used to construct the error message for Animal
+   **/
+  public static String errorMessageAnimal() {
+    return ERROR_MESSAGE_ANIMAL;
+  }
+
+      /**
+   * Used to construct the error message for Animal
+   **/
+  public static String errorMessageVaccine() {
+    return ERROR_MESSAGE_VACCINE;
   }
 }

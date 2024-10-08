@@ -88,7 +88,7 @@ public class Hotel implements Serializable {
       if (animal != null)
         return animal;
     }
-    throw new UnknownIdException(UnknownIdException.errorMessage() + idAnimal);
+    throw new UnknownIdException(UnknownIdException.errorMessageAnimal() + idAnimal);
   }
 
   /**
@@ -113,7 +113,7 @@ public class Hotel implements Serializable {
    */
   public Veterinarian identifyVet(String idVet) throws UnknownIdException {
     if(!_employees.containsKey(idVet))
-      throw new UnknownIdException(UnknownIdException.errorMessage() + idVet);
+      throw new UnknownIdException("Veterinarian" + UnknownIdException.errorMessage() + idVet);
     Employee employee =  _employees.get(idVet);
     if (employee.type().toString() == "VET")
       return (Veterinarian) employee;
@@ -122,7 +122,7 @@ public class Hotel implements Serializable {
 
   public Employee identifyEmployee(String idEmployee) throws UnknownIdException {
     if(!_employees.containsKey(idEmployee))
-      throw new UnknownIdException(UnknownIdException.errorMessage() + idEmployee);
+      throw new UnknownIdException(UnknownIdException.errorMessageEmployee() + idEmployee);
     return _employees.get(idEmployee);
   }
 
@@ -135,7 +135,7 @@ public class Hotel implements Serializable {
    */
   public Vaccine identifyVaccine(String idVaccine) throws UnknownIdException {
     if(!_vaccines.containsKey(idVaccine))
-      throw new UnknownIdException(UnknownIdException.errorMessage() + idVaccine);
+      throw new UnknownIdException(UnknownIdException.errorMessageVaccine() + idVaccine);
     return _vaccines.get(idVaccine);
   }
 
@@ -291,7 +291,7 @@ public class Hotel implements Serializable {
    * @param idEmployee the employee's unique identifier
    * @param idReponsibility the responsibility's unique identifier
    * @throws UnknownIdException if the employee or responsibility with the 
-   * given id is not found //MIGUEL CHECK
+   * given id is not found
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
   throws UnknownIdException {
@@ -303,6 +303,26 @@ public class Hotel implements Serializable {
       + idEmployee, e);
     }
     employee.addResponsibility(idReponsibility);
+  }
+
+  /**
+   * Removes a responsibility of an employee.
+   * 
+   * @param idEmployee the employee's unique identifier
+   * @param idReponsibility the responsibility's unique identifier
+   * @throws UnknownIdException if the employee or responsibility with the 
+   * given id is not found
+   */
+  public void removeResponsibility(String idEmployee, String idReponsibility)
+  throws UnknownIdException {
+    Employee employee;
+    try {
+      employee = _employees.get(idEmployee);
+    } catch (NullPointerException e) {
+      throw new UnknownIdException(UnknownIdException.errorMessageEmployee()
+      + idEmployee, e);
+    }
+    employee.removeResponsibility(idReponsibility);
   }
 
   /**
