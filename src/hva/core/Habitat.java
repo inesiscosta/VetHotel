@@ -1,7 +1,6 @@
 package hva.core;
 
 import hva.core.exception.*;
-import java.util.Comparator;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +29,6 @@ public class Habitat extends NamedEntity {
     _area = area;
     _animals = new TreeMap<String,Animal>(); //String is the id of the Animal.
     _assignedKeepers = new TreeSet<ZooKeeper>();
-   // _trees = new TreeSet<Tree>(Comparator.comparing(Tree::id));
     _trees = new TreeSet<Tree>();
     _influences = new HashMap<>();
   }

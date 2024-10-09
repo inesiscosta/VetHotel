@@ -2,10 +2,12 @@ package hva.core;
 
 import static java.lang.Math.log;
 
+import java.util.Comparator;
+
 /**
  * Represents a generic tree in the Vet Hotel.
  */
-public abstract class Tree extends NamedEntity {
+public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
   private int _age;
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;
@@ -125,6 +127,10 @@ public abstract class Tree extends NamedEntity {
     return _creationSeason == currentSeason;
   }
 
+  @Override
+  public int compare(Tree t1, Tree t2) {
+    return t1.id().compareTo(t2.id());
+  }
   /**
    * Increments the tree's age by one. Only used when the season changes
    * and it matches the tree's season at creation.
