@@ -18,16 +18,20 @@ import java.io.IOException;
 class DoOpenFile extends Command<HotelManager> {
   DoOpenFile(HotelManager receiver) {
     super(Label.OPEN_FILE, receiver);
+    addBooleanField("save", Prompt.saveBeforeExit());
     addStringField("filename", Prompt.openFile());
-    
   }
 
   @Override
   protected final void execute() throws CommandException {
-    if(Form.confirm(Prompt.saveBeforeExit()))
-       new DoSaveFile(_receiver);
+    var save = booleanField("save");
+    String filename = stringField("filename");
+    if(save) {
+       DoSaveFile saveFile = new DoSaveFile(_receiver);
+       saveFile.execute();
+    }
     try {
-      _receiver.load(stringField("filename"));
+      _receiver.load(filename);
    // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
       } catch (UnavailableFileException e) {
         throw new FileOpenFailedException(e);

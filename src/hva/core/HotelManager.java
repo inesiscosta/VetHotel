@@ -14,6 +14,13 @@ public class HotelManager {
   private Hotel _hotel = new Hotel();
   private String _filename = null;
   
+
+  public boolean isAssociated() {
+    if(_filename == null)
+      return false;
+    return true;
+  }
+
   /**
    * Advacances the season in the hotels
    */
@@ -80,7 +87,7 @@ public class HotelManager {
     try {
       FileInputStream file = new FileInputStream(filename);
       ObjectInputStream importedHotel = new ObjectInputStream(file);
-      _hotel = (Hotel)importedHotel.readObject();
+      _hotel = (Hotel) importedHotel.readObject();
       importedHotel.close();
     } catch (IOException | ClassNotFoundException e) {
         throw new UnavailableFileException(filename);
