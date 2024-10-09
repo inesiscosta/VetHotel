@@ -18,23 +18,38 @@ import java.io.IOException;
 class DoOpenFile extends Command<HotelManager> {
   DoOpenFile(HotelManager receiver) {
     super(Label.OPEN_FILE, receiver);
-    addBooleanField("save", Prompt.saveBeforeExit());
     addStringField("filename", Prompt.openFile());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    var save = booleanField("save");
     String filename = stringField("filename");
-    if(save) {
-       DoSaveFile saveFile = new DoSaveFile(_receiver);
-       saveFile.execute();
-    }
+    boolean unsavedChange = false;
     try {
-      _receiver.load(filename);
-   // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
-      } catch (UnavailableFileException e) {
-        throw new FileOpenFailedException(e);
+      unsavedChange = _receiver.unsavedChanges(_receiver.getHotel());
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+    if(!_receiver.isAssociated())
+      unsavedChange = false;
+    if(unsavedChange) {
+      if(Form.confirm(Prompt.saveBeforeExit())) {
+        DoSaveFile saveFile = new DoSaveFile(_receiver);
+        saveFile.execute();
+      }
+      try {
+        _receiver.load(filename);
+    // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
+        } catch (UnavailableFileException e) {
+          throw new FileOpenFailedException(e);
+      }
+    } else {
+      try {
+        _receiver.load(filename);
+    // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
+        } catch (UnavailableFileException e) {
+          throw new FileOpenFailedException(e);
+      }
     }
   }
 }

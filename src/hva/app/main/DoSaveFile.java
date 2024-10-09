@@ -22,7 +22,7 @@ class DoSaveFile extends Command<HotelManager> {
     try {
       String filename;
       if (!_receiver.isAssociated()) {
-          filename = Form.requestString(Prompt.saveAs());
+          filename = Form.requestString(Prompt.newSaveAs());
           _receiver.saveAs(filename);
       }
       _receiver.save();

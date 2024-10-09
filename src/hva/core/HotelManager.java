@@ -3,8 +3,6 @@ package hva.core;
 import hva.core.exception.*;
 import java.io.*;
 
-// FIXME import classes
-
 /**
  * Class representing the manager of this application. It manages the current
  * zoo hotel.
@@ -34,6 +32,7 @@ public class HotelManager {
    */
   public void newHotel() {
     _hotel = new Hotel();
+    _filename = null;
   }
 
   /**
@@ -49,10 +48,10 @@ public class HotelManager {
    **/
   public void save() throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    if(_filename == null) {
-      saveAs("appState.dat");
-    } else {
+    if(isAssociated()) {
       saveAs(_filename);
+    } else {
+      throw new MissingFileAssociationException();
     }
   }
   
@@ -70,11 +69,13 @@ public class HotelManager {
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
+    if(_filename != null && _filename != filename)
+      throw new MissingFileAssociationException();
     _filename = filename;
-      FileOutputStream file = new FileOutputStream(filename);
-      ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
-      exportedHotel.writeObject(_hotel);
-      exportedHotel.close(); 
+    FileOutputStream file = new FileOutputStream(filename);
+    ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
+    exportedHotel.writeObject(_hotel);
+    exportedHotel.close(); 
   }
   
   /**
@@ -84,16 +85,12 @@ public class HotelManager {
    * not exist or there is an error while processing this file.
    **/
   public void load(String filename) throws UnavailableFileException {
-    try {
-      FileInputStream file = new FileInputStream(filename);
-      ObjectInputStream importedHotel = new ObjectInputStream(file);
+    try (ObjectInputStream importedHotel = new ObjectInputStream(new FileInputStream(filename))) {
       _hotel = (Hotel) importedHotel.readObject();
-      importedHotel.close();
+      _filename = filename;
     } catch (IOException | ClassNotFoundException e) {
         throw new UnavailableFileException(filename);
     }
-   
-
   }
   
   /**
@@ -113,6 +110,30 @@ public class HotelManager {
     }
   } 
   
+  public boolean unsavedChanges(Hotel hotel) throws UnavailableFileException{
+    boolean unsavedChanges = false;
+    try (ObjectInputStream inputObjectStream= new ObjectInputStream(new FileInputStream(_filename))) {
+      
+      Hotel importedHotel = (Hotel) inputObjectStream.readObject();
+
+      ByteArrayOutputStream outputByteStream = new ByteArrayOutputStream();
+      ObjectOutputStream exportedHotel = new ObjectOutputStream(outputByteStream);
+
+      exportedHotel.writeObject(hotel);
+      exportedHotel.flush();
+      
+      ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(outputByteStream.toByteArray());
+      try (ObjectInputStream currentHotelStream = new ObjectInputStream(byteArrayInputStream)) {
+          Hotel currentHotel = (Hotel) currentHotelStream.readObject();
+          unsavedChanges = !importedHotel.equals(currentHotel);
+      }
+
+    } catch (IOException | ClassNotFoundException e) {
+        throw new UnavailableFileException(_filename);
+    }
+    return unsavedChanges;
+  }
+
   /**
    * Returns the zoo hotel managed by this instance.
    *
