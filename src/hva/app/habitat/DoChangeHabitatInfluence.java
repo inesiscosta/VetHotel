@@ -1,7 +1,8 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownHabitatIdException;
+import hva.core.exception.UnknownSpeciesIdException;
 import hva.app.exception.UnknownHabitatKeyException;
 import hva.app.exception.UnknownSpeciesKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -28,10 +29,9 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     
     try {
       _receiver.changeHabitatInflunece(_receiver.identifyHabitat(idHabitat), _receiver.identifySpecies(idSpecies), influence);
-    } catch (UnknownIdException e) {
-      if(e.getMessage().contains("Habitat"))
+    } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(idHabitat);
-      if(e.getMessage().contains("Species"))
+    } catch (UnknownSpeciesIdException e) {
         throw new UnknownSpeciesKeyException(idSpecies);
     }
   }

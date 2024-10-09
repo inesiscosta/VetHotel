@@ -1,7 +1,7 @@
 package hva.app.search;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownAnimalIdException;
 import hva.app.exception.UnknownAnimalKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -23,7 +23,7 @@ class DoShowMedicalActsOnAnimal extends Command<Hotel> {
     try {
       var animal = _receiver.identifyAnimal(idAnimal);
       _display.popup(_receiver.listAnimalVaccinationHistory(animal));
-    } catch (UnknownIdException e) {
+    } catch (UnknownAnimalIdException e) {
       throw new UnknownAnimalKeyException(idAnimal);
     }
   }

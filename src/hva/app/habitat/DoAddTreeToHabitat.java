@@ -5,8 +5,8 @@ import hva.app.exception.UnknownHabitatKeyException;
 import hva.app.exception.DuplicateTreeKeyException;
 import hva.core.TreeType;
 import hva.core.exception.DuplicateIdException;
-import hva.core.exception.InvalidTypeException;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.InvalidTreeTypeException;
+import hva.core.exception.UnknownHabitatIdException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
@@ -37,7 +37,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
 
     try {
       _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty, type, _receiver.currentSeason(), _receiver);
-    } catch (InvalidTypeException | UnknownIdException e) {
+    } catch (InvalidTreeTypeException | UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(habitat);
     } catch (DuplicateIdException e) {
       throw new DuplicateTreeKeyException(id);

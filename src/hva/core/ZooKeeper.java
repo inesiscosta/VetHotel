@@ -1,6 +1,8 @@
 package hva.core;
 
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownHabitatIdException;
+import hva.core.exception.UnknownResponsabilityException;
+
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -52,24 +54,34 @@ public class ZooKeeper extends Employee {
    * Adds a habitat to the list of habitats the zookeeper is responsible for.
    * 
    * @param id the habitat's unique identifier
-   * @throws UnknowIdException if the habitat's identifier is unknown
+   * @throws UnknownResponsabilityException if the habitat's identifier is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknownIdException {
-    _assignedHabitats.add(this.hotel().identifyHabitat(id));
-    this.hotel().identifyHabitat(id).addKeeper(this);
+  void addResponsibility(String id) throws UnknownResponsabilityException {
+    try {
+      _assignedHabitats.add(this.hotel().identifyHabitat(id));
+      this.hotel().identifyHabitat(id).addKeeper(this);
+    } catch (UnknownHabitatIdException e) {
+      throw new UnknownResponsabilityException(id,e);
+    }
+
   }
 
   /**
    * Removes a habitat from the list of habitats the zookeeper is responsible for.
    * 
    * @param id the habitat's unique identifier
-   * @throws UnknowIdException if the habitat's identifier is unknown
+   * @throws UnknownResponsabilityException if the habitat's identifier is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownIdException {
-    _assignedHabitats.remove(this.hotel().identifyHabitat(id));
+  void removeResponsibility(String id) throws UnknownResponsabilityException {
+    try {
+      _assignedHabitats.remove(this.hotel().identifyHabitat(id));
     this.hotel().identifyHabitat(id).removeKeeper(this);
+    } catch (UnknownHabitatIdException e) {
+      throw new UnknownResponsabilityException(id,e);
+    }
+    
   }
 
   /**

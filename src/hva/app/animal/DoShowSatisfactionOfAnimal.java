@@ -1,7 +1,7 @@
 package hva.app.animal;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownAnimalIdException;
 import hva.app.exception.UnknownAnimalKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -22,7 +22,7 @@ class DoShowSatisfactionOfAnimal extends Command<Hotel> {
 
     try {
       _display.popup(_receiver.identifyAnimal(id).calculateSatisfaction());
-    } catch (UnknownIdException e) {
+    } catch (UnknownAnimalIdException e) {
       throw new UnknownAnimalKeyException(id);
     }
   }

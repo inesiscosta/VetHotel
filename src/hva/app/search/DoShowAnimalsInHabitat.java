@@ -1,7 +1,7 @@
 package hva.app.search;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownHabitatIdException;
 import hva.app.habitat.Prompt;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -24,7 +24,7 @@ class DoShowAnimalsInHabitat extends Command<Hotel> {
     try {
       var habitat = _receiver.identifyHabitat(idHabitat);
       _display.popup(habitat.listAnimals());
-    } catch (UnknownIdException e) {
+    } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     }
   }

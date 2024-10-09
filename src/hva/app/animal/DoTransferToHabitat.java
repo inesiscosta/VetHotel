@@ -1,7 +1,8 @@
 package hva.app.animal;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownAnimalIdException;
+import hva.core.exception.UnknownHabitatIdException;
 import hva.app.exception.UnknownAnimalKeyException;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -29,10 +30,10 @@ class DoTransferToHabitat extends Command<Hotel> {
       try {
         var habitat = _receiver.identifyHabitat(idHabitat);
         animal.changeHabitat(habitat);
-      } catch (UnknownIdException e) {
+      } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(idHabitat);
       }
-    } catch (UnknownIdException e) {
+    } catch (UnknownAnimalIdException e) {
       throw new UnknownAnimalKeyException(id);
     }
   }

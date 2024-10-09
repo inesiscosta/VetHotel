@@ -42,12 +42,16 @@ public class Veterinarian extends Employee {
    * knows how to vaccinate.
    * 
    * @param id the species' unique identifier
-   * @throws UnknowIdException if the species' identifier is unknown
+   * @throws UnknownResponsabilityException if the species' identifier is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknownIdException {
-    _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
+  void addResponsibility(String id) throws UnknownResponsabilityException {
+    try {
+      _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     this.hotel().identifySpecies(id).addQualifiedVet(this);
+    } catch (UnknownSpeciesIdException e) {
+      throw new UnknownResponsabilityException(id, e);
+    }
   }
 
   /**
@@ -55,12 +59,16 @@ public class Veterinarian extends Employee {
    * knows how to vaccinate.
    * 
    * @param id the species' unique identifier
-   * @throws UnknowIdException if the species' identifier is unknown
+   * @throws UnknownResponsabilityException if the species' identifier is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownIdException {
-    _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
-    this.hotel().identifySpecies(id).removeQualifiedVet(this);
+  void removeResponsibility(String id) throws UnknownResponsabilityException {
+    try {
+      _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
+      this.hotel().identifySpecies(id).removeQualifiedVet(this);
+    } catch (UnknownSpeciesIdException e) {
+      throw new UnknownResponsabilityException(id, e);
+    }
   }
 
   /**
@@ -89,7 +97,9 @@ public class Veterinarian extends Employee {
    * @return a new VaccinationRecord object to be added to the list of
    * vaccination records stored in the hotel
    */
-  VaccinationRecord vaccinate(Vaccine vaccine, Animal animal) {
+  VaccinationRecord vaccinate(Vaccine vaccine, Animal animal) throws EmployeeNotResponsibleException {
+    if(!_knowsHowToVaccinate.contains(animal.species()))
+      throw new EmployeeNotResponsibleException(animal.species().id());
     HealthStatus animalHealthStatus = vaccine.determineVaccineEffect(animal);
     animal.updateHealthHistory(animalHealthStatus);
     vaccine.incrementNumApplications();

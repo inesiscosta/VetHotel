@@ -1,7 +1,7 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownHabitatIdException;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -21,7 +21,7 @@ class DoShowAllTreesInHabitat extends Command<Hotel> {
     var id = stringField("id");
     try {
       _display.popup(_receiver.listTreesHabitat(_receiver.identifyHabitat(id)));
-    } catch (UnknownIdException e) {
+    } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }
      

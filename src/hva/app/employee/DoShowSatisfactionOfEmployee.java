@@ -1,7 +1,7 @@
 package hva.app.employee;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownEmployeeIdException;
 import hva.app.exception.UnknownEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -21,7 +21,7 @@ class DoShowSatisfactionOfEmployee extends Command<Hotel> {
     var id = stringField("id");
     try {
       _display.popup(_receiver.identifyEmployee(id).calculateSatisfaction());
-    } catch (UnknownIdException e) {
+    } catch (UnknownEmployeeIdException e) {
       throw new UnknownEmployeeKeyException(id);
     }
   }

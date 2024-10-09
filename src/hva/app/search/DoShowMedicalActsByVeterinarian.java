@@ -1,7 +1,7 @@
 package hva.app.search;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownVeterinarianIdException;
 import hva.app.employee.Prompt;
 import hva.app.exception.UnknownVeterinarianKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -24,7 +24,7 @@ class DoShowMedicalActsByVeterinarian extends Command<Hotel> {
     try {
       var veterinarian = _receiver.identifyVet(idVet);
       _display.popup(_receiver.listVetVaccinationRecords(veterinarian));
-    } catch (UnknownIdException e) {
+    } catch (UnknownVeterinarianIdException e) {
       throw new UnknownVeterinarianKeyException(idVet);
     }
   }

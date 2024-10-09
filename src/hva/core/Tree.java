@@ -127,10 +127,18 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
     return _creationSeason == currentSeason;
   }
 
+  /**
+   * Compare method override used to define a new natural order for TreeSet,
+   * comparing between the ids.
+   * @param t1 the first Tree object to compare
+   * @param t2 the second Tree object to compare
+   * @return the value returned by the compareTo between the two ids strings
+   */
   @Override
   public int compare(Tree t1, Tree t2) {
     return t1.id().compareTo(t2.id());
   }
+
   /**
    * Increments the tree's age by one. Only used when the season changes
    * and it matches the tree's season at creation.

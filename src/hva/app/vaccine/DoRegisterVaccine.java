@@ -2,7 +2,8 @@ package hva.app.vaccine;
 
 import hva.core.Hotel;
 import hva.core.exception.DuplicateIdException;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.DuplicateVaccineIdException;
+import hva.core.exception.UnknownSpeciesIdException;
 import hva.app.exception.UnknownSpeciesKeyException;
 import hva.app.exception.DuplicateVaccineKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -29,9 +30,9 @@ class DoRegisterVaccine extends Command<Hotel> {
     try {
       String[] speciesArray = species.split("\\s*,\\s*");
       _receiver.registerVaccine(vaccine, name, speciesArray);
-    } catch (DuplicateIdException e) {
+    } catch (DuplicateIdException | DuplicateVaccineIdException e) {
       throw new DuplicateVaccineKeyException(vaccine);
-    } catch (UnknownIdException e) {
+    } catch (UnknownSpeciesIdException e) {
       throw new UnknownSpeciesKeyException(species);
     }
   }

@@ -1,7 +1,9 @@
 package hva.app.employee;
 
 import hva.core.Hotel;
+import hva.core.exception.DuplicateEmployeeIdException;
 import hva.core.exception.DuplicateIdException;
+import hva.core.exception.InvalidEmployeeTypeException;
 import hva.app.exception.DuplicateEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -26,7 +28,7 @@ class DoRegisterEmployee extends Command<Hotel> {
 
     try {
       _receiver.registerEmployee(id, name, type);
-    } catch (DuplicateIdException e) {
+    } catch (DuplicateEmployeeIdException | DuplicateIdException | InvalidEmployeeTypeException e) {
       throw new DuplicateEmployeeKeyException(id);
     }
   }

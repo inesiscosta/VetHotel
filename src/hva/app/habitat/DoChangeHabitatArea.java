@@ -1,7 +1,7 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownHabitatIdException;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -24,7 +24,7 @@ class DoChangeHabitatArea extends Command<Hotel> {
 
     try {
       _receiver.identifyHabitat(id).changeArea(area);
-    } catch (UnknownIdException e) {
+    } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }
   }

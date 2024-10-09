@@ -2,7 +2,12 @@ package hva.app.animal;
 
 import hva.core.Hotel;
 import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownSpeciesIdException;
+import hva.core.exception.DuplicateAnimalIdException;
 import hva.core.exception.DuplicateIdException;
+import hva.core.exception.DuplicateSpeciesIdException;
+import hva.core.exception.DuplicateSpeciesNameException;
+import hva.core.exception.UnknownHabitatIdException;
 
 import java.text.Normalizer.Form;
 
@@ -33,23 +38,23 @@ class DoRegisterAnimal extends Command<Hotel> {
 
     try {
       _receiver.registerAnimal(id, name, species, habitat);
-    } catch (DuplicateIdException e) {
+    } catch (DuplicateAnimalIdException e) {
       throw new DuplicateAnimalKeyException(id);
-    } catch (UnknownIdException e) {
-      if (e.getMessage().contains("Habitat")) {
+    } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(habitat);
-      } else if (e.getMessage().contains("Species")) {
+    } catch (UnknownSpeciesIdException e) {
         addStringField("speciesName", Prompt.speciesName());
         var speciesName = stringField("speciesName");
         try {
         _receiver.registerSpecies(species, speciesName);
         _receiver.registerAnimal(id, name, species, habitat);
-        } catch (UnknownIdException e1) {
+        } catch (UnknownHabitatIdException e1) {
           throw new UnknownHabitatKeyException(habitat);
-        } catch (DuplicateIdException e2) {
+        } catch (DuplicateAnimalIdException e2) {
           throw new DuplicateAnimalKeyException(species);
+        } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException | DuplicateIdException 
+        | UnknownSpeciesIdException e3) {
         }
-      }
     }
   }
 }

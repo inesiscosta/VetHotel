@@ -1,6 +1,7 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
+import hva.core.exception.DuplicateHabitatIdException;
 import hva.core.exception.DuplicateIdException;
 import hva.app.exception.DuplicateHabitatKeyException;
 // import pt.tecnico.uilib.forms.Form;
@@ -27,7 +28,7 @@ class DoRegisterHabitat extends Command<Hotel> {
 
     try {
       _receiver.registerHabitat(id, name, area);
-    } catch (DuplicateIdException e) {
+    } catch (DuplicateHabitatIdException | DuplicateIdException e) {
       throw new DuplicateHabitatKeyException(id);
     }
   }

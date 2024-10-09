@@ -1,7 +1,8 @@
 package hva.app.employee;
 
 import hva.core.Hotel;
-import hva.core.exception.UnknownIdException;
+import hva.core.exception.UnknownEmployeeIdException;
+import hva.core.exception.UnknownResponsabilityException;
 import hva.app.exception.UnknownEmployeeKeyException;
 import hva.app.exception.NoResponsibilityException;
 import pt.tecnico.uilib.menus.Command;
@@ -26,12 +27,10 @@ class DoAddResponsibility extends Command<Hotel> {
 
     try {
       _receiver.addResponsibility(id, responsibility);
-    } catch (UnknownIdException e) {
-      if(e.getMessage().contains("Habitat") || e.getMessage().contains("Species")) {
+    } catch (UnknownResponsabilityException e) {
         throw new NoResponsibilityException(id, responsibility);
-      } else {
+    } catch (UnknownEmployeeIdException e) {
         throw new UnknownEmployeeKeyException(id);
-      }
     }
   }
 }
