@@ -186,10 +186,8 @@ public class Hotel implements Serializable {
     try {
       species = identifySpecies(idSpecies);
     } catch (UnknownIdException e) {
-      //If the species doesn't exist it calls registerSpecies
-      registerSpecies(idSpecies, name);
-      //After the new species is created it needs to make the object available
-      species = identifySpecies(idSpecies);
+      throw new UnknownIdException(UnknownIdException.errorMessageSpecies()
+      + idSpecies, e);
     } 
     new Animal(idAnimal, name, species, habitat);
     _usedIds.add(idAnimal);
@@ -202,7 +200,7 @@ public class Hotel implements Serializable {
    * @param name the species' name
    * @throws DuplicateIdException if the id is already used
    */
-  protected void registerSpecies(String id, String name)
+  public void registerSpecies(String id, String name)
   throws DuplicateIdException {
     try {
       identifySpecies(id);
