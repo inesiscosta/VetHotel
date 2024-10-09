@@ -5,7 +5,7 @@ import java.io.Serial;
 /**
  * Class for representing an invalid ID entry.
  */
-public class UnknownIdException extends Exception {
+public class EmployeeNotResponsibleException extends Exception {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -13,15 +13,15 @@ public class UnknownIdException extends Exception {
   /**
    * @param message the error message
    **/
-  public UnknownIdException(String id) {
-    super("Id not found:" + id);
+  public EmployeeNotResponsibleException(String id) {
+    super("Employee is not responsible for:" + id);
   }
 
     /**
    * @param message the error message
    * @param cause The cause of the exception
    **/
-  public UnknownIdException(String id, Exception cause) {
-    super("Id not found:" + id, cause);
+  public EmployeeNotResponsibleException(String id, Exception cause) {
+    super("Employee is not responsible for:" + id, cause);
   }
 }
