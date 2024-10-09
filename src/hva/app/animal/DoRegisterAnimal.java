@@ -3,6 +3,9 @@ package hva.app.animal;
 import hva.core.Hotel;
 import hva.core.exception.UnknownIdException;
 import hva.core.exception.DuplicateIdException;
+
+import java.text.Normalizer.Form;
+
 import hva.app.exception.DuplicateAnimalKeyException;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -18,7 +21,7 @@ class DoRegisterAnimal extends Command<Hotel> {
     addStringField("id", Prompt.animalKey());
     addStringField("name", Prompt.animalName());
     addStringField("species", Prompt.speciesKey());
-    addStringField("habitat", Prompt.habitatKey());
+    addStringField("habitat", hva.app.habitat.Prompt.habitatKey());
   }
   
   @Override

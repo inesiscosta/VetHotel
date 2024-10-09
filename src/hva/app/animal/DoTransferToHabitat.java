@@ -15,7 +15,7 @@ class DoTransferToHabitat extends Command<Hotel> {
   DoTransferToHabitat(Hotel hotel) {
     super(Label.TRANSFER_ANIMAL_TO_HABITAT, hotel);
     addStringField("id", Prompt.animalKey());
-    addStringField("habitat", Prompt.habitatKey());
+    addStringField("habitat", hva.app.habitat.Prompt.habitatKey());
   }
   
   // No error if tries to transfer to the habitat that its already in. Should it? Nop no enunciado diz em caso de erro o habitat nao e alterado
