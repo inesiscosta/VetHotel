@@ -1,8 +1,8 @@
 package hva.core;
-import java.util.Collection;
-import java.util.HashSet;
 
 import hva.core.exception.UnknownIdException;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Represents a ZooKeeper that works in a Vet Hotel.
@@ -32,7 +32,7 @@ public class ZooKeeper extends Employee {
   public double calculateSatisfaction() {
     double work = 0;
     for (Habitat habitat : _assignedHabitats)
-      work += (workEffort(habitat) / habitat.getNumKeepers()); // Check if the getNumKeepers should count with the Keeper itself
+      work += (workEffort(habitat) / habitat.getNumKeepers());
     return 300 - work;
   }
 

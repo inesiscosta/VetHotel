@@ -1,4 +1,5 @@
 package hva.core;
+
 import hva.core.exception.InvalidDamageValueException;
 
 /**

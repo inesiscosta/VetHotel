@@ -77,7 +77,8 @@ public class Vaccine extends NamedEntity {
    * 
    * @param animal the animal to determine the effect of the vaccine on
    * @return the effect of the vaccine on the animal
-   * @throws IllegalStateException if the Health Status cannot be determined // MIGUEL CHECK THIS
+   * @throws IllegalStateException if the Health Status cannot be determined
+   * / is not NORMAL, CONFUSION, ACCIDENT or ERROR
    */
   HealthStatus determineVaccineEffect(Animal animal) throws
   IllegalStateException {

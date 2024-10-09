@@ -1,4 +1,5 @@
 package hva.core;
+
 import java.util.Collection;
 import java.util.HashSet;
 

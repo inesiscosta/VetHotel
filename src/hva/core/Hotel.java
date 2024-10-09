@@ -56,7 +56,7 @@ public class Hotel implements Serializable {
   /**
    * Advances the hotel to the next season.
    */
-  public void nextSeason() {
+  void nextSeason() {
     _currentSeason = _currentSeason.nextSeason();
     for (Habitat habitat : _habitats.values())
       habitat.nextSeason(_currentSeason);
@@ -243,10 +243,6 @@ public class Hotel implements Serializable {
       case "TRT":
         employee = new ZooKeeper(id, name);
         break;
-//      default:
-//        throw new InvalidTypeException(InvalidTypeException.ErrorMessageEmployee()
-//        + type);
-// Stor não tem isto do lado da App nenhuma exceção para isto idk MIGUEL check
     }
     _employees.put(id, employee);
     _usedIds.add(id);

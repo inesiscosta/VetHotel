@@ -1,4 +1,5 @@
 package hva.core;
+
 import static java.lang.Math.log;
 
 /**

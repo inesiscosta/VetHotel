@@ -1,12 +1,12 @@
 package hva.core;
 
+import hva.core.exception.*;
+import java.util.Comparator;
 import java.util.Collection;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import java.util.Comparator;
-import hva.core.exception.*;
 
 /**
  * Represents a habitat in a Vet Hotel.

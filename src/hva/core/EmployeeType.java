@@ -16,11 +16,11 @@ public enum EmployeeType {
     public static String enumToString(EmployeeType type) {  //FIXME Ines temos de ver ser fazemos isto ou other way maybe override valueOf? 
       String employeeType = null;
       switch (type) {
-          case EmployeeType.VETERINARIAN:
+          case VETERINARIAN:
             employeeType = "VET";
             return employeeType;
 
-          case EmployeeType.ZOOKEEPER:
+          case ZOOKEEPER:
               employeeType = "TRT";
               return employeeType;
 

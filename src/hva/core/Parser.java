@@ -1,27 +1,21 @@
 package hva.core;
 
-import java.io.IOException;
-import java.io.FileReader;
-import java.io.BufferedReader;
-/*
-import java.io.Reader;
-TODO Maybe this import are not necessary
-import java.util.Collection;
-import java.util.ArrayList;
-*/
-import java.util.HashMap;
-
 import hva.core.exception.DuplicateIdException;
 import hva.core.exception.InvalidTypeException;
 import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnrecognizedEntryException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Parses a file with information about a Vet Hotel.
  */
 public class Parser {
   private Hotel _hotel;
-  private HashMap<String,Tree> _tempTreesNoHabitat;
+  private Map<String,Tree> _tempTreesNoHabitat;
   
   /**
    * Creates a new Parser.

@@ -18,11 +18,11 @@ public enum TreeType {
         TreeType treeType = null;
         switch (type) {
             case "CAD":
-              treeType = TreeType.DECIDUOUS;
+              treeType = DECIDUOUS;
               return treeType;
 
             case "PER":
-                treeType = TreeType.EVERGREEN;
+                treeType = EVERGREEN;
                 return treeType;
 
             default:

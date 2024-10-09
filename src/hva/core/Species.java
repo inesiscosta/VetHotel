@@ -1,7 +1,8 @@
 package hva.core;
+
 import java.util.Collection;
-import java.util.TreeSet;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * Represents a species of animals found in a Vet Hotel.
