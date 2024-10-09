@@ -2,7 +2,6 @@ package hva.app.vaccine;
 
 import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
-import pt.tecnico.uilib.menus.CommandException; //FIXME Does this need any exception
 
 /**
  * Show all vaccines.

@@ -1,11 +1,11 @@
 package hva.app.search;
 
 import hva.core.Hotel;
+import hva.core.exception.UnknownIdException;
+import hva.app.employee.Prompt;
 import hva.app.exception.UnknownVeterinarianKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-
-//FIXME add more imports if needed
 
 /**
  * Show all medical acts of a given veterinarian.
@@ -14,11 +14,18 @@ class DoShowMedicalActsByVeterinarian extends Command<Hotel> {
 
   DoShowMedicalActsByVeterinarian(Hotel receiver) {
     super(Label.MEDICAL_ACTS_BY_VET, receiver);
-    //FIXME add command fields
+    addStringField("veterinarian", Prompt.employeeKey());
   }
   
   @Override
   protected void execute() throws CommandException {
-    //FIXME implement command
+    var idVet = stringField("veterinarian");
+
+    try {
+      var veterinarian = _receiver.identifyVet(idVet);
+      _display.popup(_receiver.listVetVaccinationRecords(veterinarian));
+    } catch (UnknownIdException e) {
+      throw new UnknownVeterinarianKeyException(idVet);
+    }
   }
 }

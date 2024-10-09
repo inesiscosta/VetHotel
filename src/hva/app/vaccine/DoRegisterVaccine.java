@@ -1,11 +1,12 @@
 package hva.app.vaccine;
 
 import hva.core.Hotel;
+import hva.core.exception.DuplicateIdException;
+import hva.core.exception.UnknownIdException;
 import hva.app.exception.UnknownSpeciesKeyException;
 import hva.app.exception.DuplicateVaccineKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-//FIXME add more imports if needed
 
 /**
  * Apply a vaccine to a given animal.
@@ -14,11 +15,24 @@ class DoRegisterVaccine extends Command<Hotel> {
 
   DoRegisterVaccine(Hotel receiver) {
     super(Label.REGISTER_VACCINE, receiver);
-    //FIXME add command fields
+    addStringField("vaccine", Prompt.vaccineKey());
+    addStringField("name", Prompt.vaccineName());
+    addStringField("species", Prompt.listOfSpeciesKeys());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    //FIXME implement command
+    var vaccine = stringField("vaccine");
+    var name = stringField("name");
+    var species = stringField("species");
+
+    try {
+      String[] speciesArray = species.split("\\s*,\\s*");
+      _receiver.registerVaccine(vaccine, name, speciesArray);
+    } catch (DuplicateIdException e) {
+      throw new DuplicateVaccineKeyException(vaccine);
+    } catch (UnknownIdException e) {
+      throw new UnknownSpeciesKeyException(species);
+    }
   }
 }

@@ -328,7 +328,7 @@ public class Hotel implements Serializable {
    * @param animal the animal to vaccinate
    * @param vaccine the vaccine to apply
    */
-  protected void addVaccinationRecord(Veterinarian vet, Animal animal,
+  public void addVaccinationRecord(Veterinarian vet, Animal animal,
   Vaccine vaccine) {
     VaccinationRecord record = vet.vaccinate(vaccine, animal);
     _vaccinationRecords.add(record);
@@ -444,6 +444,20 @@ public class Hotel implements Serializable {
   }
 
   /**
+   * Lists all vaccination records in a string containing
+   * information about each record.
+   * 
+   * @return a String containing the VaccinationRecord object string
+   * representation of all vaccination records
+   */
+  public String listVaccinationRecords() {
+    StringBuilder listVaccinationRecords = new StringBuilder();
+    for(VaccinationRecord record : _vaccinationRecords)
+      listVaccinationRecords.append(record.toString()).append("\n");
+    return listVaccinationRecords.toString();
+  }
+
+  /**
    * Lists all vaccination records of vaccines given to a given
    * animal in a string containing information about each record.
    * 
@@ -484,7 +498,7 @@ public class Hotel implements Serializable {
    * @return a String containing the VaccinationRecord object string
    * representation of all erroneous vaccination records
    */
-  public String listErroneousVaccination() {
+  public String listErroneousVaccinations() {
     StringBuilder erroneousVaccination = new StringBuilder();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.damage() != "NORMAL")

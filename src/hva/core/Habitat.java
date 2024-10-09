@@ -216,7 +216,7 @@ public class Habitat extends NamedEntity {
    * @return a String containing the Animal object string representation of
    * all animals in the habitat
    */
-  String listAnimals() {
+  public String listAnimals() {
     StringBuilder listAnimals = new StringBuilder();
     for(Animal animal : _animals.values())
       listAnimals.append(animal.toString()).append("\n");
