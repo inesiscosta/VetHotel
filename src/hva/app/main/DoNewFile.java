@@ -2,7 +2,6 @@ package hva.app.main;
 
 import java.io.IOException;
 
-import hva.app.exception.FileOpenFailedException;
 import hva.core.HotelManager;
 import hva.core.exception.MissingFileAssociationException;
 import hva.core.exception.UnavailableFileException;
@@ -23,9 +22,7 @@ class DoNewFile extends Command<HotelManager> {
     boolean unsavedChange = false;
     try {
       unsavedChange = _receiver.unsavedChanges(_receiver.getHotel());
-    } catch (UnavailableFileException e) {
-      throw new FileOpenFailedException(e);
-    }
+    } catch (UnavailableFileException e) {}
     if (!unsavedChange) {
       if(Form.confirm(Prompt.saveBeforeExit())) {
         try {

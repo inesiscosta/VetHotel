@@ -24,9 +24,7 @@ class DoOpenFile extends Command<HotelManager> {
     boolean unsavedChange = false;
     try {
       unsavedChange = _receiver.unsavedChanges(_receiver.getHotel());
-    } catch (UnavailableFileException e) {
-      throw new FileOpenFailedException(e);
-    }
+    } catch (UnavailableFileException e) {}
     if(!_receiver.isAssociated())
       unsavedChange = false;
     if(unsavedChange) {

@@ -1,5 +1,6 @@
 package hva.core;
 
+import hva.app.exception.NoResponsibilityException;
 import hva.core.exception.*;
 import java.io.*;
 
@@ -135,7 +136,7 @@ public class HotelManager {
           unsavedChanges = !importedHotel.equals(currentHotel);
       }
 
-    } catch (IOException | ClassNotFoundException e) {
+    } catch (IOException | ClassNotFoundException | NullPointerException e) {
         throw new UnavailableFileException(_filename);
     }
     return unsavedChanges;
