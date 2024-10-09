@@ -25,6 +25,7 @@ replay_pid*
 
 *.diff
 *.outhyp
+*.dat
 
 #MacOS
 .DS_Store
