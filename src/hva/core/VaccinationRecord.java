@@ -1,9 +1,16 @@
 package hva.core;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * Represents a record of a vaccination event.
  */
-public class VaccinationRecord {
+public class VaccinationRecord implements Serializable {
+
+  @Serial
+  private static final long serialVersionUID = 202407081733L;
+
   private HealthStatus _damage;
   private Vaccine _administeredVaccine;
   private Veterinarian _administeringVet;
