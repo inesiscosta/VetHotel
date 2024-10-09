@@ -19,10 +19,13 @@ class DoOpenFile extends Command<HotelManager> {
   DoOpenFile(HotelManager receiver) {
     super(Label.OPEN_FILE, receiver);
     addStringField("filename", Prompt.openFile());
+    
   }
 
   @Override
   protected final void execute() throws CommandException {
+    if(Form.confirm(Prompt.saveBeforeExit()))
+       new DoSaveFile(_receiver);
     try {
       _receiver.load(stringField("filename"));
    // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {

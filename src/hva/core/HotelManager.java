@@ -12,7 +12,23 @@ import java.io.*;
 public class HotelManager {
   /** The current zoo hotel */ // Should we initialize this field?
   private Hotel _hotel = new Hotel();
+  private String _filename = null;
   
+  /**
+   * Advacances the season in the hotels
+   */
+  public void nextSeason() {
+    //TODO In the next realese implempent multiple hotels
+    _hotel.nextSeason();
+  }
+
+  /**
+   * Creates a new hotel with a anonymous file associated
+   */
+  public void newHotel() {
+    _hotel = new Hotel();
+  }
+
   /**
    * Saves the serialized application's state into the file
    * associated to the current network.
@@ -26,7 +42,11 @@ public class HotelManager {
    **/
   public void save() throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    saveAs("appState.dat");
+    if(_filename == null) {
+      saveAs("appState.dat");
+    } else {
+      saveAs(_filename);
+    }
   }
   
   /**
@@ -43,6 +63,7 @@ public class HotelManager {
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
+    _filename = filename;
       FileOutputStream file = new FileOutputStream(filename);
       ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
       exportedHotel.writeObject(_hotel);
