@@ -9,9 +9,6 @@ import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 /**
  * Command to open a file.
  */
@@ -27,8 +24,8 @@ class DoOpenFile extends Command<HotelManager> {
     boolean unsavedChange = false;
     try {
       unsavedChange = _receiver.unsavedChanges(_receiver.getHotel());
-    } catch (Exception e) {
-      // TODO: handle exception
+    } catch (UnavailableFileException e) {
+      throw new FileOpenFailedException(e);
     }
     if(!_receiver.isAssociated())
       unsavedChange = false;
@@ -39,14 +36,12 @@ class DoOpenFile extends Command<HotelManager> {
       }
       try {
         _receiver.load(filename);
-    // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
         } catch (UnavailableFileException e) {
           throw new FileOpenFailedException(e);
       }
     } else {
       try {
         _receiver.load(filename);
-    // } catch (UnavailableFileException | ClassNotFoundException | FileNotFoundException | hva.core.exception.ImportFileException efe) {
         } catch (UnavailableFileException e) {
           throw new FileOpenFailedException(e);
       }

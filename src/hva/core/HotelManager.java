@@ -104,12 +104,19 @@ public class HotelManager {
   public void importFile(String filename) throws ImportFileException {
     try {
       _hotel.importFile(filename);
-    } catch (IOException | UnrecognizedEntryException 
-    /* FIXME maybe other exceptions */ e) {
+    } catch (IOException | UnrecognizedEntryException e) {
       throw new ImportFileException(filename, e);
     }
   } 
   
+  /**
+   * Method used to check if there are diferences beetween the actual hotel and the one that 
+   * is serialized to a file, load that file and compara against the hotel.
+   * 
+   * @param hotel
+   * @return true if there unsaved changes in the hotel that are not in the associated file
+   * @throws UnavailableFileException
+   */
   public boolean unsavedChanges(Hotel hotel) throws UnavailableFileException{
     boolean unsavedChanges = false;
     try (ObjectInputStream inputObjectStream= new ObjectInputStream(new FileInputStream(_filename))) {
