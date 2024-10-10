@@ -25,7 +25,7 @@ class DoSaveFile extends Command<HotelManager> {
         _receiver.save();
       }
     } catch (MissingFileAssociationException | IOException e) {
-        return;
+       e.printStackTrace();
     }
   }
 }

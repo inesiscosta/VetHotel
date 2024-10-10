@@ -25,7 +25,7 @@ class DoShowMedicalActsByVeterinarian extends Command<Hotel> {
       var veterinarian = _receiver.identifyVet(idVet);
       _display.popup(_receiver.listVetVaccinationRecords(veterinarian));
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownVeterinarianKeyException(idVet);
+        throw new UnknownVeterinarianKeyException(idVet);
     }
   }
 }

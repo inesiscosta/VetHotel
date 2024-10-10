@@ -14,6 +14,6 @@ class DoShowGlobalSatisfaction extends Command<HotelManager> {
   
   @Override
   protected final void execute() throws CommandException {
-    //_display.popup(Message.calculateGlobalSatisfaction());
+    _display.popup(_receiver.getHotel().calculateGlobalSatisfaction());
   }
 }

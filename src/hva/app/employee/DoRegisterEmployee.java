@@ -30,6 +30,7 @@ class DoRegisterEmployee extends Command<Hotel> {
     } catch (DuplicateEmployeeIdException e) {
       throw new DuplicateEmployeeKeyException(id);
     } catch (InvalidEmployeeTypeException e) {
+      e.printStackTrace();
     }
   }
 }

@@ -41,7 +41,7 @@ class DoVaccinateAnimal extends Command<Hotel> {
     } catch (UnknownAnimalIdException e) { 
         throw new UnknownAnimalKeyException(idAnimal);
     } catch (EmployeeNotResponsibleException e) {
-      throw new VeterinarianNotAuthorizedException(idVet,idAnimal);
+        throw new VeterinarianNotAuthorizedException(idVet,idAnimal);
     }
     if(!vaccineApropriated)
      _display.popup(Message.wrongVaccine(idVaccine, idAnimal));

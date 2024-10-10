@@ -24,7 +24,7 @@ class DoShowMedicalActsOnAnimal extends Command<Hotel> {
       var animal = _receiver.identifyAnimal(idAnimal);
       _display.popup(_receiver.listAnimalVaccinationHistory(animal));
     } catch (UnknownAnimalIdException e) {
-      throw new UnknownAnimalKeyException(idAnimal);
+        throw new UnknownAnimalKeyException(idAnimal);
     }
   }
 }
