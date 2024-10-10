@@ -252,11 +252,11 @@ public class Hotel implements  HotelSubject {
     if (_employees.containsKey(id))
       throw new DuplicateEmployeeIdException(id);
     Employee employee = null;
-    switch (type) {   //TODO Maybe also use a method from the enum or change the TreeType and DoAddTreehabitat, DoShowAllEmployees and DoShowHabitats and DoShowTrees for consistent across the project
-      case "VET":
+    switch (EmployeeType.stringToEnum(type)) {  
+      case VETERINARIAN:
         employee = new Veterinarian(id, name);
         break;
-      case "TRT":
+      case ZOOKEEPER:
         employee = new ZooKeeper(id, name);
         break;
       default:
