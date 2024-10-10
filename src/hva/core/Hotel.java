@@ -168,21 +168,6 @@ public class Hotel implements  HotelSubject {
   }
 
   /**
-   * Test if this animal id already exists in one of the habitats
-   * 
-   * @param idAnimal the id of the animal
-   * @return returns true if the animal exist in one of the habitats 
-   * of the hotel
-   */
-  private boolean duplicatedAnimal(String idAnimal) {
-    for(Habitat habitat : _habitats.values()) {
-      if(habitat.containsAnimal(idAnimal))
-        return true;
-    }
-    return false;
-  }
-
-  /**
    * Identifies a species by its id.
    * 
    * @param idSpecies the id of the species to identify
@@ -294,12 +279,27 @@ public class Hotel implements  HotelSubject {
   public void registerAnimal(String idAnimal, String name, String idSpecies,
   String idHabitat) throws UnknownHabitatIdException,
   DuplicateAnimalIdException, UnknownSpeciesIdException {
-    if(duplicatedAnimal(idAnimal))
+    if(AnimalAlreadyExists(idAnimal))
       throw new DuplicateAnimalIdException(idHabitat);
     Habitat habitat = identifyHabitat(idHabitat);
     Species species = identifySpecies(idSpecies);
     new Animal(idAnimal, name, species, habitat);
     notifyHotelObservers();
+  }
+
+  /**
+   * Test if this animal id already exists in one of the habitats
+   * 
+   * @param idAnimal the id of the animal
+   * @return returns true if the animal exist in one of the habitats 
+   * of the hotel
+   */
+  private boolean AnimalAlreadyExists(String idAnimal) {
+    for(Habitat habitat : _habitats.values()) {
+      if(habitat.containsAnimal(idAnimal))
+        return true;
+    }
+    return false;
   }
 
   /**
@@ -385,8 +385,7 @@ public class Hotel implements  HotelSubject {
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityException {
-    Employee employee = identifyEmployee(idEmployee);
-    employee.addResponsibility(idReponsibility);
+    identifyEmployee(idEmployee).addResponsibility(idReponsibility);
     notifyHotelObservers();
   }
 
@@ -401,8 +400,7 @@ public class Hotel implements  HotelSubject {
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityException {
-    Employee employee = identifyEmployee(idEmployee);
-    employee.removeResponsibility(idReponsibility);
+    identifyEmployee(idEmployee).removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }
 
@@ -510,7 +508,7 @@ public class Hotel implements  HotelSubject {
    */
   public List<Vaccine> listVaccines() {
     List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
-    vaccines.sort(Comparator.comparing(vaccine-> vaccine.id(),
+    vaccines.sort(Comparator.comparing(Vaccine::id,
     String.CASE_INSENSITIVE_ORDER));
     return Collections.unmodifiableList(vaccines);
   }
