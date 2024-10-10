@@ -1,16 +1,19 @@
 package hva.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents an Animal in a Vet Hotel.
  */
 public class Animal extends NamedEntity {
-  private String _healthHistory;
+  private List<HealthStatus> _healthHistory;
   private Species _species;
   private Habitat _habitat;
 
   /**
    * Creates a new Animal.
-   *
+   * 
    * @param id the animal's unique identifier
    * @param name the animal's name
    * @param species the species the animal belongs to
@@ -20,7 +23,7 @@ public class Animal extends NamedEntity {
     super(id, name);
     _species = species;
     _habitat = habitat;
-    _healthHistory = "VOID";
+    _healthHistory = new ArrayList<>();
     /* Adds itself to the TreeSet of all Animals of the same species that 
     the class Species holds.*/
     _species.addAnimal(this);
@@ -60,8 +63,18 @@ public class Animal extends NamedEntity {
       .append(this.id()).append("|")  
       .append(this.name()).append("|")
       .append(_species.id()).append("|")
-      .append(_healthHistory).append("|")
-      .append(_habitat.id());
+      .append(healthHistoryToString())
+      .append("|").append(_habitat.id());
+    return result.toString();
+  }
+
+  private String healthHistoryToString() {
+    if (_healthHistory.isEmpty())
+      return "VOID";
+    StringBuilder result = new StringBuilder();
+    for (HealthStatus healthStatus : _healthHistory)
+      result.append(healthStatus).append(",");
+    result.setLength(result.length() - 1);
     return result.toString();
   }
 
@@ -89,11 +102,7 @@ public class Animal extends NamedEntity {
    * @param vaccineEffect the health status to add to the history
    */
   void updateHealthHistory(HealthStatus vaccineEffect) {
-    if(_healthHistory.equals("VOID")) {
-      _healthHistory = vaccineEffect.toString();
-      return;
-    }
-    _healthHistory += "," + vaccineEffect;
+    _healthHistory.add(vaccineEffect);
   }
 
   /**

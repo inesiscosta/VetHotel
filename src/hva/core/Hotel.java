@@ -4,8 +4,15 @@ import hva.core.exception.*;
 import hva.core.modificationObserver.HotelObserver;
 import hva.core.modificationObserver.HotelSubject;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.Serial;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Represents a Vet Hotel.
@@ -27,61 +34,62 @@ public class Hotel implements  HotelSubject {
   private String _filename;
 
   /**
-   * Creates a new Vet Hotel. The hotel starts in the Spring season.
+   * Creates a new Vet Hotel.
    *
    */
   public Hotel() {
-    _currentSeason = Season.Spring;
-    _habitats = new TreeMap<>();
-    _employees = new TreeMap<>();
-    _species = new HashMap<>();
-    _speciesByName = new HashMap<>();
-    _vaccines = new HashMap<>();
-    _vaccinationRecords = new ArrayList<VaccinationRecord>();
+    _filename = null;
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
-    _filename = null;
+    _currentSeason = Season.Spring; //The hotel starts in the Spring season.
+    _habitats = new TreeMap<>();
+    _species = new HashMap<>();
+    _speciesByName = new HashMap<>();
+    _employees = new TreeMap<>();
+    _vaccines = new HashMap<>();
+    _vaccinationRecords = new ArrayList<VaccinationRecord>();
   }
 
-/**
- * Gets the associated filename with this hotel
- * 
- * @return the associated filename
- */
-String getAssociatedFilename() {
-  return _filename;
-}
+  /**
+   * Gets the filename associated with this hotel.
+   * 
+   * @return the associated filename
+   */
+  String getAssociatedFilename() {
+    return _filename;
+  }
 
-/**
- * Sets the filename of the associated file
- * 
- * @param filename the new filename for the associated filename
- */
-void setAssociatedFilename(String filename) {
-  _filename = filename;
-}
-/**
- * Changes the unsavedChanges state of the hotel.
- * 
- * @param state the new state for the hotel, having unsavedChanges or not
- */
+  /**
+   * Sets the filename of the associated file.
+   * 
+   * @param filename the new filename for the associated file
+   */
+  void setAssociatedFilename(String filename) {
+    _filename = filename;
+  }
+
+  /**
+   * Changes the unsavedChanges state of the hotel.
+   * 
+   * @param state the new state for the hotel, having unsavedChanges or not
+   */
   void unsavedChanges(boolean state) {
     _unsavedChanges = state;
   }
 
   /**
-   * Gets the state of unsavedChanges of the hotel.
+   * Gets whether the hotel has unsaved changes or not.
    * 
-   * @return the unsavedChanges state
+   * @return the state of the bool unsavedChanges
    */ 
   public boolean getUnsavedChanges() {
     return _unsavedChanges;
   }
 
   /**
-   * Adds the requested observer to the hotel list of observers
+   * Adds the requested observer to the hotel list of observers.
    * 
-   * @param observer the hotel observer to be added to the hotel observers
+   * @param observer the observer to be added to the list of hotel observers
    */
   @Override
   public void addHotelObserver(HotelObserver observer) {
@@ -91,7 +99,7 @@ void setAssociatedFilename(String filename) {
   /**
    * Removes the requested observer from the hotel list of observers
    * 
-   * @param the hotel observer to be removed from the hotel observers
+   * @param observer the hotel observer to be removed from the hotel observers
    */
   @Override
   public void removeHotelObserver(HotelObserver observer) {
@@ -159,21 +167,21 @@ void setAssociatedFilename(String filename) {
     throw new UnknownAnimalIdException(idAnimal);
   }
 
-
-/**
- * Test if this animal id already exists in one of the habitats
- * 
- * @param idAnimal the id of the animal
- * @return returns true if the animal exist in one of the habitats 
- * of the hotel
- */
-private boolean duplicatedAnimal(String idAnimal) {
-  for(Habitat habitat : _habitats.values()) {
-    if(habitat.containsAnimal(idAnimal))
-      return true;
+  /**
+   * Test if this animal id already exists in one of the habitats
+   * 
+   * @param idAnimal the id of the animal
+   * @return returns true if the animal exist in one of the habitats 
+   * of the hotel
+   */
+  private boolean duplicatedAnimal(String idAnimal) {
+    for(Habitat habitat : _habitats.values()) {
+      if(habitat.containsAnimal(idAnimal))
+        return true;
+    }
+    return false;
   }
-  return false;
-}
+
   /**
    * Identifies a species by its id.
    * 
@@ -185,10 +193,18 @@ private boolean duplicatedAnimal(String idAnimal) {
   public Species identifySpecies(String idSpecies)
   throws UnknownSpeciesIdException {
     if(!_species.containsKey(idSpecies))
-      throw new  UnknownSpeciesIdException(idSpecies);
+      throw new UnknownSpeciesIdException(idSpecies);
     return _species.get(idSpecies);
   }
 
+  /**
+   * Identifies an employee by its id.
+   * 
+   * @param idEmployee
+   * @return the employee object with the given id
+   * @throws UnknownEmployeeIdException if the employee with the given id
+   * is not found
+   */
   public Employee identifyEmployee(String idEmployee)
   throws UnknownEmployeeIdException {
     if(!_employees.containsKey(idEmployee))
@@ -206,11 +222,11 @@ private boolean duplicatedAnimal(String idAnimal) {
    */
   public Veterinarian identifyVet(String idVet)
   throws UnknownEmployeeIdException {
-      Employee employee = identifyEmployee(idVet);
-      if (employee.type().pt() != "VET") {
-        throw new UnknownEmployeeIdException(idVet);
-      }
-        return (Veterinarian) employee;
+    Employee employee = identifyEmployee(idVet);
+    if (employee.type().pt() != EmployeeType.VETERINARIAN.pt()) {
+      throw new UnknownEmployeeIdException(idVet);
+    }
+    return (Veterinarian) employee;
   }
 
   /**
@@ -234,8 +250,8 @@ private boolean duplicatedAnimal(String idAnimal) {
    * @param id the habitat's unique identifier
    * @param name the habitat's name
    * @param area the habitat's area
-   * @return the new habitat object
-   * @throws DuplicateHabitatIdException if there is already an Habitat
+   * @return the new Habitat object
+   * @throws DuplicateHabitatIdException if there is already a Habitat
    * with the same id
    */
   public Habitat registerHabitat(String id, String name, int area)
@@ -266,13 +282,8 @@ private boolean duplicatedAnimal(String idAnimal) {
   DuplicateAnimalIdException, UnknownSpeciesIdException {
     if(duplicatedAnimal(idAnimal))
       throw new DuplicateAnimalIdException(idHabitat);
-    
-    Habitat habitat;
-    habitat = identifyHabitat(idHabitat);
-   
-    Species species;
-    species = identifySpecies(idSpecies);
-
+    Habitat habitat = identifyHabitat(idHabitat);
+    Species species = identifySpecies(idSpecies);
     new Animal(idAnimal, name, species, habitat);
     notifyHotelObservers();
   }
@@ -291,8 +302,8 @@ private boolean duplicatedAnimal(String idAnimal) {
       throw new DuplicateSpeciesIdException(id);
     if (_speciesByName.containsKey(name))
       throw new DuplicateSpeciesNameException(name);
-    Species newSpecies = new Species(id, name);
-    _species.put(id, newSpecies);
+    Species species = new Species(id, name);
+    _species.put(id, species);
     notifyHotelObservers();
   }
 
@@ -303,6 +314,7 @@ private boolean duplicatedAnimal(String idAnimal) {
    * @param name the employee's name
    * @param type the employee's type (VET or TRT)
    * @throws InvalidEmployeeTypeException if the type is not valid
+   * this exception should never happen
    * @throws DuplicateEmployeeIdException if an employee with the same id
    * alredy exists
    */
@@ -328,7 +340,7 @@ private boolean duplicatedAnimal(String idAnimal) {
   /**
    * Registers a new vaccine in the hotel.
    * 
-   * @param vaccineId the vaccine's unique identifier
+   * @param idVaccine the vaccine's unique identifier
    * @param name the vaccine's name
    * @param speciesIds the species' ids that the vaccine is suitable for
    * @throws UnknownSpeciesIdException if the species with the given id
@@ -336,20 +348,15 @@ private boolean duplicatedAnimal(String idAnimal) {
    * @throws DuplicateVaccineIdException if a vaccine with the same id
    * already exists
    */
-  public void registerVaccine(String vaccineId, String name, String[] speciesIds)
+  public void registerVaccine(String idVaccine, String name, String[] speciesIds)
   throws UnknownSpeciesIdException, DuplicateVaccineIdException {
-    if (_vaccines.containsKey(vaccineId))
-      throw new DuplicateVaccineIdException(vaccineId);
+    if (_vaccines.containsKey(idVaccine))
+      throw new DuplicateVaccineIdException(idVaccine);
     List<Species> speciesList = new ArrayList<>();
-    for (String id : speciesIds) {
-
-      Species species;
-      species = identifySpecies(id);
-  
-      speciesList.add(species);
-    }
-    Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
-    _vaccines.put(vaccineId, vaccine);
+    for (String id : speciesIds)
+      speciesList.add(identifySpecies(id));
+    Vaccine vaccine = new Vaccine(idVaccine, name, speciesList);
+    _vaccines.put(idVaccine, vaccine);
     notifyHotelObservers();
   }
 
@@ -364,9 +371,7 @@ private boolean duplicatedAnimal(String idAnimal) {
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityException {
-
     Employee employee = identifyEmployee(idEmployee);
-    
     employee.addResponsibility(idReponsibility);
     notifyHotelObservers();
   }
@@ -382,9 +387,7 @@ private boolean duplicatedAnimal(String idAnimal) {
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityException {
-
     Employee employee = identifyEmployee(idEmployee);
-
     employee.removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }

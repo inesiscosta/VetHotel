@@ -14,7 +14,7 @@ public abstract class Employee extends NamedEntity {
    *
    * @param id the employee's unique identifier
    * @param name the employee's name
-   * @param employeeType the type of employee (Zookeeper or Veterinarian)
+   * @param employeeType the type of employee (Veterinarian or Zookeeper)
    */
   public Employee(String id, String name, EmployeeType employeeType, Hotel hotel) {
     super(id, name);
@@ -23,9 +23,9 @@ public abstract class Employee extends NamedEntity {
   }
 
   /**
-   * Gets the employee's specialization (Zookeeper or Veterinarian).
+   * Gets the employee's specialization (Veterinarian or Zookeeper).
    * 
-   * @return the employee type
+   * @return the employee type (employee's specialization)
    */
   EmployeeType type() {
     return _employeeType;
@@ -34,15 +34,15 @@ public abstract class Employee extends NamedEntity {
   /**
    * Gets the hotel the employee works in.
    * 
-   * @return the hotel the employee works in
+   * @return the Hotel object the employee works in
    */
   public Hotel hotel() {
     return _hotel;
   }
 
   /**
-   * Gets the Employee object representation as a string containing 
-   * information that describes said employee.
+   * Gets the Employee object representation as a string. 
+   * Contains information that describes said employee.
    *  
    * @return the Employee object string representation
    */
@@ -84,8 +84,8 @@ public abstract class Employee extends NamedEntity {
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be removed
-   * @throws UnknownIdException if the id cannot be used to
-   * identify a responsibility
+   * @throws UnknownIdException if the id cannot be used to identify
+   * a responsibility
    */
   abstract void removeResponsibility(String id)
   throws UnknownResponsibilityException;

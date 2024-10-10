@@ -8,6 +8,7 @@ import hva.core.exception.InvalidSeasonException;
 public class Deciduous extends Tree {
   /**
    * Creates a new Deciduous Tree.
+   * 
    * @param idTree the tree's unique identifier
    * @param name the tree's name
    * @param age the tree's age
@@ -29,6 +30,7 @@ public class Deciduous extends Tree {
    * this varies according to the season
    * @throws InvalidSeasonException if the current season is not a valid season
    * (not one of the four seasons Spring, Summer, Fall, Winter)
+   * this exception should never happen
    */
   @Override
   int seasonalEffort(Season currentSeason) throws InvalidSeasonException {
@@ -54,6 +56,7 @@ public class Deciduous extends Tree {
    * @return the bio-cycle of the tree according to the current season
    * @throws InvalidSeasonException if the current season is not a valid
    * season (not one of the four seasons Spring, Summer, Fall, Winter)
+   * this exception should never happen
    */
   @Override
   Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException {

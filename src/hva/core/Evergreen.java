@@ -9,6 +9,7 @@ public class Evergreen extends Tree {
 
   /**
    * Creates a new Evergreen Tree.
+   * 
    * @param idTree the tree's unique identifier
    * @param name the tree's name
    * @param age the tree's age
@@ -30,6 +31,7 @@ public class Evergreen extends Tree {
    * this varies according to the season
    * @throws InvalidSeasonException if the current season is not a valid season
    * (not one of the four seasons Spring, Summer, Fall, Winter)
+   * this exception should never happen
    */
   @Override
   int seasonalEffort(Season currentSeason) throws InvalidSeasonException {
@@ -49,10 +51,11 @@ public class Evergreen extends Tree {
    * Returns an Evergreen tree's bio-cycle (the state of the tree's leaves)
    * according to the current season.
    * 
-   * @param currentSeason the current season in the Vet Hotel
+   * @param currentSeason the current season in the Hotel
    * @return the bio-cycle of the tree according to the current season
    * @throws InvalidSeasonException if the current season is not a valid season
    * (not one of the four seasons Spring, Summer, Fall, Winter)
+   * this exception should never happen
    */
   @Override
   Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException {
