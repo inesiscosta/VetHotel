@@ -1,6 +1,8 @@
 package hva.core;
 
-import hva.core.exception.*;
+import hva.core.exception.DuplicateTreeIdException;
+import hva.core.exception.InvalidTreeTypeException;
+import hva.core.exception.UnknownAnimalIdException;
 
 import java.util.ArrayList;
 import java.util.Collection;
