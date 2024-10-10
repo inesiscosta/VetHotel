@@ -127,6 +127,12 @@ public class Hotel implements Serializable, HotelSubject {
     return _species.get(idSpecies);
   }
 
+  public Employee identifyEmployee(String idEmployee) throws UnknownEmployeeIdException {
+    if(!_employees.containsKey(idEmployee))
+      throw new UnknownEmployeeIdException(idEmployee);
+    return _employees.get(idEmployee);
+  }
+
   /**
    * Identifies a veterinarian by its id.
    * 
@@ -143,12 +149,6 @@ public class Hotel implements Serializable, HotelSubject {
     } catch (UnknownEmployeeIdException e) {
       throw new UnknownVeterinarianIdException(idVet, e);
     }
-  }
-
-  public Employee identifyEmployee(String idEmployee) throws UnknownEmployeeIdException {
-    if(!_employees.containsKey(idEmployee))
-      throw new UnknownEmployeeIdException(idEmployee);
-    return _employees.get(idEmployee);
   }
 
   /**
@@ -171,11 +171,10 @@ public class Hotel implements Serializable, HotelSubject {
    * @param name the habitat's name
    * @param area the habitat's area
    * @return the new habitat object
-   * @throws DuplicateIdException if the id is already used
    * @throws DuplicateHabitatIdException if there is already an Habitat with the same id
    */
   public Habitat registerHabitat(String id, String name, int area)
-    throws DuplicateIdException, DuplicateHabitatIdException {
+    throws DuplicateHabitatIdException {
     if (_habitats.containsKey(id))
       throw new DuplicateHabitatIdException(id);
     Habitat habitat = new Habitat(id, name, area);
@@ -196,11 +195,13 @@ public class Hotel implements Serializable, HotelSubject {
    * @throws UnknownSpeciesIdException if the species with the given id is not found
    */
   public void registerAnimal(String idAnimal, String name, String idSpecies,
-  String idHabitat) throws UnknownHabitatIdException, DuplicateAnimalIdException, UnknownSpeciesIdException {
+  String idHabitat) throws UnknownHabitatIdException,
+  DuplicateAnimalIdException, UnknownSpeciesIdException {
     try {
       identifyAnimal(idAnimal);
-    } catch (UnknownAnimalIdException e) {
       throw new DuplicateAnimalIdException(idAnimal);
+    } catch (UnknownAnimalIdException e) {
+      //Good the animal doesn't exist yet.
     }
     Habitat habitat;
     try {
@@ -275,7 +276,7 @@ public class Hotel implements Serializable, HotelSubject {
    * @throws DuplicateVaccineIdException if a vaccine with the same id already exists
    */
   public void registerVaccine(String vaccineId, String name, String[] speciesIds)
-  throws UnknownSpeciesIdException, DuplicateVaccineIdException, DuplicateIdException {
+  throws UnknownSpeciesIdException, DuplicateVaccineIdException {
     if (_vaccines.containsKey(vaccineId))
       throw new DuplicateVaccineIdException(vaccineId);
     List<Species> speciesList = new ArrayList<>();
@@ -350,11 +351,13 @@ public class Hotel implements Serializable, HotelSubject {
   }
 
   /**
+   * Changes the influence of a habitat on a species.
    * 
-   * @param habitat
-   * @param species
-   * @param influenceString
+   * @param habitat the habitat to change the influence
+   * @param species the species to change the influence
+   * @param influenceString the influence to change to
    */
+  // TODO: ENUM VALUE OF INFLUENCE
   public void changeHabitatInflunece(Habitat habitat, Species species, String influenceString) {
     int influence;
     switch (influenceString) {
@@ -374,17 +377,18 @@ public class Hotel implements Serializable, HotelSubject {
   }
 
   /**
-   * Lists all habitats in the hotel in a string containing 
+   * Lists all habitats in the hotel in an immutable list containing 
    * information about each habitat.
    * 
-   * @return a String containing the Habitat object string
+   * @return an immutable List containing the Habitat object string
    * representation of all habitats in the hotel
    */
-  public String listHabitats() {
-    StringBuilder listHabitats = new StringBuilder();
-    for(Habitat habitat : _habitats.values())
-      listHabitats.append(habitat.toString(this.currentSeason()));
-    return listHabitats.toString();
+  public List<String> listHabitats() {
+    List<String> listHabitats = new ArrayList<>();
+    for (Habitat habitat : _habitats.values()) {
+      listHabitats.add(habitat.toString(this.currentSeason()));
+    }
+    return Collections.unmodifiableList(listHabitats);
   }
 
   /**
@@ -399,80 +403,64 @@ public class Hotel implements Serializable, HotelSubject {
   }
 
   /**
-   * Lists all animals in the hotel in a string containing
+   * Lists all animals in the hotel in an immutable list containing
    * information about each animal.
    * 
-   * @return a String containing the Animal object string
+   * @return an immutable List containing the Animal object string
    * representation of all animals in the hotel
    */
-  public String listAnimals() {
-    StringBuilder allAnimals = new StringBuilder();
+  public List<Animal> listAnimals() {
+    List<Animal> allAnimals = new ArrayList<>();
     for (Habitat habitat : _habitats.values())
-      allAnimals.append(habitat.listAnimals()).append("\n");
-    if(!allAnimals.isEmpty())
-      allAnimals.setLength(allAnimals.length()-1);
-    return allAnimals.toString();
+      allAnimals.addAll(habitat.listAnimals());
+    return Collections.unmodifiableList(allAnimals);
   }
 
   /**
-   * Lists all species in the hotel in a string containing
+   * Lists all species in the hotel in an unmodifiable list containing
    * information about each species.
    * 
-   * @return a String containing the Species object string
-   * representation of all species in the hotel
+   * @return an unmodifiable List containing the Species object of all
+   * species in the hotel
    */
-  public String listSpecies() {
-    StringBuilder listSpecies = new StringBuilder();
-    for (Species species : _species.values())
-      listSpecies.append(species.toString()).append("\n");
-    return listSpecies.toString();
+  public List<Species> listSpecies() {
+    return Collections.unmodifiableList(new ArrayList<>(_species.values()));
   }
 
   /**
-   * Lists all employees in the hotel in a string containing
+   * Lists all employees in the hotel in an unmodifiable list containing
    * information about each employee.
    * 
-   * @return a String containing the Employee object string
+   * @return an unmodifiable List containing the Employee object string
    * representation of all employees in the hotel
    */
-  public String listEmployees() {
-    StringBuilder listEmployee = new StringBuilder();
-    for (Employee employee : _employees.values())
-      listEmployee.append(employee.toString()).append("\n");
-    return listEmployee.toString();
+  public List<Employee> listEmployees() {
+    return Collections.unmodifiableList(new ArrayList<>(_employees.values()));
   }
 
   /**
-   * Lists all vaccines in the hotel in a string containing
+   * Lists all vaccines in the hotel in an unmodifiable list containing
    * information about each vaccine.
    * 
-   * @return a String containing the Vaccine object string
-   * representation of all vaccines in the hotel
+   * @return an unmodifiable List containing the Vaccine objects of all vaccines in the hotel
    */
-  public String listVaccines() {
+  public List<Vaccine> listVaccines() {
     List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
-    vaccines.sort(Comparator.comparing(Vaccine::id));
-    StringBuilder listVaccines = new StringBuilder();
-    for(Vaccine vaccine : vaccines)
-      listVaccines.append(vaccine.toString());
-    listVaccines.setLength(listVaccines.length()-1);
-    return listVaccines.toString();
+    vaccines.sort(Comparator.comparing(vaccine -> vaccine.id(), String.CASE_INSENSITIVE_ORDER));
+    return Collections.unmodifiableList(vaccines);
   }
 
   /**
-   * Lists all vaccination records in a string containing
+   * Lists all vaccination records in an unmodifiable list containing
    * information about each record.
    * 
-   * @return a String containing the VaccinationRecord object string
-   * representation of all vaccination records
+   * @return an unmodifiable List containing the VaccinationRecord objects
    */
-  public String listVaccinationRecords() {
-    StringBuilder listVaccinationRecords = new StringBuilder();
-    for(VaccinationRecord record : _vaccinationRecords)
-      listVaccinationRecords.append(record.toString()).append("\n");
-    return listVaccinationRecords.toString();
+  public List<VaccinationRecord> listVaccinationRecords() {
+    return Collections.unmodifiableList(new ArrayList<>(_vaccinationRecords));
   }
 
+  // TODO: Makes this an immutable list
   /**
    * Lists all vaccination records of vaccines given to a given
    * animal in a string containing information about each record.

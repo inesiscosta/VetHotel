@@ -3,7 +3,6 @@ package hva.core;
 import hva.core.exception.DuplicateAnimalIdException;
 import hva.core.exception.DuplicateEmployeeIdException;
 import hva.core.exception.DuplicateHabitatIdException;
-import hva.core.exception.DuplicateIdException;
 import hva.core.exception.DuplicateSpeciesIdException;
 import hva.core.exception.DuplicateSpeciesNameException;
 import hva.core.exception.DuplicateVaccineIdException;
@@ -153,7 +152,7 @@ public class Parser {
       String[] speciesIds = components.length == 4 ?
       components[3].split(",") : new String[0];
       _hotel.registerVaccine(id, name, speciesIds);
-    } catch (UnknownSpeciesIdException | DuplicateVaccineIdException | DuplicateIdException e) {
+    } catch (UnknownSpeciesIdException | DuplicateVaccineIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -212,7 +211,7 @@ public class Parser {
           _hotel.currentSeason(), _hotel);
         }
       }
-    } catch (InvalidTreeTypeException | DuplicateIdException | DuplicateHabitatIdException e) {
+    } catch (InvalidTreeTypeException | DuplicateHabitatIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }

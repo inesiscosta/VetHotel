@@ -1,8 +1,11 @@
 package hva.core;
 
 import hva.core.exception.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -179,8 +182,9 @@ public class Habitat extends NamedEntity {
    * (not one of the two types Evergreen or Deciduous)
    */
   public void plantTree(String id, String name, int age, int baseCleaningDifficulty, 
-  TreeType treeType, Season currentSeason, Hotel hotel) throws InvalidTreeTypeException, DuplicateIdException {
+  TreeType treeType, Season currentSeason, Hotel hotel) throws InvalidTreeTypeException {
     Tree tree;
+    // Create exception DuplicateIdTreeException and throw it here
     if(hotel.isIdUsed(id))
       throw new DuplicateIdException(id);
     switch (treeType) {
@@ -211,16 +215,11 @@ public class Habitat extends NamedEntity {
   /**
    * Lists all animals in the habitat. 
    * 
-   * @return a String containing the Animal object string representation of
+   * @return an unmodifiable list containing the Animal object string representation of
    * all animals in the habitat
    */
-  public String listAnimals() {
-    StringBuilder listAnimals = new StringBuilder();
-    for(Animal animal : _animals.values())
-      listAnimals.append(animal.toString()).append("\n");
-    if(!listAnimals.isEmpty())
-      listAnimals.setLength(listAnimals.length()-1);
-    return listAnimals.toString();
+  public List<Animal> listAnimals() {
+    return Collections.unmodifiableList(new ArrayList<>(_animals.values()));
   }
 
   /**
