@@ -2,7 +2,6 @@ package hva.core;
 
 import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnknownResponsibilityException;
-import hva.core.exception.UnknownResponsibilityException;
 
 /**
  * Represents an employee working in a Vet Hotel.

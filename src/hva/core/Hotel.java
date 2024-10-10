@@ -18,10 +18,9 @@ public class Hotel implements Serializable {
   private Map<String,Habitat> _habitats;
   private Map<String,Employee> _employees;
   private Map<String,Species> _species;
+  private Map<String, Species> _speciesByName;
   private Map<String,Vaccine> _vaccines;
   private List<VaccinationRecord> _vaccinationRecords;
-  private Collection<String> _usedIds;
-  private Collection<String> _existingSpeciesNames;
 
   /**
    * Creates a new Vet Hotel. The hotel starts in the Spring season.
@@ -32,10 +31,9 @@ public class Hotel implements Serializable {
     _habitats = new TreeMap<>();
     _employees = new TreeMap<>();
     _species = new HashMap<>();
+    _speciesByName = new HashMap<>();
     _vaccines = new HashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
-    _usedIds = new HashSet<String>();
-    _existingSpeciesNames = new HashSet<String>();
   }
 
   /**
@@ -45,16 +43,6 @@ public class Hotel implements Serializable {
    */
   public Season currentSeason() {
     return _currentSeason;
-  }
-
-  /**
-   * Checks if a given id is already used in the hotel.
-   *
-   * @param id the id to check
-   * @return true if the id is already used, false otherwise
-   */
-  boolean isIdUsed(String id) {
-    return _usedIds.contains(id);
   }
 
   /**
@@ -116,12 +104,14 @@ public class Hotel implements Serializable {
    * @throws UnknownVeterinarianIdException if the veterinarian with the given id is not found
    */
   public Veterinarian identifyVet(String idVet) throws UnknownVeterinarianIdException {
-    if(!_employees.containsKey(idVet))
+    try {
+      Employee employee = identifyEmployee(idVet);
+      if (employee.type().toString() == "VET")
+        return (Veterinarian) employee;
       throw new UnknownVeterinarianIdException(idVet);
-    Employee employee =  _employees.get(idVet);
-    if (employee.type().toString() == "VET")
-      return (Veterinarian) employee;
-    return null;
+    } catch (UnknownEmployeeIdException e) {
+      throw new UnknownVeterinarianIdException(idVet, e);
+    }
   }
 
   public Employee identifyEmployee(String idEmployee) throws UnknownEmployeeIdException {
@@ -157,8 +147,6 @@ public class Hotel implements Serializable {
     throws DuplicateIdException, DuplicateHabitatIdException {
     if (_habitats.containsKey(id))
       throw new DuplicateHabitatIdException(id);
-    else if (_usedIds.contains(id))
-      throw new DuplicateIdException(id);
     Habitat habitat = new Habitat(id, name, area);
     _habitats.put(id, habitat);
     return habitat;
@@ -177,8 +165,11 @@ public class Hotel implements Serializable {
    */
   public void registerAnimal(String idAnimal, String name, String idSpecies,
   String idHabitat) throws UnknownHabitatIdException, DuplicateAnimalIdException, UnknownSpeciesIdException {
-    if (_usedIds.contains(idAnimal))
+    try {
+      identifyAnimal(idAnimal);
+    } catch (UnknownAnimalIdException e) {
       throw new DuplicateAnimalIdException(idAnimal);
+    }
     Habitat habitat;
     try {
       habitat = identifyHabitat(idHabitat);
@@ -192,7 +183,6 @@ public class Hotel implements Serializable {
       throw new UnknownSpeciesIdException(idHabitat, e);
     } 
     new Animal(idAnimal, name, species, habitat);
-    _usedIds.add(idAnimal);
   }
 
   /**
@@ -200,27 +190,17 @@ public class Hotel implements Serializable {
    * 
    * @param id the species' unique identifier
    * @param name the species' name
-   * @throws DuplicateIdException if the id is already used
-   * @throws DuplicateSpeciesIdException if the species with this id already exists
+   * @throws DuplicateSpeciesIdException if the id is already used
    * @throws DuplicateSpeciesNameException if this species name is already used
    */
   public void registerSpecies(String id, String name)
-  throws DuplicateSpeciesIdException, DuplicateIdException, DuplicateSpeciesNameException {
-    try {
-      identifySpecies(id);
-      //If the species exist it doesnt throw a exception, else it is catched
+  throws DuplicateSpeciesIdException, DuplicateSpeciesNameException {
+    if (_species.containsKey(id))
       throw new DuplicateSpeciesIdException(id);
-    } catch (UnknownSpeciesIdException e) { 
-      //If the species doesnt exist it adds a new one
-      if (_usedIds.contains(id))
-        throw new DuplicateIdException(id);
-      if(_existingSpeciesNames.contains(name))
-        throw new DuplicateSpeciesNameException(name);
-      Species specie = new Species(id, name);
-      _species.put(id, specie);
-      _usedIds.add(id);
-      _existingSpeciesNames.add(name);
-    }
+    if (_speciesByName.containsKey(name))
+      throw new DuplicateSpeciesNameException(name);
+    Species newSpecies = new Species(id, name);
+    _species.put(id, newSpecies);
   }
 
   /**
@@ -229,16 +209,13 @@ public class Hotel implements Serializable {
    * @param id the employee's unique identifier
    * @param name the employee's name
    * @param type the employee's type (VET or TRT)
-   * @throws DuplicateIdException if the id is already used
    * @throws InvalidEmployeeTypeException if the type is not valid
    * @throws DuplicateEmployeeIdException if an employee with the same id alredy exists
    */
   public void registerEmployee(String id, String name, String type) 
-  throws DuplicateIdException, DuplicateEmployeeIdException, InvalidEmployeeTypeException {
+  throws DuplicateEmployeeIdException, InvalidEmployeeTypeException {
     if (_employees.containsKey(id))
       throw new DuplicateEmployeeIdException(id);
-    if (_usedIds.contains(id))
-      throw new DuplicateIdException(id);
     Employee employee = null;
     switch (type) {   //TODO Maybe also use a method from the enum or change the TreeType and DoAddTreehabitat, DoShowAllEmployees and DoShowHabitats and DoShowTrees for consistent across the project
       case "VET":
@@ -251,7 +228,6 @@ public class Hotel implements Serializable {
         throw new InvalidEmployeeTypeException(type);
     }
     _employees.put(id, employee);
-    _usedIds.add(id);
   }
 
   /**
@@ -261,15 +237,12 @@ public class Hotel implements Serializable {
    * @param name the vaccine's name
    * @param speciesIds the species' ids that the vaccine is suitable for
    * @throws UnknownSpeciesIdException if the species with the given id is not found
-   * @throws DuplicateIdException if the id is already used
    * @throws DuplicateVaccineIdException if a vaccine with the same id already exists
    */
   public void registerVaccine(String vaccineId, String name, String[] speciesIds)
   throws UnknownSpeciesIdException, DuplicateVaccineIdException, DuplicateIdException {
     if (_vaccines.containsKey(vaccineId))
       throw new DuplicateVaccineIdException(vaccineId);
-    if (_usedIds.contains(vaccineId))
-      throw new DuplicateIdException(vaccineId);
     List<Species> speciesList = new ArrayList<>();
     for (String id : speciesIds) {
       Species species;
@@ -282,7 +255,6 @@ public class Hotel implements Serializable {
     }
     Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
     _vaccines.put(vaccineId, vaccine);
-    _usedIds.add(vaccineId);
   }
 
   /**

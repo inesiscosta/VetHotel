@@ -107,7 +107,7 @@ public class Parser {
       String name = components[2];
 
       _hotel.registerSpecies(id, name);
-    } catch (DuplicateSpeciesIdException | DuplicateIdException | DuplicateSpeciesNameException e) {
+    } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -132,7 +132,7 @@ public class Parser {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
       }
-		} catch (DuplicateIdException | DuplicateEmployeeIdException | InvalidEmployeeTypeException |
+		} catch (DuplicateEmployeeIdException | InvalidEmployeeTypeException |
     UnknownResponsibilityException | UnknownEmployeeIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
@@ -175,8 +175,6 @@ public class Parser {
 	    Tree tree;
 	    if(type != "PERENE" || type != "CADUCA")
 		    throw new InvalidTreeTypeException(type);
-	    if(_hotel.isIdUsed(id)) 
-		    throw new DuplicateIdException(id);
 	    if(type == "PERENE") {
         tree = new Evergreen(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
@@ -185,7 +183,7 @@ public class Parser {
         tree = new Deciduous(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
       }
-    } catch (InvalidTreeTypeException | DuplicateIdException e) {
+    } catch (InvalidTreeTypeException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
