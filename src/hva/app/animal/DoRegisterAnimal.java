@@ -31,7 +31,7 @@ class DoRegisterAnimal extends Command<Hotel> {
     var name = stringField("name");
     var idSpecies = stringField("idSpecies");
     var idHabitat = stringField("idHabitat");
-
+    //FIXME after resolving the try catch from registerAnimal
 
     try {
       _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
