@@ -194,7 +194,7 @@ void setAssociatedFilename(String filename) {
   throws UnknownVeterinarianIdException {
     try {
       Employee employee = identifyEmployee(idVet);
-      if (employee.type().toString() == "VET")
+      if (employee.type().pt() == "VET")
         return (Veterinarian) employee;
       throw new UnknownVeterinarianIdException(idVet);
     } catch (UnknownEmployeeIdException e) {
@@ -260,17 +260,11 @@ void setAssociatedFilename(String filename) {
       //Good the animal doesn't exist yet.
     }
     Habitat habitat;
-    try {
-      habitat = identifyHabitat(idHabitat);
-    } catch (UnknownHabitatIdException e) {
-      throw new UnknownHabitatIdException(idHabitat, e);
-    }
+    habitat = identifyHabitat(idHabitat);
+   
     Species species;
-    try {
-      species = identifySpecies(idSpecies);
-    } catch (UnknownSpeciesIdException e) {
-      throw new UnknownSpeciesIdException(idSpecies, e);
-    } 
+    species = identifySpecies(idSpecies);
+
     new Animal(idAnimal, name, species, habitat);
     notifyHotelObservers();
   }
@@ -402,11 +396,15 @@ void setAssociatedFilename(String filename) {
    * @param animal the animal to vaccinate
    * @param vaccine the vaccine to apply
    */
-  public void addVaccinationRecord(Veterinarian vet, Animal animal,
+  public boolean addVaccinationRecord(Veterinarian vet, Animal animal,
   Vaccine vaccine) throws EmployeeNotResponsibleException {
+    boolean vaccineApropriated = true;
+    if(!vaccine.isSpeciesApropriated(animal.species()))
+      vaccineApropriated = false;
     VaccinationRecord record = vet.vaccinate(vaccine, animal);
     _vaccinationRecords.add(record);
     notifyHotelObservers();
+    return vaccineApropriated;
   }
 
   /**

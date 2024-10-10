@@ -22,6 +22,7 @@ class DoRegisterAnimal extends Command<Hotel> {
     addStringField("name", Prompt.animalName());
     addStringField("idSpecies", Prompt.speciesKey());
     addStringField("idHabitat", hva.app.habitat.Prompt.habitatKey());
+    addStringField("speciesName", Prompt.speciesName());
   }
   
   @Override
@@ -31,6 +32,7 @@ class DoRegisterAnimal extends Command<Hotel> {
     var idSpecies = stringField("idSpecies");
     var idHabitat = stringField("idHabitat");
 
+
     try {
       _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
     } catch (DuplicateAnimalIdException e) {
@@ -38,7 +40,7 @@ class DoRegisterAnimal extends Command<Hotel> {
     } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
-        addStringField("speciesName", Prompt.speciesName());
+        
         var speciesName = stringField("speciesName");
         try {
         _receiver.registerSpecies(idSpecies, speciesName);
@@ -48,7 +50,8 @@ class DoRegisterAnimal extends Command<Hotel> {
         } catch (UnknownHabitatIdException e1) {
           throw new UnknownHabitatKeyException(idHabitat);
         } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException
-       | UnknownSpeciesIdException e1) {        
+       | UnknownSpeciesIdException e1) {   
+          e1.printStackTrace();
         }
     }
   }

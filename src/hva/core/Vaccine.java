@@ -30,6 +30,9 @@ public class Vaccine extends NamedEntity {
     return _numApplications;
   }
 
+  boolean isSpeciesApropriated(Species species) {
+    return _appropiateSpecies.contains(species);
+  }
   /**
    * Gets the Vaccine object representation as a string containing
    * information that describes said Vaccine.
