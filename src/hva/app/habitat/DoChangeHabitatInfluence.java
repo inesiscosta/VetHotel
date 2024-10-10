@@ -18,17 +18,29 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     super(Label.CHANGE_HABITAT_INFLUENCE, receiver);
     addStringField("idHabitat", Prompt.habitatKey());
     addStringField("idSpecies", hva.app.animal.Prompt.speciesKey());
-    addOptionField("influnce", Prompt.habitatInfluence(), "POS", "NEG", "NEU");
+    addOptionField("influenceString", 
+    Prompt.habitatInfluence(),"POS", "NEG", "NEU");
   }
   
   @Override
   protected void execute() throws CommandException {
     var idHabitat = stringField("idHabitat");
     var idSpecies = stringField("idSpecies");
-    var influence = optionField("influence");
-    
+    var influenceString = optionField("influenceString");
+    int influence;
+    switch (influenceString) {
+      case "POS":
+        influence = 20;
+        break;
+      case "NEG":
+        influence = -20;
+        break;
+      default:
+        influence = 0;
+    }
     try {
-      _receiver.changeHabitatInflunece(_receiver.identifyHabitat(idHabitat), _receiver.identifySpecies(idSpecies), influence);
+      _receiver.changeHabitatInflunece(_receiver.identifyHabitat(idHabitat),
+      _receiver.identifySpecies(idSpecies), influence);
     } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {

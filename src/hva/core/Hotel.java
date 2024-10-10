@@ -357,19 +357,7 @@ public class Hotel implements  HotelSubject {
    * @param species the species to change the influence
    * @param influenceString the influence to change to
    */
-  // TODO: ENUM VALUE OF INFLUENCE
-  public void changeHabitatInflunece(Habitat habitat, Species species, String influenceString) {
-    int influence;
-    switch (influenceString) {
-      case "POS":
-        influence = 20;
-        break;
-      case "NEG":
-        influence = -20;
-      default:
-        influence = 0;
-        break;
-    }
+  public void changeHabitatInflunece(Habitat habitat, Species species, int influence) {
     if(habitat.identifyInfluence(species) == 0)
       habitat.addInfluence(species, influence);
     habitat.changeHabitatInflunece(species, influence);
