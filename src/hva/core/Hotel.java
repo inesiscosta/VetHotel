@@ -6,6 +6,8 @@ import java.util.*;
 
 /**
  * Represents a Vet Hotel.
+ * 
+ * 
  */
 public class Hotel implements Serializable {
 
