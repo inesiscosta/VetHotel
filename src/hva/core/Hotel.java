@@ -446,7 +446,7 @@ public class Hotel implements Serializable, HotelSubject {
    */
   public List<Vaccine> listVaccines() {
     List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
-    vaccines.sort(Comparator.comparing(vaccine -> vaccine.id(), String.CASE_INSENSITIVE_ORDER));
+    vaccines.sort(Comparator.comparing(vaccine-> vaccine.id(), String.CASE_INSENSITIVE_ORDER));
     return Collections.unmodifiableList(vaccines);
   }
 
@@ -478,6 +478,7 @@ public class Hotel implements Serializable, HotelSubject {
     return animalVaccinationHistory.toString();
   }
 
+  // TODO: Makes this an immutable list
   /** 
    * Lists all vaccination records of vaccines administered by a given vet
    * in a string containing information about each record. 
@@ -495,6 +496,7 @@ public class Hotel implements Serializable, HotelSubject {
     return vetVaccinationRecords.toString();
   }
 
+  // TODO: Makes this an immutable list
   /**
    * Lists all erroneous vaccination records in a string containing
    * information about each record.
@@ -524,6 +526,14 @@ public class Hotel implements Serializable, HotelSubject {
     for (Habitat habitat : _habitats.values())
       globalSatisfaction += habitat.calculateAnimalsSatisfaction();
     return (int) Math.round(globalSatisfaction);
+  }
+
+  boolean treeAlreadyExists(String id) {
+    for (Habitat habitat : _habitats.values()) {
+      if (habitat.identifyTree(id) == null)
+        return false;
+    }
+    return true;
   }
 
   /**

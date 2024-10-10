@@ -1,6 +1,5 @@
 package hva.core;
 
-import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnknownResponsibilityException;
 
 /**

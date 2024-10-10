@@ -14,7 +14,7 @@ public class UnknownResponsibilityException extends Exception {
    * @param message the error message
    **/
   public UnknownResponsibilityException(String id) {
-    super("Responsibility id not found:" + id);
+    super("Responsibility doesnt exist:" + id);
   }
 
     /**
@@ -22,6 +22,6 @@ public class UnknownResponsibilityException extends Exception {
    * @param cause The cause of the exception
    **/
   public UnknownResponsibilityException(String id, Exception cause) {
-    super("Responsibility id not found:" + id, cause);
+    super("Responsibility doesnt exist:" + id, cause);
   }
 }

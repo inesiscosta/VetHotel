@@ -14,7 +14,7 @@ public class DuplicateSpeciesIdException extends Exception {
    * @param message the id that already exists
    **/
   public DuplicateSpeciesIdException(String id) {
-    super("Duplicated Species Id: " + id);
+    super("Duplicated Species id: " + id);
   }
 
   /**
@@ -22,6 +22,6 @@ public class DuplicateSpeciesIdException extends Exception {
    * @param cause exception that triggered this one
    **/
   public DuplicateSpeciesIdException(String id, Exception cause) {
-    super("Duplicated Species Id: " + id, cause);
+    super("Duplicated Species id: " + id, cause);
   }
 }

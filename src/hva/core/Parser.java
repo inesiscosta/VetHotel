@@ -5,6 +5,7 @@ import hva.core.exception.DuplicateEmployeeIdException;
 import hva.core.exception.DuplicateHabitatIdException;
 import hva.core.exception.DuplicateSpeciesIdException;
 import hva.core.exception.DuplicateSpeciesNameException;
+import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.DuplicateVaccineIdException;
 import hva.core.exception.InvalidEmployeeTypeException;
 import hva.core.exception.InvalidTreeTypeException;
@@ -211,7 +212,7 @@ public class Parser {
           _hotel.currentSeason(), _hotel);
         }
       }
-    } catch (InvalidTreeTypeException | DuplicateHabitatIdException e) {
+    } catch (DuplicateTreeIdException | InvalidTreeTypeException | DuplicateHabitatIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
