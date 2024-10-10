@@ -132,13 +132,13 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
    * Compare method override used to define a new natural order for TreeSet,
    * comparing between the ids.
    * 
-   * @param t1 the first Tree object to compare
-   * @param t2 the second Tree object to compare
+   * @param tree1 the first Tree object to compare
+   * @param tree2 the second Tree object to compare
    * @return the value returned by the compareTo between the two ids strings
    */
   @Override
-  public int compare(Tree t1, Tree t2) {
-    return t1.id().compareTo(t2.id());
+  public int compare(Tree tree1, Tree tree2) {
+    return tree1.id().compareTo(tree2.id());
   }
 
   /**

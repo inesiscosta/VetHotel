@@ -95,7 +95,7 @@ public class Vaccine extends NamedEntity {
    * @param animal the vaccinated animal
    * @return the damage caused by the vaccine as an integer
    */
-  private int calculateVaccineDamage(Animal animal){
+  private int calculateVaccineDamage(Animal animal) {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
     String speciesName = animal.species().name();
@@ -113,7 +113,7 @@ public class Vaccine extends NamedEntity {
    * 
    * @return the species with the biggest name in the list of suitable species
    */
-  private Species biggestSpeciesName(){
+  private Species biggestSpeciesName() {
     Species biggestSpecies = null;
     for (Species species : _appropiateSpecies) {
       if (biggestSpecies == null ||

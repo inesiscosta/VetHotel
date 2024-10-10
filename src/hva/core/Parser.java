@@ -48,7 +48,6 @@ public class Parser {
   UnrecognizedEntryException {
     try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
       String line;
-
       while ((line = reader.readLine()) != null)
         parseLine(line);
     }
@@ -89,7 +88,6 @@ public class Parser {
       String name = components[2];
       String habitatId = components[4];
       String speciesId = components[3];
-
       _hotel.registerAnimal(id, name, speciesId, habitatId);
     } catch (UnknownHabitatIdException | DuplicateAnimalIdException |
     UnknownSpeciesIdException e) {
@@ -108,7 +106,6 @@ public class Parser {
     try {
       String id = components[1];
       String name = components[2];
-
       _hotel.registerSpecies(id, name);
     } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
@@ -129,9 +126,7 @@ public class Parser {
     try {
       String id = components[1];
       String name = components[2];
-
       _hotel.registerEmployee(id, name, empType);
-
       if (components.length == 4) {
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
@@ -206,9 +201,7 @@ public class Parser {
       String id = components[1];
       String name = components[2];
       int area = Integer.parseInt(components[3]);
-
       Habitat hab = _hotel.registerHabitat(id, name, area);
-
       if (components.length == 5) {
         String[] listOfTree = components[4].split(",");
         for (String treeKey : listOfTree) {

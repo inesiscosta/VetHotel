@@ -35,9 +35,8 @@ public enum EmployeeType {
    */
   public static EmployeeType stringToEnum(String pt) {
     for (EmployeeType employeeType : EmployeeType.values()) {
-      if (employeeType.pt().equals(pt)) {
+      if (employeeType.pt().equals(pt))
         return employeeType;
-      }
     }
     return null;
   }

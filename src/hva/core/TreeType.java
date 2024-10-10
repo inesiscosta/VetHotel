@@ -35,9 +35,8 @@ public enum TreeType {
      */
     public static TreeType stringToEnum(String type) {
         for (TreeType treeType : TreeType.values()) {
-            if (treeType.pt().equals(type)) {
+            if (treeType.pt().equals(type))
                 return treeType;
-            }
         } 
         return null;
     }

@@ -1,16 +1,19 @@
 package hva.core;
 
-import hva.core.exception.*;
+import hva.core.exception.ImportFileException;
+import hva.core.exception.MissingFileAssociationException;
+import hva.core.exception.UnavailableFileException;
+import hva.core.exception.UnrecognizedEntryException;
 import hva.core.modificationObserver.HotelObserver;
 
 import java.io.*;
 
 /**
  * Class representing the manager of this application. It manages the current
- * zoo hotel.
+ * Vet hotel.
  **/
 public class HotelManager implements HotelObserver {
-  /** The current zoo hotel */ 
+  // The current zoo hotel 
   private Hotel _hotel;
   public HotelManager() {
     _hotel = new Hotel();
@@ -55,12 +58,11 @@ public class HotelManager implements HotelObserver {
    * Saves the serialized application's state into the file
    * associated to the current network.
    *
-   * @throws FileNotFoundException if for some reason the file
-   * cannot be created or opened. 
+   * @throws FileNotFoundException if the file cannot be created or opened
    * @throws MissingFileAssociationException if the current network
-   * does not have a file.
+   * doesnt have a file
    * @throws IOException if there is some error while serializing
-   * the state of the network to disk.
+   * the state of the network to disk
    **/
   public void save() throws FileNotFoundException,
   MissingFileAssociationException, IOException {
@@ -75,13 +77,13 @@ public class HotelManager implements HotelObserver {
    * Saves the serialized application's state into the specified file. 
    * The current network is associated to this file.
    *
-   * @param filename the name of the file.
+   * @param filename the name of the file
    * @throws FileNotFoundException if for some reason the file 
-   * cannot be created or opened.
+   * cannot be created or opened
    * @throws MissingFileAssociationException if the current network
-   * does not have a file.
+   * does not have a file
    * @throws IOException if there is some error while serializing
-   * the state of the network to disk.
+   * the state of the network to disk
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
