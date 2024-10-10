@@ -46,8 +46,7 @@ public class Vaccine extends NamedEntity {
       .append(this.id()).append("|")
       .append(this.name()).append("|")
       .append(_numApplications)
-      .append(suitableSpeciesToString())
-      .append("\n");
+      .append(suitableSpeciesToString());
     return result.toString();
   }
 

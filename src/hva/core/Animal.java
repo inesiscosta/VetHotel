@@ -89,7 +89,7 @@ public class Animal extends NamedEntity {
    * @param vaccineEffect the health status to add to the history
    */
   void updateHealthHistory(HealthStatus vaccineEffect) {
-    if(_healthHistory == "VOID") {
+    if(_healthHistory.equals("VOID")) {
       _healthHistory = vaccineEffect.toString();
       return;
     }

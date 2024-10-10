@@ -101,7 +101,7 @@ public class HotelManager implements HotelObserver {
       _hotel = (Hotel) importedHotel.readObject();
       _hotel.setAssociatedFilename(filename);
     } catch (IOException | ClassNotFoundException e) {
-        throw new UnavailableFileException(e.getMessage());
+        throw new UnavailableFileException(filename);
     }
   }
   
