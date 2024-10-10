@@ -7,19 +7,19 @@ public enum TreeType {
     DECIDUOUS("CAD"),
     EVERGREEN("PER");
 
-    private final String type;
+    private final String _pt;
 
-    TreeType(String type) {
-        this.type = type;
+    TreeType(String pt) {
+        this._pt = pt;
     }
 
-    public String type() {
-        return type;
+    public String pt() {
+        return _pt;
     }
 
     public static TreeType stringToEnum(String type) {
         for (TreeType treeType : TreeType.values()) {
-            if (treeType.type().equals(type)) {
+            if (treeType.pt().equals(type)) {
                 return treeType;
             }
         } 

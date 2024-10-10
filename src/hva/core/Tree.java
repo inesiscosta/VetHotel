@@ -55,7 +55,7 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
    * @return the tree's type
    */
   String treeType() {
-    return _treeType.type();
+    return _treeType.pt();
   }
 
   /**
