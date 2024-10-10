@@ -4,7 +4,7 @@ import hva.core.Hotel;
 import hva.app.exception.UnknownHabitatKeyException;
 import hva.app.exception.DuplicateTreeKeyException;
 import hva.core.TreeType;
-import hva.core.exception.DuplicateIdException;
+import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownHabitatIdException;
 import pt.tecnico.uilib.menus.Command;
@@ -40,7 +40,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
       _receiver.notifyHotelObservers();
     } catch (InvalidTreeTypeException | UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(habitat);
-    } catch (DuplicateIdException e) {
+    } catch (DuplicateTreeIdException e) {
       throw new DuplicateTreeKeyException(id);
     }
   }

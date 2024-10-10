@@ -2,7 +2,6 @@ package hva.app.employee;
 
 import hva.core.Hotel;
 import hva.core.exception.DuplicateEmployeeIdException;
-import hva.core.exception.DuplicateIdException;
 import hva.core.exception.InvalidEmployeeTypeException;
 import hva.app.exception.DuplicateEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
