@@ -73,7 +73,7 @@ public class Animal extends NamedEntity {
       return "VOID";
     StringBuilder result = new StringBuilder();
     for (HealthStatus healthStatus : _healthHistory)
-      result.append(healthStatus).append(",");
+      result.append(healthStatus.pt()).append(",");
     result.setLength(result.length() - 1);
     return result.toString();
   }

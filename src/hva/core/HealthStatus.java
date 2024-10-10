@@ -6,11 +6,31 @@ import hva.core.exception.InvalidDamageValueException;
  * Enumerates the possible effects of a vaccine on an animal.
  */
 public enum HealthStatus {
-  NORMAL,
-  CONFUSION,
-  ACCIDENT,
-  ERROR;
+  NORMAL("NORMAL"),
+  CONFUSION("CONFUSÃO"),
+  ACCIDENT("ACIDENTE"),
+  ERROR("ERRO");
   
+  private final String _pt;
+
+  /**
+   * Creates a new Leaf.
+   * 
+   * @param pt the leaf type String representation in Portuguese
+   */
+  HealthStatus (String pt) {
+      this._pt = pt;
+  }
+
+  /**
+   * Gets the leaf in Portuguese.
+   * 
+   * @return the leaf in Portuguese
+   */
+  public String pt() {
+      return _pt;
+  }
+
   /**
    * Determines the health status of an animal based on the damage incurred
    * by the vaccine and wether the species is correct.
