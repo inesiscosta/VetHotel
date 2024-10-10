@@ -359,7 +359,7 @@ void setAssociatedFilename(String filename) {
    * @param idEmployee the employee's unique identifier
    * @param idReponsibility the responsibility's unique identifier
    * @throws UnknownIdException if the employee with the given id is not found
-   * @throws UnknownResponsabilityException if responsibility with the given id
+   * @throws UnknownResponsibilityException if responsibility with the given id
    * is not found
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
@@ -380,7 +380,7 @@ void setAssociatedFilename(String filename) {
    * @param idEmployee the employee's unique identifier
    * @param idReponsibility the responsibility's unique identifier
    * @throws UnknownIdException if the employee with the given id is not found
-   * @throws UnknownResponsabilityException if responsibility with the given id
+   * @throws UnknownResponsibilityException if responsibility with the given id
    * is not found
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)

@@ -68,7 +68,7 @@ public class ZooKeeper extends Employee {
   }
 
   /**
-   * Removes a habitat from the list of habitats the zookeeper is responsible for.
+   * Removes a habitat from the list of habitats the keeper is responsible for.
    * 
    * @param id the habitat's unique identifier
    * @throws UnknownResponsabilityException if the habitat's id is unknown

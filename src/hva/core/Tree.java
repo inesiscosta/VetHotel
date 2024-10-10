@@ -121,7 +121,7 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
    * Checks if the tree was created in the current season.
    * 
    * @param currentSeason the current season in the Vet Hotel
-   * @return true if the tree was created in the current season, false otherwise
+   * @return true if tree was created in the current season, false otherwise
    */
   boolean equalsCreationSeason(Season currentSeason) {
     return _creationSeason == currentSeason;

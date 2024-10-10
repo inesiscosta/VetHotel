@@ -4,7 +4,8 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * Represents an entity with a name and an identifier. Inherited by most entities in the Vet Hotel.
+ * Represents an entity with a name and an identifier.
+ * Inherited by most entities in the Vet Hotel.
  */
 public class NamedEntity implements Comparable<NamedEntity>, Serializable {
 
@@ -61,7 +62,7 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
    * Compares this entity to another entity by their IDs, ignoring case.
    *
    * @param other the other entity to compare to
-   * @return a negative integer, zero, or a positive integer as this entity's ID
+   * @return a negative integer, zero, or positive integer as this entity's id
    *         is less than, equal to, or greater than the other entity's ID.
    */
   @Override
