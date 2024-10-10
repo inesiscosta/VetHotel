@@ -46,7 +46,7 @@ public class Parser {
    */
   public void parseFile(String filename) throws IOException,
   UnrecognizedEntryException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { 
+    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
       String line;
 
       while ((line = reader.readLine()) != null)
@@ -69,8 +69,8 @@ public class Parser {
     case "TRATADOR" -> parseEmployee(components, "TRT");
     case "VETERINÁRIO" -> parseEmployee(components, "VET");
     case "VACINA" -> parseVaccine(components);
-    default -> throw new UnrecognizedEntryException ("tipo de entrada inválido: "
-    + components[0]);
+    default -> throw new UnrecognizedEntryException (
+      "tipo de entrada inválido: " + components[0]);
     }
   }
 
@@ -90,7 +90,8 @@ public class Parser {
       String speciesId = components[3];
 
       _hotel.registerAnimal(id, name, speciesId, habitatId);
-    } catch (UnknownHabitatIdException | DuplicateAnimalIdException | UnknownSpeciesIdException e) {
+    } catch (UnknownHabitatIdException | DuplicateAnimalIdException |
+    UnknownSpeciesIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }
@@ -212,7 +213,8 @@ public class Parser {
           _hotel.currentSeason(), _hotel);
         }
       }
-    } catch (DuplicateTreeIdException | InvalidTreeTypeException | DuplicateHabitatIdException e) {
+    } catch (DuplicateTreeIdException | InvalidTreeTypeException |
+    DuplicateHabitatIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }

@@ -90,9 +90,11 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idHabitat the id of the habitat to identify
    * @return the habitat object with the given id
-   * @throws UnknownHabitatIdException if the habitat with the given id is not found
+   * @throws UnknownHabitatIdException if the habitat with the given id
+   * is not found
    */
-  public Habitat identifyHabitat(String idHabitat) throws UnknownHabitatIdException {
+  public Habitat identifyHabitat(String idHabitat)
+  throws UnknownHabitatIdException {
     if(!_habitats.containsKey(idHabitat))
       throw new UnknownHabitatIdException(idHabitat);
     return _habitats.get(idHabitat);
@@ -103,9 +105,11 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idAnimal the id of the animal to identify
    * @return the animal object with the given id
-   * @throws UnknownAnimalIdException if the animal with the given id is not found
+   * @throws UnknownAnimalIdException if the animal with the given id
+   * is not found
    */
-  public Animal identifyAnimal(String idAnimal) throws UnknownAnimalIdException {
+  public Animal identifyAnimal(String idAnimal)
+  throws UnknownAnimalIdException {
     for(Habitat habitat : _habitats.values()) {
       Animal animal =  habitat.identifyAnimal(idAnimal);
       if (animal != null)
@@ -119,15 +123,18 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idSpecies the id of the species to identify
    * @return the species object with the given id
-   * @throws UnknownSpeciesIdException if the species with the given id is not found
+   * @throws UnknownSpeciesIdException if the species with the given id
+   * is not found
    */
-  public Species identifySpecies(String idSpecies) throws UnknownSpeciesIdException {
+  public Species identifySpecies(String idSpecies)
+  throws UnknownSpeciesIdException {
     if(!_species.containsKey(idSpecies))
       throw new  UnknownSpeciesIdException(idSpecies);
     return _species.get(idSpecies);
   }
 
-  public Employee identifyEmployee(String idEmployee) throws UnknownEmployeeIdException {
+  public Employee identifyEmployee(String idEmployee)
+  throws UnknownEmployeeIdException {
     if(!_employees.containsKey(idEmployee))
       throw new UnknownEmployeeIdException(idEmployee);
     return _employees.get(idEmployee);
@@ -138,9 +145,11 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idVet the id of the veterinarian to identify
    * @return the veterinarian object with the given id
-   * @throws UnknownVeterinarianIdException if the veterinarian with the given id is not found
+   * @throws UnknownVeterinarianIdException
+   * if the veterinarian with the given id is not found
    */
-  public Veterinarian identifyVet(String idVet) throws UnknownVeterinarianIdException {
+  public Veterinarian identifyVet(String idVet)
+  throws UnknownVeterinarianIdException {
     try {
       Employee employee = identifyEmployee(idVet);
       if (employee.type().toString() == "VET")
@@ -156,9 +165,11 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idVaccine the id of the vaccine to identify
    * @return the vaccine object with the given id
-   * @throws UnknownVaccineIdException if the vaccine with the given id is not found
+   * @throws UnknownVaccineIdException if the vaccine with the given id
+   * is not found
    */
-  public Vaccine identifyVaccine(String idVaccine) throws UnknownVaccineIdException {
+  public Vaccine identifyVaccine(String idVaccine)
+  throws UnknownVaccineIdException {
     if(!_vaccines.containsKey(idVaccine))
       throw new UnknownVaccineIdException(idVaccine);
     return _vaccines.get(idVaccine);
@@ -171,7 +182,8 @@ public class Hotel implements  HotelSubject {
    * @param name the habitat's name
    * @param area the habitat's area
    * @return the new habitat object
-   * @throws DuplicateHabitatIdException if there is already an Habitat with the same id
+   * @throws DuplicateHabitatIdException if there is already an Habitat
+   * with the same id
    */
   public Habitat registerHabitat(String id, String name, int area)
     throws DuplicateHabitatIdException {
@@ -190,9 +202,11 @@ public class Hotel implements  HotelSubject {
    * @param name the animal's name
    * @param idHabitat the habitat's id where the animal is
    * @param idSpecies the species' id of the animal
-   * @throws UnknownHabitatIdException if the habitat with the given id is not found
+   * @throws UnknownHabitatIdException if the habitat with the given id
+   * is not found
    * @throws DuplicateAnimalIdException if the id is already used
-   * @throws UnknownSpeciesIdException if the species with the given id is not found
+   * @throws UnknownSpeciesIdException if the species with the given id
+   * is not found
    */
   public void registerAnimal(String idAnimal, String name, String idSpecies,
   String idHabitat) throws UnknownHabitatIdException,
@@ -245,7 +259,8 @@ public class Hotel implements  HotelSubject {
    * @param name the employee's name
    * @param type the employee's type (VET or TRT)
    * @throws InvalidEmployeeTypeException if the type is not valid
-   * @throws DuplicateEmployeeIdException if an employee with the same id alredy exists
+   * @throws DuplicateEmployeeIdException if an employee with the same id
+   * alredy exists
    */
   public void registerEmployee(String id, String name, String type) 
   throws DuplicateEmployeeIdException, InvalidEmployeeTypeException {
@@ -272,8 +287,10 @@ public class Hotel implements  HotelSubject {
    * @param vaccineId the vaccine's unique identifier
    * @param name the vaccine's name
    * @param speciesIds the species' ids that the vaccine is suitable for
-   * @throws UnknownSpeciesIdException if the species with the given id is not found
-   * @throws DuplicateVaccineIdException if a vaccine with the same id already exists
+   * @throws UnknownSpeciesIdException if the species with the given id
+   * is not found
+   * @throws DuplicateVaccineIdException if a vaccine with the same id
+   * already exists
    */
   public void registerVaccine(String vaccineId, String name, String[] speciesIds)
   throws UnknownSpeciesIdException, DuplicateVaccineIdException {
@@ -357,7 +374,8 @@ public class Hotel implements  HotelSubject {
    * @param species the species to change the influence
    * @param influenceString the influence to change to
    */
-  public void changeHabitatInflunece(Habitat habitat, Species species, int influence) {
+  public void changeHabitatInflunece(Habitat habitat, Species species,
+  int influence) {
     if(habitat.identifyInfluence(species) == 0)
       habitat.addInfluence(species, influence);
     habitat.changeHabitatInflunece(species, influence);
@@ -430,11 +448,13 @@ public class Hotel implements  HotelSubject {
    * Lists all vaccines in the hotel in an unmodifiable list containing
    * information about each vaccine.
    * 
-   * @return an unmodifiable List containing the Vaccine objects of all vaccines in the hotel
+   * @return an unmodifiable List containing the Vaccine objects of
+   * all vaccines in the hotel
    */
   public List<Vaccine> listVaccines() {
     List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
-    vaccines.sort(Comparator.comparing(vaccine-> vaccine.id(), String.CASE_INSENSITIVE_ORDER));
+    vaccines.sort(Comparator.comparing(vaccine-> vaccine.id(),
+    String.CASE_INSENSITIVE_ORDER));
     return Collections.unmodifiableList(vaccines);
   }
 
@@ -469,14 +489,14 @@ public class Hotel implements  HotelSubject {
    * Lists all vaccination records of vaccines administered by a given vet
    * in a string containing information about each record. 
    * 
-   * @param veterinary the veterinarian to list the vaccination records of
-   * @return an unmodifiable List containing the VaccinationRecord object string representation
+   * @param vet the veterinarian to list the vaccination records of
+   * @return an unmodifiable List containing the VaccinationRecord object
    * of all vaccination records of vaccines administered by the given vet
    */
-  public List<VaccinationRecord> listVetVaccinationRecords(Veterinarian veterinary) {
+  public List<VaccinationRecord> listVetVaccinationRecords(Veterinarian vet) {
     List<VaccinationRecord> vetVaccinationRecords = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
-      if(record.vet().equals(veterinary))
+      if(record.vet().equals(vet))
         vetVaccinationRecords.add(record);
     }
     return Collections.unmodifiableList(vetVaccinationRecords);

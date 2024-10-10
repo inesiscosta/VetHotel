@@ -12,10 +12,8 @@ import java.io.*;
 public class HotelManager implements HotelObserver {
   /** The current zoo hotel */ 
   private Hotel _hotel;
-  private String _filename; //TODO Needs to be changed in the next realse to implement multiple hotels
-  
+
   public HotelManager() {
-    _filename = null;
     _hotel = new Hotel();
     _hotel.addHotelObserver(this);
   }
@@ -36,7 +34,6 @@ public class HotelManager implements HotelObserver {
    * Advacances the season in the hotels
    */
   public void nextSeason() {
-    //TODO In the next realese implempent multiple hotels
     _hotel.nextSeason();
   }
 

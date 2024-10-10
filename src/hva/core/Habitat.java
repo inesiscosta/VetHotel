@@ -223,8 +223,8 @@ public class Habitat extends NamedEntity {
   /**
    * Lists all animals in the habitat. 
    * 
-   * @return an unmodifiable list containing the Animal object string representation of
-   * all animals in the habitat
+   * @return an unmodifiable list containing the Animal object string
+   * representation of all animals in the habitat
    */
   public List<Animal> listAnimals() {
     return Collections.unmodifiableList(new ArrayList<>(_animals.values()));
@@ -276,12 +276,12 @@ public class Habitat extends NamedEntity {
    * @param species the species to count the number of animals of
    * @return the total number of animals of the given species in the habitat
    */
-  int getNumAnimalSameSpecies(Species species) {
-    int numAnimalSameSpecies = 0;
+  int getNumAnimalsSameSpecies(Species species) {
+    int numAnimalsSameSpecies = 0;
     for(Animal animal : _animals.values()) {
       if(animal.species().equals(species))  
-        numAnimalSameSpecies++;
+        numAnimalsSameSpecies++;
     }
-    return numAnimalSameSpecies;
+    return numAnimalsSameSpecies;
   }
 }

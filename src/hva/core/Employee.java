@@ -72,18 +72,22 @@ public abstract class Employee extends NamedEntity {
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be added
-   * @throws UnknownIdException if the id cannot be used to identify a responsibility
+   * @throws UnknownIdException if the id cannot be used to
+   * identify a responsibility
    */
-  abstract void addResponsibility(String id) throws UnknownResponsibilityException;
+  abstract void addResponsibility(String id)
+  throws UnknownResponsibilityException;
   
   /**
    * Removes a responsibility from the employee. 
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be removed
-   * @throws UnknownIdException if the id cannot be used to identify a responsibility
+   * @throws UnknownIdException if the id cannot be used to
+   * identify a responsibility
    */
-  abstract void removeResponsibility(String id) throws UnknownResponsibilityException;
+  abstract void removeResponsibility(String id)
+  throws UnknownResponsibilityException;
   
   /**
    * Gets the unique identifiers of the employee's responsibilities

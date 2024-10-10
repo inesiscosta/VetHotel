@@ -42,7 +42,7 @@ public class Veterinarian extends Employee {
    * knows how to vaccinate.
    * 
    * @param id the species' unique identifier
-   * @throws UnknownResponsabilityException if the species' identifier is unknown
+   * @throws UnknownResponsabilityException if the species' id is unknown
    */
   @Override
   void addResponsibility(String id) throws UnknownResponsibilityException {
@@ -59,7 +59,7 @@ public class Veterinarian extends Employee {
    * knows how to vaccinate.
    * 
    * @param id the species' unique identifier
-   * @throws UnknownResponsabilityException if the species' identifier is unknown
+   * @throws UnknownResponsabilityException if the species' id is unknown
    */
   @Override
   void removeResponsibility(String id) throws UnknownResponsibilityException {
@@ -97,7 +97,8 @@ public class Veterinarian extends Employee {
    * @return a new VaccinationRecord object to be added to the list of
    * vaccination records stored in the hotel
    */
-  VaccinationRecord vaccinate(Vaccine vaccine, Animal animal) throws EmployeeNotResponsibleException {
+  VaccinationRecord vaccinate(Vaccine vaccine, Animal animal)
+  throws EmployeeNotResponsibleException {
     if(!_knowsHowToVaccinate.contains(animal.species()))
       throw new EmployeeNotResponsibleException(animal.species().id());
     HealthStatus animalHealthStatus = vaccine.determineVaccineEffect(animal);

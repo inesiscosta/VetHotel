@@ -54,7 +54,7 @@ public class ZooKeeper extends Employee {
    * Adds a habitat to the list of habitats the zookeeper is responsible for.
    * 
    * @param id the habitat's unique identifier
-   * @throws UnknownResponsabilityException if the habitat's identifier is unknown
+   * @throws UnknownResponsibilityException if the habitat's ud is unknown
    */
   @Override
   void addResponsibility(String id) throws UnknownResponsibilityException {
@@ -71,7 +71,7 @@ public class ZooKeeper extends Employee {
    * Removes a habitat from the list of habitats the zookeeper is responsible for.
    * 
    * @param id the habitat's unique identifier
-   * @throws UnknownResponsabilityException if the habitat's identifier is unknown
+   * @throws UnknownResponsabilityException if the habitat's id is unknown
    */
   @Override
   void removeResponsibility(String id) throws UnknownResponsibilityException {
