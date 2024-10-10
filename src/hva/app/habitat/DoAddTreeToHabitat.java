@@ -3,7 +3,6 @@ package hva.app.habitat;
 import hva.core.Hotel;
 import hva.app.exception.UnknownHabitatKeyException;
 import hva.app.exception.DuplicateTreeKeyException;
-import hva.core.TreeType;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownHabitatIdException;
@@ -32,7 +31,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     var name = stringField("name");
     var age = integerField("age");
     var difficulty = integerField("difficulty");
-    var type = TreeType.stringToEnum(optionField("type"));
+    var type = (optionField("type"));
 
     try {
       _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty, type, _receiver.currentSeason(), _receiver);

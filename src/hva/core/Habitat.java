@@ -182,12 +182,12 @@ public class Habitat extends NamedEntity {
    * (not one of the two types Evergreen or Deciduous)
    */
   public void plantTree(String id, String name, int age,
-  int baseCleaningDifficulty, TreeType treeType, Season currentSeason,
+  int baseCleaningDifficulty, String treeType, Season currentSeason,
   Hotel hotel) throws DuplicateTreeIdException, InvalidTreeTypeException {
     Tree tree;
     if(hotel.treeAlreadyExists(id))
       throw new DuplicateTreeIdException(id);
-    switch (treeType) {
+    switch (TreeType.stringToEnum(treeType)) {
       case EVERGREEN:
         tree = new Evergreen(id, name, age, baseCleaningDifficulty,
         currentSeason);
@@ -197,7 +197,7 @@ public class Habitat extends NamedEntity {
         currentSeason);
         break;
       default:
-        throw new InvalidTreeTypeException(treeType.toString());
+        throw new InvalidTreeTypeException(treeType);
     }
     _trees.add(tree);
   }
