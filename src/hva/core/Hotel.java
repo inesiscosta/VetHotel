@@ -24,6 +24,7 @@ public class Hotel implements  HotelSubject {
   private List<VaccinationRecord> _vaccinationRecords;
   private List<HotelObserver> _hotelObservers;
   private boolean _unsavedChanges;
+  private String _filename;
 
   /**
    * Creates a new Vet Hotel. The hotel starts in the Spring season.
@@ -39,26 +40,67 @@ public class Hotel implements  HotelSubject {
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
+    _filename = null;
   }
 
+/**
+ * Gets the associated filename with this hotel
+ * 
+ * @return the associated filename
+ */
+String getAssociatedFilename() {
+  return _filename;
+}
+
+/**
+ * Sets the filename of the associated file
+ * 
+ * @param filename the new filename for the associated filename
+ */
+void setAssociatedFilename(String filename) {
+  _filename = filename;
+}
+/**
+ * Changes the unsavedChanges state of the hotel.
+ * 
+ * @param state the new state for the hotel, having unsavedChanges or not
+ */
   void unsavedChanges(boolean state) {
     _unsavedChanges = state;
   }
 
+  /**
+   * Gets the state of unsavedChanges of the hotel.
+   * 
+   * @return the unsavedChanges state
+   */ 
   public boolean getUnsavedChanges() {
     return _unsavedChanges;
   }
 
+  /**
+   * Adds the requested observer to the hotel list of observers
+   * 
+   * @param observer the hotel observer to be added to the hotel observers
+   */
   @Override
   public void addHotelObserver(HotelObserver observer) {
     _hotelObservers.add(observer);
   }
 
+  /**
+   * Removes the requested observer from the hotel list of observers
+   * 
+   * @param the hotel observer to be removed from the hotel observers
+   */
   @Override
   public void removeHotelObserver(HotelObserver observer) {
     _hotelObservers.remove(observer);
   }
 
+  /**
+   * Updates all the observers in the hotel list of observers
+   */
   @Override
   public void notifyHotelObservers() {
     for(HotelObserver observer : _hotelObservers) {

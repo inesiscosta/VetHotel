@@ -12,7 +12,6 @@ import java.io.*;
 public class HotelManager implements HotelObserver {
   /** The current zoo hotel */ 
   private Hotel _hotel;
-
   public HotelManager() {
     _hotel = new Hotel();
     _hotel.addHotelObserver(this);
@@ -25,7 +24,7 @@ public class HotelManager implements HotelObserver {
 
 
   public boolean isAssociated() {
-    if(_filename == null)
+    if(_hotel.getAssociatedFilename() == null)
       return false;
     return true;
   }
@@ -82,7 +81,7 @@ public class HotelManager implements HotelObserver {
   MissingFileAssociationException, IOException {
     if(_filename != null && _filename != filename)
       throw new MissingFileAssociationException();
-    _filename = filename;
+    _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);
     ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
     exportedHotel.writeObject(_hotel);
@@ -99,7 +98,7 @@ public class HotelManager implements HotelObserver {
   public void load(String filename) throws UnavailableFileException {
     try (ObjectInputStream importedHotel = new ObjectInputStream(new FileInputStream(filename))) {
       _hotel = (Hotel) importedHotel.readObject();
-      _filename = filename;
+      _hotel.setAssociatedFilename(filename);
     } catch (IOException | ClassNotFoundException e) {
         throw new UnavailableFileException(filename);
     }
