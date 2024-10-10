@@ -45,12 +45,12 @@ public class Veterinarian extends Employee {
    * @throws UnknownResponsabilityException if the species' identifier is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknownResponsabilityException {
+  void addResponsibility(String id) throws UnknownResponsibilityException {
     try {
       _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     this.hotel().identifySpecies(id).addQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownResponsabilityException(id, e);
+      throw new UnknownResponsibilityException(id, e);
     }
   }
 
@@ -62,12 +62,12 @@ public class Veterinarian extends Employee {
    * @throws UnknownResponsabilityException if the species' identifier is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownResponsabilityException {
+  void removeResponsibility(String id) throws UnknownResponsibilityException {
     try {
       _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
       this.hotel().identifySpecies(id).removeQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownResponsabilityException(id, e);
+      throw new UnknownResponsibilityException(id, e);
     }
   }
 

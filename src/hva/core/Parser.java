@@ -11,7 +11,7 @@ import hva.core.exception.InvalidEmployeeTypeException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownEmployeeIdException;
 import hva.core.exception.UnknownHabitatIdException;
-import hva.core.exception.UnknownResponsabilityException;
+import hva.core.exception.UnknownResponsibilityException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnrecognizedEntryException;
 import java.io.BufferedReader;
@@ -133,7 +133,7 @@ public class Parser {
           _hotel.addResponsibility(components[1], responsibility);
       }
 		} catch (DuplicateIdException | DuplicateEmployeeIdException | InvalidEmployeeTypeException |
-    UnknownResponsabilityException | UnknownEmployeeIdException e) {
+    UnknownResponsibilityException | UnknownEmployeeIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
     }
   }

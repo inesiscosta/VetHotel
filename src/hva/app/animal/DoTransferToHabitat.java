@@ -12,29 +12,24 @@ import pt.tecnico.uilib.menus.CommandException;
  * Transfers a given animal to a new habitat of this zoo hotel.
  */
 class DoTransferToHabitat extends Command<Hotel> {
-
   DoTransferToHabitat(Hotel hotel) {
     super(Label.TRANSFER_ANIMAL_TO_HABITAT, hotel);
-    addStringField("id", Prompt.animalKey());
-    addStringField("habitat", hva.app.habitat.Prompt.habitatKey());
+    addStringField("idAnimal", Prompt.animalKey());
+    addStringField("idHabitat", hva.app.habitat.Prompt.habitatKey());
   }
   
-  // No error if tries to transfer to the habitat that its already in. Should it? Nop no enunciado diz em caso de erro o habitat nao e alterado
   @Override
   protected final void execute() throws CommandException {
-    var id = stringField("id");
-    var idHabitat = stringField("habitat");
-
+    var idAnimal = stringField("idAnimal");
+    var idHabitat = stringField("idHabitat");
     try {
-      var animal = _receiver.identifyAnimal(id);
-      try {
-        var habitat = _receiver.identifyHabitat(idHabitat);
-        animal.changeHabitat(habitat);
-      } catch (UnknownHabitatIdException e) {
-        throw new UnknownHabitatKeyException(idHabitat);
-      }
+      var animal = _receiver.identifyAnimal(idAnimal);
+      var habitat = _receiver.identifyHabitat(idHabitat);
+      animal.changeHabitat(habitat);
     } catch (UnknownAnimalIdException e) {
-      throw new UnknownAnimalKeyException(id);
+      throw new UnknownAnimalKeyException(idAnimal);
+    } catch (UnknownHabitatIdException e) {
+      throw new UnknownHabitatKeyException(idHabitat);
     }
   }
 }

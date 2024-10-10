@@ -293,7 +293,7 @@ public class Hotel implements Serializable {
    * is not found
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
-  throws UnknownEmployeeIdException, UnknownResponsabilityException {
+  throws UnknownEmployeeIdException, UnknownResponsibilityException {
     Employee employee;
     try {
       employee = _employees.get(idEmployee);
@@ -313,7 +313,7 @@ public class Hotel implements Serializable {
    * is not found
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)
-  throws UnknownEmployeeIdException, UnknownResponsabilityException {
+  throws UnknownEmployeeIdException, UnknownResponsibilityException {
     Employee employee;
     try {
       employee = _employees.get(idEmployee);

@@ -1,6 +1,5 @@
 package hva.core;
 
-import hva.app.exception.NoResponsibilityException;
 import hva.core.exception.*;
 import java.io.*;
 

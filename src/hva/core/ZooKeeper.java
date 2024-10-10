@@ -1,7 +1,7 @@
 package hva.core;
 
 import hva.core.exception.UnknownHabitatIdException;
-import hva.core.exception.UnknownResponsabilityException;
+import hva.core.exception.UnknownResponsibilityException;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -57,12 +57,12 @@ public class ZooKeeper extends Employee {
    * @throws UnknownResponsabilityException if the habitat's identifier is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknownResponsabilityException {
+  void addResponsibility(String id) throws UnknownResponsibilityException {
     try {
       _assignedHabitats.add(this.hotel().identifyHabitat(id));
       this.hotel().identifyHabitat(id).addKeeper(this);
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownResponsabilityException(id,e);
+      throw new UnknownResponsibilityException(id,e);
     }
 
   }
@@ -74,12 +74,12 @@ public class ZooKeeper extends Employee {
    * @throws UnknownResponsabilityException if the habitat's identifier is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownResponsabilityException {
+  void removeResponsibility(String id) throws UnknownResponsibilityException {
     try {
       _assignedHabitats.remove(this.hotel().identifyHabitat(id));
     this.hotel().identifyHabitat(id).removeKeeper(this);
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownResponsabilityException(id,e);
+      throw new UnknownResponsibilityException(id,e);
     }
     
   }

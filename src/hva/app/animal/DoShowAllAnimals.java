@@ -4,7 +4,7 @@ import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
 
 /**
- * Show all animals registered in this zoo hotel.
+ * Show all animals registered in this Vet Hotel.
  */
 class DoShowAllAnimals extends Command<Hotel> {
 

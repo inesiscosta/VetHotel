@@ -19,7 +19,6 @@ class DoShowSatisfactionOfAnimal extends Command<Hotel> {
   @Override
   protected final void execute() throws CommandException {
     var id = stringField("id");
-
     try {
       _display.popup(_receiver.identifyAnimal(id).calculateSatisfaction());
     } catch (UnknownAnimalIdException e) {

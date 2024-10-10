@@ -5,7 +5,7 @@ import java.io.Serial;
 /**
  * Class for representing an invalid ID entry.
  */
-public class UnknownResponsabilityException extends Exception {
+public class UnknownResponsibilityException extends Exception {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -13,15 +13,15 @@ public class UnknownResponsabilityException extends Exception {
   /**
    * @param message the error message
    **/
-  public UnknownResponsabilityException(String id) {
-    super("Responsability id not found:" + id);
+  public UnknownResponsibilityException(String id) {
+    super("Responsibility id not found:" + id);
   }
 
     /**
    * @param message the error message
    * @param cause The cause of the exception
    **/
-  public UnknownResponsabilityException(String id, Exception cause) {
-    super("Responsability id not found:" + id, cause);
+  public UnknownResponsibilityException(String id, Exception cause) {
+    super("Responsibility id not found:" + id, cause);
   }
 }
