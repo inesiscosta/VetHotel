@@ -460,43 +460,40 @@ public class Hotel implements  HotelSubject {
     return Collections.unmodifiableList(new ArrayList<>(_vaccinationRecords));
   }
 
-  // TODO: Makes this an immutable list
   /**
    * Lists all vaccination records of vaccines given to a given
    * animal in a string containing information about each record.
    * 
    * @param animal the animal to list the vaccination records of
-   * @return a String containing the VaccinationRecord object string representation
-   *  of all vaccination records of vaccines given to the given animal
+   * @return  an unmodifiable List containing the VaccinationRecord objects
+   * of a specific animal
    */
-  public String listAnimalVaccinationHistory(Animal animal) {
-    StringBuilder animalVaccinationHistory = new StringBuilder();
+  public List<VaccinationRecord> listAnimalVaccinationHistory(Animal animal) {
+    List<VaccinationRecord> animalVaccinationHistory = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.animal().equals(animal))
-        animalVaccinationHistory.append(record.toString()).append("\n");
+        animalVaccinationHistory.add(record);
     }
-    return animalVaccinationHistory.toString();
+    return Collections.unmodifiableList(animalVaccinationHistory);
   }
 
-  // TODO: Makes this an immutable list
   /** 
    * Lists all vaccination records of vaccines administered by a given vet
    * in a string containing information about each record. 
    * 
    * @param veterinary the veterinarian to list the vaccination records of
-   * @return a String containing the VaccinationRecord object string representation
+   * @return an unmodifiable List containing the VaccinationRecord object string representation
    * of all vaccination records of vaccines administered by the given vet
    */
-  public String listVetVaccinationRecords(Veterinarian veterinary) {
-    StringBuilder vetVaccinationRecords = new StringBuilder();
+  public List<VaccinationRecord> listVetVaccinationRecords(Veterinarian veterinary) {
+    List<VaccinationRecord> vetVaccinationRecords = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.vet().equals(veterinary))
-        vetVaccinationRecords.append(record.toString()).append("\n");
+        vetVaccinationRecords.add(record);
     }
-    return vetVaccinationRecords.toString();
+    return Collections.unmodifiableList(vetVaccinationRecords);
   }
 
-  // TODO: Makes this an immutable list
   /**
    * Lists all erroneous vaccination records in a string containing
    * information about each record.
@@ -504,13 +501,13 @@ public class Hotel implements  HotelSubject {
    * @return a String containing the VaccinationRecord object string
    * representation of all erroneous vaccination records
    */
-  public String listErroneousVaccinations() {
-    StringBuilder erroneousVaccination = new StringBuilder();
+  public List<VaccinationRecord> listErroneousVaccinations() {
+    List<VaccinationRecord> erroneousVaccination = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.damage() != "NORMAL")
-        erroneousVaccination.append(record.toString()).append("\n");
+        erroneousVaccination.add(record);
     }
-    return erroneousVaccination.toString();
+    return Collections.unmodifiableList(erroneousVaccination);
   }
 
   /**
