@@ -2,7 +2,6 @@ package hva.core;
 
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityException;
-
 import java.util.Collection;
 import java.util.HashSet;
 

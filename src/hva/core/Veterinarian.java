@@ -1,10 +1,10 @@
 package hva.core;
 
+import hva.core.exception.EmployeeNotResponsibleException;
+import hva.core.exception.UnknownSpeciesIdException;
+import hva.core.exception.UnknownResponsibilityException;
 import java.util.Collection;
 import java.util.HashSet;
-
-import hva.core.exception.*;
-
 /**
  * Represents a veterinarian that works in a Vet Hotel.
  */
