@@ -8,10 +8,9 @@ import hva.core.exception.UnknownVeterinarianIdException;
 import hva.app.exception.UnknownAnimalKeyException;
 import hva.app.exception.UnknownVaccineKeyException;
 import hva.app.exception.UnknownVeterinarianKeyException;
-import hva.app.exception.VeterinarianNotAuthorizedException; //FIXME throw exception in core if veterinarian is not authorized
+import hva.app.exception.VeterinarianNotAuthorizedException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-//FIXME add more imports if needed
 
 /**
  * Vaccinate a given animal with a given vaccine by a given veterinarian.

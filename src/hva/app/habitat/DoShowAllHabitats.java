@@ -14,6 +14,6 @@ class DoShowAllHabitats extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    _display.popup(_receiver.listHabitats()); //TODO Change to use a collection of objects and no a string
+    _display.popup(_receiver.listHabitats());
   }
 }

@@ -4,29 +4,25 @@ package hva.core;
  * Enumeration of the possible types of trees.
  */
 public enum TreeType {
-    DECIDUOUS,
-    EVERGREEN;
+    DECIDUOUS("CAD"),
+    EVERGREEN("PER");
 
+    private final String type;
 
-    /**
-     * A method for processing the string input from the App to the enum used internally
-     *
-     * @param type The input string
-     * @return treeType the Enum that corresponds to the string
-     */
-    public static TreeType stringToEnum(String type) {  //FIXME Ines temos de ver ser fazemos isto ou other way maybe override valueOf? 
-        TreeType treeType = null;
-        switch (type) {
-            case "CAD":
-              treeType = DECIDUOUS;
-              return treeType;
+    TreeType(String type) {
+        this.type = type;
+    }
 
-            case "PER":
-                treeType = EVERGREEN;
+    public String type() {
+        return type;
+    }
+
+    public static TreeType stringToEnum(String type) {
+        for (TreeType treeType : TreeType.values()) {
+            if (treeType.type().equals(type)) {
                 return treeType;
-
-            default:
-                return treeType;
-        }
+            }
+        } 
+        return null;
     }
 }
