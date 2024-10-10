@@ -86,10 +86,10 @@ public class Habitat extends NamedEntity {
    * @param id the animal's unique identifier
    * @return the Animal object if it's in the habitat, null otherwise
    */
-  Animal identifyAnimal(String id) {
+  Animal identifyAnimal(String id) throws UnknownAnimalIdException {
     if (_animals.containsKey(id))
       return _animals.get(id);
-    return null;
+    throw new UnknownAnimalIdException(id);
   } 
 
   /**

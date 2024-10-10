@@ -104,8 +104,6 @@ public class Animal extends NamedEntity {
    * @param newHabitat the new habitat to move the animal to
    */
   public void changeHabitat(Habitat newHabitat) { 
-    if(_habitat.identifyAnimal(this.id()) == null)
-      return;
     _habitat.removeAnimal(this);
     newHabitat.addAnimal(this);
     _habitat = newHabitat;

@@ -78,7 +78,8 @@ public class HotelManager implements HotelObserver {
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    if(_hotel.getAssociatedFilename() != null && _hotel.getAssociatedFilename() != filename)
+    if(_hotel.getAssociatedFilename() != null &&
+    _hotel.getAssociatedFilename() != filename)
       throw new MissingFileAssociationException();
     _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);
@@ -95,7 +96,8 @@ public class HotelManager implements HotelObserver {
    * not exist or there is an error while processing this file.
    **/
   public void load(String filename) throws UnavailableFileException {
-    try (ObjectInputStream importedHotel = new ObjectInputStream(new FileInputStream(filename))) {
+    try (ObjectInputStream importedHotel =
+    new ObjectInputStream(new FileInputStream(filename))) {
       _hotel = (Hotel) importedHotel.readObject();
       _hotel.setAssociatedFilename(filename);
     } catch (IOException | ClassNotFoundException e) {

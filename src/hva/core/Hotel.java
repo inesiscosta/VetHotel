@@ -269,7 +269,7 @@ void setAssociatedFilename(String filename) {
     try {
       species = identifySpecies(idSpecies);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownSpeciesIdException(idHabitat, e);
+      throw new UnknownSpeciesIdException(idSpecies, e);
     } 
     new Animal(idAnimal, name, species, habitat);
     notifyHotelObservers();
