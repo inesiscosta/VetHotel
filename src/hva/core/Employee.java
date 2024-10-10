@@ -16,9 +16,10 @@ public abstract class Employee extends NamedEntity {
    * @param name the employee's name
    * @param employeeType the type of employee (Zookeeper or Veterinarian)
    */
-  public Employee(String id, String name, EmployeeType employeeType) {
+  public Employee(String id, String name, EmployeeType employeeType, Hotel hotel) {
     super(id, name);
     _employeeType = employeeType;
+    _hotel = hotel;
   }
 
   /**

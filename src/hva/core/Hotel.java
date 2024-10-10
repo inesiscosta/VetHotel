@@ -311,10 +311,10 @@ void setAssociatedFilename(String filename) {
     Employee employee = null;
     switch (EmployeeType.stringToEnum(type)) {  
       case VETERINARIAN:
-        employee = new Veterinarian(id, name);
+        employee = new Veterinarian(id, name, this);
         break;
       case ZOOKEEPER:
-        employee = new ZooKeeper(id, name);
+        employee = new ZooKeeper(id, name, this);
         break;
       default:
         throw new InvalidEmployeeTypeException(type);

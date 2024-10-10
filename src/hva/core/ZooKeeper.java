@@ -18,8 +18,8 @@ public class ZooKeeper extends Employee {
    * @param idEmployee the zookeeper's unique identifier
    * @param name the zookeeper's name
    */
-  public ZooKeeper(String idEmployee, String name) {
-    super(idEmployee, name, EmployeeType.ZOOKEEPER);
+  public ZooKeeper(String idEmployee, String name, Hotel hotel) {
+    super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
     _assignedHabitats = new HashSet<Habitat>();
   }
 

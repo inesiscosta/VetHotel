@@ -17,8 +17,8 @@ public class Veterinarian extends Employee {
    * @param idEmployee the veterinarian's unique identifier
    * @param name the veterinarian's name
    */
-  public Veterinarian(String idEmployee, String name) {
-    super(idEmployee, name, EmployeeType.VETERINARIAN);
+  public Veterinarian(String idEmployee, String name, Hotel hotel) {
+    super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
     _knowsHowToVaccinate = new HashSet<Species>();
   }
     
