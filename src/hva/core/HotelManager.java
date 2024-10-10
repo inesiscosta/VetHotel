@@ -41,7 +41,6 @@ public class HotelManager implements HotelObserver {
    */
   public void newHotel() {
     _hotel = new Hotel();
-    _filename = null;
     _hotel.addHotelObserver(this);
   }
 
@@ -59,7 +58,7 @@ public class HotelManager implements HotelObserver {
   public void save() throws FileNotFoundException,
   MissingFileAssociationException, IOException {
     if(isAssociated()) {
-      saveAs(_filename);
+      saveAs(_hotel.getAssociatedFilename());
     } else {
       throw new MissingFileAssociationException();
     }
@@ -79,7 +78,7 @@ public class HotelManager implements HotelObserver {
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    if(_filename != null && _filename != filename)
+    if(_hotel.getAssociatedFilename() != null && _hotel.getAssociatedFilename() != filename)
       throw new MissingFileAssociationException();
     _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);
