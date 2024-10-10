@@ -15,12 +15,10 @@ import pt.tecnico.uilib.menus.CommandException;
 class DoOpenFile extends Command<HotelManager> {
   DoOpenFile(HotelManager receiver) {
     super(Label.OPEN_FILE, receiver);
-    addStringField("filename", Prompt.openFile());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    String filename = stringField("filename");
     if(_receiver.getHotel().getUnsavedChanges()) {
       if (Form.confirm(Prompt.saveBeforeExit())) {
         try {
@@ -32,7 +30,7 @@ class DoOpenFile extends Command<HotelManager> {
       }
     }
     try {
-      _receiver.load(filename);
+      _receiver.load(Form.requestString(Prompt.openFile()));
     } catch (UnavailableFileException e) {
         throw new FileOpenFailedException(e);
     }
