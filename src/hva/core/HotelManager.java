@@ -12,7 +12,7 @@ import java.io.*;
 public class HotelManager implements HotelObserver {
   /** The current zoo hotel */ 
   private Hotel _hotel;
-  private String _filename; //Needs to be changed in the next realse to implement multiple hotels
+  private String _filename; //TODO Needs to be changed in the next realse to implement multiple hotels
   
   public HotelManager() {
     _filename = null;
