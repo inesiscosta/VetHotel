@@ -39,7 +39,6 @@ class DoRegisterAnimal extends Command<Hotel> {
     } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
-        
         var speciesName = Form.requestString(Prompt.speciesName());
         try {
         _receiver.registerSpecies(idSpecies, speciesName);
