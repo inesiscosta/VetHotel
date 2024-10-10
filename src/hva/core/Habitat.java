@@ -90,7 +90,17 @@ public class Habitat extends NamedEntity {
     if (_animals.containsKey(id))
       return _animals.get(id);
     throw new UnknownAnimalIdException(id);
-  } 
+  }
+  
+  /**
+   * Checks if the animal id already exists in the habitat
+   *  
+   * @param id the id of the animal
+   * @return true if the id already exists false if not
+   */
+  boolean containsAnimal(String id) {
+    return _animals.containsKey(id);
+  }
 
   /**
    * Gets the influence of the habitat on a species. 

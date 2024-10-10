@@ -84,9 +84,9 @@ public class HotelManager implements HotelObserver {
     _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);
     ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
+    _hotel.unsavedChanges(false);
     exportedHotel.writeObject(_hotel);
     exportedHotel.close(); 
-    _hotel.unsavedChanges(false);
   }
   
   /**

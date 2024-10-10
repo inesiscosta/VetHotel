@@ -153,13 +153,27 @@ void setAssociatedFilename(String filename) {
   public Animal identifyAnimal(String idAnimal)
   throws UnknownAnimalIdException {
     for(Habitat habitat : _habitats.values()) {
-      Animal animal =  habitat.identifyAnimal(idAnimal);
-      if (animal != null)
-        return animal;
+      if(habitat.containsAnimal(idAnimal))
+        return habitat.identifyAnimal(idAnimal);
     }
     throw new UnknownAnimalIdException(idAnimal);
   }
 
+
+/**
+ * Test if this animal id already exists in one of the habitats
+ * 
+ * @param idAnimal the id of the animal
+ * @return returns true if the animal exist in one of the habitats 
+ * of the hotel
+ */
+private boolean duplicatedAnimal(String idAnimal) {
+  for(Habitat habitat : _habitats.values()) {
+    if(habitat.containsAnimal(idAnimal))
+      return true;
+  }
+  return false;
+}
   /**
    * Identifies a species by its id.
    * 
@@ -247,15 +261,12 @@ void setAssociatedFilename(String filename) {
    * @throws UnknownSpeciesIdException if the species with the given id
    * is not found
    */
-  public void registerAnimal(String idAnimal, String name, String idSpecies, //FIXME View Try catch
+  public void registerAnimal(String idAnimal, String name, String idSpecies,
   String idHabitat) throws UnknownHabitatIdException,
   DuplicateAnimalIdException, UnknownSpeciesIdException {
-    try {
-      identifyAnimal(idAnimal);
-      throw new DuplicateAnimalIdException(idAnimal);
-    } catch (UnknownAnimalIdException e) {
-      //Good the animal doesn't exist yet.
-    }
+    if(duplicatedAnimal(idAnimal))
+      throw new DuplicateAnimalIdException(idHabitat);
+    
     Habitat habitat;
     habitat = identifyHabitat(idHabitat);
    

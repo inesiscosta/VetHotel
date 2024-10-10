@@ -31,7 +31,6 @@ class DoRegisterAnimal extends Command<Hotel> {
     var name = stringField("name");
     var idSpecies = stringField("idSpecies");
     var idHabitat = stringField("idHabitat");
-    //FIXME after resolving the try catch from registerAnimal
 
     try {
       _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
@@ -45,12 +44,9 @@ class DoRegisterAnimal extends Command<Hotel> {
         try {
         _receiver.registerSpecies(idSpecies, speciesName);
         _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
-        } catch (DuplicateAnimalIdException e1) {
-          throw new DuplicateAnimalKeyException(idSpecies);
-        } catch (UnknownHabitatIdException e1) {
-          throw new UnknownHabitatKeyException(idHabitat);
         } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException
-       | UnknownSpeciesIdException e1) {   
+       | UnknownSpeciesIdException | UnknownHabitatIdException 
+       | DuplicateAnimalIdException e1) {   
           e1.printStackTrace();
         }
     }
