@@ -244,6 +244,20 @@ public class Hotel implements  HotelSubject {
     return _vaccines.get(idVaccine);
   }
 
+    /**
+   * Checks if the tree alreay exists on one of the habitats in the hotel
+   * 
+   * @param id the id to check 
+   * @return true if it alredy exists fasle if not
+  */  
+  boolean treeAlreadyExists(String id) {
+    for (Habitat habitat : _habitats.values()) {
+      if (habitat.identifyTree(id) == null)
+        return false;
+    }
+    return true;
+  }
+
   /**
    * Registers a new habitat in the hotel.
    * 
@@ -563,7 +577,7 @@ public class Hotel implements  HotelSubject {
 
   /**
    * Calculates the global satisfaction level of the hotel by summing 
-   * the satisfaction levels of all employees and all animals.
+   * the satisfaction levels of all employees and animals.
    * 
    * @return the global satisfaction level of the hotel
    */
@@ -574,14 +588,6 @@ public class Hotel implements  HotelSubject {
     for (Habitat habitat : _habitats.values())
       globalSatisfaction += habitat.calculateAnimalsSatisfaction();
     return (int) Math.round(globalSatisfaction);
-  }
-
-  boolean treeAlreadyExists(String id) {
-    for (Habitat habitat : _habitats.values()) {
-      if (habitat.identifyTree(id) == null)
-        return false;
-    }
-    return true;
   }
 
   /**
