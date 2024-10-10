@@ -56,6 +56,7 @@ public class Parser {
 
   /**
    * Parses a line from the file.
+   * 
    * @param line the line to parse
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
@@ -98,6 +99,7 @@ public class Parser {
 
   /**
    * Parses a line with format ESPÉCIE|id|name
+   * 
    * @param components the components of the line to parse (id, name)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
@@ -116,6 +118,7 @@ public class Parser {
   /**
    * Parses a line with format TRATADOR|id|name|idHabitat1,...,idHabitatN or
    * VETERINÁRIO|id|nome|idEspécie1,...,idEspécieN
+   * 
    * @param components the components of the line to parse (id, name, 
    * habitatIds or speciesIds)
    * @param empType the type of employee to parse (TRT or VET)
@@ -161,6 +164,7 @@ public class Parser {
 
   /**
    * Parses a line with format ÁRVORE|id|name|age|difficulty|type
+   * 
    * @param components the components of the line to parse 
    * (id, name, age, diff, type)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
@@ -191,6 +195,7 @@ public class Parser {
 
   /**
    * Parses a line with format HABITAT|id|name|area|treeId1,...,treeIdN
+   * 
    * @param components the components of the line to parse
    * (id, name, area, treeIds)
    * @throws UnrecognizedEntryException if the line contains an invalid entry

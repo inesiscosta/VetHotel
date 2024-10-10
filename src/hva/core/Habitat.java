@@ -1,6 +1,7 @@
 package hva.core;
 
 import hva.core.exception.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -83,6 +84,7 @@ public class Habitat extends NamedEntity {
 
   /**
    * Gets an Animal object if the animal is in the habitat from it's id.
+   * 
    * @param id the animal's unique identifier
    * @return the Animal object if it's in the habitat, null otherwise
    */
@@ -164,7 +166,8 @@ public class Habitat extends NamedEntity {
    * Changes the influence value a habitat has on a given species.
    * 
    * @param species the species influenced (POS, NEG, NEU) by the habitat
-   * @param newInfluence the new influence value the habitat has on the species
+   * @param newInfluence the new influence value the habitat has on the
+   * species
    */
   void changeHabitatInflunece(Species species, int newInfluence) {
     _influences.put(species, newInfluence);
@@ -181,6 +184,7 @@ public class Habitat extends NamedEntity {
 
   /**
    * Adds a new tree to the habitat.
+   * 
    * @param id the tree's unique identifier
    * @param name the tree's name
    * @param age the tree's age
@@ -212,6 +216,12 @@ public class Habitat extends NamedEntity {
     _trees.add(tree);
   }
 
+  /**
+   * Gets the tree if it exists in the habitat
+   * 
+   * @param id the id of the tree
+   * @return the tree object if it is found and null if not
+   */
   Tree identifyTree(String id) {
     for(Tree tree : _trees) {
       if(tree.id().equals(id))
@@ -241,7 +251,8 @@ public class Habitat extends NamedEntity {
   }
 
   /**
-   * Lists all trees in the habitat in a string 
+   * Lists all trees in the habitat in a string
+   * 
    * containing information about each tree.
    * @param currentSeason the current season in the Vet Hotel
    * @return a String containing the Tree object string representation
@@ -258,6 +269,7 @@ public class Habitat extends NamedEntity {
 
   /**
    * Calculates the total effort required to clean all trees in the habitat.
+   * 
    * @param currentSeason the current season in the Vet Hotel
    * @return the total effort required to clean all trees in the habitat
    */

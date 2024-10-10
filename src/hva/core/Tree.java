@@ -15,6 +15,7 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
 
   /**
    * Creates a new Tree.
+   * 
    * @param id the tree's unique identifier
    * @param name the tree's name
    * @param age the tree's age
@@ -130,6 +131,7 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
   /**
    * Compare method override used to define a new natural order for TreeSet,
    * comparing between the ids.
+   * 
    * @param t1 the first Tree object to compare
    * @param t2 the second Tree object to compare
    * @return the value returned by the compareTo between the two ids strings

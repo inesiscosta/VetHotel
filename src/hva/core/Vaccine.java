@@ -91,6 +91,7 @@ public class Vaccine extends NamedEntity {
 
   /**
    * Calculates the damage caused by the vaccine to an animal.
+   * 
    * @param animal the vaccinated animal
    * @return the damage caused by the vaccine as an integer
    */

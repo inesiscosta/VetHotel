@@ -17,12 +17,19 @@ public class HotelManager implements HotelObserver {
     _hotel.addHotelObserver(this);
   }
 
+  /**
+   * Updates the unsavedChanges
+   * 
+   * @param state the unsavedChanges current state of the hotel
+   */
   @Override
   public void update(boolean state) {
-    _hotel.unsavedChanges(true);
+    _hotel.unsavedChanges(state);
   } 
 
-
+  /**
+   * Checks if the hotel is associated with a file
+   */
   public boolean isAssociated() {
     if(_hotel.getAssociatedFilename() == null)
       return false;
@@ -84,7 +91,7 @@ public class HotelManager implements HotelObserver {
     _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);
     ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
-    _hotel.unsavedChanges(false);
+    update(false);
     exportedHotel.writeObject(_hotel);
     exportedHotel.close(); 
   }
