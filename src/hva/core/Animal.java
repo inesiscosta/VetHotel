@@ -21,18 +21,18 @@ public class Animal extends NamedEntity {
     _species = species;
     _habitat = habitat;
     _healthHistory = "VOID";
-    /* Adds itself to the TreeSet of all Animals of the same Species that 
-    the Class Species holds.*/
+    /* Adds itself to the TreeSet of all Animals of the same species that 
+    the class Species holds.*/
     _species.addAnimal(this);
-    /*Adds itself to the TreeMap of all Animals in the Habitat that
-    the Class Habitat holds.*/
+    /*Adds itself to the TreeMap of all Animals in the habitat that
+    the class Habitat holds.*/
     _habitat.addAnimal(this);
   }
 
   /**
    * Gets the species the animal belongs to.
    *
-   * @return the species the animal belongs to
+   * @return the Species object the animal belongs to
    */
   Species species() {
     return _species;
@@ -41,15 +41,15 @@ public class Animal extends NamedEntity {
   /**
    * Gets the habitat the animal is in.
    *
-   * @return the habitat the animal is in
+   * @return the Habitat object the animal is in
    */
   Habitat habitat() {
     return _habitat;
   }
 
   /**
-   * Gets the Animal object representation as a string containing information
-   * that describes the animal.
+   * Gets the Animal object representation as a string. 
+   * Contains information that describes the animal.
    *
    * @return the Animal object string representation
    */
@@ -104,6 +104,8 @@ public class Animal extends NamedEntity {
    * @param newHabitat the new habitat to move the animal to
    */
   public void changeHabitat(Habitat newHabitat) { 
+    if(_habitat.equals(newHabitat))
+      return;
     _habitat.removeAnimal(this);
     newHabitat.addAnimal(this);
     _habitat = newHabitat;
