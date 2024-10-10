@@ -1,5 +1,6 @@
 package hva.core.modificationObserver;
 
-public interface HotelObserver {
+import java.io.Serializable;
+public interface HotelObserver extends Serializable {
     void update(boolean state);
 }

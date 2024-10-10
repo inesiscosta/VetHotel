@@ -21,8 +21,9 @@ class DoSaveFile extends Command<HotelManager> {
       if (!_receiver.isAssociated()) {
           filename = Form.requestString(Prompt.newSaveAs());
           _receiver.saveAs(filename);
+      } else {
+        _receiver.save();
       }
-      _receiver.save();
     } catch (MissingFileAssociationException | IOException e) {
         return;
     }

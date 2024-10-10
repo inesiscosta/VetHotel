@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Represents a Vet Hotel.
  */
-public class Hotel implements Serializable, HotelSubject {
+public class Hotel implements  HotelSubject {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;

@@ -1,6 +1,8 @@
 package hva.core.modificationObserver;
 
-public interface HotelSubject {
+import java.io.Serializable;
+
+public interface HotelSubject extends Serializable{
     void addHotelObserver(HotelObserver observer);
     void removeHotelObserver(HotelObserver observer);
     void notifyHotelObservers();

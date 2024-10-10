@@ -91,6 +91,7 @@ public class HotelManager implements HotelObserver {
     exportedHotel.writeObject(_hotel);
     exportedHotel.close(); 
     _hotel.unsavedChanges(false);
+    System.out.println("unsaveChanges = false");
   }
   
   /**
