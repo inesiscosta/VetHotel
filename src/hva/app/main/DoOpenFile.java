@@ -1,7 +1,11 @@
 package hva.app.main;
 
 import hva.core.HotelManager;
+
+import java.io.IOException;
+
 import hva.app.exception.FileOpenFailedException;
+import hva.core.exception.MissingFileAssociationException;
 //import hva.app.exception.ImportFileException;
 import hva.core.exception.UnavailableFileException;
 
@@ -21,26 +25,31 @@ class DoOpenFile extends Command<HotelManager> {
   @Override
   protected final void execute() throws CommandException {
     String filename = stringField("filename");
-    boolean unsavedChange = false;
-    try {
-      unsavedChange = _receiver.unsavedChanges(_receiver.getHotel());
-    } catch (UnavailableFileException e) {}
-    if(!_receiver.isAssociated())
-      unsavedChange = false;
-    if(unsavedChange) {
-      if(Form.confirm(Prompt.saveBeforeExit())) {
-        DoSaveFile saveFile = new DoSaveFile(_receiver);
-        saveFile.execute();
-      }
-      try {
-        _receiver.load(filename);
+    if(_receiver.getHotel().getUnsavedChanges()) {
+      if (Form.confirm(Prompt.saveBeforeExit())) {
+          try {
+            _receiver.save();
+            _receiver.newHotel();
+          } catch (MissingFileAssociationException | IOException e) {
+            DoSaveFile saveFile = new DoSaveFile(_receiver);
+            saveFile.execute();
+            try {
+              _receiver.load(filename);
+            } catch (UnavailableFileException e1) {
+                throw new FileOpenFailedException(e1);
+            }
+          } 
+      } else {
+        try {
+          _receiver.load(filename);
         } catch (UnavailableFileException e) {
-          throw new FileOpenFailedException(e);
+            throw new FileOpenFailedException(e);
+        }
       }
     } else {
       try {
         _receiver.load(filename);
-        } catch (UnavailableFileException e) {
+      } catch (UnavailableFileException e) {
           throw new FileOpenFailedException(e);
       }
     }

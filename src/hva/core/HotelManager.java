@@ -90,6 +90,7 @@ public class HotelManager implements HotelObserver {
     ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
     exportedHotel.writeObject(_hotel);
     exportedHotel.close(); 
+    _hotel.unsavedChanges(false);
   }
   
   /**

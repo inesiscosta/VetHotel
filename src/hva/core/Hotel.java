@@ -82,6 +82,7 @@ public class Hotel implements Serializable, HotelSubject {
     _currentSeason = _currentSeason.nextSeason();
     for (Habitat habitat : _habitats.values())
       habitat.nextSeason(_currentSeason);
+    notifyHotelObservers();
   }
 
   /**
@@ -179,6 +180,7 @@ public class Hotel implements Serializable, HotelSubject {
       throw new DuplicateHabitatIdException(id);
     Habitat habitat = new Habitat(id, name, area);
     _habitats.put(id, habitat);
+    notifyHotelObservers();
     return habitat;
   }
 
@@ -213,6 +215,7 @@ public class Hotel implements Serializable, HotelSubject {
       throw new UnknownSpeciesIdException(idHabitat, e);
     } 
     new Animal(idAnimal, name, species, habitat);
+    notifyHotelObservers();
   }
 
   /**
@@ -231,6 +234,7 @@ public class Hotel implements Serializable, HotelSubject {
       throw new DuplicateSpeciesNameException(name);
     Species newSpecies = new Species(id, name);
     _species.put(id, newSpecies);
+    notifyHotelObservers();
   }
 
   /**
@@ -258,6 +262,7 @@ public class Hotel implements Serializable, HotelSubject {
         throw new InvalidEmployeeTypeException(type);
     }
     _employees.put(id, employee);
+    notifyHotelObservers();
   }
 
   /**
@@ -285,6 +290,7 @@ public class Hotel implements Serializable, HotelSubject {
     }
     Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
     _vaccines.put(vaccineId, vaccine);
+    notifyHotelObservers();
   }
 
   /**
@@ -305,6 +311,7 @@ public class Hotel implements Serializable, HotelSubject {
       throw new UnknownEmployeeIdException(idEmployee, e);
     }
     employee.addResponsibility(idReponsibility);
+    notifyHotelObservers();
   }
 
   /**
@@ -325,6 +332,7 @@ public class Hotel implements Serializable, HotelSubject {
       throw new UnknownEmployeeIdException(idEmployee, e);
     }
     employee.removeResponsibility(idReponsibility);
+    notifyHotelObservers();
   }
 
   /**
@@ -338,6 +346,7 @@ public class Hotel implements Serializable, HotelSubject {
   Vaccine vaccine) throws EmployeeNotResponsibleException {
     VaccinationRecord record = vet.vaccinate(vaccine, animal);
     _vaccinationRecords.add(record);
+    notifyHotelObservers();
   }
 
   /**
@@ -361,6 +370,7 @@ public class Hotel implements Serializable, HotelSubject {
     if(habitat.identifyInfluence(species) == 0)
       habitat.addInfluence(species, influence);
     habitat.changeHabitatInflunece(species, influence);
+    notifyHotelObservers();
   }
 
   /**
@@ -540,5 +550,6 @@ public class Hotel implements Serializable, HotelSubject {
   IOException, ImportFileException {
     var parser = new Parser(this);
     parser.parseFile(filename);
+    notifyHotelObservers();
   }
 }
