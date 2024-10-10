@@ -8,6 +8,7 @@ import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.app.exception.DuplicateAnimalKeyException;
 import hva.app.exception.UnknownHabitatKeyException;
+import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
@@ -22,7 +23,6 @@ class DoRegisterAnimal extends Command<Hotel> {
     addStringField("name", Prompt.animalName());
     addStringField("idSpecies", Prompt.speciesKey());
     addStringField("idHabitat", hva.app.habitat.Prompt.habitatKey());
-    addStringField("speciesName", Prompt.speciesName());
   }
   
   @Override
@@ -40,7 +40,7 @@ class DoRegisterAnimal extends Command<Hotel> {
         throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
         
-        var speciesName = stringField("speciesName");
+        var speciesName = Form.requestString(Prompt.speciesName());
         try {
         _receiver.registerSpecies(idSpecies, speciesName);
         _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
