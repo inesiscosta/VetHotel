@@ -2,7 +2,6 @@ package hva.app.animal;
 
 import hva.core.Hotel;
 import hva.core.exception.DuplicateAnimalIdException;
-import hva.core.exception.DuplicateIdException;
 import hva.core.exception.DuplicateSpeciesIdException;
 import hva.core.exception.DuplicateSpeciesNameException;
 import hva.core.exception.UnknownHabitatIdException;
@@ -49,7 +48,7 @@ class DoRegisterAnimal extends Command<Hotel> {
         } catch (UnknownHabitatIdException e1) {
           throw new UnknownHabitatKeyException(idHabitat);
         } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException
-        | DuplicateIdException | UnknownSpeciesIdException e1) {        
+       | UnknownSpeciesIdException e1) {        
         }
     }
   }

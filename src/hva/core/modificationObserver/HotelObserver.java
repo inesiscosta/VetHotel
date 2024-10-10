@@ -1,5 +1,5 @@
 package hva.core.modificationObserver;
 
 public interface HotelObserver {
-    boolean update(boolean state);
+    void update(boolean state);
 }

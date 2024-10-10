@@ -1,15 +1,16 @@
 package hva.core;
 
 import hva.core.exception.*;
+import hva.core.modificationObserver.HotelObserver;
+import hva.core.modificationObserver.HotelSubject;
+
 import java.io.*;
 import java.util.*;
 
 /**
  * Represents a Vet Hotel.
- * 
- * 
  */
-public class Hotel implements Serializable {
+public class Hotel implements Serializable, HotelSubject {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -21,6 +22,8 @@ public class Hotel implements Serializable {
   private Map<String, Species> _speciesByName;
   private Map<String,Vaccine> _vaccines;
   private List<VaccinationRecord> _vaccinationRecords;
+  private List<HotelObserver> _hotelObservers;
+  private boolean _unsavedChanges;
 
   /**
    * Creates a new Vet Hotel. The hotel starts in the Spring season.
@@ -34,6 +37,33 @@ public class Hotel implements Serializable {
     _speciesByName = new HashMap<>();
     _vaccines = new HashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
+    _hotelObservers = new ArrayList<>();
+    _unsavedChanges = false;
+  }
+
+  void unsavedChanges(boolean state) {
+    _unsavedChanges = state;
+  }
+
+  public boolean getUnsavedChanges() {
+    return _unsavedChanges;
+  }
+
+  @Override
+  public void addHotelObserver(HotelObserver observer) {
+    _hotelObservers.add(observer);
+  }
+
+  @Override
+  public void removeHotelObserver(HotelObserver observer) {
+    _hotelObservers.remove(observer);
+  }
+
+  @Override
+  public void notifyHotelObservers() {
+    for(HotelObserver observer : _hotelObservers) {
+      observer.update(true);
+    }
   }
 
   /**

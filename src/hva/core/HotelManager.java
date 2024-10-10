@@ -1,17 +1,30 @@
 package hva.core;
 
 import hva.core.exception.*;
+import hva.core.modificationObserver.HotelObserver;
+
 import java.io.*;
 
 /**
  * Class representing the manager of this application. It manages the current
  * zoo hotel.
  **/
-public class HotelManager {
-  /** The current zoo hotel */ // Should we initialize this field?
-  private Hotel _hotel = new Hotel();
-  private String _filename = null;
+public class HotelManager implements HotelObserver {
+  /** The current zoo hotel */ 
+  private Hotel _hotel;
+  private String _filename; //Needs to be changed in the next realse to implement multiple hotels
   
+  public HotelManager() {
+    _filename = null;
+    _hotel = new Hotel();
+    _hotel.addHotelObserver(this);
+  }
+
+  @Override
+  public void update(boolean state) {
+    _hotel.unsavedChanges(true);
+  } 
+
 
   public boolean isAssociated() {
     if(_filename == null)
@@ -33,6 +46,7 @@ public class HotelManager {
   public void newHotel() {
     _hotel = new Hotel();
     _filename = null;
+    _hotel.addHotelObserver(this);
   }
 
   /**
@@ -109,38 +123,6 @@ public class HotelManager {
     }
   } 
   
-  /**
-   * Method used to check if there are diferences beetween the actual hotel and the one that 
-   * is serialized to a file, load that file and compara against the hotel.
-   * 
-   * @param hotel
-   * @return true if there unsaved changes in the hotel that are not in the associated file
-   * @throws UnavailableFileException
-   */
-  public boolean unsavedChanges(Hotel hotel) throws UnavailableFileException{
-    boolean unsavedChanges = false;
-    try (ObjectInputStream inputObjectStream= new ObjectInputStream(new FileInputStream(_filename))) {
-      
-      Hotel importedHotel = (Hotel) inputObjectStream.readObject();
-
-      ByteArrayOutputStream outputByteStream = new ByteArrayOutputStream();
-      ObjectOutputStream exportedHotel = new ObjectOutputStream(outputByteStream);
-
-      exportedHotel.writeObject(hotel);
-      exportedHotel.flush();
-      
-      ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(outputByteStream.toByteArray());
-      try (ObjectInputStream currentHotelStream = new ObjectInputStream(byteArrayInputStream)) {
-          Hotel currentHotel = (Hotel) currentHotelStream.readObject();
-          unsavedChanges = !importedHotel.equals(currentHotel);
-      }
-
-    } catch (IOException | ClassNotFoundException | NullPointerException e) {
-        throw new UnavailableFileException(_filename);
-    }
-    return unsavedChanges;
-  }
-
   /**
    * Returns the zoo hotel managed by this instance.
    *
