@@ -543,7 +543,6 @@ public class Hotel implements Serializable, HotelSubject {
    * @throws UnrecognizedEntryException if some entry is not correct
    * @throws IOException if there is an IO error while processing the text file
    **/
-  //  UnallowedTypeException, DuplicateException, UnallowedKeyException,
   void importFile(String filename) throws UnrecognizedEntryException,
   IOException, ImportFileException {
     var parser = new Parser(this);
