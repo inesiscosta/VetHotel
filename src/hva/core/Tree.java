@@ -77,13 +77,13 @@ public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
    */
   public String toString(Season currentSeason) {
     StringBuilder result = new StringBuilder();
-    result.append("ÁRVORE | ")
-      .append(id()).append(" | ")
-      .append(name()).append(" | ")
-      .append(age()).append(" | ")
-      .append(baseCleaningDifficulty()).append(" | ")
-      .append(treeType()).append(" | ")
-      .append(getBioCycle(currentSeason));
+    result.append("ÁRVORE|")
+      .append(id()).append("|")
+      .append(name()).append("|")
+      .append(age()).append("|")
+      .append(baseCleaningDifficulty()).append("|")
+      .append(treeType()).append("|")
+      .append(getBioCycle(currentSeason).pt());
     return result.toString();
   }
 
