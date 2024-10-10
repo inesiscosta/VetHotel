@@ -14,18 +14,18 @@ public enum HealthStatus {
   private final String _pt;
 
   /**
-   * Creates a new Leaf.
+   * Creates a new HealthStatus.
    * 
-   * @param pt the leaf type String representation in Portuguese
+   * @param pt the healthstatus type String representation in Portuguese
    */
   HealthStatus (String pt) {
       this._pt = pt;
   }
 
   /**
-   * Gets the leaf in Portuguese.
+   * Gets the healthsatus in Portuguese.
    * 
-   * @return the leaf in Portuguese
+   * @return the healthsatus in Portuguese
    */
   public String pt() {
       return _pt;
