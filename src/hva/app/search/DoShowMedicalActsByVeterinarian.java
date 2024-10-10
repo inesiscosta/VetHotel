@@ -20,12 +20,11 @@ class DoShowMedicalActsByVeterinarian extends Command<Hotel> {
   @Override
   protected void execute() throws CommandException {
     var idVet = stringField("veterinarian");
-
     try {
       var veterinarian = _receiver.identifyVet(idVet);
       _display.popup(_receiver.listVetVaccinationRecords(veterinarian));
     } catch (UnknownEmployeeIdException e) {
-        throw new UnknownVeterinarianKeyException(idVet);
+      throw new UnknownVeterinarianKeyException(idVet);
     }
   }
 }

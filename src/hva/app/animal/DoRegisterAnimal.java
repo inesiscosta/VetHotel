@@ -39,15 +39,15 @@ class DoRegisterAnimal extends Command<Hotel> {
     } catch (UnknownHabitatIdException e) {
         throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
-        var speciesName = Form.requestString(Prompt.speciesName());
-        try {
+      var speciesName = Form.requestString(Prompt.speciesName());
+      try {
         _receiver.registerSpecies(idSpecies, speciesName);
         _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
-        } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException
-       | UnknownSpeciesIdException | UnknownHabitatIdException 
-       | DuplicateAnimalIdException e1) {   
-          e1.printStackTrace();
-        }
+      } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException
+      | UnknownSpeciesIdException | UnknownHabitatIdException 
+      | DuplicateAnimalIdException e1) {   
+        e1.printStackTrace();
+      }
     }
   }
 }

@@ -1,11 +1,11 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
-import hva.app.exception.UnknownHabitatKeyException;
-import hva.app.exception.DuplicateTreeKeyException;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownHabitatIdException;
+import hva.app.exception.UnknownHabitatKeyException;
+import hva.app.exception.DuplicateTreeKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
@@ -34,14 +34,15 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     var type = (optionField("type"));
 
     try {
-      _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty, type, _receiver.currentSeason(), _receiver);
+      _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty,
+      type, _receiver.currentSeason(), _receiver);
       _receiver.notifyHotelObservers();
     } catch (UnknownHabitatIdException e) {
-        throw new UnknownHabitatKeyException(habitat);
+      throw new UnknownHabitatKeyException(habitat);
     } catch (DuplicateTreeIdException e) {
-        throw new DuplicateTreeKeyException(id);
+      throw new DuplicateTreeKeyException(id);
     } catch (InvalidTreeTypeException e) {
-        e.printStackTrace();
+      e.printStackTrace();
     }
   }
 }

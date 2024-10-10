@@ -19,12 +19,11 @@ class DoShowMedicalActsOnAnimal extends Command<Hotel> {
   @Override
   protected void execute() throws CommandException {
     var idAnimal = stringField("animal");
-
     try {
       var animal = _receiver.identifyAnimal(idAnimal);
       _display.popup(_receiver.listAnimalVaccinationHistory(animal));
     } catch (UnknownAnimalIdException e) {
-        throw new UnknownAnimalKeyException(idAnimal);
+      throw new UnknownAnimalKeyException(idAnimal);
     }
   }
 }

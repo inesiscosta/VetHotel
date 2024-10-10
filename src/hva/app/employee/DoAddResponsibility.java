@@ -30,7 +30,7 @@ class DoAddResponsibility extends Command<Hotel> {
     } catch (UnknownEmployeeIdException e) {
       throw new UnknownEmployeeKeyException(idEmployee);
     } catch (UnknownResponsibilityException e) {
-        throw new NoResponsibilityException(idEmployee, idResponsibility);
+      throw new NoResponsibilityException(idEmployee, idResponsibility);
     }
   }
 }

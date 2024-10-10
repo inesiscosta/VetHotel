@@ -20,19 +20,16 @@ class DoNewFile extends Command<HotelManager> {
   protected final void execute() throws CommandException {
     if(_receiver.getHotel().getUnsavedChanges()) {
       if (Form.confirm(Prompt.saveBeforeExit())) {
-          try {
-            _receiver.save();
-            _receiver.newHotel();
-          } catch (MissingFileAssociationException | IOException e) {
-            DoSaveFile saveFile = new DoSaveFile(_receiver);
-            saveFile.execute();
-            _receiver.newHotel();
-          } 
-      } else {
-         _receiver.newHotel();
+        try {
+          _receiver.save();
+        } catch (MissingFileAssociationException | IOException e) {
+          DoSaveFile saveFile = new DoSaveFile(_receiver);
+          saveFile.execute();
+        } finally {
+          _receiver.newHotel();
+        }
       }
-    } else {
-      _receiver.newHotel();;
     }
+    _receiver.newHotel();
   }
 }

@@ -42,9 +42,9 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
       _receiver.changeHabitatInflunece(_receiver.identifyHabitat(idHabitat),
       _receiver.identifySpecies(idSpecies), influence);
     } catch (UnknownHabitatIdException e) {
-        throw new UnknownHabitatKeyException(idHabitat);
+      throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
-        throw new UnknownSpeciesKeyException(idSpecies);
+      throw new UnknownSpeciesKeyException(idSpecies);
     }
   }
 }
