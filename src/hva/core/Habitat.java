@@ -30,7 +30,7 @@ public class Habitat extends NamedEntity {
   public Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
-    _animals = new TreeMap<String,Animal>(); //String is the id of the Animal.
+    _animals = new TreeMap<String,Animal>(String.CASE_INSENSITIVE_ORDER); //String is the id of the Animal.
     _assignedKeepers = new TreeSet<ZooKeeper>();
     _trees = new TreeSet<Tree>();
     _influences = new HashMap<>();

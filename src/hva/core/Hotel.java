@@ -32,8 +32,8 @@ public class Hotel implements  HotelSubject {
    */
   public Hotel() {
     _currentSeason = Season.Spring;
-    _habitats = new TreeMap<>();
-    _employees = new TreeMap<>();
+    _habitats = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    _employees = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     _species = new HashMap<>();
     _speciesByName = new HashMap<>();
     _vaccines = new HashMap<>();
