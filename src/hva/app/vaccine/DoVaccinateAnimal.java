@@ -3,8 +3,8 @@ package hva.app.vaccine;
 import hva.core.Hotel;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownAnimalIdException;
+import hva.core.exception.UnknownEmployeeIdException;
 import hva.core.exception.UnknownVaccineIdException;
-import hva.core.exception.UnknownVeterinarianIdException;
 import hva.app.exception.UnknownAnimalKeyException;
 import hva.app.exception.UnknownVaccineKeyException;
 import hva.app.exception.UnknownVeterinarianKeyException;
@@ -36,7 +36,7 @@ class DoVaccinateAnimal extends Command<Hotel> {
       vaccineApropriated =_receiver.addVaccinationRecord(veterinarian, animal, vaccine);
     } catch (UnknownVaccineIdException e) {
         throw new UnknownVaccineKeyException(idVaccine);
-    } catch (UnknownVeterinarianIdException e) {
+    } catch (UnknownEmployeeIdException e) {
         throw new UnknownVeterinarianKeyException(idVet);
     } catch (UnknownAnimalIdException e) { 
         throw new UnknownAnimalKeyException(idAnimal);

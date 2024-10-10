@@ -191,15 +191,12 @@ void setAssociatedFilename(String filename) {
    * if the veterinarian with the given id is not found
    */
   public Veterinarian identifyVet(String idVet)
-  throws UnknownVeterinarianIdException {
-    try {
+  throws UnknownEmployeeIdException {
       Employee employee = identifyEmployee(idVet);
-      if (employee.type().pt() == "VET")
+      if (employee.type().pt() != "VET") {
+        throw new UnknownEmployeeIdException(idVet);
+      }
         return (Veterinarian) employee;
-      throw new UnknownVeterinarianIdException(idVet);
-    } catch (UnknownEmployeeIdException e) {
-      throw new UnknownVeterinarianIdException(idVet, e);
-    }
   }
 
   /**
@@ -250,7 +247,7 @@ void setAssociatedFilename(String filename) {
    * @throws UnknownSpeciesIdException if the species with the given id
    * is not found
    */
-  public void registerAnimal(String idAnimal, String name, String idSpecies,
+  public void registerAnimal(String idAnimal, String name, String idSpecies, //FIXME View Try catch
   String idHabitat) throws UnknownHabitatIdException,
   DuplicateAnimalIdException, UnknownSpeciesIdException {
     try {
@@ -334,12 +331,10 @@ void setAssociatedFilename(String filename) {
       throw new DuplicateVaccineIdException(vaccineId);
     List<Species> speciesList = new ArrayList<>();
     for (String id : speciesIds) {
+
       Species species;
-      try {
-        species = identifySpecies(id);
-      } catch (UnknownSpeciesIdException e) {
-        throw new UnknownSpeciesIdException(id, e);
-      }
+      species = identifySpecies(id);
+  
       speciesList.add(species);
     }
     Vaccine vaccine = new Vaccine(vaccineId, name, speciesList);
@@ -358,12 +353,9 @@ void setAssociatedFilename(String filename) {
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityException {
-    Employee employee;
-    try {
-      employee = _employees.get(idEmployee);
-    } catch (NullPointerException e) {
-      throw new UnknownEmployeeIdException(idEmployee, e);
-    }
+
+    Employee employee = identifyEmployee(idEmployee);
+    
     employee.addResponsibility(idReponsibility);
     notifyHotelObservers();
   }
@@ -379,12 +371,9 @@ void setAssociatedFilename(String filename) {
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityException {
-    Employee employee;
-    try {
-      employee = _employees.get(idEmployee);
-    } catch (NullPointerException e) {
-      throw new UnknownEmployeeIdException(idEmployee, e);
-    }
+
+    Employee employee = identifyEmployee(idEmployee);
+
     employee.removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }
