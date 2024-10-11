@@ -173,13 +173,13 @@ public class Parser {
       int diff = Integer.parseInt(components[4]);
       String type = components[5];
 	    Tree tree;
-	    if(type != "PERENE" || type != "CADUCA")
+	    if(!(type.equals("PERENE") || type.equals( "CADUCA")))
 		    throw new InvalidTreeTypeException(type);
-	    if(type == "PERENE") {
+	    if(type.equals("PERENE")) {
         tree = new Evergreen(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
       }
-      if(type == "CADUCA") {
+      if(type.equals("CADUCA")) {
         tree = new Deciduous(id, name, age, diff, null);
         _tempTreesNoHabitat.put(id, tree);
       }
