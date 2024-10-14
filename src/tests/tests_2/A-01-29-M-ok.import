@@ -1,0 +1,18 @@
+ESPÉCIE|E1|Cão
+ESPÉCIE|E2|Gato
+ESPÉCIE|E3|Leão
+HABITAT|AAAA|Aldeia dos Macacos 5|420
+VACINA|V3|Tétano|E1
+VACINA|V4|Tétano 2|E1
+VACINA|V5|Tétano 3|E1
+TRATADOR|A24|Rohit Figueiredo
+VETERINÁRIO|A25|Rohit Figueiredo 2
+TRATADOR|A34|Rohit Figueiredo 3
+VETERINÁRIO|A85|Rohit Figueiredo 4
+VETERINÁRIO|A95|Rohit Figueiredo 5
+TRATADOR|B24|Rohit Figueiredo 6
+TRATADOR|D24|Rohit Figueiredo 7
+TRATADOR|X24|Rohit Figueiredo 8
+VETERINÁRIO|X25|Rohit Figueiredo 9
+ANIMAL|A1|Nome 1|E1|AAAA
+ANIMAL|A2|Nome 1|E3|AAAA

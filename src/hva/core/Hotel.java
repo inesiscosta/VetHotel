@@ -488,6 +488,7 @@ public class Hotel implements  HotelSubject {
     List<Animal> allAnimals = new ArrayList<>();
     for (Habitat habitat : _habitats.values())
       allAnimals.addAll(habitat.listAnimals());
+    allAnimals.sort(Comparator.comparing(Animal::id));
     return Collections.unmodifiableList(allAnimals);
   }
 
@@ -510,7 +511,8 @@ public class Hotel implements  HotelSubject {
    * representation of all employees in the hotel
    */
   public List<Employee> listEmployees() {
-    return Collections.unmodifiableList(new ArrayList<>(_employees.values()));
+    List<Employee> employees = new ArrayList<>(_employees.values());
+    return Collections.unmodifiableList(employees);
   }
 
   /**

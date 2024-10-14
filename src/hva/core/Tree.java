@@ -7,7 +7,7 @@ import java.util.Comparator;
 /**
  * Represents a generic tree in the Vet Hotel.
  */
-public abstract class Tree extends NamedEntity  implements Comparator<Tree> {
+public abstract class Tree extends NamedEntity implements Comparator<Tree> {
   private int _age;
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;

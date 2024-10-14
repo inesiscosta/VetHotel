@@ -1,0 +1,43 @@
+Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: Gestão de Animais
+1 - Visualizar todos os animais
+2 - Registar animal
+3 - Transferir para habitat
+4 - Calcular satisfação de animal
+0 - Sair
+Escolha uma opção: ANIMAL|A1|Farrusco 1|E1|VOID|H1
+ANIMAL|A2|Farrusco 2|E1|VOID|H1
+ANIMAL|A3|Farrusco 3|E1|VOID|H2
+ANIMAL|B1|Farrusco 4|E1|VOID|H2
+ANIMAL|X1|Farrusco 5|E1|VOID|H3
+ANIMAL|X2|Farrusco 6|E1|VOID|H3
+Gestão de Animais
+1 - Visualizar todos os animais
+2 - Registar animal
+3 - Transferir para habitat
+4 - Calcular satisfação de animal
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: 

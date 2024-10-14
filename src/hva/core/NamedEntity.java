@@ -2,6 +2,7 @@ package hva.core;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Represents an entity with a name and an identifier.
@@ -67,6 +68,6 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
    */
   @Override
   public int compareTo(NamedEntity other) {
-    return this._id.compareToIgnoreCase(other._id);
+    return this._id.compareToIgnoreCase(other.id());
   }
 }
