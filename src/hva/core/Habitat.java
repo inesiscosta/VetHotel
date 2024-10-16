@@ -7,6 +7,7 @@ import hva.core.exception.UnknownAnimalIdException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,14 +74,13 @@ public class Habitat extends NamedEntity {
    * @param currentSeason the current season in the Vet Hotel
    * @return the Habitat object string representation
    */
-  public String toString(Season currentSeason) {
+  public String toString() {
     StringBuilder result = new StringBuilder();
     result.append("HABITAT|")
       .append(this.id()).append("|")
       .append(this.name()).append("|")
       .append(this.area()).append("|")
-      .append(_trees.size()).append("\n")
-      .append(listTrees(currentSeason));
+      .append(_trees.size());  
     return result.toString();
   }
 
@@ -248,7 +248,7 @@ public class Habitat extends NamedEntity {
    * @return an unmodifiable list containing the Animal object string
    * representation of all animals in the habitat
    */
-  public List<Animal> listAnimals() {
+  public List<Animal> listAnimals() { //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
     return Collections.unmodifiableList(new ArrayList<>(_animals.values()));
   }
 
@@ -260,13 +260,22 @@ public class Habitat extends NamedEntity {
    * @return a String containing the Tree object string representation
    * of all trees in the habitat
    */
-  String listTrees(Season currentSeason) { 
+  List<String> listTrees(Season currentSeason) { 
+    /*
     StringBuilder listTrees = new StringBuilder();
     for(Tree tree : _trees)
       listTrees.append(tree.toString(currentSeason)).append("\n");
     if(!listTrees.isEmpty())
       listTrees.setLength(listTrees.length() - 1);
-    return listTrees.toString();
+    */
+    List<Tree> allTrees = new ArrayList<>();
+    allTrees.addAll(_trees); //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
+    allTrees.sort(Comparator.comparing(Tree::id,String.CASE_INSENSITIVE_ORDER));
+    List<String> allTreesString = new ArrayList<>();
+    for(Tree tree : allTrees) {
+      allTreesString.add(tree.toString(currentSeason));
+    }
+    return Collections.unmodifiableList(allTreesString);
   }
 
   /**

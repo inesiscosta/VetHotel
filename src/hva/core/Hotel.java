@@ -459,9 +459,13 @@ public class Hotel implements  HotelSubject {
    * representation of all habitats in the hotel
    */
   public List<String> listHabitats() {
+    List<Habitat> allHabitats = new ArrayList<>();  //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
+    allHabitats.addAll(_habitats.values());
+    allHabitats.sort(Comparator.comparing(Habitat::id,String.CASE_INSENSITIVE_ORDER));
     List<String> listHabitats = new ArrayList<>();
-    for (Habitat habitat : _habitats.values()) {
-      listHabitats.add(habitat.toString(this.currentSeason()));
+    for (Habitat habitat : allHabitats) {
+      listHabitats.add(habitat.toString());
+      listHabitats.addAll(habitat.listTrees(this.currentSeason()));
     }
     return Collections.unmodifiableList(listHabitats);
   }
@@ -473,8 +477,8 @@ public class Hotel implements  HotelSubject {
    * @return  a String containing the Tree information of all
    * trees in the habitat
    */
-  public String listTreesHabitat(Habitat habitat) {
-    return habitat.listTrees(this.currentSeason());
+  public List<String> listTreesHabitat(Habitat habitat) {
+    return Collections.unmodifiableList(habitat.listTrees(this.currentSeason()));
   }
 
   /**
@@ -511,7 +515,9 @@ public class Hotel implements  HotelSubject {
    * representation of all employees in the hotel
    */
   public List<Employee> listEmployees() {
-    List<Employee> employees = new ArrayList<>(_employees.values());
+    List<Employee> employees = new ArrayList<>(_employees.values()); //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
+    employees.sort(Comparator.comparing(Employee::id,
+    String.CASE_INSENSITIVE_ORDER));
     return Collections.unmodifiableList(employees);
   }
 

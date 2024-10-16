@@ -2,12 +2,11 @@ package hva.core;
 
 import static java.lang.Math.log;
 
-import java.util.Comparator;
 
 /**
  * Represents a generic tree in the Vet Hotel.
  */
-public abstract class Tree extends NamedEntity implements Comparator<Tree> {
+public abstract class Tree extends NamedEntity  {
   private int _age;
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;
@@ -128,6 +127,7 @@ public abstract class Tree extends NamedEntity implements Comparator<Tree> {
     return _creationSeason == currentSeason;
   }
 
+  //TODO Maybe this is not needed we need to see
   /**
    * Compare method override used to define a new natural order for TreeSet,
    * comparing between the ids.
@@ -136,10 +136,12 @@ public abstract class Tree extends NamedEntity implements Comparator<Tree> {
    * @param tree2 the second Tree object to compare
    * @return the value returned by the compareTo between the two ids strings
    */
+  /*
   @Override
   public int compare(Tree tree1, Tree tree2) {
     return tree1.id().compareTo(tree2.id());
   }
+  */
 
   /**
    * Increments the tree's age by one. Only used when the season changes
