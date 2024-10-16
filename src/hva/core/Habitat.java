@@ -7,7 +7,6 @@ import hva.core.exception.UnknownAnimalIdException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class Habitat extends NamedEntity {
   public Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
-    _animals = new TreeMap<String,Animal>(); //String is the id of the Animal.
+    _animals = new TreeMap<String,Animal>(new CaseInsensitiveOrderComparator()); //String is the id of the Animal.
     _assignedKeepers = new TreeSet<ZooKeeper>();
     _trees = new TreeSet<Tree>();
     _influences = new HashMap<>();
@@ -248,7 +247,7 @@ public class Habitat extends NamedEntity {
    * @return an unmodifiable list containing the Animal object string
    * representation of all animals in the habitat
    */
-  public List<Animal> listAnimals() { //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
+  public List<Animal> listAnimals() {
     return Collections.unmodifiableList(new ArrayList<>(_animals.values()));
   }
 
@@ -261,18 +260,8 @@ public class Habitat extends NamedEntity {
    * of all trees in the habitat
    */
   List<String> listTrees(Season currentSeason) { 
-    /*
-    StringBuilder listTrees = new StringBuilder();
-    for(Tree tree : _trees)
-      listTrees.append(tree.toString(currentSeason)).append("\n");
-    if(!listTrees.isEmpty())
-      listTrees.setLength(listTrees.length() - 1);
-    */
-    List<Tree> allTrees = new ArrayList<>();
-    allTrees.addAll(_trees); //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
-    allTrees.sort(Comparator.comparing(Tree::id,String.CASE_INSENSITIVE_ORDER));
     List<String> allTreesString = new ArrayList<>();
-    for(Tree tree : allTrees) {
+    for(Tree tree : _trees) {
       allTreesString.add(tree.toString(currentSeason));
     }
     return Collections.unmodifiableList(allTreesString);

@@ -56,10 +56,10 @@ public class Hotel implements  HotelSubject {
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
-    _habitats = new TreeMap<>();
+    _habitats = new TreeMap<>(new CaseInsensitiveOrderComparator());
     _species = new HashMap<>();
     _speciesByName = new HashMap<>();
-    _employees = new TreeMap<>();
+    _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
     _vaccines = new HashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
   }
@@ -459,11 +459,8 @@ public class Hotel implements  HotelSubject {
    * representation of all habitats in the hotel
    */
   public List<String> listHabitats() {
-    List<Habitat> allHabitats = new ArrayList<>();  //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
-    allHabitats.addAll(_habitats.values());
-    allHabitats.sort(Comparator.comparing(Habitat::id,String.CASE_INSENSITIVE_ORDER));
     List<String> listHabitats = new ArrayList<>();
-    for (Habitat habitat : allHabitats) {
+    for (Habitat habitat : _habitats.values()) {
       listHabitats.add(habitat.toString());
       listHabitats.addAll(habitat.listTrees(this.currentSeason()));
     }
@@ -492,7 +489,7 @@ public class Hotel implements  HotelSubject {
     List<Animal> allAnimals = new ArrayList<>();
     for (Habitat habitat : _habitats.values())
       allAnimals.addAll(habitat.listAnimals());
-    allAnimals.sort(Comparator.comparing(Animal::id));
+    allAnimals.sort(Comparator.comparing(Animal::id,String.CASE_INSENSITIVE_ORDER)); //This is needed because the animals are sorted in each habitat but not globaly (Inês check this do we need a coment ?)
     return Collections.unmodifiableList(allAnimals);
   }
 
@@ -515,10 +512,7 @@ public class Hotel implements  HotelSubject {
    * representation of all employees in the hotel
    */
   public List<Employee> listEmployees() {
-    List<Employee> employees = new ArrayList<>(_employees.values()); //TODO It is not needed once custom TreeMap and TreeSet comaprator is ready
-    employees.sort(Comparator.comparing(Employee::id,
-    String.CASE_INSENSITIVE_ORDER));
-    return Collections.unmodifiableList(employees);
+    return Collections.unmodifiableList(new ArrayList<>(_employees.values()));
   }
 
   /**
