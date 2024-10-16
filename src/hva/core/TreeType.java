@@ -4,8 +4,8 @@ package hva.core;
  * Enumeration of the possible types of trees.
  */
 public enum TreeType {
-    DECIDUOUS("CAD"),
-    EVERGREEN("PER");
+    DECIDUOUS("CADUCA"),
+    EVERGREEN("PERENE");
 
     private final String _pt;
 
