@@ -140,8 +140,7 @@ public abstract class Tree extends NamedEntity implements Comparator<Tree> {
    */
   @Override
   public int compare(Tree tree1, Tree tree2) {
-    CaseInsensitiveOrderComparator comparator = new CaseInsensitiveOrderComparator();
-    return comparator.compare(tree1.id(), tree2.id());
+    return new CaseInsensitiveOrderComparator().compare(tree1.id(), tree2.id()); //TODO Should this be moved to NamedEntity?
   }
 
   /**
