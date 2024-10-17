@@ -57,10 +57,10 @@ public class Hotel implements  HotelSubject {
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
     _habitats = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _species = new HashMap<>(); //TODO Case Insensitive Ids for species Verify works
+    _species = new HashMap<>();
     _speciesByName = new HashMap<>();
     _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _vaccines = new HashMap<>(); //TODO Case Insensitive Ids for vaccines Verify works
+    _vaccines = new HashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
   }
 
