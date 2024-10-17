@@ -57,10 +57,10 @@ public class Hotel implements  HotelSubject {
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
     _habitats = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _species = new HashMap<>();
+    _species = new HashMap<>(); //TODO Case Insensitive Ids for species Verify works
     _speciesByName = new HashMap<>();
     _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _vaccines = new HashMap<>();
+    _vaccines = new HashMap<>(); //TODO Case Insensitive Ids for vaccines Verify works
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
   }
 
@@ -142,11 +142,12 @@ public class Hotel implements  HotelSubject {
   /**
    * Advances the hotel to the next season.
    */
-  void nextSeason() {
+  int nextSeason() {
     _currentSeason = _currentSeason.nextSeason();
     for (Habitat habitat : _habitats.values())
       habitat.nextSeason(_currentSeason);
     notifyHotelObservers();
+    return this.currentSeason().id();
   }
 
   /**
@@ -489,7 +490,7 @@ public class Hotel implements  HotelSubject {
     List<Animal> allAnimals = new ArrayList<>();
     for (Habitat habitat : _habitats.values())
       allAnimals.addAll(habitat.listAnimals());
-    allAnimals.sort(Comparator.comparing(Animal::id,String.CASE_INSENSITIVE_ORDER)); //This is needed because the animals are sorted in each habitat but not globaly (Inês check this do we need a coment ?)
+    allAnimals.sort(Comparator.comparing(Animal::id,String.CASE_INSENSITIVE_ORDER)); //FIXME This is needed because the animals are sorted in each habitat but not globaly (Inês check this do we need a coment ?)
     return Collections.unmodifiableList(allAnimals);
   }
 

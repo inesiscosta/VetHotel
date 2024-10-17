@@ -5,10 +5,30 @@ package hva.core;
  * The order of the seasons is Spring, Summer, Fall, Winter.
  */
 public enum Season {
-  Spring,
-  Summer,
-  Fall,
-  Winter;
+  Spring(0),
+  Summer(1),
+  Fall(2),
+  Winter(3);
+
+  private final int _id;
+
+  /**
+   * Creates a new Season.
+   * 
+   * @param id the Season numerical id
+  */
+  Season(int id) {
+      this._id = id;
+  }
+
+  /**
+   * Gets the Season id.
+   * 
+   * @return the Season numerical id
+   */
+  public int id() {
+      return _id;
+  }
 
   /**
    * Returns the next season in the sequence of seasons.

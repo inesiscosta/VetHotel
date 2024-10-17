@@ -13,6 +13,6 @@ class DoAdvanceSeason extends Command<HotelManager> {
 
   @Override
   protected final void execute() {
-    _receiver.nextSeason();
+    _display.popup(_receiver.nextSeason());
   }
 }

@@ -42,8 +42,8 @@ public class HotelManager implements HotelObserver {
   /**
    * Advacances the season in the hotels
    */
-  public void nextSeason() {
-    _hotel.nextSeason();
+  public int nextSeason() {
+    return _hotel.nextSeason();
   }
 
   /**
