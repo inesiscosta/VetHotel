@@ -294,7 +294,7 @@ public class Hotel implements  HotelSubject {
   public void registerAnimal(String idAnimal, String name, String idSpecies,
   String idHabitat) throws UnknownHabitatIdException,
   DuplicateAnimalIdException, UnknownSpeciesIdException {
-    if(AnimalAlreadyExists(idAnimal))
+    if(animalAlreadyExists(idAnimal))
       throw new DuplicateAnimalIdException(idHabitat);
     Habitat habitat = identifyHabitat(idHabitat);
     Species species = identifySpecies(idSpecies);
@@ -309,7 +309,7 @@ public class Hotel implements  HotelSubject {
    * @return returns true if the animal exist in one of the habitats 
    * of the hotel
    */
-  private boolean AnimalAlreadyExists(String idAnimal) {
+  private boolean animalAlreadyExists(String idAnimal) {
     for(Habitat habitat : _habitats.values()) {
       if(habitat.containsAnimal(idAnimal))
         return true;
@@ -584,7 +584,7 @@ public class Hotel implements  HotelSubject {
   public List<VaccinationRecord> listErroneousVaccinations() {
     List<VaccinationRecord> erroneousVaccination = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
-      if(record.damage() != "NORMAL")
+      if(!record.damage().equals(HealthStatus.NORMAL.pt()))
         erroneousVaccination.add(record);
     }
     return Collections.unmodifiableList(erroneousVaccination);

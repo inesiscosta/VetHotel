@@ -88,7 +88,7 @@ public class HotelManager implements HotelObserver {
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
     if(_hotel.getAssociatedFilename() != null &&
-    _hotel.getAssociatedFilename() != filename)
+    !_hotel.getAssociatedFilename().equals(filename))
       throw new MissingFileAssociationException();
     _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);

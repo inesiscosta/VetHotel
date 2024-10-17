@@ -71,4 +71,12 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
     return new CaseInsensitiveOrderComparator().compare(this._id,other.id());
     //return this._id.compareToIgnoreCase(other.id());
   }
+
+    /**
+   * Returns a hash code value for the object.
+   */
+  @Override
+  public int hashCode() {
+    return this._id.hashCode();
+  }
 }
