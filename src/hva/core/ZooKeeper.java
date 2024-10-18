@@ -2,6 +2,8 @@ package hva.core;
 
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityException;
+import hva.core.satisfactionStrategy.Satisfaction;
+
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -10,6 +12,7 @@ import java.util.HashSet;
  */
 public class ZooKeeper extends Employee {
   private Collection<Habitat> _assignedHabitats;
+  private Satisfaction _satisfactionMethod;
 
   /**
    * Creates a new ZooKeeper.
@@ -20,6 +23,7 @@ public class ZooKeeper extends Employee {
   public ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
     _assignedHabitats = new HashSet<Habitat>();
+    _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
   }
 
   /**
@@ -31,23 +35,18 @@ public class ZooKeeper extends Employee {
    */
   @Override
   public double calculateSatisfaction() {
-    double work = 0;
-    for (Habitat habitat : _assignedHabitats)
-      work += (workEffort(habitat) / habitat.getNumKeepers());
-    return 300 - work;
+    return _satisfactionMethod.calculateSatisfaction(this);
   }
 
   /**
-   * Calculates the effort it requires to clean / mantain a habitat.
+   * Returns the assing habitats collection it is used in the strategy pattern
+   * for calculating the keeper satisfaction.
    * 
-   * @param habitat the habitat for which to calculate the effort to clean it
-   * @return the effort it takes to clean the habitat
+   * @return the collection of assign habitats
    */
-  private double workEffort(Habitat habitat) {
-    return habitat.area() 
-    + 3 * habitat.getNumAnimals() 
-    + habitat.cleaningEffort(hotel().currentSeason());
-  }
+  Collection<Habitat> getAssingHabitats() {
+    return _assignedHabitats;
+  } 
 
   /**
    * Adds a habitat to the list of habitats the zookeeper is responsible for.
@@ -98,5 +97,14 @@ public class ZooKeeper extends Employee {
       idResponsibilities.append(habitat.id()).append(",");
     idResponsibilities.setLength(idResponsibilities.length()-1);
     return idResponsibilities.toString();
+  }
+
+  /**
+   * Sets the method used to calculate the satisfaction of the ZooKeeper.
+   * 
+   * @param satisfactionMethod the new method to use for the calculation
+   */
+  void setSatisfactionMethod(Satisfaction satisfactionMethod) {
+    _satisfactionMethod = satisfactionMethod;
   }
 }

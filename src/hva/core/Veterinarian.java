@@ -2,6 +2,7 @@ package hva.core;
 
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownSpeciesIdException;
+import hva.core.satisfactionStrategy.Satisfaction;
 import hva.core.exception.UnknownResponsibilityException;
 import java.util.Collection;
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.HashSet;
  */
 public class Veterinarian extends Employee {
   private Collection<Species> _knowsHowToVaccinate;
+  private Satisfaction _satisfactionMethod;
 
   /**
    * Creates a new Veterinarian.
@@ -20,6 +22,7 @@ public class Veterinarian extends Employee {
   public Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
     _knowsHowToVaccinate = new HashSet<Species>();
+    _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
   }
     
   /**
@@ -31,11 +34,18 @@ public class Veterinarian extends Employee {
    */
   @Override
   public double calculateSatisfaction() {
-    int work = 0;
-    for (Species species : _knowsHowToVaccinate)
-      work += (species.getNumAnimals()) / species.getNumQualifiedVets();
-    return 300 - work;
+    return _satisfactionMethod.calculateSatisfaction(this);
   }
+
+  /**
+   * Returns the assing habitats collection it is used in the strategy pattern
+   * for calculating the keeper satisfaction.
+   * 
+   * @return the collection of assign habitats
+   */
+  Collection<Species> getKnowSpecies() {
+    return _knowsHowToVaccinate;
+  } 
 
   /**
    * Adds a new species to the list of species the veterinarian
@@ -105,5 +115,14 @@ public class Veterinarian extends Employee {
     animal.updateHealthHistory(animalHealthStatus);
     vaccine.incrementNumApplications();
     return new VaccinationRecord(vaccine, this, animal);
+  }
+
+   /**
+   * Sets the method used to calculate the satisfaction of the Veterinarian.
+   * 
+   * @param satisfactionMethod the new method to use for the calculation
+   */
+  void setSatisfactionMethod(Satisfaction satisfactionMethod) {
+    _satisfactionMethod = satisfactionMethod;
   }
 }
