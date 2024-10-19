@@ -1,0 +1,9 @@
+ÁRVORE|T1|Pinheiro 1|5|20|PERENE
+ÁRVORE|T2|Oliveira|1200|10|PERENE
+ÁRVORE|T4|Pinheiro 4|60|20|PERENE
+ÁRVORE|T6|Figueira|5|10|CADUCA
+ESPÉCIE|E1|Cão
+HABITAT|H1|Aldeia dos Macacos|20|T1,T2,T4
+HABITAT|H2|Aldeia dos Ursos|20|T6
+ANIMAL|A1|Farrusco|E1|H1
+TRATADOR|W2SO4|John Figueiredo|H1,H2

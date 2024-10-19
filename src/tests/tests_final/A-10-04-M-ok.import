@@ -1,0 +1,8 @@
+ESPÉCIE|C1|Macaco
+ESPÉCIE|C2|Peixe
+HABITAT|AR1|Aldeia dos Macacos|20
+HABITAT|AR2|Lago dos Pinguins|20
+ANIMAL|A1|Pinguim 1|C1|AR2
+ANIMAL|A2|Pinguim 2|C1|AR2
+ANIMAL|A3|Macaco 1|C2|AR2
+ANIMAL|A4|Macaco 2|C2|AR2

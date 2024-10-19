@@ -1,0 +1,44 @@
+Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: Consultas
+1 - Animais de um habitat
+2 - Actos médicos num animal
+3 - Actos médicos de um veterinário
+4 - Vacinações com problemas
+0 - Sair
+Escolha uma opção: Identificador único do habitat: Consultas
+1 - Animais de um habitat
+2 - Actos médicos num animal
+3 - Actos médicos de um veterinário
+4 - Vacinações com problemas
+0 - Sair
+Escolha uma opção: Identificador único do habitat: ANIMAL|A1|Nome 1|E1|VOID|H1
+Consultas
+1 - Animais de um habitat
+2 - Actos médicos num animal
+3 - Actos médicos de um veterinário
+4 - Vacinações com problemas
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: 
