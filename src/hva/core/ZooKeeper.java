@@ -4,7 +4,10 @@ import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityException;
 import hva.core.satisfactionStrategy.Satisfaction;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.HashSet;
 
 /**
@@ -92,8 +95,10 @@ public class ZooKeeper extends Employee {
   String getIdResponsibilities() {
     if(_assignedHabitats.isEmpty())
       return null;
+    List<Habitat> assignedHabitats = new ArrayList<>(_assignedHabitats);
+    assignedHabitats.sort(Comparator.comparing(Habitat::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checks Inês
     StringBuilder idResponsibilities = new StringBuilder();
-    for (Habitat habitat : _assignedHabitats)
+    for (Habitat habitat : assignedHabitats)
       idResponsibilities.append(habitat.id()).append(",");
     idResponsibilities.setLength(idResponsibilities.length()-1);
     return idResponsibilities.toString();
