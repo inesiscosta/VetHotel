@@ -4,7 +4,10 @@ import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfactionStrategy.Satisfaction;
 import hva.core.exception.UnknownResponsibilityException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.HashSet;
 /**
  * Represents a veterinarian that works in a Vet Hotel.
@@ -92,8 +95,10 @@ public class Veterinarian extends Employee {
   String getIdResponsibilities() {
     if(_knowsHowToVaccinate.isEmpty())
       return null;
+    List<Species> knowsHowToVaccinate = new ArrayList<>(_knowsHowToVaccinate);
+    knowsHowToVaccinate.sort(Comparator.comparing(Species::id));  //FIXME Maybe do this other way? Checks Inês
     StringBuilder idResponsibilities = new StringBuilder();
-    for (Species species : _knowsHowToVaccinate)
+    for (Species species : knowsHowToVaccinate)
       idResponsibilities.append(species.id()).append(",");
     idResponsibilities.setLength(idResponsibilities.length()-1);
     return idResponsibilities.toString();

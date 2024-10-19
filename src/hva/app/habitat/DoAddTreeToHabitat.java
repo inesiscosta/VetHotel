@@ -34,8 +34,8 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     var type = (optionField("type"));
 
     try {
-      _receiver.identifyHabitat(habitat).plantTree(id, name, age, difficulty,
-      type, _receiver.currentSeason(), _receiver);
+      _display.popup(_receiver.identifyHabitat(habitat).plantTree(id, name, age, 
+      difficulty, type, _receiver.currentSeason(), _receiver).toString(_receiver.currentSeason()));
       _receiver.notifyHotelObservers();
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(habitat);

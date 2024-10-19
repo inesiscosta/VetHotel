@@ -196,7 +196,7 @@ public class Habitat extends NamedEntity {
    * @throws InvalidTypeException if the tree type is not a valid type
    * (not one of the two types Evergreen or Deciduous)
    */
-  public void plantTree(String id, String name, int age,
+  public Tree plantTree(String id, String name, int age,
   int baseCleaningDifficulty, String treeType, Season currentSeason,
   Hotel hotel) throws DuplicateTreeIdException, InvalidTreeTypeException {
     Tree tree;
@@ -215,6 +215,7 @@ public class Habitat extends NamedEntity {
         throw new InvalidTreeTypeException(treeType);
     }
     _trees.add(tree);
+    return tree;
   }
 
   /**
