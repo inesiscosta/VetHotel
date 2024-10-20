@@ -21,12 +21,12 @@ class DoChangeHabitatArea extends Command<Hotel> {
   protected void execute() throws CommandException {
     var id = stringField("id");
     var area = integerField("area");
-
     try {
       _receiver.identifyHabitat(id).changeArea(area);
-      _receiver.notifyHotelObservers();
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }
+    //Notfify from app instead of core since change area is not called from Hotel
+    _receiver.notifyHotelObservers();
   }
 }

@@ -1,9 +1,6 @@
 package hva.app.main;
 
-import java.io.IOException;
-
 import hva.core.HotelManager;
-import hva.core.exception.MissingFileAssociationException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -18,18 +15,9 @@ class DoNewFile extends Command<HotelManager> {
 
   @Override
   protected final void execute() throws CommandException {
-    if(_receiver.getHotel().getUnsavedChanges()) {
-      if (Form.confirm(Prompt.saveBeforeExit())) {
-        try {
-          _receiver.save();
-        } catch (MissingFileAssociationException | IOException e) {
-          DoSaveFile saveFile = new DoSaveFile(_receiver);
-          saveFile.execute();
-        } finally {
-          _receiver.newHotel();
-        }
-      }
-    }
+    if(_receiver.getHotel().getUnsavedChanges() &&
+    Form.confirm(Prompt.saveBeforeExit()))
+      new DoSaveFile(_receiver).execute();
     _receiver.newHotel();
   }
 }

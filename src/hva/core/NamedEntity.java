@@ -77,6 +77,6 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
    */
   @Override
   public int hashCode() {
-    return this._id.hashCode();
+    return this._id.toLowerCase().hashCode(); //Check if we need a caseInsensitive HashMap or if we can use a normal one and just hash ids before checking membership
   }
 }

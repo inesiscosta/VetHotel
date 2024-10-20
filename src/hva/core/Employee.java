@@ -36,7 +36,7 @@ public abstract class Employee extends NamedEntity {
    * 
    * @return the Hotel object the employee works in
    */
-  public Hotel hotel() { //TODO check if this needs to be public or can be package private
+  Hotel hotel() {
     return _hotel;
   }
 
@@ -66,7 +66,7 @@ public abstract class Employee extends NamedEntity {
    * 
    * @return the employee's satisfaction level
    */
-  public abstract double calculateSatisfaction(); //TODO check if this needs to be public or can be package private
+  public abstract double calculateSatisfaction();
 
   /**
    * Adds a responsibility to the employee. 

@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.HashSet;
+
 /**
  * Represents a veterinarian that works in a Vet Hotel.
  */
@@ -26,7 +27,7 @@ public class Veterinarian extends Employee {
    */
   public Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
-    _knowsHowToVaccinate = new HashSet<Species>();
+    _knowsHowToVaccinate = new HashSet<Species>(); //TODO Why is this in a hash set? Make TreeSet! Fix getResponsibilities
     _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
   }
     
@@ -98,7 +99,7 @@ public class Veterinarian extends Employee {
     if(_knowsHowToVaccinate.isEmpty())
       return null;
     List<Species> knowsHowToVaccinate = new ArrayList<>(_knowsHowToVaccinate);
-    knowsHowToVaccinate.sort(Comparator.comparing(Species::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checks Inês
+    knowsHowToVaccinate.sort(Comparator.comparing(Species::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checked -Inês CHANGE!
     StringBuilder idResponsibilities = new StringBuilder();
     for (Species species : knowsHowToVaccinate)
       idResponsibilities.append(species.id()).append(",");

@@ -2,9 +2,7 @@ package hva.app.main;
 
 import hva.core.HotelManager;
 import hva.app.exception.FileOpenFailedException;
-import hva.core.exception.MissingFileAssociationException;
 import hva.core.exception.UnavailableFileException;
-import java.io.IOException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -19,16 +17,8 @@ class DoOpenFile extends Command<HotelManager> {
 
   @Override
   protected final void execute() throws CommandException {
-    if(_receiver.getHotel().getUnsavedChanges()) {
-      if (Form.confirm(Prompt.saveBeforeExit())) {
-        try {
-          _receiver.save();
-        } catch (MissingFileAssociationException | IOException e) {
-          DoSaveFile saveFile = new DoSaveFile(_receiver);
-          saveFile.execute();
-        } 
-      }
-    }
+    //TODO Check with teacher if its ok to create an empty hotel here for code reuse or if we can add a new .java to reuse here.
+    new DoNewFile(_receiver).execute();
     try {
       _receiver.load(Form.requestString(Prompt.openFile()));
     } catch (UnavailableFileException e) {

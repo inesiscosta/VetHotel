@@ -31,7 +31,6 @@ class DoRegisterAnimal extends Command<Hotel> {
     var name = stringField("name");
     var idSpecies = stringField("idSpecies");
     var idHabitat = stringField("idHabitat");
-
     try {
       if (!(_receiver.speciesAlreadyExists(idSpecies)))
         _receiver.registerSpecies(idSpecies,

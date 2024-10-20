@@ -100,7 +100,8 @@ public class Vaccine extends NamedEntity {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
     String speciesName = animal.species().name();
-    List<Character> nameCharsList = speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList()); //TODO Inês check this solution is it ok??
+    //Comment placeholder please explain the line below
+    List<Character> nameCharsList = speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList()); //TODO Inês check this solution is it ok?? Im not even sure I understand it Just add a comment above it explaining it
     for (int i = 0; i < Math.min(speciesBiggestName.name().length(),
     speciesName.length()); i++) {
       if (nameCharsList.contains(speciesBiggestName.name().charAt(i)))
@@ -121,7 +122,7 @@ public class Vaccine extends NamedEntity {
       if (biggestSpecies == null ||
       species.name().length() > biggestSpecies.name().length())
         biggestSpecies = species;
-      }
+    }
     return biggestSpecies;
   }
 }

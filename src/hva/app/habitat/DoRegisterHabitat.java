@@ -23,7 +23,6 @@ class DoRegisterHabitat extends Command<Hotel> {
     var id = stringField("id");
     var name = stringField("name");
     var area = integerField("area");
-
     try {
       _receiver.registerHabitat(id, name, area);
     } catch (DuplicateHabitatIdException e) {

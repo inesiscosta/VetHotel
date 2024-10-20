@@ -28,7 +28,7 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     var idSpecies = stringField("idSpecies");
     var influenceString = optionField("influenceString");
     int influence;
-    switch (influenceString) {
+    switch (influenceString) { //TODO Revise case switch
       case "POS":
         influence = 20;
         break;
@@ -40,7 +40,7 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     }
     try {
       _receiver.changeHabitatInflunece(_receiver.identifyHabitat(idHabitat),
-      _receiver.identifySpecies(idSpecies), influence);
+      _receiver.identifySpecies(idSpecies), influence); // TODO move observer here and move method to habitat from Hotel
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {

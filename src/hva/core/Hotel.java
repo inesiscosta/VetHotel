@@ -40,6 +40,7 @@ public class Hotel implements  HotelSubject {
   @Serial
   private static final long serialVersionUID = 202407081733L;
   
+  //TODO Check what will be a hashmap and what will be a treemap
   private Season _currentSeason;
   private Map<String,Habitat> _habitats;
   private Map<String,Employee> _employees;
@@ -65,6 +66,8 @@ public class Hotel implements  HotelSubject {
     _speciesByName = new HashMap<>();
     _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
     _vaccines = new CaseInsensitiveHashMap<>();
+    //Used array list instead of linkedlist because less memory overhead
+    //since we are only adding to the end of the list O(1) complexity anyways
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
   }
 
@@ -434,8 +437,7 @@ public class Hotel implements  HotelSubject {
    * @param animal the animal to vaccinate
    * @param vaccine the vaccine to apply
    */
-  public boolean addVaccinationRecord(Veterinarian vet, Animal animal,
-  Vaccine vaccine) throws EmployeeNotResponsibleException {
+  public boolean addVaccinationRecord(Vaccine vaccine, Veterinarian vet, Animal animal) throws EmployeeNotResponsibleException {
     boolean vaccineApropriated = true;
     if(!vaccine.isSpeciesApropriated(animal.species()))
       vaccineApropriated = false;
@@ -445,6 +447,7 @@ public class Hotel implements  HotelSubject {
     return vaccineApropriated;
   }
 
+  //TODO Move this into Habitat
   /**
    * Changes the influence of a habitat on a species.
    * 
@@ -467,7 +470,8 @@ public class Hotel implements  HotelSubject {
    * @return an immutable List containing the Habitat object string
    * representation of all habitats in the hotel
    */
-  public List<String> listHabitats() {
+  // TODO COLLECTION OF HABITATS AND TREES TOGETHER CHANGE tree.toString() to not use the current season
+  public Collection<String> listHabitats() {
     List<String> listHabitats = new ArrayList<>();
     for (Habitat habitat : _habitats.values()) {
       listHabitats.add(habitat.toString());
@@ -490,17 +494,6 @@ public class Hotel implements  HotelSubject {
     // Animals need to be sorted by id since they are only sorted for each habitat
     allAnimals.sort(Comparator.comparing(Animal::id,String.CASE_INSENSITIVE_ORDER));
     return Collections.unmodifiableCollection(allAnimals);
-  }
-
-  /**
-   * Lists all species in the hotel in an unmodifiable Collection containing
-   * information about each species.
-   * 
-   * @return an unmodifiable Collection containing the Species object of all
-   * species in the hotel
-   */
-  public Collection<Species> listSpecies() {
-    return Collections.unmodifiableCollection(new ArrayList<>(_species.values()));
   }
 
   /**
@@ -534,8 +527,8 @@ public class Hotel implements  HotelSubject {
    * 
    * @return an unmodifiable List containing the VaccinationRecord objects
    */
-  public List<VaccinationRecord> listVaccinationRecords() {
-    return Collections.unmodifiableList(new ArrayList<>(_vaccinationRecords));
+  public Collection<VaccinationRecord> listVaccinationRecords() {
+    return Collections.unmodifiableCollection(new ArrayList<>(_vaccinationRecords));
   }
 
   /**
@@ -546,13 +539,13 @@ public class Hotel implements  HotelSubject {
    * @return  an unmodifiable List containing the VaccinationRecord objects
    * of a specific animal
    */
-  public List<VaccinationRecord> listAnimalVaccinationHistory(Animal animal) {
+  public Collection<VaccinationRecord> listAnimalVaccinationHistory(Animal animal) {
     List<VaccinationRecord> animalVaccinationHistory = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.animal().equals(animal))
         animalVaccinationHistory.add(record);
     }
-    return Collections.unmodifiableList(animalVaccinationHistory);
+    return Collections.unmodifiableCollection(animalVaccinationHistory);
   }
 
   /** 

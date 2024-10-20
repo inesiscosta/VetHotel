@@ -20,7 +20,6 @@ class DoShowAnimalsInHabitat extends Command<Hotel> {
   @Override
   protected void execute() throws CommandException {
     var idHabitat = stringField("habitat");
-
     try {
       var habitat = _receiver.identifyHabitat(idHabitat);
       _display.popup(habitat.listAnimals());

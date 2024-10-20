@@ -26,7 +26,7 @@ public class ZooKeeper extends Employee {
    */
   public ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
-    _assignedHabitats = new HashSet<Habitat>();
+    _assignedHabitats = new HashSet<Habitat>(); //TODO Why is this in a hash set? Make TreeSet! Fix getResponsibilities
     _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
   }
 
@@ -97,7 +97,7 @@ public class ZooKeeper extends Employee {
     if(_assignedHabitats.isEmpty())
       return null;
     List<Habitat> assignedHabitats = new ArrayList<>(_assignedHabitats);
-    assignedHabitats.sort(Comparator.comparing(Habitat::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checks Inês
+    assignedHabitats.sort(Comparator.comparing(Habitat::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checked -Inês CHANGE!
     StringBuilder idResponsibilities = new StringBuilder();
     for (Habitat habitat : assignedHabitats)
       idResponsibilities.append(habitat.id()).append(",");

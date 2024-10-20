@@ -28,13 +28,14 @@ class DoVaccinateAnimal extends Command<Hotel> {
     var idVaccine = stringField("vaccine");
     var idVet = stringField("veterinarian");
     var idAnimal = stringField("animal");
-    boolean vaccineApropriated;
     try {
-      var veterinarian = _receiver.identifyVet(idVet);
       var vaccine = _receiver.identifyVaccine(idVaccine);
+      var veterinarian = _receiver.identifyVet(idVet);
       var animal = _receiver.identifyAnimal(idAnimal);
-      vaccineApropriated = 
-      _receiver.addVaccinationRecord(veterinarian, animal, vaccine);
+      boolean vaccineApropriated = 
+      _receiver.addVaccinationRecord(vaccine, veterinarian, animal);
+      if(!vaccineApropriated)
+        _display.popup(Message.wrongVaccine(idVaccine, idAnimal));
     } catch (UnknownVaccineIdException e) {
       throw new UnknownVaccineKeyException(idVaccine);
     } catch (UnknownEmployeeIdException e) {
@@ -44,7 +45,5 @@ class DoVaccinateAnimal extends Command<Hotel> {
     } catch (EmployeeNotResponsibleException e) {
       throw new VeterinarianNotAuthorizedException(idVet,idAnimal);
     }
-    if(!vaccineApropriated)
-     _display.popup(Message.wrongVaccine(idVaccine, idAnimal));
   }
 }

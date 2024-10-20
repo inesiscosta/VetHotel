@@ -34,7 +34,7 @@ public class Habitat extends NamedEntity {
     super(id, name);
     _area = area;
     _animals = new TreeMap<String,Animal>(new CaseInsensitiveOrderComparator()); //String is the id of the Animal.
-    _assignedKeepers = new TreeSet<ZooKeeper>();
+    _assignedKeepers = new TreeSet<ZooKeeper>(); //Why is this in a tree set?
     _trees = new TreeSet<Tree>();
     _influences = new HashMap<>();
   }
@@ -226,7 +226,7 @@ public class Habitat extends NamedEntity {
    */
   Tree identifyTree(String id) {
     for(Tree tree : _trees) {
-      if(tree.id().equalsIgnoreCase(id)) //TODO I dont like this it should use methods from NamedEntity chekc this Inês?
+      if(tree.id().equalsIgnoreCase(id)) //TODO I dont like this it should use methods from NamedEntity chekc this Inês? Agreed Lets make treeset's case insensitive when storing
         return tree;
     }
     return null;
