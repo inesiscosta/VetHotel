@@ -1,5 +1,6 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfactionStrategy.Satisfaction;

@@ -1,5 +1,7 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
+import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
 import hva.core.exception.DuplicateAnimalIdException;
 import hva.core.exception.DuplicateEmployeeIdException;
 import hva.core.exception.DuplicateHabitatIdException;
@@ -18,6 +20,7 @@ import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnrecognizedEntryException;
 import hva.core.modificationObserver.HotelObserver;
 import hva.core.modificationObserver.HotelSubject;
+
 import java.io.IOException;
 import java.io.Serial;
 import java.util.ArrayList;
@@ -57,10 +60,10 @@ public class Hotel implements  HotelSubject {
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
     _habitats = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _species = new HashMap<>();  //FIXME HashMap is not considering case Insensitive Nature
+    _species = new CaseInsensitiveHashMap<>();  
     _speciesByName = new HashMap<>();
     _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _vaccines = new HashMap<>(); //FIXME HashMap is not considering case Insensitive Nature
+    _vaccines = new CaseInsensitiveHashMap<>();
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
   }
 

@@ -1,5 +1,7 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
+
 import java.io.Serial;
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityException;
 import hva.core.satisfactionStrategy.Satisfaction;

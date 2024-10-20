@@ -1,5 +1,6 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
@@ -226,7 +227,7 @@ public class Habitat extends NamedEntity {
    */
   Tree identifyTree(String id) {
     for(Tree tree : _trees) {
-      if(tree.equals(tree))
+      if(tree.id().equalsIgnoreCase(id)) //TODO I dont like this it should use methods from NamedEntity chekc this Inês?
         return tree;
     }
     return null;
