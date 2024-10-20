@@ -44,8 +44,8 @@ class DoRegisterAnimal extends Command<Hotel> {
         _receiver.registerSpecies(idSpecies, speciesName);
         _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
       } catch (DuplicateSpeciesIdException | DuplicateSpeciesNameException
-      | UnknownSpeciesIdException | UnknownHabitatIdException 
-      | DuplicateAnimalIdException e1) {   
+      | DuplicateAnimalIdException | UnknownSpeciesIdException
+      | UnknownHabitatIdException e1) {   
         e1.printStackTrace();
       }
     }

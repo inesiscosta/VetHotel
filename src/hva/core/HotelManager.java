@@ -34,7 +34,7 @@ public class HotelManager implements HotelObserver {
    * Checks if the hotel is associated with a file
    */
   public boolean isAssociated() {
-    if (_hotel.getAssociatedFilename().equals(null))
+    if (_hotel.getAssociatedFilename() == null)
       return false;
     return true;
   }

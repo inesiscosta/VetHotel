@@ -24,6 +24,7 @@ import hva.core.modificationObserver.HotelSubject;
 import java.io.IOException;
 import java.io.Serial;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -475,51 +476,52 @@ public class Hotel implements  HotelSubject {
    * Lists all animals in the hotel in an immutable list containing
    * information about each animal.
    * 
-   * @return an immutable List containing the Animal object string
+   * @return an immutable Collection containing the Animal object string
    * representation of all animals in the hotel
    */
-  public List<Animal> listAnimals() {
+  public Collection<Animal> listAnimals() {
     List<Animal> allAnimals = new ArrayList<>();
     for (Habitat habitat : _habitats.values())
       allAnimals.addAll(habitat.listAnimals());
-    allAnimals.sort(Comparator.comparing(Animal::id,String.CASE_INSENSITIVE_ORDER)); //FIXME This is needed because the animals are sorted in each habitat but not globaly (Inês check this do we need a coment ?)
-    return Collections.unmodifiableList(allAnimals);
+    // Animals need to be sorted by id since they are only sorted for each habitat
+    allAnimals.sort(Comparator.comparing(Animal::id,String.CASE_INSENSITIVE_ORDER));
+    return Collections.unmodifiableCollection(allAnimals);
   }
 
   /**
-   * Lists all species in the hotel in an unmodifiable list containing
+   * Lists all species in the hotel in an unmodifiable Collection containing
    * information about each species.
    * 
-   * @return an unmodifiable List containing the Species object of all
+   * @return an unmodifiable Collection containing the Species object of all
    * species in the hotel
    */
-  public List<Species> listSpecies() {
-    return Collections.unmodifiableList(new ArrayList<>(_species.values()));
+  public Collection<Species> listSpecies() {
+    return Collections.unmodifiableCollection(new ArrayList<>(_species.values()));
   }
 
   /**
-   * Lists all employees in the hotel in an unmodifiable list containing
+   * Lists all employees in the hotel in an unmodifiable Collection containing
    * information about each employee.
    * 
-   * @return an unmodifiable List containing the Employee object string
+   * @return an unmodifiable Collection containing the Employee object string
    * representation of all employees in the hotel
    */
-  public List<Employee> listEmployees() {
-    return Collections.unmodifiableList(new ArrayList<>(_employees.values()));
+  public Collection<Employee> listEmployees() {
+    return Collections.unmodifiableCollection(new ArrayList<>(_employees.values()));
   }
 
   /**
-   * Lists all vaccines in the hotel in an unmodifiable list containing
+   * Lists all vaccines in the hotel in an unmodifiable Collection containing
    * information about each vaccine.
    * 
-   * @return an unmodifiable List containing the Vaccine objects of
+   * @return an unmodifiable Collection containing the Vaccine objects of
    * all vaccines in the hotel
    */
-  public List<Vaccine> listVaccines() {
+  public Collection<Vaccine> listVaccines() {
     List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
     vaccines.sort(Comparator.comparing(Vaccine::id,
     String.CASE_INSENSITIVE_ORDER));
-    return Collections.unmodifiableList(vaccines);
+    return Collections.unmodifiableCollection(vaccines);
   }
 
   /**
