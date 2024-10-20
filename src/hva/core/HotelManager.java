@@ -34,9 +34,7 @@ public class HotelManager implements HotelObserver {
    * Checks if the hotel is associated with a file
    */
   public boolean isAssociated() {
-    if (_hotel.getAssociatedFilename() == null)
-      return false;
-    return true;
+    return (_hotel.getAssociatedFilename() != null);
   }
 
   /**
@@ -87,7 +85,7 @@ public class HotelManager implements HotelObserver {
    **/
   public void saveAs(String filename) throws FileNotFoundException,
   MissingFileAssociationException, IOException {
-    if(!isAssociated() && !_hotel.getAssociatedFilename().equals(filename))
+    if(isAssociated() && !(_hotel.getAssociatedFilename().equals(filename)))
       throw new MissingFileAssociationException();
     _hotel.setAssociatedFilename(filename);
     FileOutputStream file = new FileOutputStream(filename);
