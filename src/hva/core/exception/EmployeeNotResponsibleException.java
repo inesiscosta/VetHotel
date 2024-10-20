@@ -3,7 +3,7 @@ package hva.core.exception;
 import java.io.Serial;
 
 /**
- * Class for representing an invalid ID entry.
+ * Class for representing an employee not responsible exception.
  */
 public class EmployeeNotResponsibleException extends Exception {
 
@@ -11,14 +11,18 @@ public class EmployeeNotResponsibleException extends Exception {
   private static final long serialVersionUID = 202407081733L;
   
   /**
-   * @param message the error message
+   * Constructor for the exception.
+   * 
+   * @param id the id of the reponsibility the employee is not responsible for
    **/
   public EmployeeNotResponsibleException(String id) {
     super("Employee is not responsible for:" + id);
   }
 
-    /**
-   * @param message the error message
+  /**
+   * Alternative constructor for the exception.
+   * 
+   * @param id the id of the reponsibility the employee is not responsible for
    * @param cause The cause of the exception
    **/
   public EmployeeNotResponsibleException(String id, Exception cause) {

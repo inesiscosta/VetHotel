@@ -3,7 +3,7 @@ package hva.core.exception;
 import java.io.Serial;
 
 /**
- * Class for representing an invalid ID entry.
+ * Class for representing an unknown vaccine id exception.
  */
 public class UnknownVaccineIdException extends Exception {
 
@@ -11,14 +11,18 @@ public class UnknownVaccineIdException extends Exception {
   private static final long serialVersionUID = 202407081733L;
   
   /**
-   * @param message the error message
+   * Constructor for the exception.
+   * 
+   * @param id the id that doesnt exist
    **/
   public UnknownVaccineIdException(String id) {
     super("Vaccine doesnt exist: " + id);
   }
 
-    /**
-   * @param message the error message
+  /**
+   * Alternative constructor for the exception.
+   * 
+   * @param id the id that doesnt exist
    * @param cause The cause of the exception
    **/
   public UnknownVaccineIdException(String id, Exception cause) {

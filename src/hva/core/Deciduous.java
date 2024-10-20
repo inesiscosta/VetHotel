@@ -16,7 +16,7 @@ public class Deciduous extends Tree {
    * (used to calculate how much effort is required to clean the tree)
    * @param currentSeason the current season in the Hotel the tree belongs to
    */
-  public Deciduous(String idTree, String name, int age,
+  Deciduous(String idTree, String name, int age,
     int baseCleaningDifficulty, Season currentSeason) {
     super(idTree, name, age, baseCleaningDifficulty,
     TreeType.DECIDUOUS, currentSeason);

@@ -19,7 +19,7 @@ public class Animal extends NamedEntity {
    * @param species the species the animal belongs to
    * @param habitat the habitat the animal is in
    */
-  public Animal(String id, String name, Species species, Habitat habitat) {
+  Animal(String id, String name, Species species, Habitat habitat) {
     super(id, name);
     _species = species;
     _habitat = habitat;
@@ -73,8 +73,8 @@ public class Animal extends NamedEntity {
       return "VOID";
     StringBuilder result = new StringBuilder();
     for (HealthStatus healthStatus : _healthHistory)
-      result.append(healthStatus.pt()).append(",");
-    result.setLength(result.length() - 1);
+      result.append(healthStatus.toString()).append(",");
+    result.setLength(result.length() - 1); //Removes the last comma
     return result.toString();
   }
 

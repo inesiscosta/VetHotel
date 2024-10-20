@@ -23,12 +23,13 @@ public enum HealthStatus {
   }
 
   /**
-   * Gets the healthsatus in Portuguese.
+   * String representation of the health status in Portuguese.
    * 
-   * @return the healthsatus in Portuguese
+   * @return the health status in Portuguese
    */
-  public String pt() {
-      return _pt;
+  @Override
+  public String toString() {
+    return _pt;
   }
 
   /**

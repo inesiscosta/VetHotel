@@ -56,7 +56,7 @@ public abstract class Tree extends NamedEntity  {
    * @return the tree's type
    */
   String treeType() {
-    return _treeType.pt();
+    return _treeType.toString();
   }
 
   /**
@@ -84,7 +84,7 @@ public abstract class Tree extends NamedEntity  {
       .append(age()).append("|")
       .append(baseCleaningDifficulty()).append("|")
       .append(treeType()).append("|")
-      .append(getBioCycle(currentSeason).pt());
+      .append(getBioCycle(currentSeason).toString());
     return result.toString();
   }
 

@@ -15,6 +15,7 @@ public class UnrecognizedEntryException extends Exception {
   private final String _entrySpecification;
   
   /**
+   * Constructor for the exception.
    * @param entrySpecification the import file entry with an unknown format§
    **/
   public UnrecognizedEntryException(String entrySpecification) {
@@ -22,6 +23,8 @@ public class UnrecognizedEntryException extends Exception {
   }
   
   /**
+   * Alternative constructor for the exception.
+   * 
    * @param entrySpecification the import file entry with an unknown format§
    * @param cause the cause
    **/
@@ -31,6 +34,8 @@ public class UnrecognizedEntryException extends Exception {
   }
   
   /**
+   * Get the bad entry specification.
+   * 
    * @return the bad entry specification.
    **/
   public String getEntrySpecification() {

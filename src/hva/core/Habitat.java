@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -31,7 +30,7 @@ public class Habitat extends NamedEntity {
    * @param name the habitat's name
    * @param area the habitat's area
    */
-  public Habitat(String id, String name, int area) {
+  Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
     _animals = new TreeMap<String,Animal>(new CaseInsensitiveOrderComparator()); //String is the id of the Animal.
@@ -249,7 +248,7 @@ public class Habitat extends NamedEntity {
    * @return an unmodifiable list containing the Animal object string
    * representation of all animals in the habitat
    */
-  public List<Animal> listAnimals() {
+  public Collection<Animal> listAnimals() {
     return Collections.unmodifiableList(new ArrayList<>(_animals.values()));
   }
 
@@ -261,12 +260,12 @@ public class Habitat extends NamedEntity {
    * @return a String containing the Tree object string representation
    * of all trees in the habitat
    */
-  List<String> listTrees(Season currentSeason) { 
-    List<String> allTreesString = new ArrayList<>();
+  public Collection<String> listTrees(Season currentSeason) { 
+    Collection<String> allTreesString = new ArrayList<>();
     for(Tree tree : _trees) {
       allTreesString.add(tree.toString(currentSeason));
     }
-    return Collections.unmodifiableList(allTreesString);
+    return Collections.unmodifiableCollection(allTreesString);
   }
 
   /**

@@ -166,25 +166,21 @@ public class Parser {
    */
   private void parseTree(String[] components) throws
   UnrecognizedEntryException {
-    try {
-      String id = components[1];
-      String name = components[2];
-      int age = Integer.parseInt(components[3]);
-      int diff = Integer.parseInt(components[4]);
-      String type = components[5];
-	    Tree tree;
-	    if(!(type.equals("PERENE") || type.equals( "CADUCA")))
-		    throw new InvalidTreeTypeException(type);
-	    if(type.equals("PERENE")) {
-        tree = new Evergreen(id, name, age, diff, null);
-        _tempTreesNoHabitat.put(id, tree);
-      }
-      if(type.equals("CADUCA")) {
-        tree = new Deciduous(id, name, age, diff, null);
-        _tempTreesNoHabitat.put(id, tree);
-      }
-    } catch (InvalidTreeTypeException e) {
-      throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
+    String id = components[1];
+    String name = components[2];
+    int age = Integer.parseInt(components[3]);
+    int diff = Integer.parseInt(components[4]);
+    String type = components[5];
+    Tree tree;
+    if(!(type.equals("PERENE") || type.equals( "CADUCA")))
+      throw new UnrecognizedEntryException("Invalid entry: Invalid Tree type: " + type);
+    if(type.equals("PERENE")) {
+      tree = new Evergreen(id, name, age, diff, null);
+      _tempTreesNoHabitat.put(id, tree);
+    }
+    if(type.equals("CADUCA")) {
+      tree = new Deciduous(id, name, age, diff, null);
+      _tempTreesNoHabitat.put(id, tree);
     }
   }
 

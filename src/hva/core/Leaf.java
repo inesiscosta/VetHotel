@@ -21,11 +21,12 @@ public enum Leaf {
   }
 
   /**
-   * Gets the leaf in Portuguese.
+   * String representation of the state of the leaves in Portuguese.
    * 
    * @return the leaf in Portuguese
    */
-  public String pt() {
+  @Override
+  public String toString() {
       return _pt;
   }
 }

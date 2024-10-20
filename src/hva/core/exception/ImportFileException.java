@@ -13,6 +13,8 @@ public class ImportFileException extends Exception {
   private static final String ERROR_MESSAGE = "Erro a processar ficheiro de import: ";
   
   /**
+   * Constructor for the exception.
+   * 
    * @param filename name of the import file
    **/
   public ImportFileException(String filename) {
@@ -20,6 +22,8 @@ public class ImportFileException extends Exception {
   }
   
   /**
+   * Alternative constructor for the exception.
+   * 
    * @param filename name of the import file
    * @param cause exception that triggered this one
    **/

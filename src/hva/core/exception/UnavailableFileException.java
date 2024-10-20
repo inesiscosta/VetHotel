@@ -18,8 +18,10 @@ public class UnavailableFileException extends Exception {
   private String _filename;
   
   /**
+   * Constructor for the exception.
+   * 
    * @param filename the filename the previously serialized state or where
-   *        the current state of the system should be serialized
+   * the current state of the system should be serialized
    **/
   public UnavailableFileException(String filename) {
     super("Erro a processar ficheiro " + filename);
@@ -27,6 +29,7 @@ public class UnavailableFileException extends Exception {
   }
   
   /**
+   * Getter: Returns the requested filename.
    * @return the requested filename
    **/
   public String getFilename() {

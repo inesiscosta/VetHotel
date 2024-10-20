@@ -17,7 +17,7 @@ public class Evergreen extends Tree {
    * (used to calculate how much effort is required by to clean the tree)
    * @param currentSeason the current season in the Hotel the tree belongs to
    */
-  public Evergreen(String idTree, String name, int age,
+  Evergreen(String idTree, String name, int age,
   int baseCleaningDifficulty, Season currentSeason) {
     super(idTree, name, age, baseCleaningDifficulty,
     TreeType.EVERGREEN, currentSeason);

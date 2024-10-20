@@ -1,7 +1,7 @@
 package hva.core.caseInsensitiveOrder;
 
-import java.util.Comparator;
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Class that implements a custom comparator that ignores case, its case

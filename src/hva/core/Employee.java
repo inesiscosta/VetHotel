@@ -16,7 +16,7 @@ public abstract class Employee extends NamedEntity {
    * @param name the employee's name
    * @param employeeType the type of employee (Veterinarian or Zookeeper)
    */
-  public Employee(String id, String name, EmployeeType employeeType, Hotel hotel) {
+  Employee(String id, String name, EmployeeType employeeType, Hotel hotel) {
     super(id, name);
     _employeeType = employeeType;
     _hotel = hotel;
@@ -36,7 +36,7 @@ public abstract class Employee extends NamedEntity {
    * 
    * @return the Hotel object the employee works in
    */
-  public Hotel hotel() {
+  public Hotel hotel() { //TODO check if this needs to be public or can be package private
     return _hotel;
   }
 
@@ -49,7 +49,7 @@ public abstract class Employee extends NamedEntity {
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder();
-    result.append(this.type().pt())
+    result.append(this.type().toString())
       .append("|")
       .append(this.id())
       .append("|")
@@ -66,7 +66,7 @@ public abstract class Employee extends NamedEntity {
    * 
    * @return the employee's satisfaction level
    */
-  public abstract double calculateSatisfaction();
+  public abstract double calculateSatisfaction(); //TODO check if this needs to be public or can be package private
 
   /**
    * Adds a responsibility to the employee. 

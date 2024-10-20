@@ -226,7 +226,7 @@ public class Hotel implements  HotelSubject {
   public Veterinarian identifyVet(String idVet)
   throws UnknownEmployeeIdException {
     Employee employee = identifyEmployee(idVet);
-    if (employee.type().pt() != EmployeeType.VETERINARIAN.pt()) {
+    if (employee.type().toString() != EmployeeType.VETERINARIAN.toString()) {
       throw new UnknownEmployeeIdException(idVet);
     }
     return (Veterinarian) employee;
@@ -472,17 +472,6 @@ public class Hotel implements  HotelSubject {
   }
 
   /**
-   * List all the Trees of an habitat in a string containing 
-   * information about each tree.
-   * @param habitat The specific habitat
-   * @return  a String containing the Tree information of all
-   * trees in the habitat
-   */
-  public List<String> listTreesHabitat(Habitat habitat) {
-    return Collections.unmodifiableList(habitat.listTrees(this.currentSeason()));
-  }
-
-  /**
    * Lists all animals in the hotel in an immutable list containing
    * information about each animal.
    * 
@@ -587,7 +576,7 @@ public class Hotel implements  HotelSubject {
   public List<VaccinationRecord> listErroneousVaccinations() {
     List<VaccinationRecord> erroneousVaccination = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
-      if(!record.damage().equals(HealthStatus.NORMAL.pt()))
+      if(!record.damage().equals(HealthStatus.NORMAL.toString()))
         erroneousVaccination.add(record);
     }
     return Collections.unmodifiableList(erroneousVaccination);

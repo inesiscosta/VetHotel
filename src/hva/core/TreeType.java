@@ -19,11 +19,12 @@ public enum TreeType {
     }
 
     /**
-     * Gets the tree type in Portuguese.
+     * String representation of the tree type in Portuguese.
      * 
      * @return the tree type in Portuguese
      */
-    public String pt() {
+    @Override
+    public String toString() {
         return _pt;
     }
 
@@ -35,7 +36,7 @@ public enum TreeType {
      */
     public static TreeType stringToEnum(String type) {
         for (TreeType treeType : TreeType.values()) {
-            if (treeType.pt().equals(type))
+            if (treeType.toString().equals(type))
                 return treeType;
         } 
         return null;

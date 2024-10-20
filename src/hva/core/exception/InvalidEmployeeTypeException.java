@@ -2,9 +2,9 @@ package hva.core.exception;
 
 import java.io.Serial;
 
-  /**
-   * Class for representing an invalid type, tree or employee.
-   **/
+/**
+ * Class for representing an invalid employee type exception.
+ **/
 public class InvalidEmployeeTypeException extends Exception {
 
   @Serial

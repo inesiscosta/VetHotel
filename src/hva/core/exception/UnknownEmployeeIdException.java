@@ -3,7 +3,7 @@ package hva.core.exception;
 import java.io.Serial;
 
 /**
- * Class for representing an invalid ID entry.
+ * Class for representing an unknown employee id exception.
  */
 public class UnknownEmployeeIdException extends Exception {
 
@@ -11,14 +11,18 @@ public class UnknownEmployeeIdException extends Exception {
   private static final long serialVersionUID = 202407081733L;
   
   /**
-   * @param message the error message
+   * Constructor for the exception.
+   * 
+   * @param id the id that doesnt exist
    **/
   public UnknownEmployeeIdException(String id) {
     super("Employee doesnt exist: " + id);
   }
 
-    /**
-   * @param message the error message
+  /**
+   * Alternative constructor for the exception.
+   * 
+   * @param id the id that doesnt exist
    * @param cause The cause of the exception
    **/
   public UnknownEmployeeIdException(String id, Exception cause) {
