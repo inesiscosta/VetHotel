@@ -226,7 +226,7 @@ public class Habitat extends NamedEntity {
    */
   Tree identifyTree(String id) {
     for(Tree tree : _trees) {
-      if(tree.id().equals(id))
+      if(tree.equals(tree))
         return tree;
     }
     return null;

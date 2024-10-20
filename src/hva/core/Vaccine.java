@@ -1,6 +1,7 @@
 package hva.core;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -99,9 +100,10 @@ public class Vaccine extends NamedEntity {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
     String speciesName = animal.species().name();
+    List<Character> nameCharsList = speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList()); //TODO Inês check this solution is it ok??
     for (int i = 0; i < Math.min(speciesBiggestName.name().length(),
     speciesName.length()); i++) {
-      if (speciesBiggestName.name().charAt(i) == speciesName.charAt(i))
+      if (nameCharsList.contains(speciesBiggestName.name().charAt(i)))
         commonCharacters++;
       }
     return biggestSpeciesName().name().length() - commonCharacters;

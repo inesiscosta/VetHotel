@@ -56,7 +56,7 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
     if (obj == null || !(obj instanceof NamedEntity))
       return false;
     NamedEntity other = (NamedEntity) obj;
-    return this._id.equals(other.id());
+    return this._id.equalsIgnoreCase(other.id());
   }
 
     /**
