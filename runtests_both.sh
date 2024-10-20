@@ -15,7 +15,7 @@ for x in tests/testsBoth_1draft/*.in; do
     diff -cwB ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff ;
     if [ -s ${x%.in}.diff ]; then
         echo -n "F"
-        failures=$failures"Fail: $x: See file ${x%.in}.diff\n" ;
+        failures=$failures"Fail: $x: See file src/${x%.in}.diff\n" ;
     else
         let correct++;
         echo -n "."
