@@ -24,7 +24,6 @@ class DoRegisterEmployee extends Command<Hotel> {
     var id = stringField("id");
     var name = stringField("name");
     var type = stringField("type");
-
     try {
       _receiver.registerEmployee(id, name, type);
     } catch (DuplicateEmployeeIdException e) {

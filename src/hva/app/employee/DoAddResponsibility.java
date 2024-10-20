@@ -24,7 +24,6 @@ class DoAddResponsibility extends Command<Hotel> {
   protected void execute() throws CommandException {
     var idEmployee = stringField("idEmployee");
     var idResponsibility = stringField("idResponsibility");
-
     try {
       _receiver.addResponsibility(idEmployee, idResponsibility);
     } catch (UnknownEmployeeIdException e) {
