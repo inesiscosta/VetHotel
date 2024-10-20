@@ -321,6 +321,10 @@ public class Hotel implements  HotelSubject {
     return false;
   }
 
+  public boolean speciesAlreadyExists(String idSpecies) {
+    return _species.containsKey(idSpecies);
+  }
+
   /**
    * Registers a new species in the hotel.
    * 
