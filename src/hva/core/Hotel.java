@@ -57,6 +57,7 @@ public class Hotel implements  HotelSubject {
    *
    */
   public Hotel() {
+    // TODO Make everything collections in the immutable thingy
     _filename = null;
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
