@@ -6,7 +6,7 @@ let correct=0;
 cd src
 javac -cp ./lib/po-uilib.jar:. `find hva -name "*.java"`
 
-for x in tests/tests_2/*.in; do
+for x in tests/tests_private/*.in; do
     if [ -e ${x%.in}.import ]; then
         java -cp ./lib/po-uilib.jar:. -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp hva.app.App;
     else
