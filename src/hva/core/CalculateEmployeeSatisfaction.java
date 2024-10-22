@@ -1,13 +1,14 @@
 package hva.core;
 
-import hva.core.satisfactionStrategy.Satisfaction;
+import hva.core.satisfaction.VeterinarianSatisfaction;
+import hva.core.satisfaction.ZooKeeperSatisfaction;
 
 /**
  * Default methods used to calculate the satisfaction level of the diferent
  * types of employees.
  * 
  */
-public class CalculateEmployeeSatisfaction implements Satisfaction{
+public class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, ZooKeeperSatisfaction{
     
   /**
    * Calculates the ZooKeeper's satisfaction level which depends on the 

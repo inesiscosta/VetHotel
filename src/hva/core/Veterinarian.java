@@ -2,8 +2,8 @@ package hva.core;
 
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownSpeciesIdException;
-import hva.core.satisfactionStrategy.Satisfaction;
 import hva.core.exception.UnknownResponsibilityException;
+import hva.core.satisfaction.VeterinarianSatisfaction;
 
 import java.util.Collection;
 import java.util.Set;
@@ -14,7 +14,7 @@ import java.util.TreeSet;
  */
 public class Veterinarian extends Employee {
   private Set<Species> _knowsHowToVaccinate;
-  private Satisfaction _satisfactionMethod;
+  private VeterinarianSatisfaction _satisfactionMethod;
 
   /**
    * Creates a new Veterinarian.
@@ -125,7 +125,7 @@ public class Veterinarian extends Employee {
    * 
    * @param satisfactionMethod the new method to use for the calculation
    */
-  void setSatisfactionMethod(Satisfaction satisfactionMethod) {
+  void setSatisfactionMethod(VeterinarianSatisfaction satisfactionMethod) {
     _satisfactionMethod = satisfactionMethod;
   }
 }

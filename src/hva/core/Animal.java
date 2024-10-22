@@ -3,6 +3,8 @@ package hva.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import hva.core.satisfaction.AnimalSatisfaction;
+
 /**
  * Represents an Animal in a Vet Hotel.
  */
@@ -10,6 +12,7 @@ public class Animal extends NamedEntity {
   private List<HealthStatus> _healthHistory;
   private Species _species;
   private Habitat _habitat;
+  private AnimalSatisfaction _satisfactionMethod;
 
   /**
    * Creates a new Animal.
@@ -30,6 +33,7 @@ public class Animal extends NamedEntity {
     /*Adds itself to the TreeMap of all Animals in the habitat that
     the class Habitat holds.*/
     _habitat.addAnimal(this);
+    _satisfactionMethod = new CalculateAnimalSatisfaction();
   }
 
   /**
@@ -87,9 +91,7 @@ public class Animal extends NamedEntity {
    * @return the animal's satisfaction level
    */
   public double calculateSatisfaction() {
-    return 20 + (3 * (_habitat.getNumAnimalsSameSpecies(_species)-1))
-    - (2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalsSameSpecies(_species)))
-    + (_habitat.area() / _habitat.getNumAnimals()) + _habitat.identifyInfluence(_species);
+    return _satisfactionMethod.calculateSatisfaction(this);
   }
 
   /**
@@ -115,5 +117,14 @@ public class Animal extends NamedEntity {
     _habitat.removeAnimal(this);
     newHabitat.addAnimal(this);
     _habitat = newHabitat;
+  }
+
+  /**
+   * Sets the method used to calculate the satisfaction of the animal.
+   * 
+   * @param satisfactionMethod the new method to use for the calculation
+   */
+  void setSatisfactionMethod(AnimalSatisfaction satisfactionMethod) {
+    _satisfactionMethod = satisfactionMethod;
   }
 }

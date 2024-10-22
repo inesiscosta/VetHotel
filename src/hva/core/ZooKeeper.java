@@ -2,7 +2,7 @@ package hva.core;
 
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityException;
-import hva.core.satisfactionStrategy.Satisfaction;
+import hva.core.satisfaction.ZooKeeperSatisfaction;
 
 import java.util.Collection;
 import java.util.Set;
@@ -13,7 +13,7 @@ import java.util.TreeSet;
  */
 public class ZooKeeper extends Employee {
   private Set<Habitat> _assignedHabitats;
-  private Satisfaction _satisfactionMethod;
+  private ZooKeeperSatisfaction _satisfactionMethod;
 
   /**
    * Creates a new ZooKeeper.
@@ -103,7 +103,7 @@ public class ZooKeeper extends Employee {
    * 
    * @param satisfactionMethod the new method to use for the calculation
    */
-  void setSatisfactionMethod(Satisfaction satisfactionMethod) {
+  void setSatisfactionMethod(ZooKeeperSatisfaction satisfactionMethod) {
     _satisfactionMethod = satisfactionMethod;
   }
 }

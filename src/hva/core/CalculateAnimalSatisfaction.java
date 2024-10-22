@@ -1,7 +1,6 @@
 package hva.core;
 
-import hva.core.satisfactionStrategy.AnimalSatisfaction;
-import hva.core.satisfactionStrategy.EmployeeSatisfaction;
+import hva.core.satisfaction.AnimalSatisfaction;
 
 public class CalculateAnimalSatisfaction implements AnimalSatisfaction {
   /**

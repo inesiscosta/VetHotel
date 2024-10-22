@@ -1,14 +1,12 @@
-package hva.core.satisfactionStrategy;
+package hva.core.satisfaction;
 
 import hva.core.Veterinarian;
-import hva.core.ZooKeeper;
 import java.io.Serializable;
 
 /**
  * Interface for the Satisfaction calculation, can have multiple methods of
  * doing it.
  */
-public interface Satisfaction extends Serializable{
+public interface VeterinarianSatisfaction extends Serializable{
     double calculateSatisfaction(Veterinarian vet);
-    double calculateSatisfaction(ZooKeeper keeper);
 }
