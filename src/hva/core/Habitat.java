@@ -225,6 +225,7 @@ public class Habitat extends NamedEntity {
    */
   void nextSeason(Season currentSeason) {
     for(Tree tree : _trees.values()) {
+      tree.nextSeason(currentSeason);
       if (tree.equalsCreationSeason(currentSeason))
         tree.incrementAge();
     }

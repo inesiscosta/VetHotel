@@ -2,8 +2,6 @@ package hva.core;
 
 import static java.lang.Math.log;
 
-
-
 /**
  * Represents a generic tree in the Vet Hotel.
  */
@@ -61,6 +59,16 @@ public abstract class Tree extends NamedEntity  {
     return _treeType;
   }
 
+  void nextSeason(Season currentSeason) {
+    _currentSeason = currentSeason;
+  }
+
+  /**
+   * Gets the tree's current season that is
+   * synced with the hotel
+   * 
+   * @return the tree's current season
+   */
   Season currentSeason() {
     return _currentSeason;
   }
