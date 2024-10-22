@@ -18,9 +18,9 @@ import java.util.TreeSet;
  */
 public class Habitat extends NamedEntity {
   private int _area;
-  private Map<String,Animal> _animals;
+  private Map<String, Animal> _animals;
   private Collection<ZooKeeper> _assignedKeepers;
-  private Collection<Tree> _trees;
+  private Map<String, Tree> _trees;
   private Map<Species, Integer> _influences;
   
   /**
@@ -34,8 +34,8 @@ public class Habitat extends NamedEntity {
     super(id, name);
     _area = area;
     _animals = new TreeMap<String,Animal>(new CaseInsensitiveOrderComparator()); //String is the id of the Animal.
-    _assignedKeepers = new TreeSet<ZooKeeper>(); //Why is this in a tree set?
-    _trees = new TreeSet<Tree>();
+    _assignedKeepers = new TreeSet<ZooKeeper>(); //Why is this in a tree set? Dont know we need to see, the trees are now a TreeMap
+    _trees = new TreeMap<String, Tree>(new CaseInsensitiveOrderComparator());
     _influences = new HashMap<>();
   }
 
@@ -214,7 +214,7 @@ public class Habitat extends NamedEntity {
       default:
         throw new InvalidTreeTypeException(treeType);
     }
-    _trees.add(tree);
+    _trees.put(id,tree);
     return tree;
   }
 
@@ -225,18 +225,14 @@ public class Habitat extends NamedEntity {
    * @return the tree object if it is found and null if not
    */
   Tree identifyTree(String id) {
-    for(Tree tree : _trees) {
-      if(tree.id().equalsIgnoreCase(id)) //TODO I dont like this it should use methods from NamedEntity chekc this Inês? Agreed Lets make treeset's case insensitive when storing
-        return tree;
-    }
-    return null;
+    return _trees.get(id);
   }
 
   /**
    * Advances the season of all trees in the habitat. 
    */
   void nextSeason(Season currentSeason) {
-    for(Tree tree : _trees) {
+    for(Tree tree : _trees.values()) {
       if (tree.equalsCreationSeason(currentSeason))
         tree.incrementAge();
     }
@@ -262,7 +258,7 @@ public class Habitat extends NamedEntity {
    */
   public Collection<String> listTrees(Season currentSeason) { 
     Collection<String> allTreesString = new ArrayList<>();
-    for(Tree tree : _trees) {
+    for(Tree tree : _trees.values()) {
       allTreesString.add(tree.toString(currentSeason));
     }
     return Collections.unmodifiableCollection(allTreesString);
@@ -276,7 +272,7 @@ public class Habitat extends NamedEntity {
    */
   double cleaningEffort(Season currentSeason) {
     double cleaningEffort = 0;
-    for(Tree tree : _trees)
+    for(Tree tree : _trees.values())
       cleaningEffort += tree.calculateCleaningEffort(currentSeason);
     return cleaningEffort;
   }
