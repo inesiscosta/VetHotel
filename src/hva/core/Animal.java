@@ -1,18 +1,17 @@
 package hva.core;
+import hva.core.satisfaction.AnimalSatisfaction;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import hva.core.satisfaction.AnimalSatisfaction;
 
 /**
  * Represents an Animal in a Vet Hotel.
  */
 public class Animal extends NamedEntity {
-  private List<HealthStatus> _healthHistory;
-  private Species _species;
   private Habitat _habitat;
+  private List<HealthStatus> _healthHistory;
   private AnimalSatisfaction _satisfactionMethod;
+  private Species _species;
 
   /**
    * Creates a new Animal.
@@ -25,14 +24,14 @@ public class Animal extends NamedEntity {
   Animal(String id, String name, Species species, Habitat habitat) {
     super(id, name);
     _species = species;
-    _habitat = habitat;
-    _healthHistory = new ArrayList<>();
     /* Adds itself to the TreeSet of all Animals of the same species that 
     the class Species holds.*/
     _species.addAnimal(this);
+    _habitat = habitat;
     /*Adds itself to the TreeMap of all Animals in the habitat that
     the class Habitat holds.*/
     _habitat.addAnimal(this);
+    _healthHistory = new ArrayList<>();
     _satisfactionMethod = new CalculateAnimalSatisfaction();
   }
 
@@ -83,6 +82,15 @@ public class Animal extends NamedEntity {
   }
 
   /**
+   * Sets the method used to calculate the satisfaction of the animal.
+   * 
+   * @param satisfactionMethod the new method to use for the calculation
+   */
+  void setSatisfactionMethod(AnimalSatisfaction satisfactionMethod) {
+    _satisfactionMethod = satisfactionMethod;
+  }
+
+  /**
    * Calculates the animal's satisfaction level based on the number of animals
    * of the same species in the habitat, the number of animals in the habitat,
    * the area of the habitat, and the influence of the habitat on the animal's
@@ -117,14 +125,5 @@ public class Animal extends NamedEntity {
     _habitat.removeAnimal(this);
     newHabitat.addAnimal(this);
     _habitat = newHabitat;
-  }
-
-  /**
-   * Sets the method used to calculate the satisfaction of the animal.
-   * 
-   * @param satisfactionMethod the new method to use for the calculation
-   */
-  void setSatisfactionMethod(AnimalSatisfaction satisfactionMethod) {
-    _satisfactionMethod = satisfactionMethod;
   }
 }

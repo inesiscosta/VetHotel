@@ -8,16 +8,10 @@ import java.util.Comparator;
  * insensitive. This class is a singleton.
  */
 public class CaseInsensitiveComparator implements Comparator<String>,
- Serializable {
+Serializable {
 
-    /**
-     * The instance of the CaseInsensitiveOrderComparator
-     */
     private static final CaseInsensitiveComparator _caseInsensitiveComparator = new CaseInsensitiveComparator();
 
-    /**
-     * The private constructor of the CaseInsensitiveOrderComparator
-     */
     private CaseInsensitiveComparator() {}
 
     public static CaseInsensitiveComparator getComparator() {

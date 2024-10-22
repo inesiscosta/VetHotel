@@ -4,8 +4,8 @@ import hva.core.Animal;
 import java.io.Serializable;
 
 /**
- * Interface for the Satisfaction calculation, can have multiple methods of
- * doing it.
+ * Interface for the Animal Satisfaction calculation, can have multiple methods
+ * of doing calculating it.
  */
 public interface AnimalSatisfaction extends Serializable{
     double calculateSatisfaction(Animal animal);

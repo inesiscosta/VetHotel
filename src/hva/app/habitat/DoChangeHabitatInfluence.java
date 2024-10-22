@@ -41,12 +41,12 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     try {
       //FIXME: Ask teacher if we should have all public methods in Hotel or we can do it like this.
       _receiver.identifyHabitat(idHabitat).changeInfluence(
-        _receiver.identifySpecies(idSpecies), influence);
-      _receiver.notifyHotelObservers();
+      _receiver.identifySpecies(idSpecies), influence);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
       throw new UnknownSpeciesKeyException(idSpecies);
     }
+    _receiver.notifyHotelObservers();
   }
 }

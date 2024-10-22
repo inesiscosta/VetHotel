@@ -23,9 +23,8 @@ class DoTransferToHabitat extends Command<Hotel> {
     var idAnimal = stringField("idAnimal");
     var idHabitat = stringField("idHabitat");
     try {
-      var animal = _receiver.identifyAnimal(idAnimal);
-      var habitat = _receiver.identifyHabitat(idHabitat);
-      animal.changeHabitat(habitat);
+      _receiver.identifyAnimal(idAnimal).changeHabitat(
+      _receiver.identifyHabitat(idHabitat));
     } catch (UnknownAnimalIdException e) {
       throw new UnknownAnimalKeyException(idAnimal);
     } catch (UnknownHabitatIdException e) {

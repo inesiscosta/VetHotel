@@ -25,12 +25,6 @@ public class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, 
     return 300 - work;
   }
 
-  /**
-   * Calculates the effort it requires to clean / mantain a habitat.
-   * 
-   * @param habitat the habitat for which to calculate the effort to clean it
-   * @return the effort it takes to clean the habitat
-   */
   private double workEffort(Habitat habitat, ZooKeeper keeper) {
     return habitat.area() 
     + 3 * habitat.getNumAnimals() 

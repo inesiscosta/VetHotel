@@ -26,7 +26,6 @@ class DoChangeHabitatArea extends Command<Hotel> {
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }
-    //Notfify from app instead of core since change area is not called from Hotel
     _receiver.notifyHotelObservers();
   }
 }
