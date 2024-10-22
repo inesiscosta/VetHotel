@@ -25,7 +25,7 @@ public class Veterinarian extends Employee {
   public Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
     _knowsHowToVaccinate = new TreeSet<Species>();
-    _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
+    _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
     
   /**

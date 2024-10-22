@@ -1,7 +1,7 @@
 package hva.core;
 
 import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
-import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
+import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import hva.core.exception.DuplicateAnimalIdException;
 import hva.core.exception.DuplicateEmployeeIdException;
 import hva.core.exception.DuplicateHabitatIdException;
@@ -61,11 +61,11 @@ public class Hotel implements  HotelSubject {
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
-    _habitats = new TreeMap<>(CaseInsensitiveOrderComparator.getComparator());
+    _habitats = new TreeMap<>(CaseInsensitiveComparator.getComparator());
     _species = new CaseInsensitiveHashMap<>();
     _speciesByName = new HashMap<>();
-    _employees = new TreeMap<>(CaseInsensitiveOrderComparator.getComparator());
-    _vaccines = new TreeMap<>(CaseInsensitiveOrderComparator.getComparator());
+    _employees = new TreeMap<>(CaseInsensitiveComparator.getComparator());
+    _vaccines = new TreeMap<>(CaseInsensitiveComparator.getComparator());
     //Used array list instead of linkedlist because less memory overhead
     //since we are only adding to the end of the list O(1) complexity anyways
     _vaccinationRecords = new ArrayList<VaccinationRecord>();

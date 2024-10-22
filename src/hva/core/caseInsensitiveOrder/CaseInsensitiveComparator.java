@@ -7,21 +7,21 @@ import java.util.Comparator;
  * Class that implements a custom comparator that ignores case, its case
  * insensitive. This class is a singleton.
  */
-public class CaseInsensitiveOrderComparator implements Comparator<String>,
+public class CaseInsensitiveComparator implements Comparator<String>,
  Serializable {
 
     /**
      * The instance of the CaseInsensitiveOrderComparator
      */
-    private static final CaseInsensitiveOrderComparator _caseInsensitiveOrderComparator = new CaseInsensitiveOrderComparator();
+    private static final CaseInsensitiveComparator _caseInsensitiveComparator = new CaseInsensitiveComparator();
 
     /**
      * The private constructor of the CaseInsensitiveOrderComparator
      */
-    private CaseInsensitiveOrderComparator() {}
+    private CaseInsensitiveComparator() {}
 
-    public static CaseInsensitiveOrderComparator getComparator() {
-        return _caseInsensitiveOrderComparator;
+    public static CaseInsensitiveComparator getComparator() {
+        return _caseInsensitiveComparator;
     }
 
     /**

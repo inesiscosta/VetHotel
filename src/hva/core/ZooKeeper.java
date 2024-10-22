@@ -24,7 +24,7 @@ public class ZooKeeper extends Employee {
   public ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
     _assignedHabitats = new TreeSet<Habitat>();
-    _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
+    _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
 
   /**

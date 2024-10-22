@@ -7,7 +7,7 @@ import hva.core.satisfactionStrategy.Satisfaction;
  * types of employees.
  * 
  */
-public class DefaultCalculateSatisfactionEmployee implements Satisfaction{
+public class CalculateEmployeeSatisfaction implements Satisfaction{
     
   /**
    * Calculates the ZooKeeper's satisfaction level which depends on the 

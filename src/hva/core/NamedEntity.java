@@ -1,6 +1,6 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
+import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -69,7 +69,7 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
    */
   @Override
   public int compareTo(NamedEntity other) {
-    return CaseInsensitiveOrderComparator.getComparator().compare(this._id,other.id());
+    return CaseInsensitiveComparator.getComparator().compare(this._id,other.id());
   }
 
   /**
