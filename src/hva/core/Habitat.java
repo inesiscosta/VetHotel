@@ -161,6 +161,8 @@ public class Habitat extends NamedEntity {
    * species
    */
   public void changeInfluence(Species species, int newInfluence) {
+    if(newInfluence == 0 && _influences.containsKey(species))
+      _influences.remove(species);
     if (newInfluence == 0)
       return;
     _influences.put(species, newInfluence);
@@ -271,8 +273,8 @@ public class Habitat extends NamedEntity {
    * 
    * @return the sum of the satisfaction of each animals in the habitat
    */
-  int calculateAnimalsSatisfaction() {
-    int satisfaction = 0;
+  double calculateAnimalsSatisfaction() {
+    double satisfaction = 0;
     for (Animal animal : _animals.values())
       satisfaction += animal.calculateSatisfaction();
     return satisfaction;
