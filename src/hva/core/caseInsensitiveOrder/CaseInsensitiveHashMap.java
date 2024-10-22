@@ -9,11 +9,17 @@ import java.util.HashMap;
  */
 public class CaseInsensitiveHashMap<NamedEntity> extends HashMap<String, NamedEntity> {
 
+    /**
+     * Puts the object in the map with the key in lower case
+     */
     @Override
     public NamedEntity put(String key, NamedEntity object) {
         return super.put(key.toLowerCase(), object);
     }
 
+    /**
+     * Gets the object from the map with the key in lower case
+     */
     @Override
     public NamedEntity get(Object key) {
         if(key instanceof String)
@@ -21,6 +27,9 @@ public class CaseInsensitiveHashMap<NamedEntity> extends HashMap<String, NamedEn
         return null;
     }
 
+    /**
+     * Checks if the map contains the key in lower case
+     */
     @Override
     public boolean containsKey(Object key) {
         if(key instanceof String)
@@ -28,6 +37,9 @@ public class CaseInsensitiveHashMap<NamedEntity> extends HashMap<String, NamedEn
         return false;
     }
 
+    /**
+     * Removes the object from the map with the key in lower case
+     */
     @Override
     public NamedEntity remove(Object key) {
         if(key instanceof String)

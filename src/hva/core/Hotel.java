@@ -61,11 +61,11 @@ public class Hotel implements  HotelSubject {
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
-    _habitats = new TreeMap<>(new CaseInsensitiveOrderComparator());
+    _habitats = new TreeMap<>(CaseInsensitiveOrderComparator.getComparator());
     _species = new CaseInsensitiveHashMap<>();
     _speciesByName = new HashMap<>();
-    _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _vaccines = new TreeMap<>(new CaseInsensitiveOrderComparator());
+    _employees = new TreeMap<>(CaseInsensitiveOrderComparator.getComparator());
+    _vaccines = new TreeMap<>(CaseInsensitiveOrderComparator.getComparator());
     //Used array list instead of linkedlist because less memory overhead
     //since we are only adding to the end of the list O(1) complexity anyways
     _vaccinationRecords = new ArrayList<VaccinationRecord>();

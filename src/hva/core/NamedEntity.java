@@ -69,7 +69,7 @@ public class NamedEntity implements Comparable<NamedEntity>, Serializable {
    */
   @Override
   public int compareTo(NamedEntity other) {
-    return new CaseInsensitiveOrderComparator().compare(this._id,other.id());
+    return CaseInsensitiveOrderComparator.getComparator().compare(this._id,other.id());
   }
 
   /**

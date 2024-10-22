@@ -33,9 +33,9 @@ public class Habitat extends NamedEntity {
   Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
-    _animals = new TreeMap<String,Animal>(new CaseInsensitiveOrderComparator()); //String is the id of the Animal.
+    _animals = new TreeMap<String,Animal>(CaseInsensitiveOrderComparator.getComparator()); //String is the id of the Animal.
     _assignedKeepers = new TreeSet<ZooKeeper>(); //Why is this in a tree set? Dont know we need to see, the trees are now a TreeMap
-    _trees = new TreeMap<String, Tree>(new CaseInsensitiveOrderComparator());
+    _trees = new TreeMap<String, Tree>(CaseInsensitiveOrderComparator.getComparator());
     _influences = new HashMap<>();
   }
 
