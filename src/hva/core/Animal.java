@@ -87,7 +87,9 @@ public class Animal extends NamedEntity {
    * @return the animal's satisfaction level
    */
   public double calculateSatisfaction() {
-    return 20 + (3 * (_habitat.getNumAnimalsSameSpecies(_species)-1)) - (2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalsSameSpecies(_species))) + (_habitat.area() / _habitat.getNumAnimals()) + _habitat.identifyInfluence(_species);
+    return 20 + (3 * (_habitat.getNumAnimalsSameSpecies(_species)-1))
+    - (2 * (_habitat.getNumAnimals() - _habitat.getNumAnimalsSameSpecies(_species)))
+    + (_habitat.area() / _habitat.getNumAnimals()) + _habitat.identifyInfluence(_species);
   }
 
   /**
