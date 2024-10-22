@@ -448,22 +448,6 @@ public class Hotel implements  HotelSubject {
     return vaccineApropriated;
   }
 
-  //TODO Move this into Habitat
-  /**
-   * Changes the influence of a habitat on a species.
-   * 
-   * @param habitat the habitat to change the influence
-   * @param species the species to change the influence
-   * @param influenceString the influence to change to
-   */
-  public void changeHabitatInflunece(Habitat habitat, Species species,
-  int influence) {
-    if(habitat.identifyInfluence(species) == 0)
-      habitat.addInfluence(species, influence);
-    habitat.changeHabitatInflunece(species, influence);
-    notifyHotelObservers();
-  }
-
   /**
    * Lists all habitats in the hotel in an immutable list containing 
    * information about each habitat.

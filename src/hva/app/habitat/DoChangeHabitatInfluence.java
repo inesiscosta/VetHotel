@@ -39,8 +39,9 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
         influence = 0;
     }
     try {
-      _receiver.changeHabitatInflunece(_receiver.identifyHabitat(idHabitat),
-      _receiver.identifySpecies(idSpecies), influence); // TODO move observer here and move method to habitat from Hotel
+      _receiver.identifyHabitat(idHabitat).changeInfluence(
+        _receiver.identifySpecies(idSpecies), influence);
+      _receiver.notifyHotelObservers();
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {

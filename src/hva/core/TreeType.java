@@ -31,7 +31,7 @@ public enum TreeType {
     /**
      * Converts a string to an TreeType.
      * 
-     * @param pt the string to convert in Portuguese
+     * @param type the string to convert in Portuguese
      * @return the TreeType corresponding to the string
      */
     public static TreeType stringToEnum(String type) {

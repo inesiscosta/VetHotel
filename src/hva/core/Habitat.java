@@ -154,23 +154,15 @@ public class Habitat extends NamedEntity {
   }
 
   /**
-   * Adds the influence value a habitat has on a given species.
-   * 
-   * @param species the species influenced (POS, NEG, NEU) by the habitat
-   * @param influence the influence value the habitat has on the species
-   */
-  void addInfluence(Species species, int influence) {
-    _influences.put(species, influence);
-  }
-
-  /**
    * Changes the influence value a habitat has on a given species.
    * 
    * @param species the species influenced (POS, NEG, NEU) by the habitat
    * @param newInfluence the new influence value the habitat has on the
    * species
    */
-  void changeHabitatInflunece(Species species, int newInfluence) {
+  public void changeInfluence(Species species, int newInfluence) {
+    if (newInfluence == 0)
+      return;
     _influences.put(species, newInfluence);
   }
 
