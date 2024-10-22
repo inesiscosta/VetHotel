@@ -42,14 +42,14 @@ public class Hotel implements  HotelSubject {
   
   private Season _currentSeason;
   private Map<String,Habitat> _habitats;
+  private List<HotelObserver> _hotelObservers;
   private Map<String,Employee> _employees;
+  private String _filename;
   private Map<String,Species> _species;
   private Map<String, Species> _speciesByName;
   private Map<String,Vaccine> _vaccines;
   private List<VaccinationRecord> _vaccinationRecords;
-  private List<HotelObserver> _hotelObservers;
   private boolean _unsavedChanges;
-  private String _filename;
 
   /**
    * Creates a new Vet Hotel.
@@ -309,13 +309,6 @@ public class Hotel implements  HotelSubject {
     notifyHotelObservers();
   }
 
-  /**
-   * Test if this animal id already exists in one of the habitats
-   * 
-   * @param idAnimal the id of the animal
-   * @return returns true if the animal exist in one of the habitats 
-   * of the hotel
-   */
   private boolean animalAlreadyExists(String idAnimal) {
     for(Habitat habitat : _habitats.values()) {
       if(habitat.containsAnimal(idAnimal))
@@ -437,7 +430,8 @@ public class Hotel implements  HotelSubject {
    * @param animal the animal to vaccinate
    * @param vaccine the vaccine to apply
    */
-  public boolean addVaccinationRecord(Vaccine vaccine, Veterinarian vet, Animal animal) throws EmployeeNotResponsibleException {
+  public boolean addVaccinationRecord(Vaccine vaccine, Veterinarian vet,
+  Animal animal) throws EmployeeNotResponsibleException {
     boolean vaccineApropriated = true;
     if(!vaccine.isSpeciesApropriated(animal.species()))
       vaccineApropriated = false;

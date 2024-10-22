@@ -51,12 +51,6 @@ public class Vaccine extends NamedEntity {
     return result.toString();
   }
 
-  /**
-   * Gets the ids of the suitable species for the vaccine.
-   * Used for the String representation of the Vaccine object.
-   * 
-   * @return a string with the ids of the suitable species for the vaccine
-   */
   private String suitableSpeciesToString() {
     StringBuilder suitableSpecies = new StringBuilder();
     suitableSpecies.append("|");
@@ -90,12 +84,6 @@ public class Vaccine extends NamedEntity {
       animal), correctSpecies);
     }
 
-  /**
-   * Calculates the damage caused by the vaccine to an animal.
-   * 
-   * @param animal the vaccinated animal
-   * @return the damage caused by the vaccine as an integer
-   */
   private int calculateVaccineDamage(Animal animal) {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
@@ -110,12 +98,6 @@ public class Vaccine extends NamedEntity {
     return biggestSpeciesName().name().length() - commonCharacters;
   }
 
-  /**
-   * Gets the species with the biggest name in the list of suitable species.
-   * Used to calculate the damage caused by the vaccine.
-   * 
-   * @return the species with the biggest name in the list of suitable species
-   */
   private Species biggestSpeciesName() {
     Species biggestSpecies = null;
     for (Species species : _appropiateSpecies) {

@@ -149,20 +149,10 @@ public abstract class Tree extends NamedEntity implements TreeObserver {
    */
   abstract Leaf getBioCycle(Season currentSeason);
 
-  /**
-   * Checks if the tree was created in the current season.
-   * 
-   * @param currentSeason the current season in the Vet Hotel
-   * @return true if tree was created in the current season, false otherwise
-   */
-  boolean equalsCreationSeason(Season currentSeason) {
+  private boolean equalsCreationSeason(Season currentSeason) {
     return _creationSeason == currentSeason;
   }
 
-  /**
-   * Increments the tree's age by one. Only used when the season changes
-   * and it matches the tree's season at creation.
-   */
   private void incrementAge() {
     _age++;
   }

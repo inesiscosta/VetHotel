@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * Interface for the Veterinary Satisfaction calculation, can have multiple
- * methods of doing calculating it.
+ * methods of calculating it.
  */
 public interface VeterinarianSatisfaction extends Serializable{
     double calculateSatisfaction(Veterinarian vet);
