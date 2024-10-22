@@ -56,7 +56,7 @@ public class Hotel implements  HotelSubject {
    *
    */
   public Hotel() {
-    // TODO Make everything collections in the immutable thingy
+    //FIXME Collections or Lists/Maps here and in immutable.
     _filename = null;
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
@@ -488,7 +488,7 @@ public class Hotel implements  HotelSubject {
    * representation of all employees in the hotel
    */
   public Collection<Employee> listEmployees() {
-    return Collections.unmodifiableCollection(new ArrayList<>(_employees.values()));
+    return Collections.unmodifiableCollection(_employees.values());
   }
 
   /**
@@ -509,7 +509,7 @@ public class Hotel implements  HotelSubject {
    * @return an unmodifiable List containing the VaccinationRecord objects
    */
   public Collection<VaccinationRecord> listVaccinationRecords() {
-    return Collections.unmodifiableCollection(new ArrayList<>(_vaccinationRecords));
+    return Collections.unmodifiableCollection(_vaccinationRecords);
   }
 
   /**
@@ -537,13 +537,13 @@ public class Hotel implements  HotelSubject {
    * @return an unmodifiable List containing the VaccinationRecord object
    * of all vaccination records of vaccines administered by the given vet
    */
-  public List<VaccinationRecord> listVetVaccinationRecords(Veterinarian vet) {
+  public Collection<VaccinationRecord> listVetVaccinationRecords(Veterinarian vet) {
     List<VaccinationRecord> vetVaccinationRecords = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.vet().equals(vet))
         vetVaccinationRecords.add(record);
     }
-    return Collections.unmodifiableList(vetVaccinationRecords);
+    return Collections.unmodifiableCollection(vetVaccinationRecords);
   }
 
   /**
@@ -553,13 +553,13 @@ public class Hotel implements  HotelSubject {
    * @return a String containing the VaccinationRecord object string
    * representation of all erroneous vaccination records
    */
-  public List<VaccinationRecord> listErroneousVaccinations() {
+  public Collection<VaccinationRecord> listErroneousVaccinations() {
     List<VaccinationRecord> erroneousVaccination = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(!record.damage().equals(HealthStatus.NORMAL.toString()))
         erroneousVaccination.add(record);
     }
-    return Collections.unmodifiableList(erroneousVaccination);
+    return Collections.unmodifiableCollection(erroneousVaccination);
   }
 
   /**

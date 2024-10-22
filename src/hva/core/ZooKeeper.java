@@ -1,21 +1,18 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityException;
 import hva.core.satisfactionStrategy.Satisfaction;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Represents a ZooKeeper that works in a Vet Hotel.
  */
 public class ZooKeeper extends Employee {
-  private Collection<Habitat> _assignedHabitats;
+  private Set<Habitat> _assignedHabitats;
   private Satisfaction _satisfactionMethod;
 
   /**
@@ -26,7 +23,7 @@ public class ZooKeeper extends Employee {
    */
   public ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
-    _assignedHabitats = new HashSet<Habitat>(); //TODO Why is this in a hash set? Make TreeSet! Fix getResponsibilities
+    _assignedHabitats = new TreeSet<Habitat>();
     _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
   }
 
@@ -66,7 +63,6 @@ public class ZooKeeper extends Employee {
     } catch (UnknownHabitatIdException e) {
       throw new UnknownResponsibilityException(id,e);
     }
-
   }
 
   /**
@@ -83,7 +79,6 @@ public class ZooKeeper extends Employee {
     } catch (UnknownHabitatIdException e) {
       throw new UnknownResponsibilityException(id,e);
     }
-    
   }
 
   /**
@@ -94,14 +89,12 @@ public class ZooKeeper extends Employee {
    */
   @Override
   String getIdResponsibilities() {
-    if(_assignedHabitats.isEmpty())
+    if (_assignedHabitats.isEmpty())
       return null;
-    List<Habitat> assignedHabitats = new ArrayList<>(_assignedHabitats);
-    assignedHabitats.sort(Comparator.comparing(Habitat::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checked -Inês CHANGE!
     StringBuilder idResponsibilities = new StringBuilder();
-    for (Habitat habitat : assignedHabitats)
+    for (Habitat habitat : _assignedHabitats)
       idResponsibilities.append(habitat.id()).append(",");
-    idResponsibilities.setLength(idResponsibilities.length()-1);
+    idResponsibilities.setLength(idResponsibilities.length() - 1);
     return idResponsibilities.toString();
   }
 

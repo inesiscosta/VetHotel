@@ -2,7 +2,7 @@ package hva.core.exception;
 
 import java.io.Serial;
 
-//TODO Ask teacher if we should use inheritance for All DuplicateIdExceptions can we use static error messages?
+//FIXME Ask teacher if we should use inheritance for All DuplicateIdExceptions can we use static error messages?
 /**
  * Class for representing a duplicate habitat id exception.
  */

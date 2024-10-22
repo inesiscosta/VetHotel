@@ -1,22 +1,19 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveOrderComparator;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfactionStrategy.Satisfaction;
 import hva.core.exception.UnknownResponsibilityException;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Represents a veterinarian that works in a Vet Hotel.
  */
 public class Veterinarian extends Employee {
-  private Collection<Species> _knowsHowToVaccinate;
+  private Set<Species> _knowsHowToVaccinate;
   private Satisfaction _satisfactionMethod;
 
   /**
@@ -27,7 +24,7 @@ public class Veterinarian extends Employee {
    */
   public Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
-    _knowsHowToVaccinate = new HashSet<Species>(); //TODO Why is this in a hash set? Make TreeSet! Fix getResponsibilities
+    _knowsHowToVaccinate = new TreeSet<Species>();
     _satisfactionMethod = new DefaultCalculateSatisfactionEmployee();
   }
     
@@ -98,10 +95,8 @@ public class Veterinarian extends Employee {
   String getIdResponsibilities() {
     if(_knowsHowToVaccinate.isEmpty())
       return null;
-    List<Species> knowsHowToVaccinate = new ArrayList<>(_knowsHowToVaccinate);
-    knowsHowToVaccinate.sort(Comparator.comparing(Species::id, new CaseInsensitiveOrderComparator()));  //FIXME Maybe do this other way? Checked -Inês CHANGE!
     StringBuilder idResponsibilities = new StringBuilder();
-    for (Species species : knowsHowToVaccinate)
+    for (Species species : _knowsHowToVaccinate)
       idResponsibilities.append(species.id()).append(",");
     idResponsibilities.setLength(idResponsibilities.length()-1);
     return idResponsibilities.toString();
