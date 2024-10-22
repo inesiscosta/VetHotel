@@ -568,13 +568,13 @@ public class Hotel implements  HotelSubject {
    * 
    * @return the global satisfaction level of the hotel
    */
-  public int calculateGlobalSatisfaction() {
+  public double calculateGlobalSatisfaction() {
     double globalSatisfaction = 0;
     for (Employee employee : _employees.values())
       globalSatisfaction += employee.calculateSatisfaction();
     for (Habitat habitat : _habitats.values())
       globalSatisfaction += habitat.calculateAnimalsSatisfaction();
-    return (int) Math.round(globalSatisfaction);
+    return globalSatisfaction;
   }
 
   /**

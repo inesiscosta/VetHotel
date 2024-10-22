@@ -48,6 +48,6 @@ public class DefaultCalculateSatisfactionEmployee implements Satisfaction{
     int work = 0;
     for (Species species : vet.getKnowSpecies())
       work += (species.getNumAnimals()) / species.getNumQualifiedVets();
-    return 300 - work;
+    return 20 - work;
   }
 }
