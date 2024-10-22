@@ -203,7 +203,7 @@ public class Parser {
         for (String treeKey : listOfTree) {
           Tree tree =_tempTreesNoHabitat.get(treeKey);
           hab.plantTree(tree.id(), tree.name(), tree.age(),
-          tree.baseCleaningDifficulty(), tree.treeType(),
+          tree.baseCleaningDifficulty(), tree.treeType().toString(),
           _hotel.currentSeason(), _hotel);
         }
       }

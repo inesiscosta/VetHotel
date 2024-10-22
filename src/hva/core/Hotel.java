@@ -455,14 +455,14 @@ public class Hotel implements  HotelSubject {
    * @return an immutable List containing the Habitat object string
    * representation of all habitats in the hotel
    */
-  // TODO COLLECTION OF HABITATS AND TREES TOGETHER CHANGE tree.toString() to not use the current season
-  public Collection<String> listHabitats() {
-    List<String> listHabitats = new ArrayList<>();
+  public Collection<NamedEntity> listHabitats() {
+    List<NamedEntity> listHabitatsAndTrees = new ArrayList<>();
     for (Habitat habitat : _habitats.values()) {
-      listHabitats.add(habitat.toString());
-      listHabitats.addAll(habitat.listTrees(this.currentSeason()));
+      listHabitatsAndTrees.add(habitat);
+      for (Tree tree : habitat.listTrees())
+        listHabitatsAndTrees.add(tree);
     }
-    return Collections.unmodifiableList(listHabitats);
+    return Collections.unmodifiableCollection(listHabitatsAndTrees);
   }
 
   /**

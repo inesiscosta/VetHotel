@@ -12,6 +12,7 @@ public abstract class Tree extends NamedEntity  {
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;
   private final Season _creationSeason;
+  private Season _currentSeason;
 
   /**
    * Creates a new Tree.
@@ -30,6 +31,7 @@ public abstract class Tree extends NamedEntity  {
     _baseCleaningDifficulty = baseCleaningDifficulty;
     _treeType = treeType;
     _creationSeason = currentSeason;
+    _currentSeason = currentSeason;
   }
 
   /**
@@ -55,8 +57,12 @@ public abstract class Tree extends NamedEntity  {
    * 
    * @return the tree's type
    */
-  String treeType() {
-    return _treeType.toString();
+  TreeType treeType() {
+    return _treeType;
+  }
+
+  Season currentSeason() {
+    return _currentSeason;
   }
 
   /**
@@ -73,10 +79,9 @@ public abstract class Tree extends NamedEntity  {
    * Returns the tree's object representation as a string containing 
    * information that describes said tree.
    * 
-   * @param currentSeason the current season in the Vet Hotel
    * @return the string representation of the tree object
    */
-  public String toString(Season currentSeason) {
+  public String toString() {
     StringBuilder result = new StringBuilder();
     result.append("ÁRVORE|")
       .append(id()).append("|")
@@ -84,7 +89,7 @@ public abstract class Tree extends NamedEntity  {
       .append(age()).append("|")
       .append(baseCleaningDifficulty()).append("|")
       .append(treeType()).append("|")
-      .append(getBioCycle(currentSeason).toString());
+      .append(getBioCycle(currentSeason()).toString());
     return result.toString();
   }
 
@@ -127,9 +132,6 @@ public abstract class Tree extends NamedEntity  {
   boolean equalsCreationSeason(Season currentSeason) {
     return _creationSeason == currentSeason;
   }
-
-  
-
 
   /**
    * Increments the tree's age by one. Only used when the season changes

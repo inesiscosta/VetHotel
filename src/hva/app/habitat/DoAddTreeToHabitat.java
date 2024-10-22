@@ -35,8 +35,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
 
     try {
       _display.popup(_receiver.identifyHabitat(habitat).plantTree(id, name,
-      age, difficulty, type, _receiver.currentSeason(), _receiver).toString(
-        _receiver.currentSeason()));
+      age, difficulty, type, _receiver.currentSeason(), _receiver));
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(habitat);
     } catch (DuplicateTreeIdException e) {
@@ -44,7 +43,6 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     } catch (InvalidTreeTypeException e) {
       e.printStackTrace();
     }
-    //Notfify from app instead of core since plant tree is not called from Hotel
     _receiver.notifyHotelObservers();
   }
 }

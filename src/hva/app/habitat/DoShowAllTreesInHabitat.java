@@ -20,7 +20,7 @@ class DoShowAllTreesInHabitat extends Command<Hotel> {
   protected void execute() throws CommandException {
     var id = stringField("id");
     try {
-      _display.popup(_receiver.identifyHabitat(id).listTrees(_receiver.currentSeason())); //TODO trees toString cannot include season
+      _display.popup(_receiver.identifyHabitat(id).listTrees());
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }

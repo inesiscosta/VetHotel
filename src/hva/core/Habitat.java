@@ -5,11 +5,11 @@ import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -19,7 +19,7 @@ import java.util.TreeSet;
 public class Habitat extends NamedEntity {
   private int _area;
   private Map<String, Animal> _animals;
-  private Collection<ZooKeeper> _assignedKeepers;
+  private Set<ZooKeeper> _assignedKeepers;
   private Map<String, Tree> _trees;
   private Map<Species, Integer> _influences;
   
@@ -237,7 +237,7 @@ public class Habitat extends NamedEntity {
    * representation of all animals in the habitat
    */
   public Collection<Animal> listAnimals() {
-    return Collections.unmodifiableList(new ArrayList<>(_animals.values()));
+    return Collections.unmodifiableCollection(_animals.values());
   }
 
   /**
@@ -248,12 +248,8 @@ public class Habitat extends NamedEntity {
    * @return a String containing the Tree object string representation
    * of all trees in the habitat
    */
-  public Collection<String> listTrees(Season currentSeason) { 
-    Collection<String> allTreesString = new ArrayList<>();
-    for(Tree tree : _trees.values()) {
-      allTreesString.add(tree.toString(currentSeason));
-    }
-    return Collections.unmodifiableCollection(allTreesString);
+  public Collection<Tree> listTrees() { 
+    return Collections.unmodifiableCollection(_trees.values());
   }
 
   /**
