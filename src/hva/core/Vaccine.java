@@ -100,8 +100,8 @@ public class Vaccine extends NamedEntity {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
     String speciesName = animal.species().name();
-    //Comment placeholder please explain the line below
-    List<Character> nameCharsList = speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList()); //TODO Inês check this solution is it ok?? Im not even sure I understand it Just add a comment above it explaining it
+    //Converts a string to a list of characters using IntStream, Stream<Character> and collects them to a list<character>
+    List<Character> nameCharsList = speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
     for (int i = 0; i < Math.min(speciesBiggestName.name().length(),
     speciesName.length()); i++) {
       if (nameCharsList.contains(speciesBiggestName.name().charAt(i)))
