@@ -2,10 +2,12 @@ package hva.core;
 
 import static java.lang.Math.log;
 
+import hva.core.modificationObserver.TreeObserver;
+
 /**
  * Represents a generic tree in the Vet Hotel.
  */
-public abstract class Tree extends NamedEntity  {
+public abstract class Tree extends NamedEntity implements TreeObserver {
   private int _age;
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;
@@ -59,8 +61,24 @@ public abstract class Tree extends NamedEntity  {
     return _treeType;
   }
 
-  void nextSeason(Season currentSeason) {
+  /**
+   * Advances the tree season, when the observer is notified
+   * 
+   * @param currentSeason the new season
+   */
+  @Override
+  public void advanceSeason(Season currentSeason) {
     _currentSeason = currentSeason;
+  }
+
+  /**
+   * Checks if the tree as aged one year
+   * (it happens when the tree experiences the four seasons of the year)
+   */
+  @Override
+  public void updateAge() {
+    if (equalsCreationSeason(_currentSeason))
+      incrementAge();
   }
 
   /**
@@ -145,7 +163,7 @@ public abstract class Tree extends NamedEntity  {
    * Increments the tree's age by one. Only used when the season changes
    * and it matches the tree's season at creation.
    */
-  void incrementAge() {
+  private void incrementAge() {
     _age++;
   }
 }

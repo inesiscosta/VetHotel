@@ -1,10 +1,13 @@
 package hva.core;
 
 import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
+import hva.core.modificationObserver.TreeSubject;
+import hva.core.modificationObserver.TreeObserver;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,16 +15,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.List;
 
 /**
  * Represents a habitat in a Vet Hotel.
  */
-public class Habitat extends NamedEntity {
+public class Habitat extends NamedEntity implements TreeSubject {
   private int _area;
   private Map<String, Animal> _animals;
   private Set<ZooKeeper> _assignedKeepers;
   private Map<String, Tree> _trees;
   private Map<Species, Integer> _influences;
+  private List<TreeObserver> _treeObservers;
   
   /**
    * Creates a new Habitat.
@@ -37,6 +42,40 @@ public class Habitat extends NamedEntity {
     _assignedKeepers = new TreeSet<ZooKeeper>(); //Why is this in a tree set? Dont know we need to see, the trees are now a TreeMap
     _trees = new TreeMap<String, Tree>(CaseInsensitiveComparator.getComparator());
     _influences = new HashMap<>();
+    _treeObservers = new ArrayList<>();
+  }
+
+  /**
+   * Adds the requested observer to the habitat list of observers.
+   * 
+   * @param observer the observer to be added to the list of habitat observers
+   */
+  @Override
+  public void addTreeObserver(TreeObserver observer) {
+    _treeObservers.add(observer);
+  }
+
+  /**
+   * Removes the requested observer from the habitat list of observers
+   * 
+   * @param observer the habitat observer to be removed from the habitat observers
+   */
+  @Override
+  public void removeTreeObserver(TreeObserver observer) {
+    _treeObservers.remove(observer);
+  }
+
+  /**
+   * Updates all the observers in the Habitat list of observers
+   * 
+   * @param currentSeason the new season on the hotel
+   */
+  @Override
+  public void notifyTreeObservers(Season currentSeason) {
+    for(TreeObserver observer : _treeObservers) {
+      observer.advanceSeason(currentSeason);
+      observer.updateAge();
+    }
   }
 
   /**
@@ -70,7 +109,6 @@ public class Habitat extends NamedEntity {
    * Gets the Habitat object representation as a string containing
    * information that describes the habitat.
    *
-   * @param currentSeason the current season in the Vet Hotel
    * @return the Habitat object string representation
    */
   public String toString() {
@@ -209,6 +247,7 @@ public class Habitat extends NamedEntity {
         throw new InvalidTreeTypeException(treeType);
     }
     _trees.put(id,tree);
+    addTreeObserver(tree); //It adds the new Tree observer
     return tree;
   }
 
@@ -226,11 +265,7 @@ public class Habitat extends NamedEntity {
    * Advances the season of all trees in the habitat. 
    */
   void nextSeason(Season currentSeason) {
-    for(Tree tree : _trees.values()) {
-      tree.nextSeason(currentSeason);
-      if (tree.equalsCreationSeason(currentSeason))
-        tree.incrementAge();
-    }
+    notifyTreeObservers(currentSeason);
   }
 
   /**
