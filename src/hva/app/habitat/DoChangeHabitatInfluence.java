@@ -28,7 +28,7 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     var idSpecies = stringField("idSpecies");
     var influenceString = optionField("influenceString");
     int influence;
-    switch (influenceString) { //TODO Revise case switch
+    switch (influenceString) { //FIXME: Ask teacher if this is the best way to do this or enum. And if enum static methods are ok.
       case "POS":
         influence = 20;
         break;
