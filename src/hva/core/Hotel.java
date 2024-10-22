@@ -40,7 +40,6 @@ public class Hotel implements  HotelSubject {
   @Serial
   private static final long serialVersionUID = 202407081733L;
   
-  //TODO Check what will be a hashmap and what will be a treemap
   private Season _currentSeason;
   private Map<String,Habitat> _habitats;
   private Map<String,Employee> _employees;
@@ -63,10 +62,10 @@ public class Hotel implements  HotelSubject {
     _unsavedChanges = false;
     _currentSeason = Season.Spring; //The hotel starts in the Spring season.
     _habitats = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _species = new CaseInsensitiveHashMap<>();  
+    _species = new CaseInsensitiveHashMap<>();
     _speciesByName = new HashMap<>();
     _employees = new TreeMap<>(new CaseInsensitiveOrderComparator());
-    _vaccines = new CaseInsensitiveHashMap<>();
+    _vaccines = new TreeMap<>(new CaseInsensitiveOrderComparator());
     //Used array list instead of linkedlist because less memory overhead
     //since we are only adding to the end of the list O(1) complexity anyways
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
@@ -500,10 +499,7 @@ public class Hotel implements  HotelSubject {
    * all vaccines in the hotel
    */
   public Collection<Vaccine> listVaccines() {
-    List<Vaccine> vaccines = new ArrayList<>(_vaccines.values());
-    vaccines.sort(Comparator.comparing(Vaccine::id,
-    String.CASE_INSENSITIVE_ORDER));
-    return Collections.unmodifiableCollection(vaccines);
+    return Collections.unmodifiableCollection(_vaccines.values());
   }
 
   /**
