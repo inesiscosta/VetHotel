@@ -2,7 +2,7 @@ package hva.core;
 
 import static java.lang.Math.log;
 
-import hva.core.modificationObserver.TreeObserver;
+import hva.core.observers.TreeObserver;
 
 /**
  * Represents a generic tree in the Vet Hotel.

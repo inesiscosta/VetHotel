@@ -1,4 +1,4 @@
-package hva.core.modificationObserver;
+package hva.core.observers;
 
 import java.io.Serializable;
 

@@ -1,11 +1,11 @@
 package hva.core;
 
 import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
-import hva.core.modificationObserver.TreeSubject;
-import hva.core.modificationObserver.TreeObserver;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
+import hva.core.observers.TreeObserver;
+import hva.core.observers.TreeSubject;
 
 import java.util.ArrayList;
 import java.util.Collection;

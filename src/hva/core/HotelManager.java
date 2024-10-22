@@ -4,7 +4,7 @@ import hva.core.exception.ImportFileException;
 import hva.core.exception.MissingFileAssociationException;
 import hva.core.exception.UnavailableFileException;
 import hva.core.exception.UnrecognizedEntryException;
-import hva.core.modificationObserver.HotelObserver;
+import hva.core.observers.HotelObserver;
 
 import java.io.*;
 

@@ -18,8 +18,8 @@ import hva.core.exception.UnknownResponsibilityException;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnrecognizedEntryException;
-import hva.core.modificationObserver.HotelObserver;
-import hva.core.modificationObserver.HotelSubject;
+import hva.core.observers.HotelObserver;
+import hva.core.observers.HotelSubject;
 
 import java.io.IOException;
 import java.io.Serial;
