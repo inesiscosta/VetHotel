@@ -41,7 +41,7 @@ public class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, 
   @Override
   public double calculateSatisfaction(Veterinarian vet) {
     int work = 0;
-    for (Species species : vet.getKnowSpecies())
+    for (Species species : vet.getKnownSpecies())
       work += (species.getNumAnimals()) / species.getNumQualifiedVets();
     return 20 - work;
   }

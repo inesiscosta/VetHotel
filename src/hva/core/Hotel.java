@@ -40,6 +40,7 @@ public class Hotel implements  HotelSubject {
   @Serial
   private static final long serialVersionUID = 202407081733L;
   
+  //TODO use collection
   private Season _currentSeason;
   private Map<String,Habitat> _habitats;
   private List<HotelObserver> _hotelObservers;
@@ -56,7 +57,6 @@ public class Hotel implements  HotelSubject {
    *
    */
   public Hotel() {
-    //FIXME Collections or Lists/Maps here and in immutable.
     _filename = null;
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;

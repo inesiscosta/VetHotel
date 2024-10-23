@@ -28,7 +28,7 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     var idSpecies = stringField("idSpecies");
     var influenceString = optionField("influenceString");
     int influence;
-    switch (influenceString) { //FIXME: Ask teacher if this is the best way to do this or enum. And if enum static methods are ok.
+    switch (influenceString) { //TODO: Make influence an ENUM
       case "POS":
         influence = 20;
         break;
@@ -39,7 +39,8 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
         influence = 0;
     }
     try {
-      //FIXME: Ask teacher if we should have all public methods in Hotel or we can do it like this.
+      //TODO: Public methods only in Hotel and Hotel Manager this should only call a method in Hotel
+      //TODO: toString not in Core create String in App.
       _receiver.identifyHabitat(idHabitat).changeInfluence(
       _receiver.identifySpecies(idSpecies), influence);
     } catch (UnknownHabitatIdException e) {

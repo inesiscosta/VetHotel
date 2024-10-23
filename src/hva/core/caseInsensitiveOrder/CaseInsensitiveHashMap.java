@@ -2,12 +2,15 @@ package hva.core.caseInsensitiveOrder;
 
 import java.util.HashMap;
 
+import hva.core.NamedEntity;
+
 /**
  * Custom HasMap override that trets all the ids strings as case insensitive
  * it doesnt distingues between lower and upper case, it makes all the ids 
  * lower case before calling the super methods provided by the HashMap class.
  */
-public class CaseInsensitiveHashMap<NamedEntity> extends HashMap<String, NamedEntity> {
+//TODO: Use T
+public class CaseInsensitiveHashMap<T extends NamedEntity> extends HashMap<String, T> {
 
     /**
      * Puts the object in the map with the key in lower case

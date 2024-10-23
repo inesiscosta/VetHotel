@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Represents an entity with a name and an identifier.
  * Inherited by most entities in the Vet Hotel.
  */
-public class NamedEntity implements Comparable<NamedEntity>, Serializable {
+public abstract class NamedEntity implements Comparable<NamedEntity>, Serializable {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;

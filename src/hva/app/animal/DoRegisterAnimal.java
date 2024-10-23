@@ -41,8 +41,8 @@ class DoRegisterAnimal extends Command<Hotel> {
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException | DuplicateSpeciesIdException |
-    DuplicateSpeciesNameException e) {   
-      //FIXME: What do to if Species Name is duplicated?
+    DuplicateSpeciesNameException e) {
+      //FIXME: ! Perguntar prof. Teóricas
       e.printStackTrace();
     }
   }

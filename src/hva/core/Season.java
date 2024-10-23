@@ -4,7 +4,8 @@ package hva.core;
  * Enumerates the seasons of the year.
  * The order of the seasons is Spring, Summer, Fall, Winter.
  */
-public enum Season {
+//TODO: Subclasses no ENUM. MAKE THIS A STATE
+ public enum Season {
   Spring(0),
   Summer(1),
   Fall(2),

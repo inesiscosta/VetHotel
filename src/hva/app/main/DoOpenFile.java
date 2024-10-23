@@ -17,7 +17,6 @@ class DoOpenFile extends Command<HotelManager> {
 
   @Override
   protected final void execute() throws CommandException {
-    //FIXME Check with teacher if its ok to create an empty hotel here for code reuse or if we can add a new .java to reuse here.
     new DoNewFile(_receiver).execute();
     try {
       _receiver.load(Form.requestString(Prompt.openFile()));

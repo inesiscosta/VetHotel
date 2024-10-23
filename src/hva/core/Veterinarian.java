@@ -46,8 +46,7 @@ public class Veterinarian extends Employee {
    * 
    * @return the collection of assign habitats
    */
-  //FIXME: Should this be a collection? Do we use this method?
-  Collection<Species> getKnowSpecies() {
+  Collection<Species> getKnownSpecies() {
     return _knowsHowToVaccinate;
   } 
 
