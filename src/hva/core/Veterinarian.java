@@ -1,11 +1,11 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfaction.VeterinarianSatisfaction;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,7 +23,7 @@ public class Veterinarian extends Employee {
    */
   Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
-    _knowsHowToVaccinate = new HashMap<>();
+    _knowsHowToVaccinate = new CaseInsensitiveHashMap<>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
     

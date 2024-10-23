@@ -4,6 +4,7 @@ import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.observers.TreeObserver;
 import hva.core.observers.TreeSubject;
 import hva.core.season.Season;
@@ -36,9 +37,9 @@ class Habitat extends NamedEntity implements TreeSubject {
   Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
-    _animals = new HashMap<>();
-    _assignedKeepers = new HashMap<>();
-    _trees = new HashMap<>();
+    _animals = new CaseInsensitiveHashMap<>();
+    _assignedKeepers = new CaseInsensitiveHashMap<>();
+    _trees = new CaseInsensitiveHashMap<>();
     _influences = new HashMap<>();
     _treeObservers = new HashSet<>();
   }

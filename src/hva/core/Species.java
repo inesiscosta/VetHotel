@@ -1,6 +1,6 @@
 package hva.core;
 
-import java.util.HashMap;
+import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import java.util.Map;
 
 /**
@@ -18,8 +18,8 @@ class Species extends NamedEntity {
    */
   Species(String id, String name) {
     super(id, name);
-    _animals = new HashMap<>();
-    _qualifiedVets = new HashMap<>();
+    _animals = new CaseInsensitiveHashMap<>();
+    _qualifiedVets = new CaseInsensitiveHashMap<>();
   }
 
   /**

@@ -1,10 +1,10 @@
 package hva.core;
 
+import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,7 +22,7 @@ public class ZooKeeper extends Employee {
    */
   ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
-    _assignedHabitats = new HashMap<>();
+    _assignedHabitats = new CaseInsensitiveHashMap<>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
 

@@ -1,6 +1,6 @@
 package hva.core;
-import hva.core.satisfaction.AnimalSatisfaction;
 
+import hva.core.satisfaction.AnimalSatisfaction;
 import java.util.Map;
 import java.util.HashMap;
 
