@@ -33,7 +33,6 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     var difficulty = integerField("difficulty");
     var type = (optionField("type"));
     try {
-      //TODO: Check if the tree type is valid???
       _display.popup(_receiver.addTreeToHabitat(idHabitat, idTree, name, age, difficulty, type));
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
