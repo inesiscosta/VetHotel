@@ -584,4 +584,8 @@ public class Hotel implements  HotelSubject {
     parser.parseFile(filename);
     notifyHotelObservers();
   }
+
+  //public double calculateAnimalsSatisfaction(String idAnimal) {
+
+  //}
 }
