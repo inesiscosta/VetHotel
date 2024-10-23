@@ -1,8 +1,8 @@
 package hva.core;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.TreeSet;
 
 /**
@@ -88,8 +88,10 @@ class Vaccine extends NamedEntity {
     Species speciesBiggestName =  biggestSpeciesName();
     int commonCharacters = 0;
     String speciesName = animal.species().name();
-    //Converts a string to a list of characters using IntStream, Stream<Character> and collects them to a list<character>
-    List<Character> nameCharsList = speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+    /*Converts a string to a list of characters using IntStream,
+    Stream<Character> and collects them to a list<character>*/
+    List<Character> nameCharsList =
+    speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
     for (int i = 0; i < Math.min(speciesBiggestName.name().length(),
     speciesName.length()); i++) {
       if (nameCharsList.contains(speciesBiggestName.name().charAt(i)))

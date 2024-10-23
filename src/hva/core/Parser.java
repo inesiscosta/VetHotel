@@ -173,7 +173,8 @@ class Parser {
     String type = components[5];
     Tree tree;
     if(!(type.equals("PERENE") || type.equals( "CADUCA")))
-      throw new UnrecognizedEntryException("Invalid entry: Invalid Tree type: " + type);
+      throw new UnrecognizedEntryException("Invalid entry: Invalid Tree type: "
+      + type);
     if(type.equals("PERENE")) {
       tree = new Evergreen(id, name, age, diff, null);
       _tempTreesNoHabitat.put(id, tree);

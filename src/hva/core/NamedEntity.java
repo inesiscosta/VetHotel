@@ -9,7 +9,8 @@ import java.io.Serializable;
  * Represents an entity with a name and an identifier.
  * Inherited by most entities in the Vet Hotel.
  */
-public abstract class NamedEntity implements Comparable<NamedEntity>, Serializable {
+public abstract class NamedEntity implements
+Comparable<NamedEntity>, Serializable {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -69,7 +70,8 @@ public abstract class NamedEntity implements Comparable<NamedEntity>, Serializab
    */
   @Override
   public int compareTo(NamedEntity other) {
-    return CaseInsensitiveComparator.getComparator().compare(this._id,other.id());
+    return CaseInsensitiveComparator.getComparator().
+    compare(this._id,other.id());
   }
 
   /**
@@ -77,6 +79,6 @@ public abstract class NamedEntity implements Comparable<NamedEntity>, Serializab
    */
   @Override
   public int hashCode() {
-    return this._id.toLowerCase().hashCode(); //Check if we need a caseInsensitive HashMap or if we can use a normal one and just hash ids before checking membership
+    return this._id.toLowerCase().hashCode();
   }
 }

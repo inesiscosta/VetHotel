@@ -1,10 +1,9 @@
 package hva.core;
 
 import hva.core.exception.EmployeeNotResponsibleException;
-import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
+import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfaction.VeterinarianSatisfaction;
-
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;

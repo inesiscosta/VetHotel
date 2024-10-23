@@ -3,7 +3,6 @@ package hva.core;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
-
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;

@@ -5,8 +5,12 @@ import hva.core.exception.MissingFileAssociationException;
 import hva.core.exception.UnavailableFileException;
 import hva.core.exception.UnrecognizedEntryException;
 import hva.core.observers.HotelObserver;
-
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * Class representing the manager of this application. It manages the current
