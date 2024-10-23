@@ -13,17 +13,16 @@ class DoShowMedicalActsOnAnimal extends Command<Hotel> {
 
   DoShowMedicalActsOnAnimal(Hotel receiver) {
     super(Label.MEDICAL_ACTS_ON_ANIMAL, receiver);
-    addStringField("animal", hva.app.animal.Prompt.animalKey());
+    addStringField("id", hva.app.animal.Prompt.animalKey());
   }
 
   @Override
   protected void execute() throws CommandException {
-    var idAnimal = stringField("animal");
+    var id = stringField("id");
     try {
-      _display.popup(_receiver.listAnimalVaccinationHistory(
-      _receiver.identifyAnimal(idAnimal)));
+      _display.popup(_receiver.listAnimalVaccinationHistory(id));
     } catch (UnknownAnimalIdException e) {
-      throw new UnknownAnimalKeyException(idAnimal);
+      throw new UnknownAnimalKeyException(id);
     }
   }
 }

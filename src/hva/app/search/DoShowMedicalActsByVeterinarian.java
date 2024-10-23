@@ -14,17 +14,16 @@ class DoShowMedicalActsByVeterinarian extends Command<Hotel> {
 
   DoShowMedicalActsByVeterinarian(Hotel receiver) {
     super(Label.MEDICAL_ACTS_BY_VET, receiver);
-    addStringField("veterinarian", Prompt.employeeKey());
+    addStringField("id", Prompt.employeeKey());
   }
   
   @Override
   protected void execute() throws CommandException {
-    var idVet = stringField("veterinarian");
+    var id = stringField("id");
     try {
-      _display.popup(_receiver.listVetVaccinationRecords(
-      _receiver.identifyVet(idVet)));
+      _display.popup(_receiver.listVetVaccinationRecords(id));
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownVeterinarianKeyException(idVet);
+      throw new UnknownVeterinarianKeyException(id);
     }
   }
 }

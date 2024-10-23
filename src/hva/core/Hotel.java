@@ -7,10 +7,12 @@ import hva.core.exception.DuplicateEmployeeIdException;
 import hva.core.exception.DuplicateHabitatIdException;
 import hva.core.exception.DuplicateSpeciesIdException;
 import hva.core.exception.DuplicateSpeciesNameException;
+import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.DuplicateVaccineIdException;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.ImportFileException;
 import hva.core.exception.InvalidEmployeeTypeException;
+import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
 import hva.core.exception.UnknownEmployeeIdException;
 import hva.core.exception.UnknownVaccineIdException;
@@ -430,8 +432,11 @@ public class Hotel implements  HotelSubject {
    * @param animal the animal to vaccinate
    * @param vaccine the vaccine to apply
    */
-  public boolean addVaccinationRecord(Vaccine vaccine, Veterinarian vet,
-  Animal animal) throws EmployeeNotResponsibleException {
+  public boolean addVaccinationRecord(String idVaccine, String idVet,
+  String idAnimal) throws EmployeeNotResponsibleException, UnknownVaccineIdException, UnknownEmployeeIdException, UnknownAnimalIdException {
+    Vaccine vaccine = identifyVaccine(idVaccine);
+    Veterinarian vet = identifyVet(idVet);
+    Animal animal = identifyAnimal(idAnimal);
     boolean vaccineApropriated = true;
     if(!vaccine.isSpeciesApropriated(animal.species()))
       vaccineApropriated = false;
@@ -514,7 +519,8 @@ public class Hotel implements  HotelSubject {
    * @return  an unmodifiable List containing the VaccinationRecord objects
    * of a specific animal
    */
-  public Collection<VaccinationRecord> listAnimalVaccinationHistory(Animal animal) {
+  public Collection<VaccinationRecord> listAnimalVaccinationHistory(String id) throws UnknownAnimalIdException {
+    Animal animal = identifyAnimal(id);
     List<VaccinationRecord> animalVaccinationHistory = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.animal().equals(animal))
@@ -531,7 +537,8 @@ public class Hotel implements  HotelSubject {
    * @return an unmodifiable List containing the VaccinationRecord object
    * of all vaccination records of vaccines administered by the given vet
    */
-  public Collection<VaccinationRecord> listVetVaccinationRecords(Veterinarian vet) {
+  public Collection<VaccinationRecord> listVetVaccinationRecords(String id) throws UnknownEmployeeIdException {
+    Veterinarian vet = identifyVet(id);
     List<VaccinationRecord> vetVaccinationRecords = new ArrayList<>();
     for(VaccinationRecord record : _vaccinationRecords) {
       if(record.vet().equals(vet))
@@ -585,7 +592,43 @@ public class Hotel implements  HotelSubject {
     notifyHotelObservers();
   }
 
-  //public double calculateAnimalsSatisfaction(String idAnimal) {
+  public double calculateAnimalSatisfaction(String idAnimal) throws UnknownAnimalIdException {
+    return identifyAnimal(idAnimal).calculateSatisfaction();
+  }
 
-  //}
+  public void transferAnimalToHabitat(String idAnimal, String idHabitat) throws UnknownAnimalIdException, UnknownHabitatIdException {
+    Animal animal = identifyAnimal(idAnimal);
+    Habitat habitat = identifyHabitat(idHabitat);
+    animal.changeHabitat(habitat);
+    notifyHotelObservers();
+  }
+
+  public double calculateEmployeeSatisfaction(String idEmployee) throws UnknownEmployeeIdException {
+    return identifyEmployee(idEmployee).calculateSatisfaction();
+  }
+
+  public Tree addTreeToHabitat(String idHabitat, String id, String name, int age, int difficulty, String type) throws UnknownHabitatIdException, DuplicateTreeIdException, InvalidTreeTypeException {
+    Habitat habitat = identifyHabitat(idHabitat);
+    Tree tree = habitat.plantTree(id, name, age, difficulty, type, _currentSeason, this);
+    notifyHotelObservers();
+    return tree;
+  }
+
+  public void changeHabitatArea(String id, int area) throws UnknownHabitatIdException {
+    identifyHabitat(id).changeArea(area);
+    notifyHotelObservers();
+  }
+
+  public void changeHabitatInfluence(String idHabitat, String idSpecies, Influence influence) throws UnknownHabitatIdException, UnknownSpeciesIdException {
+    identifyHabitat(idHabitat).changeInfluence(identifySpecies(idSpecies), influence);
+    notifyHotelObservers();
+  }
+
+  public Collection<Tree> listAllTreesHabitat(String idHabitat) throws UnknownHabitatIdException {
+    return identifyHabitat(idHabitat).listTrees();
+  }
+
+  public Collection<Animal> listAnimalsInHabitat(String idHabitat) throws UnknownHabitatIdException {
+    return identifyHabitat(idHabitat).listAnimals();
+  }
 }

@@ -20,7 +20,7 @@ class DoShowSatisfactionOfEmployee extends Command<Hotel> {
   protected void execute() throws CommandException {
     var id = stringField("id");
     try {
-      _display.popup((int) Math.round(_receiver.identifyEmployee(id).calculateSatisfaction()));
+      _display.popup((int) Math.round(_receiver.calculateEmployeeSatisfaction(id)));
     } catch (UnknownEmployeeIdException e) {
       throw new UnknownEmployeeKeyException(id);
     }

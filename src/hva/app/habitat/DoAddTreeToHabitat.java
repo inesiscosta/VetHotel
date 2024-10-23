@@ -16,8 +16,8 @@ class DoAddTreeToHabitat extends Command<Hotel> {
 
   DoAddTreeToHabitat(Hotel receiver) {
     super(Label.ADD_TREE_TO_HABITAT, receiver);
-    addStringField("habitat", Prompt.habitatKey());
-    addStringField("id", Prompt.treeKey());
+    addStringField("idHabitat", Prompt.habitatKey());
+    addStringField("idTree", Prompt.treeKey());
     addStringField("name", Prompt.treeName());
     addIntegerField("age", Prompt.treeAge());
     addIntegerField("difficulty", Prompt.treeDifficulty());
@@ -26,23 +26,21 @@ class DoAddTreeToHabitat extends Command<Hotel> {
   
   @Override
   protected void execute() throws CommandException {
-    var habitat = stringField("habitat");
-    var id = stringField("id");
+    var idHabitat = stringField("idHabitat");
+    var idTree = stringField("idTree");
     var name = stringField("name");
     var age = integerField("age");
     var difficulty = integerField("difficulty");
     var type = (optionField("type"));
-
     try {
-      _display.popup(_receiver.identifyHabitat(habitat).plantTree(id, name,
-      age, difficulty, type, _receiver.currentSeason(), _receiver));
+      //TODO: Check if the tree type is valid???
+      _display.popup(_receiver.addTreeToHabitat(idHabitat, idTree, name, age, difficulty, type));
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownHabitatKeyException(habitat);
+      throw new UnknownHabitatKeyException(idHabitat);
     } catch (DuplicateTreeIdException e) {
-      throw new DuplicateTreeKeyException(id);
+      throw new DuplicateTreeKeyException(idTree);
     } catch (InvalidTreeTypeException e) {
       e.printStackTrace();
     }
-    _receiver.notifyHotelObservers();
   }
 }

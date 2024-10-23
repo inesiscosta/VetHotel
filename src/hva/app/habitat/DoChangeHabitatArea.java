@@ -22,10 +22,9 @@ class DoChangeHabitatArea extends Command<Hotel> {
     var id = stringField("id");
     var area = integerField("area");
     try {
-      _receiver.identifyHabitat(id).changeArea(area);
+      _receiver.changeHabitatArea(id, area);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }
-    _receiver.notifyHotelObservers();
   }
 }

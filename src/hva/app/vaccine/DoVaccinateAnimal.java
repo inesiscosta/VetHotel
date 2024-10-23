@@ -29,8 +29,7 @@ class DoVaccinateAnimal extends Command<Hotel> {
     var idVet = stringField("veterinarian");
     var idAnimal = stringField("animal");
     try {
-      if(!(_receiver.addVaccinationRecord(_receiver.identifyVaccine(idVaccine),
-      _receiver.identifyVet(idVet), _receiver.identifyAnimal(idAnimal))))
+      if(!(_receiver.addVaccinationRecord(idVaccine, idVet, idAnimal)))
         _display.popup(Message.wrongVaccine(idVaccine, idAnimal));
     } catch (UnknownVaccineIdException e) {
       throw new UnknownVaccineKeyException(idVaccine);

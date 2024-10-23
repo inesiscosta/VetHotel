@@ -32,13 +32,11 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     try {
       //TODO: Public methods only in Hotel and Hotel Manager this should only call a method in Hotel
       //TODO: toString not in Core create String in App, if we do this should use a HashMap for everything in the core Maybe?
-      _receiver.identifyHabitat(idHabitat).changeInfluence(
-      _receiver.identifySpecies(idSpecies), influence);
+      _receiver.changeHabitatInfluence(idHabitat, idSpecies, influence);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException e) {
       throw new UnknownSpeciesKeyException(idSpecies);
     }
-    _receiver.notifyHotelObservers();
   }
 }
