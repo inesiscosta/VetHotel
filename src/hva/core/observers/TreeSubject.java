@@ -8,7 +8,7 @@ import hva.core.season.Season;
  * Interface for the Tree Subject.
  */
 public interface TreeSubject extends Serializable{
-    void addTreeObserver(TreeObserver observer);
-    void removeTreeObserver(TreeObserver observer);
-    void notifyTreeObservers(Season currentSeason);
+  void addTreeObserver(TreeObserver observer);
+  void removeTreeObserver(TreeObserver observer);
+  void notifyTreeObservers(Season currentSeason);
 }

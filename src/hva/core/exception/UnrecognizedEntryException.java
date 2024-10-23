@@ -9,7 +9,7 @@ import java.io.Serial;
 public class UnrecognizedEntryException extends Exception {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410232301L;
   
   /** Unrecognized entry specification. */
   private final String _entrySpecification;

@@ -8,5 +8,5 @@ import java.io.Serializable;
  * methods of calculating it.
  */
 public interface ZooKeeperSatisfaction extends Serializable{
-    double calculateSatisfaction(ZooKeeper keeper);
+  double calculateSatisfaction(ZooKeeper keeper);
 }

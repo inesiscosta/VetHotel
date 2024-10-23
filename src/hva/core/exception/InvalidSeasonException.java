@@ -10,7 +10,7 @@ import hva.core.season.Season;
 public class InvalidSeasonException extends IllegalStateException{
 
     @Serial
-    private static final long serialVersionUID = 202407081733L;
+    private static final long serialVersionUID = 202410232250L;
 
     /**
      * Constructor for the exception.

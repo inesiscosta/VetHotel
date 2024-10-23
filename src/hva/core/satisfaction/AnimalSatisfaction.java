@@ -8,5 +8,5 @@ import java.io.Serializable;
  * of calculating it.
  */
 public interface AnimalSatisfaction extends Serializable{
-    double calculateSatisfaction(Animal animal);
+  double calculateSatisfaction(Animal animal);
 }

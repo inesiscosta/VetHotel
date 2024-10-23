@@ -1,9 +1,14 @@
 package hva.core.exception;
 
+import java.io.Serial;
+
 /**
  * Class for representing a duplicate species id exception.
  */
 public class DuplicateSpeciesIdException extends DuplicateIdException {
+
+  @Serial
+  private static final long serialVersionUID = 202410232241L;
 
   private static final String SPECIFIC_ERROR_MESSAGE = "Animal id: ";
   

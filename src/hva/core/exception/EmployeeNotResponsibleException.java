@@ -8,7 +8,9 @@ import java.io.Serial;
 public class EmployeeNotResponsibleException extends Exception {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410232245L;
+
+  private static final String ERROR_MESSAGE = "Employee is not responsible for: ";
   
   /**
    * Constructor for the exception.
@@ -16,7 +18,7 @@ public class EmployeeNotResponsibleException extends Exception {
    * @param id the id of the reponsibility the employee is not responsible for
    **/
   public EmployeeNotResponsibleException(String id) {
-    super("Employee is not responsible for:" + id);
+    super(ERROR_MESSAGE + id);
   }
 
   /**
@@ -26,6 +28,6 @@ public class EmployeeNotResponsibleException extends Exception {
    * @param cause The cause of the exception
    **/
   public EmployeeNotResponsibleException(String id, Exception cause) {
-    super("Employee is not responsible for:" + id, cause);
+    super(ERROR_MESSAGE + id, cause);
   }
 }

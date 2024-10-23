@@ -18,7 +18,7 @@ package hva.core.season;
    * @param id the Season numerical id
   */
   Season(SeasonState season) {
-      this._state = season;
+    this._state = season;
   }
 
   /**
@@ -27,7 +27,7 @@ package hva.core.season;
    * @return the Season numerical id
    */
   public int id() {
-      return this._state.id();
+    return this._state.id();
   }
 
   /**

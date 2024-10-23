@@ -1,9 +1,14 @@
 package hva.core.exception;
 
+import java.io.Serial;
+
 /**
  * Class for representing a duplicate habitat id exception.
  */
 public class DuplicateHabitatIdException extends DuplicateIdException {
+
+  @Serial
+  private static final long serialVersionUID = 202410232239L;
 
   private static final String SPECIFIC_ERROR_MESSAGE = "Habitat id: ";
 

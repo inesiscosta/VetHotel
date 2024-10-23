@@ -7,13 +7,13 @@ import java.io.Serial;
  **/
 public class InvalidDamageValueException extends IllegalStateException{
 
-    @Serial
-    private static final long serialVersionUID = 202407081733L;
+  @Serial
+  private static final long serialVersionUID = 202410232247L;
 
-    /**
-     * @param message The error message
-     **/
-    public InvalidDamageValueException(int value) {
-        super("Invalid Damage value" + value);
-    }
+  /**
+   * @param value The invalid damage value
+   **/
+  public InvalidDamageValueException(int value) {
+    super("Invalid Damage value" + value);
+  }
 }

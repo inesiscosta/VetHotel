@@ -8,7 +8,9 @@ import java.io.Serial;
 public class DuplicateSpeciesNameException extends Exception {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410232242L;
+
+  private static final String ERROR_MESSAGE = "Duplicated Species name: ";
   
   /**
    * Constructor for the exception.
@@ -16,7 +18,7 @@ public class DuplicateSpeciesNameException extends Exception {
    * @param id the name that already exists
    **/
   public DuplicateSpeciesNameException(String id) {
-    super("Duplicated Species name: " + id);
+    super(ERROR_MESSAGE + id);
   }
 
   /**
@@ -26,6 +28,6 @@ public class DuplicateSpeciesNameException extends Exception {
    * @param cause exception that triggered this one
    **/
   public DuplicateSpeciesNameException(String name, Exception cause) {
-    super("Duplicated Species name: " + name, cause);
+    super(ERROR_MESSAGE + name, cause);
   }
 }

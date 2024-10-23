@@ -8,7 +8,7 @@ import java.io.Serial;
 public class InvalidEmployeeTypeException extends Exception {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410232248L;
   
   /**
    * @param message The error message

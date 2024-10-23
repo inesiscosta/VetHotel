@@ -7,11 +7,11 @@ import hva.core.Leaf;
  * Seasons has in the trees.
  */
 public interface SeasonState {
-    SeasonState nextSeason();
-    Season getEnum();
-    int id();
-    int seasonalEffortForEvergreen();
-    int seasonalEffortForDeciduous();
-    Leaf getBioCycleForEvergreen();
-    Leaf getBioCycleForDeciduous();
+  SeasonState nextSeason();
+  Season getEnum();
+  int id();
+  int seasonalEffortForEvergreen();
+  int seasonalEffortForDeciduous();
+  Leaf getBioCycleForEvergreen();
+  Leaf getBioCycleForDeciduous();
 }

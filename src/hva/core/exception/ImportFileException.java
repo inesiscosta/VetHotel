@@ -8,7 +8,7 @@ import java.io.Serial;
 public class ImportFileException extends Exception {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410232246L;
   
   private static final String ERROR_MESSAGE = "Erro a processar ficheiro de import: ";
   
