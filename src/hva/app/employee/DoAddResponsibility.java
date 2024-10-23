@@ -1,10 +1,10 @@
 package hva.app.employee;
 
-import hva.core.Hotel;
 import hva.core.exception.UnknownEmployeeIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
-import hva.app.exception.UnknownEmployeeKeyException;
+import hva.core.Hotel;
 import hva.app.exception.NoResponsibilityException;
+import hva.app.exception.UnknownEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 

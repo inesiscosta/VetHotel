@@ -1,7 +1,7 @@
 package hva.app.search;
 
-import hva.core.Hotel;
 import hva.core.exception.UnknownEmployeeIdException;
+import hva.core.Hotel;
 import hva.app.employee.Prompt;
 import hva.app.exception.UnknownVeterinarianKeyException;
 import pt.tecnico.uilib.menus.Command;

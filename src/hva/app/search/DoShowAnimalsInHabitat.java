@@ -1,9 +1,9 @@
 package hva.app.search;
 
-import hva.core.Hotel;
 import hva.core.exception.UnknownHabitatIdException;
-import hva.app.habitat.Prompt;
+import hva.core.Hotel;
 import hva.app.exception.UnknownHabitatKeyException;
+import hva.app.habitat.Prompt;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 

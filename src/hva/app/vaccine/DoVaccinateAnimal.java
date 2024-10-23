@@ -1,10 +1,10 @@
 package hva.app.vaccine;
 
-import hva.core.Hotel;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownAnimalIdException;
 import hva.core.exception.UnknownEmployeeIdException;
 import hva.core.exception.UnknownVaccineIdException;
+import hva.core.Hotel;
 import hva.app.exception.UnknownAnimalKeyException;
 import hva.app.exception.UnknownVaccineKeyException;
 import hva.app.exception.UnknownVeterinarianKeyException;
@@ -18,16 +18,16 @@ import pt.tecnico.uilib.menus.CommandException;
 class DoVaccinateAnimal extends Command<Hotel> {
   DoVaccinateAnimal(Hotel receiver) {
     super(Label.VACCINATE_ANIMAL, receiver);
-    addStringField("vaccine", Prompt.vaccineKey());
-    addStringField("veterinarian", Prompt.veterinarianKey());
-    addStringField("animal", hva.app.animal.Prompt.animalKey());
+    addStringField("idVaccine", Prompt.vaccineKey());
+    addStringField("idVet", Prompt.veterinarianKey());
+    addStringField("idAnimal", hva.app.animal.Prompt.animalKey());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    var idVaccine = stringField("vaccine");
-    var idVet = stringField("veterinarian");
-    var idAnimal = stringField("animal");
+    var idVaccine = stringField("idVaccine");
+    var idVet = stringField("idVet");
+    var idAnimal = stringField("idAnimal");
     try {
       if(!(_receiver.addVaccinationRecord(idVaccine, idVet, idAnimal)))
         _display.popup(Message.wrongVaccine(idVaccine, idAnimal));

@@ -1,8 +1,8 @@
 package hva.app.animal;
 
-import hva.core.Hotel;
 import hva.core.exception.UnknownAnimalIdException;
 import hva.core.exception.UnknownHabitatIdException;
+import hva.core.Hotel;
 import hva.app.exception.UnknownAnimalKeyException;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.menus.Command;
