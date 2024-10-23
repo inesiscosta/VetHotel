@@ -40,16 +40,15 @@ public class Hotel implements  HotelSubject {
   @Serial
   private static final long serialVersionUID = 202407081733L;
   
-  //TODO use collection
   private Season _currentSeason;
   private Map<String,Habitat> _habitats;
-  private List<HotelObserver> _hotelObservers;
+  private Collection<HotelObserver> _hotelObservers;
   private Map<String,Employee> _employees;
   private String _filename;
   private Map<String,Species> _species;
   private Map<String, Species> _speciesByName;
   private Map<String,Vaccine> _vaccines;
-  private List<VaccinationRecord> _vaccinationRecords;
+  private Collection<VaccinationRecord> _vaccinationRecords;
   private boolean _unsavedChanges;
 
   /**
