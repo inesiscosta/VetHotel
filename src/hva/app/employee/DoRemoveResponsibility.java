@@ -2,7 +2,7 @@ package hva.app.employee;
 
 import hva.core.Hotel;
 import hva.core.exception.UnknownEmployeeIdException;
-import hva.core.exception.UnknownResponsibilityException;
+import hva.core.exception.UnknownResponsibilityIdException;
 import hva.app.exception.NoResponsibilityException;
 import hva.app.exception.UnknownEmployeeKeyException;
 import pt.tecnico.uilib.menus.Command;
@@ -25,7 +25,7 @@ class DoRemoveResponsibility extends Command<Hotel> {
     var responsibility = stringField("responsibility");
     try {
       _receiver.removeResponsibility(id, responsibility);
-    } catch (UnknownResponsibilityException e) {
+    } catch (UnknownResponsibilityIdException e) {
       throw new NoResponsibilityException(id, responsibility);
     } catch (UnknownEmployeeIdException e) {
       throw new UnknownEmployeeKeyException(id);

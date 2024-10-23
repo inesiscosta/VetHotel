@@ -16,7 +16,7 @@ import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
 import hva.core.exception.UnknownEmployeeIdException;
 import hva.core.exception.UnknownVaccineIdException;
-import hva.core.exception.UnknownResponsibilityException;
+import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnrecognizedEntryException;
@@ -405,7 +405,7 @@ public class Hotel implements  HotelSubject {
    * is not found
    */
   public void addResponsibility(String idEmployee, String idReponsibility)
-  throws UnknownEmployeeIdException, UnknownResponsibilityException {
+  throws UnknownEmployeeIdException, UnknownResponsibilityIdException {
     identifyEmployee(idEmployee).addResponsibility(idReponsibility);
     notifyHotelObservers();
   }
@@ -420,7 +420,7 @@ public class Hotel implements  HotelSubject {
    * is not found
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)
-  throws UnknownEmployeeIdException, UnknownResponsibilityException {
+  throws UnknownEmployeeIdException, UnknownResponsibilityIdException {
     identifyEmployee(idEmployee).removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }

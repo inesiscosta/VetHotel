@@ -1,6 +1,5 @@
 package hva.core.exception;
 
-//TODO We should use inheritance for All DuplicateIdExceptions can we use static error messages? YES
 /**
  * Class for representing a duplicate habitat id exception.
  */

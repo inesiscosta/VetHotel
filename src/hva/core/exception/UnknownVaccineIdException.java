@@ -1,22 +1,19 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an unknown vaccine id exception.
  */
-public class UnknownVaccineIdException extends Exception {
+public class UnknownVaccineIdException extends UnknownIdException {
 
-  @Serial
-  private static final long serialVersionUID = 202407081733L;
-  
+  private static final String SPECIFIC_ERROR_MESSAGE = "Vaccine id";
+
   /**
    * Constructor for the exception.
    * 
    * @param id the id that doesnt exist
    **/
   public UnknownVaccineIdException(String id) {
-    super("Vaccine doesnt exist: " + id);
+    super(SPECIFIC_ERROR_MESSAGE + id);
   }
 
   /**
@@ -26,6 +23,6 @@ public class UnknownVaccineIdException extends Exception {
    * @param cause The cause of the exception
    **/
   public UnknownVaccineIdException(String id, Exception cause) {
-    super("Vaccine doesnt exist: " + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, cause);
   }
 }

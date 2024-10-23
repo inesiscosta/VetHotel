@@ -1,22 +1,19 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
- * Class for representing an unknown animal id exception.
+ * Class for representing an unknown Animal id exception.
  */
-public class UnknownAnimalIdException extends Exception {
+public class UnknownAnimalIdException extends UnknownIdException {
 
-  @Serial
-  private static final long serialVersionUID = 202407081733L;
-  
+  private static final String SPECIFIC_ERROR_MESSAGE = "Animal id";
+
   /**
    * Constructor for the exception.
    * 
    * @param id the id that doesnt exist
    **/
   public UnknownAnimalIdException(String id) {
-    super("Animal doesnt exist: " + id);
+    super(SPECIFIC_ERROR_MESSAGE + id);
   }
 
   /**
@@ -26,6 +23,6 @@ public class UnknownAnimalIdException extends Exception {
    * @param cause The cause of the exception
    **/
   public UnknownAnimalIdException(String id, Exception cause) {
-    super("Animal doesnt exist: " + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, cause);
   }
 }

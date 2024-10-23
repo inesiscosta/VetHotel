@@ -2,7 +2,7 @@ package hva.core;
 
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownSpeciesIdException;
-import hva.core.exception.UnknownResponsibilityException;
+import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.VeterinarianSatisfaction;
 
 import java.util.Collection;
@@ -58,12 +58,12 @@ public class Veterinarian extends Employee {
    * @throws UnknownResponsabilityException if the species' id is unknown
    */
   @Override
-  void addResponsibility(String id) throws UnknownResponsibilityException {
+  void addResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
       _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     this.hotel().identifySpecies(id).addQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownResponsibilityException(id, e);
+      throw new UnknownResponsibilityIdException(id, e);
     }
   }
 
@@ -75,12 +75,12 @@ public class Veterinarian extends Employee {
    * @throws UnknownResponsabilityException if the species' id is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownResponsibilityException {
+  void removeResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
       _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
       this.hotel().identifySpecies(id).removeQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownResponsibilityException(id, e);
+      throw new UnknownResponsibilityIdException(id, e);
     }
   }
 

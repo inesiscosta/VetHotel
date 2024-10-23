@@ -3,21 +3,21 @@ package hva.core.exception;
 import java.io.Serial;
 
 /**
- * Class to represent a duplicate id exception.
+ * Class to represent an unknown id exception.
  */
-public abstract class DuplicateIdException extends Exception {
+public abstract class UnknownIdException extends Exception {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
   
-  private static final String ERROR_MESSAGE = "Duplicate id: ";
+  private static final String ERROR_MESSAGE = "Unknown id: ";
   
     /**
      * Constructor for the exception.
      * 
      * @param specificMessage the exception description
      **/
-    public DuplicateIdException(String specificMessage) {
+    public UnknownIdException(String specificMessage) {
       super(ERROR_MESSAGE + specificMessage);
     }
 
@@ -28,7 +28,7 @@ public abstract class DuplicateIdException extends Exception {
      * @param cause exception that triggered this one
      **/
 
-    public DuplicateIdException(String specificMessage, Exception cause) {
+    public UnknownIdException(String specificMessage, Exception cause) {
       super(ERROR_MESSAGE + specificMessage, cause);
     }
 }
