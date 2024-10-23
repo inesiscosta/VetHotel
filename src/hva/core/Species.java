@@ -1,15 +1,14 @@
 package hva.core;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a species of animals found in a Vet Hotel.
  */
 class Species extends NamedEntity {
-  private Collection<Animal> _animals;
-  private Collection<Veterinarian> _qualifiedVets;
+  private Map<String, Animal> _animals;
+  private Map<String, Veterinarian> _qualifiedVets;
     
   /**
    * Creates a new Species.
@@ -19,8 +18,8 @@ class Species extends NamedEntity {
    */
   Species(String id, String name) {
     super(id, name);
-    _animals = new TreeSet<Animal>();
-    _qualifiedVets = new HashSet<Veterinarian>();
+    _animals = new HashMap<>();
+    _qualifiedVets = new HashMap<>();
   }
 
   /**
@@ -48,7 +47,7 @@ class Species extends NamedEntity {
    * @param animal the animal to add to the collection
    */
   void addAnimal(Animal animal) {
-    _animals.add(animal);
+    _animals.put(animal.id(), animal);
   }
 
   /**
@@ -58,7 +57,7 @@ class Species extends NamedEntity {
    * @param vet the veterinarian to add as a qualified vet
    */
   void addQualifiedVet(Veterinarian vet) {
-    _qualifiedVets.add(vet);
+    _qualifiedVets.put(vet.id(), vet);
   }
 
   /**
@@ -68,6 +67,6 @@ class Species extends NamedEntity {
    * @param vet the veterinarian to remove as a qualified vet
    */
   void removeQualifiedVet(Veterinarian vet) {
-    _qualifiedVets.remove(vet);
+    _qualifiedVets.remove(vet.id());
   }
 }

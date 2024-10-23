@@ -4,14 +4,14 @@ import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
 import java.util.Collection;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a ZooKeeper that works in a Vet Hotel.
  */
 public class ZooKeeper extends Employee {
-  private Set<Habitat> _assignedHabitats;
+  private Map<String, Habitat> _assignedHabitats;
   private ZooKeeperSatisfaction _satisfactionMethod;
 
   /**
@@ -22,7 +22,7 @@ public class ZooKeeper extends Employee {
    */
   ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
-    _assignedHabitats = new TreeSet<Habitat>();
+    _assignedHabitats = new HashMap<>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
 
@@ -45,7 +45,7 @@ public class ZooKeeper extends Employee {
    * @return the collection of assign habitats
    */
   Collection<Habitat> getAssingHabitats() {
-    return _assignedHabitats;
+    return _assignedHabitats.values();
   } 
 
   /**
@@ -57,7 +57,7 @@ public class ZooKeeper extends Employee {
   @Override
   void addResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
-      _assignedHabitats.add(this.hotel().identifyHabitat(id));
+      _assignedHabitats.put(id,this.hotel().identifyHabitat(id));
       this.hotel().identifyHabitat(id).addKeeper(this);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownResponsibilityIdException(id,e);
@@ -73,7 +73,7 @@ public class ZooKeeper extends Employee {
   @Override
   void removeResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
-      _assignedHabitats.remove(this.hotel().identifyHabitat(id));
+      _assignedHabitats.remove(id);
     this.hotel().identifyHabitat(id).removeKeeper(this);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownResponsibilityIdException(id,e);
@@ -88,13 +88,10 @@ public class ZooKeeper extends Employee {
    */
   @Override
   String getIdResponsibilities() {
-    if (_assignedHabitats.isEmpty())
-      return null;
-    StringBuilder idResponsibilities = new StringBuilder();
-    for (Habitat habitat : _assignedHabitats)
-      idResponsibilities.append(habitat.id()).append(",");
-    idResponsibilities.setLength(idResponsibilities.length() - 1);
-    return idResponsibilities.toString();
+    return _assignedHabitats.keySet().stream()
+    .sorted()
+    .reduce((id1, id2) -> id1 + "," + id2)
+    .orElse(null);
   }
 
   /**

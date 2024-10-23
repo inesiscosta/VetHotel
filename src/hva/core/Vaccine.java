@@ -21,7 +21,7 @@ class Vaccine extends NamedEntity {
    */
   Vaccine(String id, String name, List<Species> appropiateSpecies) {
     super(id, name);
-    _appropiateSpecies = new TreeSet<Species>(appropiateSpecies);
+    _appropiateSpecies = new TreeSet<>(appropiateSpecies);
   }
 
   /**

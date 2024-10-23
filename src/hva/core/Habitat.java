@@ -1,6 +1,5 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
@@ -9,15 +8,12 @@ import hva.core.observers.TreeObserver;
 import hva.core.observers.TreeSubject;
 import hva.core.season.Season;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 /**
  * Represents a habitat in a Vet Hotel.
@@ -25,10 +21,10 @@ import java.util.TreeSet;
 class Habitat extends NamedEntity implements TreeSubject {
   private int _area;
   private Map<String, Animal> _animals;
-  private Set<ZooKeeper> _assignedKeepers;
+  private Map<String, ZooKeeper> _assignedKeepers;
   private Map<String, Tree> _trees;
   private Map<Species, Influence> _influences;
-  private List<TreeObserver> _treeObservers;
+  private Set<TreeObserver> _treeObservers;
   
   /**
    * Creates a new Habitat.
@@ -40,11 +36,11 @@ class Habitat extends NamedEntity implements TreeSubject {
   Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
-    _animals = new TreeMap<String,Animal>(CaseInsensitiveComparator.getComparator());
-    _assignedKeepers = new TreeSet<ZooKeeper>();
-    _trees = new TreeMap<String, Tree>(CaseInsensitiveComparator.getComparator());
+    _animals = new HashMap<>();
+    _assignedKeepers = new HashMap<>();
+    _trees = new HashMap<>();
     _influences = new HashMap<>();
-    _treeObservers = new ArrayList<>();
+    _treeObservers = new HashSet<>();
   }
 
   /**
@@ -192,7 +188,7 @@ class Habitat extends NamedEntity implements TreeSubject {
    * @param keeper the keeper to be added to the habitat
    */
   void addKeeper(ZooKeeper keeper) {
-    _assignedKeepers.add(keeper);
+    _assignedKeepers.put(keeper.id(), keeper);
   }
   
   /**
@@ -201,7 +197,7 @@ class Habitat extends NamedEntity implements TreeSubject {
    * @param keeper the keeper to be removed from the habitat
    */
   void removeKeeper(ZooKeeper keeper) {
-    _assignedKeepers.remove(keeper);
+    _assignedKeepers.remove(keeper.id());
   }
 
   /**

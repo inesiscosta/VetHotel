@@ -1,15 +1,16 @@
 package hva.core;
 import hva.core.satisfaction.AnimalSatisfaction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Represents an Animal in a Vet Hotel.
  */
 public class Animal extends NamedEntity {
   private Habitat _habitat;
-  private List<HealthStatus> _healthHistory;
+  private Map<Integer, HealthStatus> _healthHistory;
+  private int _healthStatusId;
   private AnimalSatisfaction _satisfactionMethod;
   private Species _species;
 
@@ -31,7 +32,8 @@ public class Animal extends NamedEntity {
     /*Adds itself to the TreeMap of all Animals in the habitat that
     the class Habitat holds.*/
     _habitat.addAnimal(this);
-    _healthHistory = new ArrayList<>();
+    _healthHistory = new HashMap<>();
+    _healthStatusId = 0;
     _satisfactionMethod = new CalculateAnimalSatisfaction();
   }
 
@@ -75,9 +77,9 @@ public class Animal extends NamedEntity {
     if (_healthHistory.isEmpty())
       return "VOID";
     StringBuilder result = new StringBuilder();
-    for (HealthStatus healthStatus : _healthHistory)
-      result.append(healthStatus.toString()).append(",");
-    result.setLength(result.length() - 1); //Removes the last comma
+    for (Map.Entry<Integer, HealthStatus> entry : _healthHistory.entrySet())
+      result.append(entry.getValue().toString()).append(",");
+    result.setLength(result.length() - 1); // Removes the last comma
     return result.toString();
   }
 
@@ -109,7 +111,7 @@ public class Animal extends NamedEntity {
    * @param vaccineEffect the health status to add to the history
    */
   void updateHealthHistory(HealthStatus vaccineEffect) {
-    _healthHistory.add(vaccineEffect);
+    _healthHistory.put(_healthStatusId++,vaccineEffect);
   }
 
   /**

@@ -71,7 +71,7 @@ public class Hotel implements  HotelSubject {
     _vaccines = new CaseInsensitiveHashMap<>();
     // Used array list instead of linkedlist because less memory overhead
     // since we are only adding to the end of the list O(1) complexity anyways
-    _vaccinationRecords = new ArrayList<VaccinationRecord>();
+    _vaccinationRecords = new ArrayList<>();
   }
 
   /**
