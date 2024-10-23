@@ -1,11 +1,11 @@
 package hva.app.animal;
 
-import hva.core.Hotel;
 import hva.core.exception.DuplicateAnimalIdException;
 import hva.core.exception.DuplicateSpeciesIdException;
 import hva.core.exception.DuplicateSpeciesNameException;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownSpeciesIdException;
+import hva.core.Hotel;
 import hva.app.exception.DuplicateAnimalKeyException;
 import hva.app.exception.UnknownHabitatKeyException;
 import pt.tecnico.uilib.forms.Form;
