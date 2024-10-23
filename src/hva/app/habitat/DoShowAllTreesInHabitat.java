@@ -1,5 +1,7 @@
 package hva.app.habitat;
 
+import java.util.stream.Collectors;
+
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.Hotel;
 import hva.app.exception.UnknownHabitatKeyException;
@@ -20,7 +22,7 @@ class DoShowAllTreesInHabitat extends Command<Hotel> {
   protected void execute() throws CommandException {
     var id = stringField("id");
     try {
-      _display.popup(_receiver.listAllTreesHabitat(id));
+      _display.popup(_receiver.listAllTreesHabitat(id).stream().collect(Collectors.toList()));
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }

@@ -35,7 +35,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Represents a Vet Hotel.
@@ -65,11 +64,11 @@ public class Hotel implements  HotelSubject {
     _hotelObservers = new ArrayList<>();
     _unsavedChanges = false;
     _currentSeason = Season.Spring; // The hotel starts in the Spring season.
-    _habitats = new TreeMap<>(CaseInsensitiveComparator.getComparator());
+    _habitats = new CaseInsensitiveHashMap<>();
     _species = new CaseInsensitiveHashMap<>();
     _speciesByName = new HashMap<>();
-    _employees = new TreeMap<>(CaseInsensitiveComparator.getComparator());
-    _vaccines = new TreeMap<>(CaseInsensitiveComparator.getComparator());
+    _employees = new CaseInsensitiveHashMap<>();
+    _vaccines = new CaseInsensitiveHashMap<>();
     // Used array list instead of linkedlist because less memory overhead
     // since we are only adding to the end of the list O(1) complexity anyways
     _vaccinationRecords = new ArrayList<VaccinationRecord>();
@@ -450,7 +449,7 @@ public class Hotel implements  HotelSubject {
     identifyEmployee(idEmployee).removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }
-  
+
   /**
    * Adds a Tree to an Habitat
    * 
@@ -540,7 +539,7 @@ public class Hotel implements  HotelSubject {
       for (Tree tree : habitat.listTrees())
         listHabitatsAndTrees.add(tree);
     }
-    return Collections.unmodifiableCollection(listHabitatsAndTrees);
+    return Collections.unmodifiableCollection(_habitats.values());
   }
 
   /**

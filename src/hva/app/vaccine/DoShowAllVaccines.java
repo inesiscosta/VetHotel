@@ -1,5 +1,7 @@
 package hva.app.vaccine;
 
+import java.util.stream.Collectors;
+
 import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
 
@@ -14,6 +16,6 @@ class DoShowAllVaccines extends Command<Hotel> {
 
   @Override
   protected final void execute() {
-    _display.popup(_receiver.listVaccines());
+    _display.popup(_receiver.listVaccines().stream().sorted().collect(Collectors.toList()));
   }
 }

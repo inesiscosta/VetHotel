@@ -1,5 +1,7 @@
 package hva.app.habitat;
 
+import java.util.stream.Collectors;
+
 import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
 
@@ -14,6 +16,6 @@ class DoShowAllHabitats extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    _display.popup(_receiver.listHabitats());
+    _display.popup(_receiver.listHabitats().stream().sorted().collect(Collectors.toList()));
   }
 }

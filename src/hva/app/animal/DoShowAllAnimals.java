@@ -1,5 +1,7 @@
 package hva.app.animal;
 
+import java.util.stream.Collectors;
+
 import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
 
@@ -14,6 +16,6 @@ class DoShowAllAnimals extends Command<Hotel> {
   
   @Override
   protected final void execute() {
-    _display.popup(_receiver.listAnimals());
+    _display.popup(_receiver.listAnimals().stream().sorted().collect(Collectors.toList()));
   }
 }

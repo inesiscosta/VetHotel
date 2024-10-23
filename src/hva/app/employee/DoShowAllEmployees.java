@@ -1,5 +1,7 @@
 package hva.app.employee;
 
+import java.util.stream.Collectors;
+
 import hva.core.Hotel;
 import pt.tecnico.uilib.menus.Command;
 
@@ -14,6 +16,6 @@ class DoShowAllEmployees extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    _display.popup(_receiver.listEmployees());
+    _display.popup(_receiver.listEmployees().stream().sorted().collect(Collectors.toList()));
   }
 }
