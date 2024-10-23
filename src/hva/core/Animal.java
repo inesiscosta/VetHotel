@@ -24,7 +24,7 @@ public class Animal extends NamedEntity {
   Animal(String id, String name, Species species, Habitat habitat) {
     super(id, name);
     _species = species;
-    /* Adds itself to the TreeSet of all Animals of the same species that 
+    /* Adds itself to the TreeSet of all Animals of the same species that
     the class Species holds.*/
     _species.addAnimal(this);
     _habitat = habitat;

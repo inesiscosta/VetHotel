@@ -41,9 +41,9 @@ abstract class Employee extends NamedEntity {
   }
 
   /**
-   * Gets the Employee object representation as a string. 
+   * Gets the Employee object representation as a string.
    * Contains information that describes said employee.
-   *  
+   * 
    * @return the Employee object string representation
    */
   @Override
@@ -61,7 +61,7 @@ abstract class Employee extends NamedEntity {
   }
 
   /**
-   * Calculates the employee's satisfaction level. 
+   * Calculates the employee's satisfaction level.
    * Calculations differ based on the type of employee.
    * 
    * @return the employee's satisfaction level
@@ -69,7 +69,7 @@ abstract class Employee extends NamedEntity {
   abstract double calculateSatisfaction();
 
   /**
-   * Adds a responsibility to the employee. 
+   * Adds a responsibility to the employee.
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be added
@@ -80,7 +80,7 @@ abstract class Employee extends NamedEntity {
   throws UnknownResponsibilityIdException;
   
   /**
-   * Removes a responsibility from the employee. 
+   * Removes a responsibility from the employee.
    * Responsibility type differs based on the type of employee.
    * 
    * @param id the unique identifier of the responsibility to be removed

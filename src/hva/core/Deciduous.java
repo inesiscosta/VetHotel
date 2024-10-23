@@ -1,6 +1,7 @@
 package hva.core;
 
 import hva.core.exception.InvalidSeasonException;
+
 import hva.core.season.Season;
 
 /**
@@ -27,7 +28,7 @@ class Deciduous extends Tree {
    * Returns the seasonal effort required to maintain / clean a Deciduous tree.
    * 
    * @param currentSeason the current season in the Hotel
-   * @return the seasonal effort required to maintain the tree 
+   * @return the seasonal effort required to maintain the tree
    * this varies according to the season
    * @throws InvalidSeasonException if the current season is not a valid season
    * (not one of the four seasons Spring, Summer, Fall, Winter)

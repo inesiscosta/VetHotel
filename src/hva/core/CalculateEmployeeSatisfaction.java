@@ -8,10 +8,11 @@ import hva.core.satisfaction.ZooKeeperSatisfaction;
  * types of employees.
  * 
  */
-class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, ZooKeeperSatisfaction {
+class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction,
+ZooKeeperSatisfaction {
     
   /**
-   * Calculates the ZooKeeper's satisfaction level which depends on the 
+   * Calculates the ZooKeeper's satisfaction level which depends on the
    * work effort of the assigned habitats and
    * the number of other keepers in the habitat.
    * 
@@ -26,8 +27,8 @@ class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, ZooKeep
   }
 
   private double workEffort(Habitat habitat, ZooKeeper keeper) {
-    return habitat.area() 
-    + 3 * habitat.getNumAnimals() 
+    return habitat.area()
+    + 3 * habitat.getNumAnimals()
     + habitat.cleaningEffort(keeper.hotel().currentSeason());
   }
 

@@ -4,6 +4,7 @@ import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
+
 import hva.core.observers.TreeObserver;
 import hva.core.observers.TreeSubject;
 import hva.core.season.Season;
@@ -39,8 +40,8 @@ class Habitat extends NamedEntity implements TreeSubject {
   Habitat(String id, String name, int area) {
     super(id, name);
     _area = area;
-    _animals = new TreeMap<String,Animal>(CaseInsensitiveComparator.getComparator()); //String is the id of the Animal.
-    _assignedKeepers = new TreeSet<ZooKeeper>(); //Why is this in a tree set? Dont know we need to see, the trees are now a TreeMap
+    _animals = new TreeMap<String,Animal>(CaseInsensitiveComparator.getComparator());
+    _assignedKeepers = new TreeSet<ZooKeeper>();
     _trees = new TreeMap<String, Tree>(CaseInsensitiveComparator.getComparator());
     _influences = new HashMap<>();
     _treeObservers = new ArrayList<>();
@@ -134,7 +135,7 @@ class Habitat extends NamedEntity implements TreeSubject {
       return _animals.get(id);
     throw new UnknownAnimalIdException(id);
   }
-  
+
   /**
    * Checks if the animal id already exists in the habitat
    *  
@@ -143,6 +144,16 @@ class Habitat extends NamedEntity implements TreeSubject {
    */
   boolean containsAnimal(String id) {
     return _animals.containsKey(id);
+  }
+  
+  /**
+   * Gets the tree if it exists in the habitat
+   * 
+   * @param id the id of the tree
+   * @return the tree object if it is found and null if not
+   */
+  Tree identifyTree(String id) {
+    return _trees.get(id);
   }
 
   /**
@@ -254,16 +265,6 @@ class Habitat extends NamedEntity implements TreeSubject {
   }
 
   /**
-   * Gets the tree if it exists in the habitat
-   * 
-   * @param id the id of the tree
-   * @return the tree object if it is found and null if not
-   */
-  Tree identifyTree(String id) {
-    return _trees.get(id);
-  }
-
-  /**
    * Advances the season of all trees in the habitat. 
    */
   void nextSeason(Season currentSeason) {
@@ -326,7 +327,7 @@ class Habitat extends NamedEntity implements TreeSubject {
   int getNumAnimalsSameSpecies(Species species) {
     int numAnimalsSameSpecies = 0;
     for(Animal animal : _animals.values()) {
-      if(animal.species().equals(species))  
+      if(animal.species().equals(species))
         numAnimalsSameSpecies++;
     }
     return numAnimalsSameSpecies;

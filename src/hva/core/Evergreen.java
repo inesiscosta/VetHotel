@@ -1,6 +1,7 @@
 package hva.core;
 
 import hva.core.exception.InvalidSeasonException;
+
 import hva.core.season.Season;
 
 /**
