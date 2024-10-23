@@ -25,7 +25,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
   private Map<String, Animal> _animals;
   private Set<ZooKeeper> _assignedKeepers;
   private Map<String, Tree> _trees;
-  private Map<Species, Integer> _influences;
+  private Map<Species, Influence> _influences;
   private List<TreeObserver> _treeObservers;
   
   /**
@@ -150,9 +150,9 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * @param species the species to get the influence of the habitat on
    * @return the influence of the habitat on the species
    */
-  int identifyInfluence(Species species) {
-    //Returns 0 if the species isn't in the map, indicating neutral influence.
-    return _influences.getOrDefault(species, 0);
+  Influence identifyInfluence(Species species) {
+    // Returns NEU if the species isn't in the map, indicating neutral influence.
+    return _influences.getOrDefault(species, Influence.NEU);
   }
 
   /**
@@ -198,10 +198,10 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * @param newInfluence the new influence value the habitat has on the
    * species
    */
-  public void changeInfluence(Species species, int newInfluence) {
-    if(newInfluence == 0 && _influences.containsKey(species))
+  public void changeInfluence(Species species, Influence newInfluence) {
+    if(newInfluence.equals(Influence.NEU) && _influences.containsKey(species))
       _influences.remove(species);
-    if (newInfluence == 0)
+    if (newInfluence.equals(Influence.NEU))
       return;
     _influences.put(species, newInfluence);
   }
