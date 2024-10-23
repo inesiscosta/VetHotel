@@ -1,6 +1,7 @@
 package hva.core;
 
 import hva.core.exception.InvalidSeasonException;
+import hva.core.season.Season;
 
 /**
  * Represents an Evergreen Tree planted in a habitat of a Vet Hotel.
@@ -35,16 +36,7 @@ public class Evergreen extends Tree {
    */
   @Override
   int seasonalEffort(Season currentSeason) throws InvalidSeasonException {
-    switch (currentSeason) {
-      case Spring:
-      case Summer:
-      case Fall:
-        return 1;
-      case Winter:
-        return 2;
-      default:
-        throw new InvalidSeasonException(currentSeason);
-    }
+    return currentSeason.getState().seasonalEffortForEvergreen();
   }
 
   /**
@@ -59,17 +51,6 @@ public class Evergreen extends Tree {
    */
   @Override
   Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException {
-    switch (currentSeason) {
-      case Spring:
-        return Leaf.GENERATING_LEAVES;
-      case Summer:
-        return Leaf.WITH_LEAVES;
-      case Fall:
-        return Leaf.WITH_LEAVES;
-      case Winter:
-        return Leaf.SHEDDING_LEAVES;
-      default:
-        throw new InvalidSeasonException(currentSeason);
-    }
+    return currentSeason.getState().getBioCycleForEvergreen();
   }
 }

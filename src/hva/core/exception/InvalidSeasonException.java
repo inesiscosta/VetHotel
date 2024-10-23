@@ -2,7 +2,7 @@ package hva.core.exception;
 
 import java.io.Serial;
 
-import hva.core.Season;
+import hva.core.season.Season;
 
 /**
  * Class for representing an invalid season exception.

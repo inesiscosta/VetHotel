@@ -6,6 +6,7 @@ import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
 import hva.core.observers.TreeObserver;
 import hva.core.observers.TreeSubject;
+import hva.core.season.Season;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -3,6 +3,7 @@ package hva.core;
 import static java.lang.Math.log;
 
 import hva.core.observers.TreeObserver;
+import hva.core.season.Season;
 
 /**
  * Represents a generic tree in the Vet Hotel.

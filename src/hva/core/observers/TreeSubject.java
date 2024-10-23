@@ -2,7 +2,7 @@ package hva.core.observers;
 
 import java.io.Serializable;
 
-import hva.core.Season;
+import hva.core.season.Season;
 
 /**
  * Interface for the Tree Subject.

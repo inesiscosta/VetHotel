@@ -1,6 +1,7 @@
 package hva.core;
 
 import hva.core.exception.InvalidSeasonException;
+import hva.core.season.Season;
 
 /**
  * Represents a Deciduous Tree planted in a habitat of a Vet Hotel.
@@ -34,18 +35,7 @@ public class Deciduous extends Tree {
    */
   @Override
   int seasonalEffort(Season currentSeason) throws InvalidSeasonException {
-    switch (currentSeason) {
-      case Spring:
-        return 1;
-      case Summer:
-        return 2;
-      case Fall:
-        return 5;
-      case Winter:
-        return 0;
-      default:
-        throw new InvalidSeasonException(currentSeason);
-    }
+    return currentSeason.getState().seasonalEffortForDeciduous();
   }
 
   /**
@@ -60,17 +50,6 @@ public class Deciduous extends Tree {
    */
   @Override
   Leaf getBioCycle(Season currentSeason) throws InvalidSeasonException {
-    switch (currentSeason) {
-      case Spring:
-        return Leaf.GENERATING_LEAVES;
-      case Summer:
-        return Leaf.WITH_LEAVES;
-      case Fall:
-        return Leaf.SHEDDING_LEAVES;
-      case Winter:
-        return Leaf.WITHOUT_LEAVES;
-      default:
-        throw new InvalidSeasonException(currentSeason);
-    }
+    return currentSeason.getState().getBioCycleForDeciduous();
   }
 }
