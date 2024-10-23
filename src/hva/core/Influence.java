@@ -13,7 +13,7 @@ enum Influence {
   /**
    * Creates a new Influence.
    * 
-   * @param id the Influence int id
+   * @param value the Influence value
   */
   Influence(int value) {
       this._value = value;
