@@ -30,6 +30,11 @@ package hva.core.season;
       return this._state.id();
   }
 
+  /**
+   * Gets the SeasonState associated to each enum.
+   * 
+   * @return the Seasson state that is associated to each enum.
+   */
   public SeasonState getState() {
     return _state;
   }

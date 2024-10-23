@@ -3,8 +3,8 @@ package hva.core.season;
 import hva.core.Leaf;
 
 /**
- * SeasonState
- * And all the effects that it causes 
+ * Interface that defines the SeasonState and the effects that the
+ * Seasons has in the trees.
  */
 public interface SeasonState {
     SeasonState nextSeason();
