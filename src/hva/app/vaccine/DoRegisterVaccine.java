@@ -25,9 +25,9 @@ class DoRegisterVaccine extends Command<Hotel> {
     var vaccine = stringField("vaccine");
     var name = stringField("name");
     var species = stringField("species");
+    //Split the species string into an array of species ids ignoring leading and trailing spaces
+    String[] speciesArray = species.split("\\s*,\\s*");
     try {
-      //Split the species string into an array of species ids ignoring leading and trailing spaces
-      String[] speciesArray = species.split("\\s*,\\s*");
       _receiver.registerVaccine(vaccine, name, speciesArray);
     } catch (DuplicateVaccineIdException e) {
       throw new DuplicateVaccineKeyException(vaccine);
