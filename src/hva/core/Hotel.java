@@ -532,13 +532,7 @@ public class Hotel implements  HotelSubject {
    * @return an immutable List containing the Habitat object string
    * representation of all habitats in the hotel
    */
-  public Collection<NamedEntity> listHabitats() {
-    List<NamedEntity> listHabitatsAndTrees = new ArrayList<>();
-    for (Habitat habitat : _habitats.values()) {
-      listHabitatsAndTrees.add(habitat);
-      for (Tree tree : habitat.listTrees())
-        listHabitatsAndTrees.add(tree);
-    }
+  public Collection<Habitat> listHabitats() {
     return Collections.unmodifiableCollection(_habitats.values());
   }
 

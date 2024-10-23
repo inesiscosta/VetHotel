@@ -34,7 +34,7 @@ Comparable<NamedEntity>, Serializable {
    *
    * @return the entity's unique identifier
    */
-  String id() {
+  public String id() {
     return _id;
   }
 

@@ -1,8 +1,11 @@
 package hva.app.habitat;
 
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 import hva.core.Hotel;
+import hva.core.NamedEntity;
+import hva.core.exception.UnknownHabitatIdException;
 import pt.tecnico.uilib.menus.Command;
 
 /**
@@ -16,6 +19,16 @@ class DoShowAllHabitats extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    _display.popup(_receiver.listHabitats().stream().sorted().collect(Collectors.toList()));
+    var habitatsList = _receiver.listHabitats().stream().sorted().collect(Collectors.toList());
+    var displayList = new ArrayList<>();
+    for (NamedEntity habitat : habitatsList) {
+      displayList.add(habitat);
+      try {
+        displayList.addAll(_receiver.listAllTreesHabitat(habitat.id()).stream().sorted().collect(Collectors.toList()));
+      } catch (UnknownHabitatIdException e) {
+        e.printStackTrace(); // This error will never happen
+      }
+    }
+    _display.popup(displayList);
   }
 }
