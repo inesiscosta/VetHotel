@@ -19,11 +19,13 @@ import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnknownVaccineIdException;
 import hva.core.exception.UnrecognizedEntryException;
+
 import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.observers.HotelObserver;
 import hva.core.observers.HotelSubject;
 import hva.core.season.Season;
+
 import java.io.IOException;
 import java.io.Serial;
 import java.util.ArrayList;
@@ -74,12 +76,30 @@ public class Hotel implements  HotelSubject {
   }
 
   /**
+   * Gets the current season of the hotel.
+   *
+   * @return the current season of the hotel
+   */
+  public Season currentSeason() {
+    return _currentSeason;
+  }
+
+  /**
    * Gets the filename associated with this hotel.
    * 
    * @return the associated filename
    */
   String getAssociatedFilename() {
     return _filename;
+  }
+
+  /**
+   * Gets whether the hotel has unsaved changes or not.
+   * 
+   * @return the state of the bool unsavedChanges
+   */ 
+  public boolean getUnsavedChanges() {
+    return _unsavedChanges;
   }
 
   /**
@@ -98,15 +118,6 @@ public class Hotel implements  HotelSubject {
    */
   void unsavedChanges(boolean state) {
     _unsavedChanges = state;
-  }
-
-  /**
-   * Gets whether the hotel has unsaved changes or not.
-   * 
-   * @return the state of the bool unsavedChanges
-   */ 
-  public boolean getUnsavedChanges() {
-    return _unsavedChanges;
   }
 
   /**
@@ -140,15 +151,6 @@ public class Hotel implements  HotelSubject {
   }
 
   /**
-   * Gets the current season of the hotel.
-   *
-   * @return the current season of the hotel
-   */
-  public Season currentSeason() {
-    return _currentSeason;
-  }
-
-  /**
    * Advances the hotel to the next season.
    */
   int nextSeason() {
@@ -157,6 +159,21 @@ public class Hotel implements  HotelSubject {
       habitat.nextSeason(_currentSeason);
     notifyHotelObservers();
     return this.currentSeason().id();
+  }
+
+
+  /**
+   * Checks if the tree alreay exists on one of the habitats in the hotel
+   * 
+   * @param id the id to check 
+   * @return true if it alredy exists fasle if not
+  */  
+  boolean treeAlreadyExists(String id) {
+    for (Habitat habitat : _habitats.values()) {
+      if (habitat.identifyTree(id) == null)
+        return false;
+    }
+    return true;
   }
 
   /**
@@ -251,20 +268,6 @@ public class Hotel implements  HotelSubject {
     if(!_vaccines.containsKey(idVaccine))
       throw new UnknownVaccineIdException(idVaccine);
     return _vaccines.get(idVaccine);
-  }
-
-  /**
-   * Checks if the tree alreay exists on one of the habitats in the hotel
-   * 
-   * @param id the id to check 
-   * @return true if it alredy exists fasle if not
-  */  
-  boolean treeAlreadyExists(String id) {
-    for (Habitat habitat : _habitats.values()) {
-      if (habitat.identifyTree(id) == null)
-        return false;
-    }
-    return true;
   }
 
   /**
@@ -396,6 +399,29 @@ public class Hotel implements  HotelSubject {
   }
 
   /**
+   * Adds a new vaccination record to the hotel and vaccinates the animal.
+   * 
+   * @param vet the veterinarian that is going to vaccinate the animal
+   * @param animal the animal to vaccinate
+   * @param vaccine the vaccine to apply
+   */
+  public boolean addVaccinationRecord(String idVaccine, String idVet,
+  String idAnimal) throws EmployeeNotResponsibleException, 
+  UnknownVaccineIdException, UnknownEmployeeIdException,
+  UnknownAnimalIdException {
+    Vaccine vaccine = identifyVaccine(idVaccine);
+    Veterinarian vet = identifyVet(idVet);
+    Animal animal = identifyAnimal(idAnimal);
+    boolean vaccineApropriated = true;
+    if(!vaccine.isSpeciesApropriated(animal.species()))
+      vaccineApropriated = false;
+    VaccinationRecord record = vet.vaccinate(vaccine, animal);
+    _vaccinationRecords.add(record);
+    notifyHotelObservers();
+    return vaccineApropriated;
+  }
+
+  /**
    * Adds a responsibility to an employee.
    * 
    * @param idEmployee the employee's unique identifier
@@ -424,28 +450,80 @@ public class Hotel implements  HotelSubject {
     identifyEmployee(idEmployee).removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }
+  
+  /**
+   * Adds a Tree to an Habitat
+   * 
+   * @param idHabitat the habitat to wich to add a tree
+   * @param id the id of the tree to be added
+   * @param name the name of the tree to be added
+   * @param age the age of the tree to be added
+   * @param difficulty the cleaning difficulty of the tree to be added
+   * @param type the type of the to be added
+   * @return the new added if it was added without any exception
+   * @throws UnknownHabitatIdException if the habitat doesnt exist
+   * @throws DuplicateTreeIdException if the id of the new tree already exist
+   * in one habitat
+   * @throws InvalidTreeTypeException if the type of the new tree doesnt exist
+   */
+  public Tree addTreeToHabitat(String idHabitat, String id, String name, int age,
+  int difficulty, String type) throws UnknownHabitatIdException,
+  DuplicateTreeIdException, InvalidTreeTypeException {
+    Habitat habitat = identifyHabitat(idHabitat);
+    Tree tree = habitat.plantTree(id, name, age, difficulty, type,
+    _currentSeason, this);
+    notifyHotelObservers();
+    return tree;
+  }
 
   /**
-   * Adds a new vaccination record to the hotel and vaccinates the animal.
+   * Change the area of an habitat
    * 
-   * @param vet the veterinarian that is going to vaccinate the animal
-   * @param animal the animal to vaccinate
-   * @param vaccine the vaccine to apply
+   * @param id the habitat for the area to be changed
+   * @param area the new area of the habitat
+   * @throws UnknownHabitatIdException if the habitat doesnt exist in
+   * the hotel 
    */
-  public boolean addVaccinationRecord(String idVaccine, String idVet,
-  String idAnimal) throws EmployeeNotResponsibleException, 
-  UnknownVaccineIdException, UnknownEmployeeIdException,
-  UnknownAnimalIdException {
-    Vaccine vaccine = identifyVaccine(idVaccine);
-    Veterinarian vet = identifyVet(idVet);
-    Animal animal = identifyAnimal(idAnimal);
-    boolean vaccineApropriated = true;
-    if(!vaccine.isSpeciesApropriated(animal.species()))
-      vaccineApropriated = false;
-    VaccinationRecord record = vet.vaccinate(vaccine, animal);
-    _vaccinationRecords.add(record);
+  public void changeHabitatArea(String id, int area)
+  throws UnknownHabitatIdException {
+    identifyHabitat(id).changeArea(area);
     notifyHotelObservers();
-    return vaccineApropriated;
+  }
+
+  /**
+   * Change the influence that a habitat has over a species
+   * 
+   * @param idHabitat the habitat to add the influence
+   * @param idSpecies the species it will affected
+   * @param influence the new influence the habitat will have over the
+   * species in question
+   * @throws UnknownHabitatIdException if the habitat doesnt exist in the hotel
+   * @throws UnknownSpeciesIdException if the species doesnt exist
+   */
+  public void changeHabitatInfluence(String idHabitat, String idSpecies,
+  String influence) throws UnknownHabitatIdException,
+  UnknownSpeciesIdException {
+    identifyHabitat(idHabitat).changeInfluence(identifySpecies(idSpecies),
+    Influence.stringToEnum(influence));
+    notifyHotelObservers();
+  }
+
+  /**
+   * Transfer an aninmal from one habitat to another one in the hotel.
+   * 
+   * @param idAnimal the animal to transfer to another habitat
+   * @param idHabitat the destination habitat
+   * @throws UnknownAnimalIdException if the animal doesnt exist in any of
+   * the habitats in the hotel
+   * @throws UnknownHabitatIdException if the destination habitat doesnt exist
+   * in the hotel
+   */
+  public void transferAnimalToHabitat(String idAnimal, String idHabitat)
+  throws UnknownAnimalIdException, UnknownHabitatIdException {
+    Animal animal = identifyAnimal(idAnimal);
+    Habitat habitat = identifyHabitat(idHabitat);
+    animal.changeHabitat(habitat);
+    notifyHotelObservers();
   }
 
   /**
@@ -492,6 +570,32 @@ public class Hotel implements  HotelSubject {
    */
   public Collection<Employee> listEmployees() {
     return Collections.unmodifiableCollection(_employees.values());
+  }
+
+  /**
+   * List the all trees from one habitat
+   * 
+   * @param idHabitat the habitat to list all trees from
+   * @return an unmodifiableCollection of all the trees from the habitat
+   * @throws UnknownHabitatIdException if the habitat doesnt exist in this
+   * hotel
+   */
+  public Collection<Tree> listAllTreesHabitat(String idHabitat)
+  throws UnknownHabitatIdException {
+    return identifyHabitat(idHabitat).listTrees();
+  }
+
+  /**
+   * List all animals from one habitat
+   * 
+   * @param idHabitat the habitat to list all animals from
+   * @return an unmodifiableCollection of all animals from the habitat
+   * @throws UnknownHabitatIdException if the habitat doesnt exist in this
+   * hotel
+   */
+  public Collection<Animal> listAnimalsInHabitat(String idHabitat)
+  throws UnknownHabitatIdException {
+    return identifyHabitat(idHabitat).listAnimals();
   }
 
   /**
@@ -570,6 +674,32 @@ public class Hotel implements  HotelSubject {
   }
 
   /**
+   * Calculates the satisfaction of the specified animal
+   * 
+   * @param idAnimal the animal to calculate the satisfaction of
+   * @return the satisfaction of the animal
+   * @throws UnknownAnimalIdException if the animal id doesnt exist in any of
+   * the habitats of the hotel
+   */
+  public double calculateAnimalSatisfaction(String idAnimal)
+  throws UnknownAnimalIdException {
+    return identifyAnimal(idAnimal).calculateSatisfaction();
+  }
+
+  /**
+   * Calculates the satisfaction of an determinate employee
+   * 
+   * @param idEmployee the employee to calculate the satisfaction
+   * @return the double that corresponds to the satisfaction of the employee
+   * @throws UnknownEmployeeIdException if the employee doesnt exist in
+   * the hotel
+   */
+  public double calculateEmployeeSatisfaction(String idEmployee)
+  throws UnknownEmployeeIdException {
+    return identifyEmployee(idEmployee).calculateSatisfaction();
+  }
+
+  /**
    * Calculates the global satisfaction level of the hotel by summing
    * the satisfaction levels of all employees and animals.
    * 
@@ -596,132 +726,5 @@ public class Hotel implements  HotelSubject {
     var parser = new Parser(this);
     parser.parseFile(filename);
     notifyHotelObservers();
-  }
-
-  /**
-   * Calculates the satisfaction of the specified animal
-   * 
-   * @param idAnimal the animal to calculate the satisfaction of
-   * @return the satisfaction of the animal
-   * @throws UnknownAnimalIdException if the animal id doesnt exist in any of
-   * the habitats of the hotel
-   */
-  public double calculateAnimalSatisfaction(String idAnimal)
-  throws UnknownAnimalIdException {
-    return identifyAnimal(idAnimal).calculateSatisfaction();
-  }
-
-  /**
-   * Transfer an aninmal from one habitat to another one in the hotel.
-   * 
-   * @param idAnimal the animal to transfer to another habitat
-   * @param idHabitat the destination habitat
-   * @throws UnknownAnimalIdException if the animal doesnt exist in any of
-   * the habitats in the hotel
-   * @throws UnknownHabitatIdException if the destination habitat doesnt exist
-   * in the hotel
-   */
-  public void transferAnimalToHabitat(String idAnimal, String idHabitat)
-  throws UnknownAnimalIdException, UnknownHabitatIdException {
-    Animal animal = identifyAnimal(idAnimal);
-    Habitat habitat = identifyHabitat(idHabitat);
-    animal.changeHabitat(habitat);
-    notifyHotelObservers();
-  }
-
-  /**
-   * Calculates the satisfaction of an determinate employee
-   * 
-   * @param idEmployee the employee to calculate the satisfaction
-   * @return the double that corresponds to the satisfaction of the employee
-   * @throws UnknownEmployeeIdException if the employee doesnt exist in
-   * the hotel
-   */
-  public double calculateEmployeeSatisfaction(String idEmployee)
-  throws UnknownEmployeeIdException {
-    return identifyEmployee(idEmployee).calculateSatisfaction();
-  }
-
-  /**
-   * Adds a Tree to an Habitat
-   * 
-   * @param idHabitat the habitat to wich to add a tree
-   * @param id the id of the tree to be added
-   * @param name the name of the tree to be added
-   * @param age the age of the tree to be added
-   * @param difficulty the cleaning difficulty of the tree to be added
-   * @param type the type of the to be added
-   * @return the new added if it was added without any exception
-   * @throws UnknownHabitatIdException if the habitat doesnt exist
-   * @throws DuplicateTreeIdException if the id of the new tree already exist
-   * in one habitat
-   * @throws InvalidTreeTypeException if the type of the new tree doesnt exist
-   */
-  public Tree addTreeToHabitat(String idHabitat, String id, String name, int age,
-  int difficulty, String type) throws UnknownHabitatIdException,
-  DuplicateTreeIdException, InvalidTreeTypeException {
-    Habitat habitat = identifyHabitat(idHabitat);
-    Tree tree = habitat.plantTree(id, name, age, difficulty, type,
-    _currentSeason, this);
-    notifyHotelObservers();
-    return tree;
-  }
-
-  /**
-   * Change the area of an habitat
-   * 
-   * @param id the habitat for the area to be changed
-   * @param area the new area of the habitat
-   * @throws UnknownHabitatIdException if the habitat doesnt exist in
-   * the hotel 
-   */
-  public void changeHabitatArea(String id, int area)
-  throws UnknownHabitatIdException {
-    identifyHabitat(id).changeArea(area);
-    notifyHotelObservers();
-  }
-
-  /**
-   * Change the influence that a habitat has over a species
-   * 
-   * @param idHabitat the habitat to add the influence
-   * @param idSpecies the species it will affected
-   * @param influence the new influence the habitat will have over the
-   * species in question
-   * @throws UnknownHabitatIdException if the habitat doesnt exist in the hotel
-   * @throws UnknownSpeciesIdException if the species doesnt exist
-   */
-  public void changeHabitatInfluence(String idHabitat, String idSpecies,
-  String influence) throws UnknownHabitatIdException,
-  UnknownSpeciesIdException {
-    identifyHabitat(idHabitat).changeInfluence(identifySpecies(idSpecies),
-    Influence.stringToEnum(influence));
-    notifyHotelObservers();
-  }
-
-  /**
-   * List the all trees from one habitat
-   * 
-   * @param idHabitat the habitat to list all trees from
-   * @return an unmodifiableCollection of all the trees from the habitat
-   * @throws UnknownHabitatIdException if the habitat doesnt exist in this
-   * hotel
-   */
-  public Collection<Tree> listAllTreesHabitat(String idHabitat)
-  throws UnknownHabitatIdException {
-    return identifyHabitat(idHabitat).listTrees();
-  }
-
-  /**
-   * List all animals from one habitat
-   * 
-   * @param idHabitat the habitat to list all animals from
-   * @return an unmodifiableCollection of all animals from the habitat
-   * @throws UnknownHabitatIdException if the habitat doesnt exist in this
-   * hotel
-   */
-  public Collection<Animal> listAnimalsInHabitat(String idHabitat)
-  throws UnknownHabitatIdException {
-    return identifyHabitat(idHabitat).listAnimals();
   }
 }
