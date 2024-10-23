@@ -9,25 +9,22 @@ import hva.core.NamedEntity;
  * it doesnt distingues between lower and upper case, it makes all the ids 
  * lower case before calling the super methods provided by the HashMap class.
  */
-//TODO: Use T
 public class CaseInsensitiveHashMap<T extends NamedEntity> extends HashMap<String, T> {
 
     /**
      * Puts the object in the map with the key in lower case
      */
     @Override
-    public NamedEntity put(String key, NamedEntity object) {
-        return super.put(key.toLowerCase(), object);
+    public T put(String key, T value) {
+        return super.put(key.toLowerCase(), value);
     }
 
     /**
      * Gets the object from the map with the key in lower case
      */
     @Override
-    public NamedEntity get(Object key) {
-        if(key instanceof String)
-            return super.get(((String)key).toLowerCase());
-        return null;
+    public T get(Object key) {
+        return super.get(((String)key).toLowerCase());
     }
 
     /**
@@ -35,18 +32,14 @@ public class CaseInsensitiveHashMap<T extends NamedEntity> extends HashMap<Strin
      */
     @Override
     public boolean containsKey(Object key) {
-        if(key instanceof String)
-            return super.containsKey(((String)key).toLowerCase());
-        return false;
+        return super.containsKey(((String)key).toLowerCase());
     }
 
     /**
      * Removes the object from the map with the key in lower case
      */
     @Override
-    public NamedEntity remove(Object key) {
-        if(key instanceof String)
-            return super.remove(((String)key).toLowerCase());
-        return null;
+    public T remove(Object key) {
+        return super.remove(((String)key).toLowerCase());
     }
 }
