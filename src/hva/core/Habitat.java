@@ -21,7 +21,7 @@ import java.util.TreeSet;
 /**
  * Represents a habitat in a Vet Hotel.
  */
-public class Habitat extends NamedEntity implements TreeSubject {
+class Habitat extends NamedEntity implements TreeSubject {
   private int _area;
   private Map<String, Animal> _animals;
   private Set<ZooKeeper> _assignedKeepers;
@@ -112,6 +112,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
    *
    * @return the Habitat object string representation
    */
+  @Override
   public String toString() {
     StringBuilder result = new StringBuilder();
     result.append("HABITAT|")
@@ -199,7 +200,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * @param newInfluence the new influence value the habitat has on the
    * species
    */
-  public void changeInfluence(Species species, Influence newInfluence) {
+  void changeInfluence(Species species, Influence newInfluence) {
     if(newInfluence.equals(Influence.NEU) && _influences.containsKey(species))
       _influences.remove(species);
     if (newInfluence.equals(Influence.NEU))
@@ -212,7 +213,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * 
    * @param newArea the new area of the habitat
    */
-  public void changeArea(int newArea) {
+  void changeArea(int newArea) {
     _area = newArea;
   }
 
@@ -229,7 +230,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * @throws InvalidTypeException if the tree type is not a valid type
    * (not one of the two types Evergreen or Deciduous)
    */
-  public Tree plantTree(String id, String name, int age,
+  Tree plantTree(String id, String name, int age,
   int baseCleaningDifficulty, String treeType, Season currentSeason,
   Hotel hotel) throws DuplicateTreeIdException, InvalidTreeTypeException {
     Tree tree;
@@ -275,7 +276,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * @return an unmodifiable list containing the Animal object string
    * representation of all animals in the habitat
    */
-  public Collection<Animal> listAnimals() {
+  Collection<Animal> listAnimals() {
     return Collections.unmodifiableCollection(_animals.values());
   }
 
@@ -287,7 +288,7 @@ public class Habitat extends NamedEntity implements TreeSubject {
    * @return a String containing the Tree object string representation
    * of all trees in the habitat
    */
-  public Collection<Tree> listTrees() { 
+  Collection<Tree> listTrees() { 
     return Collections.unmodifiableCollection(_trees.values());
   }
 

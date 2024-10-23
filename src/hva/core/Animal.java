@@ -98,7 +98,7 @@ public class Animal extends NamedEntity {
    * 
    * @return the animal's satisfaction level
    */
-  public double calculateSatisfaction() {
+  double calculateSatisfaction() {
     return _satisfactionMethod.calculateSatisfaction(this);
   }
 
@@ -119,7 +119,7 @@ public class Animal extends NamedEntity {
    * 
    * @param newHabitat the new habitat to move the animal to
    */
-  public void changeHabitat(Habitat newHabitat) { 
+  void changeHabitat(Habitat newHabitat) { 
     if(_habitat.equals(newHabitat))
       return;
     _habitat.removeAnimal(this);

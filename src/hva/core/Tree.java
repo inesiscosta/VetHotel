@@ -8,7 +8,7 @@ import hva.core.season.Season;
 /**
  * Represents a generic tree in the Vet Hotel.
  */
-public abstract class Tree extends NamedEntity implements TreeObserver {
+abstract class Tree extends NamedEntity implements TreeObserver {
   private int _age;
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;
@@ -25,7 +25,7 @@ public abstract class Tree extends NamedEntity implements TreeObserver {
    * @param treeType the tree's type (Deciduous or Evergreen)
    * @param currentSeason the current season in the Vet Hotel the tree is in
    */
-  public Tree(String id, String name, int age, int baseCleaningDifficulty,
+  Tree(String id, String name, int age, int baseCleaningDifficulty,
   TreeType treeType , Season currentSeason) {
     super(id, name);
     _age = age;

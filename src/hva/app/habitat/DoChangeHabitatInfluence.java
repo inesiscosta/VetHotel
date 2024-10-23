@@ -1,7 +1,6 @@
 package hva.app.habitat;
 
 import hva.core.Hotel;
-import hva.core.Influence;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.app.exception.UnknownHabitatKeyException;
@@ -27,8 +26,7 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
   protected void execute() throws CommandException {
     var idHabitat = stringField("idHabitat");
     var idSpecies = stringField("idSpecies");
-    var influenceString = optionField("influenceString");
-    Influence influence = Influence.stringToEnum(influenceString);
+    var influence = optionField("influenceString");
     try {
       //TODO: Public methods only in Hotel and Hotel Manager this should only call a method in Hotel
       //TODO: toString not in Core create String in App, if we do this should use a HashMap for everything in the core Maybe?

@@ -8,7 +8,7 @@ import java.util.TreeSet;
 /**
  * Represents a vaccine in a Vet Hotel.
  */
-public class Vaccine extends NamedEntity {
+class Vaccine extends NamedEntity {
   private int _numApplications;
   private Collection<Species> _appropiateSpecies;
 
@@ -19,7 +19,7 @@ public class Vaccine extends NamedEntity {
    * @param name the vaccine's name
    * @param appropiateSpecies a list of the species the vaccine is suitable for
    */
-  public Vaccine(String id, String name, List<Species> appropiateSpecies) {
+  Vaccine(String id, String name, List<Species> appropiateSpecies) {
     super(id, name);
     _appropiateSpecies = new TreeSet<Species>(appropiateSpecies);
   }

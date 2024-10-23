@@ -6,7 +6,7 @@ import hva.core.season.Season;
 /**
  * Represents a Deciduous Tree planted in a habitat of a Vet Hotel.
  */
-public class Deciduous extends Tree {
+class Deciduous extends Tree {
   /**
    * Creates a new Deciduous Tree.
    * 

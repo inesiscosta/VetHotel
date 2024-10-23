@@ -7,7 +7,7 @@ import java.util.TreeSet;
 /**
  * Represents a species of animals found in a Vet Hotel.
  */
-public class Species extends NamedEntity {
+class Species extends NamedEntity {
   private Collection<Animal> _animals;
   private Collection<Veterinarian> _qualifiedVets;
     
@@ -17,7 +17,7 @@ public class Species extends NamedEntity {
    * @param id the species' unique identifier
    * @param name the species' name
    */
-  public Species(String id, String name) {
+  Species(String id, String name) {
     super(id, name);
     _animals = new TreeSet<Animal>();
     _qualifiedVets = new HashSet<Veterinarian>();

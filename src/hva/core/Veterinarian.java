@@ -22,7 +22,7 @@ public class Veterinarian extends Employee {
    * @param idEmployee the veterinarian's unique identifier
    * @param name the veterinarian's name
    */
-  public Veterinarian(String idEmployee, String name, Hotel hotel) {
+  Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
     _knowsHowToVaccinate = new TreeSet<Species>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
@@ -36,7 +36,7 @@ public class Veterinarian extends Employee {
    * @return the Vet's satisfaction level
    */
   @Override
-  public double calculateSatisfaction() {
+  double calculateSatisfaction() {
     return _satisfactionMethod.calculateSatisfaction(this);
   }
 

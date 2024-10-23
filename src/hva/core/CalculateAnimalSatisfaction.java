@@ -5,7 +5,7 @@ import hva.core.satisfaction.AnimalSatisfaction;
 /**
  * Calculates the satisfaction level of an animal in a habitat.
  */
-public class CalculateAnimalSatisfaction implements AnimalSatisfaction {
+class CalculateAnimalSatisfaction implements AnimalSatisfaction {
 
   /**
    * Calculates the animal's satisfaction level based on the number of animals

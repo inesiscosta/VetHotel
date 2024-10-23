@@ -3,7 +3,7 @@ package hva.core;
 /**
  * Enumerates the influences of an habitat in a animal.
  */
- public enum Influence {
+enum Influence {
   POS(20),
   NEG(-20),
   NEU(0);
@@ -24,7 +24,7 @@ package hva.core;
    * 
    * @return the Influence int value
    */
-  public int value() {
+  int value() {
       return _value;
   }
 
@@ -34,7 +34,7 @@ package hva.core;
    * @param influenceString the string to convert into Influence
    * @return the Influence corresponding to the string
    */
-  public static Influence stringToEnum(String influenceString) {
+  static Influence stringToEnum(String influenceString) {
     for(Influence influence : Influence.values())
         if(influence.toString().equals(influenceString))
             return influence;

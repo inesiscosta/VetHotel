@@ -21,7 +21,7 @@ public class ZooKeeper extends Employee {
    * @param idEmployee the zookeeper's unique identifier
    * @param name the zookeeper's name
    */
-  public ZooKeeper(String idEmployee, String name, Hotel hotel) {
+  ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
     _assignedHabitats = new TreeSet<Habitat>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
@@ -35,7 +35,7 @@ public class ZooKeeper extends Employee {
    * @return the ZooKeeper's satisfaction level
    */
   @Override
-  public double calculateSatisfaction() {
+  double calculateSatisfaction() {
     return _satisfactionMethod.calculateSatisfaction(this);
   }
 

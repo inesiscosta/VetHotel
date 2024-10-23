@@ -5,7 +5,7 @@ import hva.core.exception.UnknownResponsibilityException;
 /**
  * Represents an employee working in a Vet Hotel.
  */
-public abstract class Employee extends NamedEntity {
+abstract class Employee extends NamedEntity {
   private final EmployeeType _employeeType;
   private Hotel _hotel;
 
@@ -66,7 +66,7 @@ public abstract class Employee extends NamedEntity {
    * 
    * @return the employee's satisfaction level
    */
-  public abstract double calculateSatisfaction();
+  abstract double calculateSatisfaction();
 
   /**
    * Adds a responsibility to the employee. 

@@ -5,7 +5,7 @@ import hva.core.exception.InvalidDamageValueException;
 /**
  * Enumerates the possible effects of a vaccine on an animal.
  */
-public enum HealthStatus {
+enum HealthStatus {
   NORMAL("NORMAL"),
   CONFUSION("CONFUSÃO"),
   ACCIDENT("ACIDENTE"),
@@ -42,7 +42,7 @@ public enum HealthStatus {
    * @throws InvalidDamageValueException if the damage is invalid
    * (if the damage is less than 0)
    */
-  protected static HealthStatus determineHealthStatus(int damage, 
+  static HealthStatus determineHealthStatus(int damage, 
   boolean correctSpecies) throws InvalidDamageValueException {
     if (correctSpecies)
       return HealthStatus.NORMAL;

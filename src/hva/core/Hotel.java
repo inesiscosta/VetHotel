@@ -619,8 +619,8 @@ public class Hotel implements  HotelSubject {
     notifyHotelObservers();
   }
 
-  public void changeHabitatInfluence(String idHabitat, String idSpecies, Influence influence) throws UnknownHabitatIdException, UnknownSpeciesIdException {
-    identifyHabitat(idHabitat).changeInfluence(identifySpecies(idSpecies), influence);
+  public void changeHabitatInfluence(String idHabitat, String idSpecies, String influence) throws UnknownHabitatIdException, UnknownSpeciesIdException {
+    identifyHabitat(idHabitat).changeInfluence(identifySpecies(idSpecies), Influence.stringToEnum(influence));
     notifyHotelObservers();
   }
 

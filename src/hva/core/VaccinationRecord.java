@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Represents a record of a vaccination event.
  */
-public class VaccinationRecord implements Serializable {
+class VaccinationRecord implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 202407081733L;
@@ -23,7 +23,7 @@ public class VaccinationRecord implements Serializable {
    * @param vet the veterinarian who administered the vaccine
    * @param animal the animal vaccinated
    */
-  public VaccinationRecord(Vaccine vaccine, Veterinarian vet, Animal animal) {
+  VaccinationRecord(Vaccine vaccine, Veterinarian vet, Animal animal) {
     _administeredVaccine = vaccine;
     _administeringVet = vet;
     _vaccinatedAnimal = animal;

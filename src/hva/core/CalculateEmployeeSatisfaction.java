@@ -8,7 +8,7 @@ import hva.core.satisfaction.ZooKeeperSatisfaction;
  * types of employees.
  * 
  */
-public class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, ZooKeeperSatisfaction{
+class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction, ZooKeeperSatisfaction{
     
   /**
    * Calculates the ZooKeeper's satisfaction level which depends on the 

@@ -3,7 +3,7 @@ package hva.core;
 /**
  * Enumeration of the possible types of trees.
  */
-public enum TreeType {
+enum TreeType {
     DECIDUOUS("CADUCA"),
     EVERGREEN("PERENE");
 
@@ -34,7 +34,7 @@ public enum TreeType {
      * @param type the string to convert in Portuguese
      * @return the TreeType corresponding to the string
      */
-    public static TreeType stringToEnum(String type) {
+    static TreeType stringToEnum(String type) {
         for (TreeType treeType : TreeType.values()) {
             if (treeType.toString().equals(type))
                 return treeType;

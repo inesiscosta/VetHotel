@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Parses a file with information about a Vet Hotel.
  */
-public class Parser {
+class Parser {
   private Hotel _hotel;
   private Map<String,Tree> _tempTreesNoHabitat;
   
@@ -44,7 +44,7 @@ public class Parser {
    * @throws IOException if an I/O error occurs
    * @throws UnrecognizedEntryException if the file contains an invalid entry
    */
-  public void parseFile(String filename) throws IOException,
+  void parseFile(String filename) throws IOException,
   UnrecognizedEntryException {
     try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
       String line;

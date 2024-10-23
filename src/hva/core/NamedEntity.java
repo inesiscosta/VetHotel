@@ -23,7 +23,7 @@ public abstract class NamedEntity implements Comparable<NamedEntity>, Serializab
    * @param id the entity's unique identifier
    * @param name the entity's name
    */
-  public NamedEntity(String id, String name) {
+  NamedEntity(String id, String name) {
     _id = id;
     _name = name;
   }
@@ -33,7 +33,7 @@ public abstract class NamedEntity implements Comparable<NamedEntity>, Serializab
    *
    * @return the entity's unique identifier
    */
-  protected String id() {
+  String id() {
     return _id;
   }
 
@@ -42,7 +42,7 @@ public abstract class NamedEntity implements Comparable<NamedEntity>, Serializab
    *
    * @return the entity's name
    */
-  protected String name() {
+  String name() {
     return _name;
   }
 

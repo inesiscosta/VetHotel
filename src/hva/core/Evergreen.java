@@ -6,7 +6,7 @@ import hva.core.season.Season;
 /**
  * Represents an Evergreen Tree planted in a habitat of a Vet Hotel.
  */
-public class Evergreen extends Tree {
+class Evergreen extends Tree {
 
   /**
    * Creates a new Evergreen Tree.
