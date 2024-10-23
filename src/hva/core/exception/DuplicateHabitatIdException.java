@@ -1,23 +1,20 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 //TODO We should use inheritance for All DuplicateIdExceptions can we use static error messages? YES
 /**
  * Class for representing a duplicate habitat id exception.
  */
-public class DuplicateHabitatIdException extends Exception {
+public class DuplicateHabitatIdException extends DuplicateIdException {
 
-  @Serial
-  private static final long serialVersionUID = 202407081733L;
-  
+  private static final String SPECIFIC_ERROR_MESSAGE = "Habitat id: ";
+
   /**
    * Constructor for the exception.
    * 
    * @param id the id that already exists
    **/
   public DuplicateHabitatIdException(String id) {
-    super("Duplicated Habitat id: " + id);
+    super(SPECIFIC_ERROR_MESSAGE + id);
   }
 
   /**
@@ -27,6 +24,6 @@ public class DuplicateHabitatIdException extends Exception {
    * @param cause exception that triggered this one
    **/
   public DuplicateHabitatIdException(String id, Exception cause) {
-    super("Duplicated Habitat id: " + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, cause);
   }
 }

@@ -28,7 +28,6 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     var idSpecies = stringField("idSpecies");
     var influence = optionField("influenceString");
     try {
-      //TODO: Public methods only in Hotel and Hotel Manager this should only call a method in Hotel
       //TODO: toString not in Core create String in App, if we do this should use a HashMap for everything in the core Maybe?
       _receiver.changeHabitatInfluence(idHabitat, idSpecies, influence);
     } catch (UnknownHabitatIdException e) {

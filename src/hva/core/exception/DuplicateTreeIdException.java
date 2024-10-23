@@ -1,22 +1,19 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing a duplicate tree id exception.
  */
-public class DuplicateTreeIdException extends Exception {
+public class DuplicateTreeIdException extends DuplicateIdException {
 
-  @Serial
-  private static final long serialVersionUID = 202407081733L;
-  
+  private static final String SPECIFIC_ERROR_MESSAGE = "Tree id: ";
+
   /**
    * Constructor for the exception.
    * 
    * @param id the id that already exists
    **/
   public DuplicateTreeIdException(String id) {
-    super("Duplicated Tree id: " + id);
+    super(SPECIFIC_ERROR_MESSAGE + id);
   }
 
   /**
@@ -26,6 +23,6 @@ public class DuplicateTreeIdException extends Exception {
    * @param cause exception that triggered this one
    **/
   public DuplicateTreeIdException(String id, Exception cause) {
-    super("Duplicated Tree id: " + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, cause);
   }
 }

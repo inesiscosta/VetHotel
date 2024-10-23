@@ -7,8 +7,7 @@ import java.io.Serial;
  */
 public class DuplicateSpeciesNameException extends Exception {
 
-  @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final String SPECIFIC_ERROR_MESSAGE = "Animal id: ";
   
   /**
    * Constructor for the exception.

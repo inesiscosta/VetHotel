@@ -1,14 +1,11 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing a duplicate employee id exception.
  */
-public class DuplicateEmployeeIdException extends Exception {
+public class DuplicateEmployeeIdException extends DuplicateIdException {
 
-  @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final String SPECIFIC_ERROR_MESSAGE = "Employee id: ";
   
   /**
    * Constructor for the exception.
@@ -16,7 +13,7 @@ public class DuplicateEmployeeIdException extends Exception {
    * @param message the id that already exists
    **/
   public DuplicateEmployeeIdException(String id) {
-    super("Duplicated Employee id: " + id);
+    super(SPECIFIC_ERROR_MESSAGE + id);
   }
 
   /**
@@ -26,6 +23,6 @@ public class DuplicateEmployeeIdException extends Exception {
    * @param cause exception that triggered this one
    **/
   public DuplicateEmployeeIdException(String id, Exception cause) {
-    super("Duplicated Employee id: " + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, cause);
   }
 }
