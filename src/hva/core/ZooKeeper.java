@@ -89,6 +89,7 @@ public class ZooKeeper extends Employee {
   @Override
   String getIdResponsibilities() {
     return _assignedHabitats.keySet().stream()
+    .map(String::toUpperCase)
     .sorted()
     .reduce((id1, id2) -> id1 + "," + id2)
     .orElse(null);
