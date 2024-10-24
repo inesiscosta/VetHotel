@@ -16,6 +16,7 @@ class DoShowAllEmployees extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    _display.popup(_receiver.listEmployees().stream().sorted().collect(Collectors.toList()));
+    _display.popup(_receiver.listEmployees().stream().sorted()
+    .collect(Collectors.toList()));
   }
 }
