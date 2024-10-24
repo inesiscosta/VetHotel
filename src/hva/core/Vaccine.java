@@ -3,7 +3,7 @@ package hva.core;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.TreeSet;
+import java.util.HashSet;
 
 /**
  * Represents a vaccine in a Vet Hotel.
@@ -21,7 +21,7 @@ class Vaccine extends NamedEntity {
    */
   Vaccine(String id, String name, List<Species> appropiateSpecies) {
     super(id, name);
-    _appropiateSpecies = new TreeSet<>(appropiateSpecies);
+    _appropiateSpecies = new HashSet<>(appropiateSpecies);
   }
 
   /**
@@ -54,7 +54,8 @@ class Vaccine extends NamedEntity {
   private String suitableSpeciesToString() {
     StringBuilder suitableSpecies = new StringBuilder();
     suitableSpecies.append("|");
-    for (Species specie: _appropiateSpecies)
+    for (Species specie: _appropiateSpecies.stream().sorted()
+    .collect(Collectors.toList()))
       suitableSpecies.append( specie.id()).append(",");
     if(suitableSpecies.length() > 0)
       suitableSpecies.setLength(suitableSpecies.length()-1);
