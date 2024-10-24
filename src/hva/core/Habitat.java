@@ -22,7 +22,7 @@ import java.util.Set;
 class Habitat extends NamedEntity implements TreeSubject {
   private int _area;
   private Map<String, Animal> _animals;
-  private Map<String, ZooKeeper> _assignedKeepers;
+  private Set<ZooKeeper> _assignedKeepers;
   private Map<String, Tree> _trees;
   private Map<Species, Influence> _influences;
   private Set<TreeObserver> _treeObservers;
@@ -38,7 +38,7 @@ class Habitat extends NamedEntity implements TreeSubject {
     super(id, name);
     _area = area;
     _animals = new CaseInsensitiveHashMap<>();
-    _assignedKeepers = new CaseInsensitiveHashMap<>();
+    _assignedKeepers = new HashSet<>();
     _trees = new CaseInsensitiveHashMap<>();
     _influences = new HashMap<>();
     _treeObservers = new HashSet<>();
@@ -189,7 +189,7 @@ class Habitat extends NamedEntity implements TreeSubject {
    * @param keeper the keeper to be added to the habitat
    */
   void addKeeper(ZooKeeper keeper) {
-    _assignedKeepers.put(keeper.id(), keeper);
+    _assignedKeepers.add(keeper);
   }
   
   /**
@@ -198,7 +198,7 @@ class Habitat extends NamedEntity implements TreeSubject {
    * @param keeper the keeper to be removed from the habitat
    */
   void removeKeeper(ZooKeeper keeper) {
-    _assignedKeepers.remove(keeper.id());
+    _assignedKeepers.remove(keeper);
   }
 
   /**

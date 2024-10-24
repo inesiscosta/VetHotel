@@ -20,7 +20,8 @@ class DoShowAllHabitats extends Command<Hotel> {
     var habitatsList = _receiver.listHabitats().stream().sorted();
     var displayList = habitatsList.flatMap(habitat -> {
       try {
-        return Stream.concat(Stream.of(habitat), _receiver.listAllTreesHabitat(habitat.id()).stream().sorted());
+        return Stream.concat(Stream.of(habitat),
+        _receiver.listAllTreesHabitat(habitat.id()).stream().sorted());
       } catch (UnknownHabitatIdException e) {
         e.printStackTrace(); // This error will never happen
         return Stream.empty();
