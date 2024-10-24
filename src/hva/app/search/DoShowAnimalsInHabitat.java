@@ -4,6 +4,9 @@ import hva.core.exception.UnknownHabitatIdException;
 import hva.core.Hotel;
 import hva.app.exception.UnknownHabitatKeyException;
 import hva.app.habitat.Prompt;
+
+import java.util.stream.Collectors;
+
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
@@ -21,7 +24,7 @@ class DoShowAnimalsInHabitat extends Command<Hotel> {
   protected void execute() throws CommandException {
     var idHabitat = stringField("habitat");
     try {
-      _display.popup( _receiver.listAnimalsInHabitat(idHabitat));
+      _display.popup( _receiver.listAnimalsInHabitat(idHabitat).stream().sorted().collect(Collectors.toList()));
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     }
