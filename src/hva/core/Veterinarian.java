@@ -1,18 +1,17 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfaction.VeterinarianSatisfaction;
 import java.util.Collection;
-import java.util.Map;
+import java.util.HashSet;
 
 /**
  * Represents a veterinarian that works in a Vet Hotel.
  */
 public class Veterinarian extends Employee {
-  private Map<String, Species> _knowsHowToVaccinate;
+  private Collection<Species> _knowsHowToVaccinate;
   private VeterinarianSatisfaction _satisfactionMethod;
 
   /**
@@ -23,7 +22,7 @@ public class Veterinarian extends Employee {
    */
   Veterinarian(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.VETERINARIAN, hotel);
-    _knowsHowToVaccinate = new CaseInsensitiveHashMap<>();
+    _knowsHowToVaccinate = new HashSet<>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
     
@@ -46,7 +45,7 @@ public class Veterinarian extends Employee {
    * @return the collection of assign habitats
    */
   Collection<Species> getKnownSpecies() {
-    return _knowsHowToVaccinate.values();
+    return _knowsHowToVaccinate;
   } 
 
   /**
@@ -59,7 +58,7 @@ public class Veterinarian extends Employee {
   @Override
   void addResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
-      _knowsHowToVaccinate.put(id, this.hotel().identifySpecies(id));
+      _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
     this.hotel().identifySpecies(id).addQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
       throw new UnknownResponsibilityIdException(id, e);
@@ -76,7 +75,7 @@ public class Veterinarian extends Employee {
   @Override
   void removeResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
-      _knowsHowToVaccinate.remove(id);
+      _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
       this.hotel().identifySpecies(id).removeQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
       throw new UnknownResponsibilityIdException(id, e);
@@ -92,7 +91,7 @@ public class Veterinarian extends Employee {
    */
   @Override
   String getIdResponsibilities() {
-    return _knowsHowToVaccinate.values().stream()
+    return _knowsHowToVaccinate.stream()
     .sorted()
     .map(Species::id)
     .reduce((id1, id2) -> id1 + "," + id2)
@@ -109,10 +108,9 @@ public class Veterinarian extends Employee {
    */
   VaccinationRecord vaccinate(Vaccine vaccine, Animal animal)
   throws EmployeeNotResponsibleException {
-    if(!_knowsHowToVaccinate.containsKey(animal.species().id()))
+    if(!_knowsHowToVaccinate.contains(animal.species()))
       throw new EmployeeNotResponsibleException(animal.species().id());
-    HealthStatus animalHealthStatus = vaccine.determineVaccineEffect(animal);
-    animal.updateHealthHistory(animalHealthStatus);
+    animal.updateHealthHistory(vaccine.determineVaccineEffect(animal));
     vaccine.incrementNumApplications();
     return new VaccinationRecord(vaccine, this, animal);
   }

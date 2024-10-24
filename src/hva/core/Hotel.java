@@ -20,7 +20,6 @@ import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnknownVaccineIdException;
 import hva.core.exception.UnrecognizedEntryException;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.observers.HotelObserver;
 import hva.core.observers.HotelSubject;
@@ -31,10 +30,11 @@ import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Represents a Vet Hotel.
@@ -61,7 +61,7 @@ public class Hotel implements  HotelSubject {
    */
   public Hotel() {
     _filename = null;
-    _hotelObservers = new ArrayList<>();
+    _hotelObservers = new HashSet<>();
     _unsavedChanges = false;
     _currentSeason = Season.Spring; // The hotel starts in the Spring season.
     _habitats = new CaseInsensitiveHashMap<>();
@@ -69,8 +69,8 @@ public class Hotel implements  HotelSubject {
     _speciesByName = new HashMap<>();
     _employees = new CaseInsensitiveHashMap<>();
     _vaccines = new CaseInsensitiveHashMap<>();
-    // Used array list instead of linkedlist because less memory overhead
-    // since we are only adding to the end of the list O(1) complexity anyways
+    /* Used array list instead of linkedlist due to less memory overhead
+    since we are only adding to the end of the list O(1) complexity anyways*/
     _vaccinationRecords = new ArrayList<>();
   }
 
@@ -144,9 +144,7 @@ public class Hotel implements  HotelSubject {
    */
   @Override
   public void notifyHotelObservers() {
-    for(HotelObserver observer : _hotelObservers) {
-      observer.update(true);
-    }
+    _hotelObservers.forEach(observer -> observer.update(true));
   }
 
   /**
@@ -154,12 +152,10 @@ public class Hotel implements  HotelSubject {
    */
   int nextSeason() {
     _currentSeason = _currentSeason.nextSeason();
-    for (Habitat habitat : _habitats.values())
-      habitat.nextSeason(_currentSeason);
+    _habitats.values().forEach(habitat -> habitat.nextSeason(_currentSeason));
     notifyHotelObservers();
-    return this.currentSeason().id();
+    return _currentSeason.id();
   }
-
 
   /**
    * Checks if the tree alreay exists on one of the habitats in the hotel
@@ -168,11 +164,8 @@ public class Hotel implements  HotelSubject {
    * @return true if it alredy exists fasle if not
   */  
   boolean treeAlreadyExists(String id) {
-    for (Habitat habitat : _habitats.values()) {
-      if (habitat.identifyTree(id) == null)
-        return false;
-    }
-    return true;
+    return _habitats.values().stream()
+    .anyMatch(habitat -> habitat.identifyTree(id) != null);
   }
 
   /**
@@ -200,10 +193,9 @@ public class Hotel implements  HotelSubject {
    */
   public Animal identifyAnimal(String idAnimal)
   throws UnknownAnimalIdException {
-    for(Habitat habitat : _habitats.values()) {
+    for(Habitat habitat : _habitats.values())
       if(habitat.containsAnimal(idAnimal))
         return habitat.identifyAnimal(idAnimal);
-    }
     throw new UnknownAnimalIdException(idAnimal);
   }
 
@@ -248,9 +240,8 @@ public class Hotel implements  HotelSubject {
   public Veterinarian identifyVet(String idVet)
   throws UnknownEmployeeIdException {
     Employee employee = identifyEmployee(idVet);
-    if (employee.type().toString() != EmployeeType.VETERINARIAN.toString()) {
+    if (!(employee.type().equals(EmployeeType.VETERINARIAN)))
       throw new UnknownEmployeeIdException(idVet);
-    }
     return (Veterinarian) employee;
   }
 
@@ -281,12 +272,10 @@ public class Hotel implements  HotelSubject {
    */
   public Habitat registerHabitat(String id, String name, int area)
     throws DuplicateHabitatIdException {
-    if (_habitats.containsKey(id))
+    if (_habitats.putIfAbsent(id, new Habitat(id, name, area)) != null)
       throw new DuplicateHabitatIdException(id);
-    Habitat habitat = new Habitat(id, name, area);
-    _habitats.put(id, habitat);
     notifyHotelObservers();
-    return habitat;
+    return _habitats.get(id);
   }
 
   /**
@@ -314,11 +303,8 @@ public class Hotel implements  HotelSubject {
   }
 
   private boolean animalAlreadyExists(String idAnimal) {
-    for(Habitat habitat : _habitats.values()) {
-      if(habitat.containsAnimal(idAnimal))
-        return true;
-    }
-    return false;
+    return _habitats.values().stream()
+    .anyMatch(habitat -> habitat.containsAnimal(idAnimal));
   }
 
   public boolean speciesAlreadyExists(String idSpecies) {
@@ -335,12 +321,14 @@ public class Hotel implements  HotelSubject {
    */
   public void registerSpecies(String id, String name)
   throws DuplicateSpeciesIdException, DuplicateSpeciesNameException {
-    if (_species.containsKey(id))
+    if (speciesAlreadyExists(id))
       throw new DuplicateSpeciesIdException(id);
     if (_speciesByName.containsKey(name))
       throw new DuplicateSpeciesNameException(name);
-    Species species = new Species(id, name);
-    _species.put(id, species);
+    // Only adds the species if both the id and the name are unique
+    Species newSpecies = new Species(id, name);
+    _species.put(id, newSpecies);
+    _speciesByName.put(name, newSpecies);
     notifyHotelObservers();
   }
 
@@ -387,13 +375,12 @@ public class Hotel implements  HotelSubject {
    */
   public void registerVaccine(String idVaccine, String name, String[] speciesIds)
   throws UnknownSpeciesIdException, DuplicateVaccineIdException {
-    if (_vaccines.containsKey(idVaccine))
-      throw new DuplicateVaccineIdException(idVaccine);
     List<Species> speciesList = new ArrayList<>();
     for (String id : speciesIds)
       speciesList.add(identifySpecies(id));
-    Vaccine vaccine = new Vaccine(idVaccine, name, speciesList);
-    _vaccines.put(idVaccine, vaccine);
+    if (_vaccines.putIfAbsent(idVaccine,
+    new Vaccine(idVaccine, name, speciesList)) != null)
+      throw new DuplicateVaccineIdException(idVaccine);
     notifyHotelObservers();
   }
 
@@ -411,13 +398,9 @@ public class Hotel implements  HotelSubject {
     Vaccine vaccine = identifyVaccine(idVaccine);
     Veterinarian vet = identifyVet(idVet);
     Animal animal = identifyAnimal(idAnimal);
-    boolean vaccineApropriated = true;
-    if(!vaccine.isSpeciesApropriated(animal.species()))
-      vaccineApropriated = false;
-    VaccinationRecord record = vet.vaccinate(vaccine, animal);
-    _vaccinationRecords.add(record);
+    _vaccinationRecords.add(vet.vaccinate(identifyVaccine(idVaccine), animal));
     notifyHotelObservers();
-    return vaccineApropriated;
+    return vaccine.isSpeciesApropriated(animal.species());
   }
 
   /**
@@ -465,14 +448,12 @@ public class Hotel implements  HotelSubject {
    * in one habitat
    * @throws InvalidTreeTypeException if the type of the new tree doesnt exist
    */
-  public Tree addTreeToHabitat(String idHabitat, String id, String name, int age,
-  int difficulty, String type) throws UnknownHabitatIdException,
+  public Tree addTreeToHabitat(String idHabitat, String id, String name,
+  int age, int difficulty, String type) throws UnknownHabitatIdException,
   DuplicateTreeIdException, InvalidTreeTypeException {
-    Habitat habitat = identifyHabitat(idHabitat);
-    Tree tree = habitat.plantTree(id, name, age, difficulty, type,
-    _currentSeason, this);
-    notifyHotelObservers();
-    return tree;
+    return identifyHabitat(idHabitat).plantTree(id, name, age, difficulty,
+    type, _currentSeason, this);
+    // Plant tree notifies the hotel observers and adds a new tree observer.
   }
 
   /**
@@ -519,9 +500,7 @@ public class Hotel implements  HotelSubject {
    */
   public void transferAnimalToHabitat(String idAnimal, String idHabitat)
   throws UnknownAnimalIdException, UnknownHabitatIdException {
-    Animal animal = identifyAnimal(idAnimal);
-    Habitat habitat = identifyHabitat(idHabitat);
-    animal.changeHabitat(habitat);
+    identifyAnimal(idAnimal).changeHabitat(identifyHabitat(idHabitat));
     notifyHotelObservers();
   }
 
@@ -544,14 +523,9 @@ public class Hotel implements  HotelSubject {
    * representation of all animals in the hotel
    */
   public Collection<Animal> listAnimals() {
-    List<Animal> allAnimals = new ArrayList<>();
-    for (Habitat habitat : _habitats.values())
-      allAnimals.addAll(habitat.listAnimals());
-    // Animals need to be sorted by id since they are only sorted
-    // for each habitat
-    allAnimals.sort(Comparator.comparing(Animal::id,
-    CaseInsensitiveComparator.getComparator()));
-    return Collections.unmodifiableCollection(allAnimals);
+    return _habitats.values().stream()
+    .flatMap(habitat -> habitat.listAnimals().stream())
+    .collect(Collectors.toUnmodifiableList());
   }
 
   /**
@@ -623,12 +597,9 @@ public class Hotel implements  HotelSubject {
   public Collection<VaccinationRecord> listAnimalVaccinationHistory(String id)
   throws UnknownAnimalIdException {
     Animal animal = identifyAnimal(id);
-    List<VaccinationRecord> animalVaccinationHistory = new ArrayList<>();
-    for(VaccinationRecord record : _vaccinationRecords) {
-      if(record.animal().equals(animal))
-        animalVaccinationHistory.add(record);
-    }
-    return Collections.unmodifiableCollection(animalVaccinationHistory);
+    return _vaccinationRecords.stream()
+    .filter(record -> record.animal().equals(animal))
+    .collect(Collectors.toUnmodifiableList());
   }
 
   /** 
@@ -642,12 +613,9 @@ public class Hotel implements  HotelSubject {
   public Collection<VaccinationRecord> listVetVaccinationRecords(String id)
   throws UnknownEmployeeIdException {
     Veterinarian vet = identifyVet(id);
-    List<VaccinationRecord> vetVaccinationRecords = new ArrayList<>();
-    for(VaccinationRecord record : _vaccinationRecords) {
-      if(record.vet().equals(vet))
-        vetVaccinationRecords.add(record);
-    }
-    return Collections.unmodifiableCollection(vetVaccinationRecords);
+    return _vaccinationRecords.stream()
+    .filter(record -> record.vet().equals(vet))
+    .collect(Collectors.toUnmodifiableList());
   }
 
   /**
@@ -658,12 +626,9 @@ public class Hotel implements  HotelSubject {
    * representation of all erroneous vaccination records
    */
   public Collection<VaccinationRecord> listErroneousVaccinations() {
-    List<VaccinationRecord> erroneousVaccination = new ArrayList<>();
-    for(VaccinationRecord record : _vaccinationRecords) {
-      if(!record.damage().equals(HealthStatus.NORMAL.toString()))
-        erroneousVaccination.add(record);
-    }
-    return Collections.unmodifiableCollection(erroneousVaccination);
+    return _vaccinationRecords.stream()
+    .filter(record -> !record.damage().equals(HealthStatus.NORMAL.toString()))
+    .collect(Collectors.toUnmodifiableList());
   }
 
   /**
@@ -699,12 +664,11 @@ public class Hotel implements  HotelSubject {
    * @return the global satisfaction level of the hotel
    */
   public double calculateGlobalSatisfaction() {
-    double globalSatisfaction = 0;
-    for (Employee employee : _employees.values())
-      globalSatisfaction += employee.calculateSatisfaction();
-    for (Habitat habitat : _habitats.values())
-      globalSatisfaction += habitat.calculateAnimalsSatisfaction();
-    return globalSatisfaction;
+    return _employees.values().stream()
+    .mapToDouble(Employee::calculateSatisfaction)
+    .sum() + _habitats.values().stream()
+    .mapToDouble(Habitat::calculateAnimalsSatisfaction)
+    .sum();
   }
 
   /**
@@ -716,8 +680,7 @@ public class Hotel implements  HotelSubject {
    **/
   void importFile(String filename) throws UnrecognizedEntryException,
   IOException, ImportFileException {
-    var parser = new Parser(this);
-    parser.parseFile(filename);
+    new Parser(this).parseFile(filename);
     notifyHotelObservers();
   }
 }

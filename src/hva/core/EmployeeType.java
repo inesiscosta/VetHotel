@@ -1,5 +1,7 @@
 package hva.core;
 
+import java.util.Arrays;
+
 /**
  * Enumerates the types of employees that can work for a Vet Hotel.
  */
@@ -35,10 +37,8 @@ enum EmployeeType {
    * @return the EmployeeType corresponding to the string
    */
   static EmployeeType stringToEnum(String pt) {
-    for (EmployeeType employeeType : EmployeeType.values()) {
-      if (employeeType.toString().equals(pt))
-        return employeeType;
-    }
-    return null;
+    return Arrays.stream(EmployeeType.values())
+    .filter(employeeType -> employeeType.toString().equals(pt))
+    .findFirst().orElse(null);
   }
 }

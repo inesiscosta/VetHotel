@@ -1,5 +1,7 @@
 package hva.core;
 
+import java.util.Arrays;
+
 /**
  * Enumerates the influences of an habitat in a animal.
  */
@@ -16,7 +18,7 @@ enum Influence {
    * @param value the Influence value
   */
   Influence(int value) {
-      this._value = value;
+    this._value = value;
   }
 
   /**
@@ -25,7 +27,7 @@ enum Influence {
    * @return the Influence int value
    */
   int value() {
-      return _value;
+    return _value;
   }
 
   /**
@@ -35,10 +37,9 @@ enum Influence {
    * @return the Influence corresponding to the string
    */
   static Influence stringToEnum(String influenceString) {
-    for(Influence influence : Influence.values())
-        if(influence.toString().equals(influenceString))
-            return influence;
-    return null;
+    return Arrays.stream(Influence.values())
+    .filter(influence -> influence.toString().equals(influenceString))
+    .findFirst().orElse(null);
   }
 }
 

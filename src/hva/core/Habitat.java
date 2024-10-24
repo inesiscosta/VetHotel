@@ -257,6 +257,7 @@ class Habitat extends NamedEntity implements TreeSubject {
     }
     _trees.put(id,tree);
     addTreeObserver(tree); //It adds the new Tree observer
+    hotel.notifyHotelObservers();
     return tree;
   }
 

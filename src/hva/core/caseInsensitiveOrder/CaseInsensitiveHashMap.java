@@ -39,6 +39,11 @@ extends HashMap<String, T> {
     return super.containsKey(((String)key).toLowerCase());
   }
 
+  @Override
+  public T putIfAbsent(String key, T value) {
+    return super.putIfAbsent(key.toLowerCase(), value);
+  }
+
   /**
    * Removes the object from the map with the key in lower case.
    */

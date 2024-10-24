@@ -17,9 +17,36 @@ import java.io.ObjectOutputStream;
  * Vet hotel.
  **/
 public class HotelManager implements HotelObserver {
-  // The current zoo hotel 
+  
   private Hotel _hotel;
+
   public HotelManager() {
+    _hotel = new Hotel();
+    _hotel.addHotelObserver(this);
+  }
+
+  /**
+   * Checks if the hotel is associated with a file
+   * 
+   * @return true if the hotel is associated with a file, false otherwise
+   */
+  public boolean isAssociated() {
+    return (_hotel.getAssociatedFilename() != null);
+  }
+
+  /**
+   * Returns the zoo hotel managed by this instance.
+   *
+   * @return the current zoo hotel
+   **/
+  public final Hotel getHotel() {
+    return _hotel;
+  }
+
+  /**
+   * Creates a new hotel with a anonymous file associated
+   */
+  public void newHotel() {
     _hotel = new Hotel();
     _hotel.addHotelObserver(this);
   }
@@ -35,44 +62,29 @@ public class HotelManager implements HotelObserver {
   } 
 
   /**
-   * Checks if the hotel is associated with a file
-   */
-  public boolean isAssociated() {
-    return (_hotel.getAssociatedFilename() != null);
-  }
-
-  /**
    * Advacances the season in the hotels
+   * 
+   * @return the next season
    */
   public int nextSeason() {
     return _hotel.nextSeason();
   }
 
   /**
-   * Creates a new hotel with a anonymous file associated
-   */
-  public void newHotel() {
-    _hotel = new Hotel();
-    _hotel.addHotelObserver(this);
-  }
-
-  /**
    * Saves the serialized application's state into the file
    * associated to the current network.
    *
-   * @throws FileNotFoundException if the file cannot be created or opened
    * @throws MissingFileAssociationException if the current network
    * doesnt have a file
+   * @throws FileNotFoundException if the file cannot be created or opened
    * @throws IOException if there is some error while serializing
    * the state of the network to disk
    **/
-  public void save() throws FileNotFoundException,
-  MissingFileAssociationException, IOException {
-    if(isAssociated()) {
-      saveAs(_hotel.getAssociatedFilename());
-    } else {
+  public void save() throws MissingFileAssociationException,
+  FileNotFoundException, IOException {
+    if (!isAssociated())
       throw new MissingFileAssociationException();
-    }
+    saveAs(_hotel.getAssociatedFilename());
   }
   
   /**
@@ -82,25 +94,20 @@ public class HotelManager implements HotelObserver {
    * @param filename the name of the file
    * @throws FileNotFoundException if for some reason the file 
    * cannot be created or opened
-   * @throws MissingFileAssociationException if the current network
-   * does not have a file
    * @throws IOException if there is some error while serializing
    * the state of the network to disk
    **/
-  public void saveAs(String filename) throws FileNotFoundException,
-  MissingFileAssociationException, IOException {
-    if(isAssociated() && !(_hotel.getAssociatedFilename().equals(filename)))
-      //This should never happen in the current implementation  
-      throw new MissingFileAssociationException();
+  public void saveAs(String filename) throws FileNotFoundException , IOException {
     _hotel.setAssociatedFilename(filename);
-    FileOutputStream file = new FileOutputStream(filename);
-    ObjectOutputStream exportedHotel = new ObjectOutputStream(file);
+    ObjectOutputStream exportedHotel = new ObjectOutputStream(new FileOutputStream(filename));
     update(false);
     exportedHotel.writeObject(_hotel);
     exportedHotel.close();
   }
   
   /**
+   * Loads the serialized application's state from the specified file.
+   * 
    * @param filename name of the file containing the serialized 
    * application's state to load.
    * @throws UnavailableFileException if the specified file does
@@ -131,13 +138,4 @@ public class HotelManager implements HotelObserver {
       throw new ImportFileException(filename, e);
     }
   } 
-  
-  /**
-   * Returns the zoo hotel managed by this instance.
-   *
-   * @return the current zoo hotel
-   **/
-  public final Hotel getHotel() {
-    return _hotel;
-  }
 }

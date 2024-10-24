@@ -17,7 +17,7 @@ public enum Leaf {
    * @param pt the leaf type String representation in Portuguese
    */
   Leaf (String pt) {
-      this._pt = pt;
+    this._pt = pt;
   }
 
   /**
@@ -27,6 +27,6 @@ public enum Leaf {
    */
   @Override
   public String toString() {
-      return _pt;
+    return _pt;
   }
 }

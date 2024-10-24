@@ -23,7 +23,6 @@ class DoShowAllHabitats extends Command<Hotel> {
         return Stream.concat(Stream.of(habitat),
         _receiver.listAllTreesHabitat(habitat.id()).stream().sorted());
       } catch (UnknownHabitatIdException e) {
-        e.printStackTrace(); // This error will never happen
         return Stream.empty();
       }
     }).collect(Collectors.toList());
