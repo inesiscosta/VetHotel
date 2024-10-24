@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * Represents a habitat in a Vet Hotel.
  */
-public class Habitat extends NamedEntity implements TreeSubject {
+class Habitat extends NamedEntity implements TreeSubject {
   private int _area;
   private Map<String, Animal> _animals;
   private Map<String, ZooKeeper> _assignedKeepers;
