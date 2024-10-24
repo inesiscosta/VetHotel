@@ -16,6 +16,7 @@ class DoShowAllVaccines extends Command<Hotel> {
 
   @Override
   protected final void execute() {
-    _display.popup(_receiver.listVaccines().stream().sorted().collect(Collectors.toList()));
+    _display.popup(_receiver.listVaccines().stream().sorted()
+    .collect(Collectors.toList()));
   }
 }

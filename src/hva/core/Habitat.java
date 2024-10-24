@@ -3,12 +3,10 @@ package hva.core;
 import hva.core.exception.DuplicateTreeIdException;
 import hva.core.exception.InvalidTreeTypeException;
 import hva.core.exception.UnknownAnimalIdException;
-
 import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.observers.TreeObserver;
 import hva.core.observers.TreeSubject;
 import hva.core.season.Season;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;

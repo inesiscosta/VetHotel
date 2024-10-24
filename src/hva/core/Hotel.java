@@ -19,12 +19,10 @@ import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnknownVaccineIdException;
 import hva.core.exception.UnrecognizedEntryException;
-
 import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.observers.HotelObserver;
 import hva.core.observers.HotelSubject;
 import hva.core.season.Season;
-
 import java.io.IOException;
 import java.io.Serial;
 import java.util.ArrayList;

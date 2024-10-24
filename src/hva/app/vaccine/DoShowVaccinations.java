@@ -14,6 +14,8 @@ class DoShowVaccinations extends Command<Hotel> {
   
   @Override
   protected final void execute() {
+    /* By default the records are pre-sorted from core by the order the
+    vaccines were applied. App could provide a way to sort by other criteria.*/
     _display.popup(_receiver.listVaccinationRecords());
   }
 }

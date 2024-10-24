@@ -14,7 +14,6 @@ import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnrecognizedEntryException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

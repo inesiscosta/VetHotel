@@ -17,15 +17,15 @@ class DoShowAllHabitats extends Command<Hotel> {
   
   @Override
   protected void execute() {
-    var habitatsList = _receiver.listHabitats().stream().sorted();
-    var displayList = habitatsList.flatMap(habitat -> {
+    var habitatsAndTheirTrees = _receiver.listHabitats().stream().sorted()
+    .flatMap(habitat -> {
       try {
         return Stream.concat(Stream.of(habitat),
         _receiver.listAllTreesHabitat(habitat.id()).stream().sorted());
       } catch (UnknownHabitatIdException e) {
-        return Stream.empty();
+        return Stream.empty(); // This will never happen.
       }
     }).collect(Collectors.toList());
-    _display.popup(displayList);
+    _display.popup(habitatsAndTheirTrees);
   }
 }

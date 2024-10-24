@@ -22,7 +22,8 @@ class DoShowAllTreesInHabitat extends Command<Hotel> {
   protected void execute() throws CommandException {
     var id = stringField("id");
     try {
-      _display.popup(_receiver.listAllTreesHabitat(id).stream().sorted().collect(Collectors.toList()));
+      _display.popup(_receiver.listAllTreesHabitat(id).stream()
+      .sorted().collect(Collectors.toList()));
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(id);
     }
