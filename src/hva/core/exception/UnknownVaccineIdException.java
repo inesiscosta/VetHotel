@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an unknown vaccine id exception.
  */
 public class UnknownVaccineIdException extends UnknownIdException {
-
-  @Serial
-  private static final long serialVersionUID = 202410232300L;
 
   private static final String SPECIFIC_ERROR_MESSAGE = "Vaccine id";
 

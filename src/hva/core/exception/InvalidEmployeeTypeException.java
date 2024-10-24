@@ -1,15 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an invalid employee type exception.
  **/
 public class InvalidEmployeeTypeException extends Exception {
-
-  @Serial
-  private static final long serialVersionUID = 202410232248L;
-  
   /**
    * @param message The error message
    **/

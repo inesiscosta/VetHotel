@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class to represent a duplicate id exception.
  */
 public abstract class DuplicateIdException extends Exception {
-
-  @Serial
-  private static final long serialVersionUID = 202410232240L;;
   
   private static final String ERROR_MESSAGE = "Duplicate id: ";
   

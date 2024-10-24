@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an problem occuring during the parsing of an import file.
  */
 public class ImportFileException extends Exception {
-
-  @Serial
-  private static final long serialVersionUID = 202410232246L;
   
   private static final String ERROR_MESSAGE = "Erro a processar ficheiro de import: ";
   

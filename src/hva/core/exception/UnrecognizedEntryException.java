@@ -1,15 +1,10 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Thrown when the application processes an entry of the import file with an
  * unknown format.
  **/
 public class UnrecognizedEntryException extends Exception {
-
-  @Serial
-  private static final long serialVersionUID = 202410232301L;
   
   /** Unrecognized entry specification. */
   private final String _entrySpecification;

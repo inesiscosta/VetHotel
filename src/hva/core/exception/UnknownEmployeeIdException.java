@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an unknown Employee id exception.
  */
 public class UnknownEmployeeIdException extends UnknownIdException {
-
-  @Serial
-  private static final long serialVersionUID = 202410232255L;
 
   private static final String SPECIFIC_ERROR_MESSAGE = "Employee id";
 

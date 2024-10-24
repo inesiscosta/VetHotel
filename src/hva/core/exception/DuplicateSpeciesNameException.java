@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an exception for a duplicate species name.
  */
 public class DuplicateSpeciesNameException extends Exception {
-
-  @Serial
-  private static final long serialVersionUID = 202410232242L;
 
   private static final String ERROR_MESSAGE = "Duplicated Species name: ";
   

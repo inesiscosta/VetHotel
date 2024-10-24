@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing a duplicate employee id exception.
  */
 public class DuplicateEmployeeIdException extends DuplicateIdException {
-
-  @Serial
-  private static final long serialVersionUID = 202410232239L;
 
   private static final String SPECIFIC_ERROR_MESSAGE = "Employee id: ";
   

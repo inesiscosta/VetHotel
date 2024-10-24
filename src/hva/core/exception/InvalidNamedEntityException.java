@@ -1,15 +1,10 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
   /**
    * Class for representing an invalid named entity exception.
    **/
 public class InvalidNamedEntityException extends Exception {
 
-  @Serial
-  private static final long serialVersionUID = 202410232249L;
-  
   /**
    * Constructor for the exception.
    * 

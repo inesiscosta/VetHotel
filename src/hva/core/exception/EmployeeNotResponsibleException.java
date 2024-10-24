@@ -1,14 +1,9 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class for representing an employee not responsible exception.
  */
 public class EmployeeNotResponsibleException extends Exception {
-
-  @Serial
-  private static final long serialVersionUID = 202410232245L;
 
   private static final String ERROR_MESSAGE = "Employee is not responsible for: ";
   

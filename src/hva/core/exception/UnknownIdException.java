@@ -1,15 +1,10 @@
 package hva.core.exception;
 
-import java.io.Serial;
-
 /**
  * Class to represent an unknown id exception.
  */
 public abstract class UnknownIdException extends Exception {
 
-  @Serial
-  private static final long serialVersionUID = 202410232257L;
-  
   private static final String ERROR_MESSAGE = "Unknown id: ";
   
     /**
