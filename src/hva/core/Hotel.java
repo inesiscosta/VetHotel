@@ -19,10 +19,10 @@ import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnknownVaccineIdException;
 import hva.core.exception.UnrecognizedEntryException;
-import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.observers.HotelObserver;
 import hva.core.observers.HotelSubject;
 import hva.core.season.Season;
+
 import java.io.IOException;
 import java.io.Serial;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
 public class Hotel implements  HotelSubject {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410242347L;
   
   private Season _currentSeason;
   private Map<String,Habitat> _habitats;

@@ -3,6 +3,8 @@ package hva.core;
 import hva.core.satisfaction.VeterinarianSatisfaction;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
 
+import java.io.Serial;
+
 /**
  * Default methods used to calculate the satisfaction level of the diferent
  * types of employees.
@@ -10,7 +12,10 @@ import hva.core.satisfaction.ZooKeeperSatisfaction;
  */
 class CalculateEmployeeSatisfaction implements VeterinarianSatisfaction,
 ZooKeeperSatisfaction {
-    
+  
+  @Serial
+  private static final long serialVersionUID = 202410250004L;
+
   /**
    * Calculates the ZooKeeper's satisfaction level which depends on the
    * work effort of the assigned habitats and

@@ -1,14 +1,19 @@
 package hva.core;
 
+import java.io.Serial;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.HashSet;
 
 /**
  * Represents a vaccine in a Vet Hotel.
  */
 class Vaccine extends NamedEntity {
+
+  @Serial
+  private static final long serialVersionUID = 202410242352L;
+
   private int _numApplications;
   private Collection<Species> _appropiateSpecies;
 

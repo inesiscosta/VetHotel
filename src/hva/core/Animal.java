@@ -1,6 +1,8 @@
 package hva.core;
 
 import hva.core.satisfaction.AnimalSatisfaction;
+
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -8,6 +10,10 @@ import java.util.Collection;
  * Represents an Animal in a Vet Hotel.
  */
 public class Animal extends NamedEntity {
+
+  @Serial
+  private static final long serialVersionUID = 202410252342L;
+
   private Habitat _habitat;
   private Collection<HealthStatus> _healthHistory;
   private AnimalSatisfaction _satisfactionMethod;

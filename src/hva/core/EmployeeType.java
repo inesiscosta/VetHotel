@@ -1,5 +1,6 @@
 package hva.core;
 
+import java.io.Serial;
 import java.util.Arrays;
 
 /**
@@ -8,6 +9,9 @@ import java.util.Arrays;
 enum EmployeeType {
   VETERINARIAN ("VET"),
   ZOOKEEPER ("TRT");
+
+  @Serial
+  private static final long serialVersionUID = 202410242359L;
 
   private final String _pt;
   

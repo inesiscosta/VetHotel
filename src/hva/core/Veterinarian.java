@@ -4,6 +4,8 @@ import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.satisfaction.VeterinarianSatisfaction;
+
+import java.io.Serial;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -11,6 +13,10 @@ import java.util.HashSet;
  * Represents a veterinarian that works in a Vet Hotel.
  */
 public class Veterinarian extends Employee {
+
+  @Serial
+  private static final long serialVersionUID = 202410242353L;
+
   private Collection<Species> _knowsHowToVaccinate;
   private VeterinarianSatisfaction _satisfactionMethod;
 

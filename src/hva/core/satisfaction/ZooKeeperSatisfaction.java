@@ -1,6 +1,7 @@
 package hva.core.satisfaction;
 
 import hva.core.ZooKeeper;
+
 import java.io.Serializable;
 
 /**

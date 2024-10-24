@@ -1,6 +1,7 @@
 package hva.core.satisfaction;
 
 import hva.core.Animal;
+
 import java.io.Serializable;
 
 /**

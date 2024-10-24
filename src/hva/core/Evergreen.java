@@ -3,10 +3,15 @@ package hva.core;
 import hva.core.exception.InvalidSeasonException;
 import hva.core.season.Season;
 
+import java.io.Serial;
+
 /**
  * Represents an Evergreen Tree planted in a habitat of a Vet Hotel.
  */
 class Evergreen extends Tree {
+
+  @Serial
+  private static final long serialVersionUID = 202410242345L;
 
   /**
    * Creates a new Evergreen Tree.

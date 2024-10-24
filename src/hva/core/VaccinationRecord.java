@@ -9,7 +9,7 @@ import java.io.Serializable;
 class VaccinationRecord implements Serializable {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410242351L;
 
   private HealthStatus _damage;
   private Vaccine _administeredVaccine;

@@ -1,12 +1,16 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
+import java.io.Serial;
 import java.util.Map;
 
 /**
  * Represents a species of animals found in a Vet Hotel.
  */
 class Species extends NamedEntity {
+
+  @Serial
+  private static final long serialVersionUID = 202410242349L;
+
   private Map<String, Animal> _animals;
   private Map<String, Veterinarian> _qualifiedVets;
     

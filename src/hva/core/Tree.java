@@ -2,12 +2,18 @@ package hva.core;
 
 import hva.core.observers.TreeObserver;
 import hva.core.season.Season;
+
+import java.io.Serial;
 import static java.lang.Math.log;
 
 /**
  * Represents a generic tree in the Vet Hotel.
  */
 abstract class Tree extends NamedEntity implements TreeObserver {
+
+  @Serial
+  private static final long serialVersionUID = 202410242350L;
+
   private int _age;
   private int _baseCleaningDifficulty;
   private final TreeType _treeType;

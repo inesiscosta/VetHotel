@@ -2,6 +2,8 @@ package hva.core;
 
 import hva.core.exception.InvalidDamageValueException;
 
+import java.io.Serial;
+
 /**
  * Enumerates the possible effects of a vaccine on an animal.
  */
@@ -11,6 +13,9 @@ enum HealthStatus {
   ACCIDENT("ACIDENTE"),
   ERROR("ERRO");
   
+  @Serial
+  private static final long serialVersionUID = 202410242358L;
+
   private final String _pt;
 
   /**

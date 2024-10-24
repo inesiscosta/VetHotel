@@ -1,6 +1,5 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveComparator;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -13,7 +12,7 @@ public abstract class NamedEntity implements
 Comparable<NamedEntity>, Serializable {
 
   @Serial
-  private static final long serialVersionUID = 202407081733L;
+  private static final long serialVersionUID = 202410242348L;
 
   private final String _id;
   private final String _name;
@@ -70,8 +69,7 @@ Comparable<NamedEntity>, Serializable {
    */
   @Override
   public int compareTo(NamedEntity other) {
-    return CaseInsensitiveComparator.getComparator().
-    compare(this._id,other.id());
+    return this._id.compareToIgnoreCase(other.id());
   }
 
   /**

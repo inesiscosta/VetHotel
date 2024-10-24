@@ -2,10 +2,16 @@ package hva.core.season;
 
 import hva.core.Leaf;
 
+import java.io.Serial;
+
 /**
  * Implements the Season Winter with the respective effects in the trees.
  */
 public class Winter implements SeasonState {
+
+  @Serial
+  private static final long serialVersionUID = 202410250007L;
+
   private final int _id = 3;
 
   /**

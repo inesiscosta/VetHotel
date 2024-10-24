@@ -1,6 +1,5 @@
-package hva.core.caseInsensitiveOrder;
+package hva.core;
 
-import hva.core.NamedEntity;
 import java.io.Serial;
 import java.util.HashMap;
 
@@ -13,7 +12,7 @@ public class CaseInsensitiveHashMap<T extends NamedEntity>
 extends HashMap<String, T> {
 
   @Serial
-  private static final long serialVersionUID = 202410232303L;
+  private static final long serialVersionUID = 202410250009L;
 
   /**
   * Puts the object in the map with the key in lower case.

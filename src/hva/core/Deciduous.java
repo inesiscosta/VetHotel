@@ -3,10 +3,16 @@ package hva.core;
 import hva.core.exception.InvalidSeasonException;
 import hva.core.season.Season;
 
+import java.io.Serial;
+
 /**
  * Represents a Deciduous Tree planted in a habitat of a Vet Hotel.
  */
 class Deciduous extends Tree {
+
+  @Serial
+  private static final long serialVersionUID = 202410242343L;
+
   /**
    * Creates a new Deciduous Tree.
    * 

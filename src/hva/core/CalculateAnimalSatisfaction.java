@@ -2,10 +2,15 @@ package hva.core;
 
 import hva.core.satisfaction.AnimalSatisfaction;
 
+import java.io.Serial;
+
 /**
  * Calculates the satisfaction level of an animal in a habitat.
  */
 class CalculateAnimalSatisfaction implements AnimalSatisfaction {
+
+  @Serial
+  private static final long serialVersionUID = 202410250003L;
 
   /**
    * Calculates the animal's satisfaction level based on the number of animals

@@ -1,11 +1,18 @@
 package hva.core;
 
+import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
+
+import java.io.Serial;
 
 /**
  * Represents an employee working in a Vet Hotel.
  */
 abstract class Employee extends NamedEntity {
+
+  @Serial
+  private static final long serialVersionUID = 202410242344L;
+
   private final EmployeeType _employeeType;
   private Hotel _hotel;
 

@@ -1,5 +1,6 @@
 package hva.core;
 
+import java.io.Serial;
 import java.util.Arrays;
 
 /**
@@ -9,6 +10,9 @@ enum Influence {
   POS(20),
   NEG(-20),
   NEU(0);
+
+  @Serial
+  private static final long serialVersionUID = 202410242357L;
 
   private final int _value;
 

@@ -1,5 +1,7 @@
 package hva.core.season;
 
+import java.io.Serial;
+
 /**
  * Enumerates the seasons of the year.
  * The order of the seasons is Spring, Summer, Fall, Winter.
@@ -9,6 +11,9 @@ package hva.core.season;
   Summer(new Summer()),
   Fall(new Fall()),
   Winter(new Winter());
+
+  @Serial
+  private static final long serialVersionUID = 202410250002L;
 
   private final SeasonState _state;
 

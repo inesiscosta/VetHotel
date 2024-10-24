@@ -1,8 +1,8 @@
 package hva.core.observers;
 
-import java.io.Serializable;
-
 import hva.core.season.Season;
+
+import java.io.Serializable;
 
 /**
  * Interface for the Tree Observer.

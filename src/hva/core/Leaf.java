@@ -1,5 +1,7 @@
 package hva.core;
 
+import java.io.Serial;
+
 /**
  * Enumeration of the possible states of the leaves on a tree.
  */
@@ -8,6 +10,9 @@ public enum Leaf {
   WITHOUT_LEAVES("SEMFOLHAS"),
   GENERATING_LEAVES("GERARFOLHAS"),
   SHEDDING_LEAVES("LARGARFOLHAS");
+
+  @Serial
+  private static final long serialVersionUID = 202410242356L;
 
   private final String _pt;
 

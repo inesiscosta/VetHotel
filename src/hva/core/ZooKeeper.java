@@ -3,6 +3,8 @@ package hva.core;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
+
+import java.io.Serial;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -10,6 +12,10 @@ import java.util.HashSet;
  * Represents a ZooKeeper that works in a Vet Hotel.
  */
 public class ZooKeeper extends Employee {
+
+  @Serial
+  private static final long serialVersionUID = 202410242354L;
+
   private Collection<Habitat> _assignedHabitats;
   private ZooKeeperSatisfaction _satisfactionMethod;
 
