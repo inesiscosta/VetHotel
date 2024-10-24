@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Represents a habitat in a Vet Hotel.
@@ -22,10 +21,10 @@ import java.util.Set;
 class Habitat extends NamedEntity implements TreeSubject {
   private int _area;
   private Map<String, Animal> _animals;
-  private Set<ZooKeeper> _assignedKeepers;
+  private Collection<ZooKeeper> _assignedKeepers;
   private Map<String, Tree> _trees;
   private Map<Species, Influence> _influences;
-  private Set<TreeObserver> _treeObservers;
+  private Collection<TreeObserver> _treeObservers;
   
   /**
    * Creates a new Habitat.
