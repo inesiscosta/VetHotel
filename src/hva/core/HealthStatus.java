@@ -19,7 +19,7 @@ enum HealthStatus {
    * @param pt the healthstatus type String representation in Portuguese
    */
   HealthStatus (String pt) {
-      this._pt = pt;
+    this._pt = pt;
   }
 
   /**

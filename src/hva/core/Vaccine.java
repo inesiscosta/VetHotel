@@ -34,33 +34,6 @@ class Vaccine extends NamedEntity {
   boolean isSpeciesApropriated(Species species) {
     return _appropiateSpecies.contains(species);
   }
-  /**
-   * Gets the Vaccine object representation as a string containing
-   * information that describes said Vaccine.
-   * 
-   * @return the Vaccine object string representation
-   */
-  @Override
-  public String toString() {
-    StringBuilder result = new StringBuilder();
-    result.append("VACINA|")
-      .append(this.id()).append("|")
-      .append(this.name()).append("|")
-      .append(_numApplications)
-      .append(suitableSpeciesToString());
-    return result.toString();
-  }
-
-  private String suitableSpeciesToString() {
-    StringBuilder suitableSpecies = new StringBuilder();
-    suitableSpecies.append("|");
-    for (Species specie: _appropiateSpecies.stream().sorted()
-    .collect(Collectors.toList()))
-      suitableSpecies.append( specie.id()).append(",");
-    if(suitableSpecies.length() > 0)
-      suitableSpecies.setLength(suitableSpecies.length()-1);
-    return suitableSpecies.toString();
-  }
 
   /**
    * Increments the number of applications of the vaccine.
@@ -81,33 +54,44 @@ class Vaccine extends NamedEntity {
   HealthStatus determineVaccineEffect(Animal animal) throws
   IllegalStateException {
     boolean correctSpecies = _appropiateSpecies.contains(animal.species());
-      return HealthStatus.determineHealthStatus(calculateVaccineDamage(
-      animal), correctSpecies);
+      return HealthStatus.determineHealthStatus(
+      calculateVaccineDamage(animal), correctSpecies);
     }
 
   private int calculateVaccineDamage(Animal animal) {
-    Species speciesBiggestName =  biggestSpeciesName();
-    int commonCharacters = 0;
+    String biggestSpeciesName = speciesBiggestName().name();
     String speciesName = animal.species().name();
-    /*Converts a string to a list of characters using IntStream,
-    Stream<Character> and collects them to a list<character>*/
-    List<Character> nameCharsList =
-    speciesName.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
-    for (int i = 0; i < Math.min(speciesBiggestName.name().length(),
-    speciesName.length()); i++) {
-      if (nameCharsList.contains(speciesBiggestName.name().charAt(i)))
-        commonCharacters++;
-      }
-    return biggestSpeciesName().name().length() - commonCharacters;
+    long commonCharacters = speciesName.chars().mapToObj(c -> (char) c)
+    .filter(c -> biggestSpeciesName.indexOf(c) >= 0).count();
+    return biggestSpeciesName.length() - (int) commonCharacters;
   }
 
-  private Species biggestSpeciesName() {
-    Species biggestSpecies = null;
-    for (Species species : _appropiateSpecies) {
-      if (biggestSpecies == null ||
-      species.name().length() > biggestSpecies.name().length())
-        biggestSpecies = species;
-    }
-    return biggestSpecies;
+  private Species speciesBiggestName() {
+    return _appropiateSpecies.stream()
+    .max((species1, species2) -> Integer
+    .compare(species1.name().length(), species2.name().length())).orElse(null);
+  }
+
+  private String suitableSpeciesToString() {
+    return _appropiateSpecies.isEmpty() ? "" : "|" + _appropiateSpecies
+    .stream().sorted().map(Species::id).collect(Collectors.joining(","));
+  }
+
+  /**
+   * Gets the Vaccine object representation as a string containing
+   * information that describes said Vaccine.
+   * 
+   * @return the Vaccine object string representation
+   */
+  @Override
+  public String toString() {
+    // VACINA|id|name|numApplications|species1,species2,...
+    StringBuilder result = new StringBuilder();
+    result.append("VACINA|")
+    .append(this.id()).append("|")
+    .append(this.name()).append("|")
+    .append(_numApplications)
+    .append(suitableSpeciesToString());
+    return result.toString();
   }
 }

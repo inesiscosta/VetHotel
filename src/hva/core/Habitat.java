@@ -77,12 +77,29 @@ class Habitat extends NamedEntity implements TreeSubject {
   }
 
   /**
+   * Advances the season of all trees in the habitat. 
+   */
+  void nextSeason(Season currentSeason) {
+    notifyTreeObservers(currentSeason);
+  }
+
+
+  /**
    * Gets the habitat's area.
    *
    * @return the habitat's area
    */
   int area() {
     return _area;
+  }
+
+  /**
+   * Changes the area of the habitat.
+   * 
+   * @param newArea the new area of the habitat
+   */
+  void changeArea(int newArea) {
+    _area = newArea;
   }
 
   /**
@@ -101,23 +118,6 @@ class Habitat extends NamedEntity implements TreeSubject {
    */
   int getNumKeepers() {
     return _assignedKeepers.size();
-  }
-
-  /**
-   * Gets the Habitat object representation as a string containing
-   * information that describes the habitat.
-   *
-   * @return the Habitat object string representation
-   */
-  @Override
-  public String toString() {
-    StringBuilder result = new StringBuilder();
-    result.append("HABITAT|")
-      .append(this.id()).append("|")
-      .append(this.name()).append("|")
-      .append(this.area()).append("|")
-      .append(_trees.size());  
-    return result.toString();
   }
 
   /**
@@ -140,28 +140,6 @@ class Habitat extends NamedEntity implements TreeSubject {
    */
   boolean containsAnimal(String id) {
     return _animals.containsKey(id);
-  }
-  
-  /**
-   * Gets the tree if it exists in the habitat
-   * 
-   * @param id the id of the tree
-   * @return the tree object if it is found and null if not
-   */
-  Tree identifyTree(String id) {
-    return _trees.get(id);
-  }
-
-  /**
-   * Gets the influence of the habitat on a species. 
-   * Used to calculate an animal's satisfaction.
-   *
-   * @param species the species to get the influence of the habitat on
-   * @return the influence of the habitat on the species
-   */
-  Influence identifyInfluence(Species species) {
-    // Returns NEU if the species isn't in the map, indicating neutral influence.
-    return _influences.getOrDefault(species, Influence.NEU);
   }
 
   /**
@@ -199,6 +177,28 @@ class Habitat extends NamedEntity implements TreeSubject {
   void removeKeeper(ZooKeeper keeper) {
     _assignedKeepers.remove(keeper);
   }
+  
+  /**
+   * Gets the tree if it exists in the habitat
+   * 
+   * @param id the id of the tree
+   * @return the tree object if it is found and null if not
+   */
+  Tree identifyTree(String id) {
+    return _trees.get(id);
+  }
+
+  /**
+   * Gets the influence of the habitat on a species. 
+   * Used to calculate an animal's satisfaction.
+   *
+   * @param species the species to get the influence of the habitat on
+   * @return the influence of the habitat on the species
+   */
+  Influence identifyInfluence(Species species) {
+    // Returns NEU if the species isn't in the map, indicating neutral influence.
+    return _influences.getOrDefault(species, Influence.NEU);
+  }
 
   /**
    * Changes the influence value a habitat has on a given species.
@@ -213,15 +213,6 @@ class Habitat extends NamedEntity implements TreeSubject {
     if (newInfluence.equals(Influence.NEU))
       return;
     _influences.put(species, newInfluence);
-  }
-
-  /**
-   * Changes the area of the habitat.
-   * 
-   * @param newArea the new area of the habitat
-   */
-  void changeArea(int newArea) {
-    _area = newArea;
   }
 
   /**
@@ -259,13 +250,6 @@ class Habitat extends NamedEntity implements TreeSubject {
     addTreeObserver(tree); //It adds the new Tree observer
     hotel.notifyHotelObservers();
     return tree;
-  }
-
-  /**
-   * Advances the season of all trees in the habitat. 
-   */
-  void nextSeason(Season currentSeason) {
-    notifyTreeObservers(currentSeason);
   }
 
   /**
@@ -323,10 +307,27 @@ class Habitat extends NamedEntity implements TreeSubject {
    */
   int getNumAnimalsSameSpecies(Species species) {
     int numAnimalsSameSpecies = 0;
-    for(Animal animal : _animals.values()) {
+    for(Animal animal : _animals.values())
       if(animal.species().equals(species))
         numAnimalsSameSpecies++;
-    }
     return numAnimalsSameSpecies;
+  }
+
+  /**
+   * Gets the Habitat object representation as a string containing
+   * information that describes the habitat.
+   *
+   * @return the Habitat object string representation
+   */
+  @Override
+  public String toString() {
+    // HABITAT|id|name|area|numTrees
+    StringBuilder result = new StringBuilder();
+    return result.append("HABITAT|")
+    .append(this.id()).append("|")
+    .append(this.name()).append("|")
+    .append(this.area()).append("|")
+    .append(_trees.size())
+    .toString();
   }
 }

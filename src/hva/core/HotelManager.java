@@ -97,9 +97,11 @@ public class HotelManager implements HotelObserver {
    * @throws IOException if there is some error while serializing
    * the state of the network to disk
    **/
-  public void saveAs(String filename) throws FileNotFoundException , IOException {
+  public void saveAs(String filename) 
+  throws FileNotFoundException , IOException {
     _hotel.setAssociatedFilename(filename);
-    ObjectOutputStream exportedHotel = new ObjectOutputStream(new FileOutputStream(filename));
+    ObjectOutputStream exportedHotel = 
+    new ObjectOutputStream(new FileOutputStream(filename));
     update(false);
     exportedHotel.writeObject(_hotel);
     exportedHotel.close();

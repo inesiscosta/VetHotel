@@ -35,6 +35,15 @@ abstract class Tree extends NamedEntity implements TreeObserver {
   }
 
   /**
+   * Gets the tree's type (Deciduous or Evergreen).
+   * 
+   * @return the tree's type
+   */
+  TreeType treeType() {
+    return _treeType;
+  }
+
+  /**
    * Gets the tree's age.
    * 
    * @return the tree's age
@@ -44,21 +53,13 @@ abstract class Tree extends NamedEntity implements TreeObserver {
   }
 
   /**
-   * Gets the tree's base cleaning difficulty.
-   * 
-   * @return the tree's base cleaning difficulty
+   * Checks if the tree as aged one year
+   * (it happens when the tree experiences the four seasons of the year)
    */
-  int baseCleaningDifficulty() {
-    return _baseCleaningDifficulty;
-  }
-
-  /**
-   * Gets the tree's type (Deciduous or Evergreen).
-   * 
-   * @return the tree's type
-   */
-  TreeType treeType() {
-    return _treeType;
+  @Override
+  public void updateAge() {
+    if (equalsCreationSeason(_currentSeason))
+    _age++;
   }
 
   /**
@@ -69,16 +70,6 @@ abstract class Tree extends NamedEntity implements TreeObserver {
   @Override
   public void advanceSeason(Season currentSeason) {
     _currentSeason = currentSeason;
-  }
-
-  /**
-   * Checks if the tree as aged one year
-   * (it happens when the tree experiences the four seasons of the year)
-   */
-  @Override
-  public void updateAge() {
-    if (equalsCreationSeason(_currentSeason))
-      incrementAge();
   }
 
   /**
@@ -101,22 +92,8 @@ abstract class Tree extends NamedEntity implements TreeObserver {
     return _creationSeason;
   }
 
-  /**
-   * Returns the tree's object representation as a string containing 
-   * information that describes said tree.
-   * 
-   * @return the string representation of the tree object
-   */
-  public String toString() {
-    StringBuilder result = new StringBuilder();
-    result.append("ÁRVORE|")
-      .append(id()).append("|")
-      .append(name()).append("|")
-      .append(age()).append("|")
-      .append(baseCleaningDifficulty()).append("|")
-      .append(treeType()).append("|")
-      .append(getBioCycle(currentSeason()).toString());
-    return result.toString();
+  private boolean equalsCreationSeason(Season currentSeason) {
+    return _creationSeason == currentSeason;
   }
 
   /**
@@ -129,6 +106,15 @@ abstract class Tree extends NamedEntity implements TreeObserver {
   double calculateCleaningEffort(Season currentSeason) {
     return _baseCleaningDifficulty * seasonalEffort(currentSeason)
     * log(age() + 1);
+  }
+
+  /**
+   * Gets the tree's base cleaning difficulty.
+   * 
+   * @return the tree's base cleaning difficulty
+   */
+  int baseCleaningDifficulty() {
+    return _baseCleaningDifficulty;
   }
 
   /**
@@ -149,11 +135,22 @@ abstract class Tree extends NamedEntity implements TreeObserver {
    */
   abstract Leaf getBioCycle(Season currentSeason);
 
-  private boolean equalsCreationSeason(Season currentSeason) {
-    return _creationSeason == currentSeason;
-  }
-
-  private void incrementAge() {
-    _age++;
+  /**
+   * Returns the tree's object representation as a string containing 
+   * information that describes said tree.
+   * 
+   * @return the string representation of the tree object
+   */
+  public String toString() {
+    // ÁRVORE|id|name|age|baseCleaningDifficulty|type|bioCycle
+    StringBuilder result = new StringBuilder();
+    return result.append("ÁRVORE|")
+    .append(id()).append("|")
+    .append(name()).append("|")
+    .append(age()).append("|")
+    .append(baseCleaningDifficulty()).append("|")
+    .append(treeType()).append("|")
+    .append(getBioCycle(currentSeason()).toString())
+    .toString();
   }
 }

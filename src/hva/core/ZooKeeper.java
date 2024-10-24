@@ -1,17 +1,16 @@
 package hva.core;
 
-import hva.core.caseInsensitiveOrder.CaseInsensitiveHashMap;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
 import java.util.Collection;
-import java.util.Map;
+import java.util.HashSet;
 
 /**
  * Represents a ZooKeeper that works in a Vet Hotel.
  */
 public class ZooKeeper extends Employee {
-  private Map<String, Habitat> _assignedHabitats;
+  private Collection<Habitat> _assignedHabitats;
   private ZooKeeperSatisfaction _satisfactionMethod;
 
   /**
@@ -22,9 +21,19 @@ public class ZooKeeper extends Employee {
    */
   ZooKeeper(String idEmployee, String name, Hotel hotel) {
     super(idEmployee, name, EmployeeType.ZOOKEEPER, hotel);
-    _assignedHabitats = new CaseInsensitiveHashMap<>();
+    _assignedHabitats = new HashSet<>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
+
+  /**
+   * Returns the assing habitats collection it is used in the strategy pattern
+   * for calculating the keeper satisfaction.
+   * 
+   * @return the collection of assign habitats
+   */
+  Collection<Habitat> getAssingHabitats() {
+    return _assignedHabitats;
+  } 
 
   /**
    * Calculates the ZooKeeper's satisfaction level which depends on the 
@@ -39,16 +48,6 @@ public class ZooKeeper extends Employee {
   }
 
   /**
-   * Returns the assing habitats collection it is used in the strategy pattern
-   * for calculating the keeper satisfaction.
-   * 
-   * @return the collection of assign habitats
-   */
-  Collection<Habitat> getAssingHabitats() {
-    return _assignedHabitats.values();
-  } 
-
-  /**
    * Adds a habitat to the list of habitats the zookeeper is responsible for.
    * 
    * @param id the habitat's unique identifier
@@ -57,7 +56,7 @@ public class ZooKeeper extends Employee {
   @Override
   void addResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
-      _assignedHabitats.put(id,this.hotel().identifyHabitat(id));
+      _assignedHabitats.add(this.hotel().identifyHabitat(id));
       this.hotel().identifyHabitat(id).addKeeper(this);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownResponsibilityIdException(id,e);
@@ -73,10 +72,10 @@ public class ZooKeeper extends Employee {
   @Override
   void removeResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
-      _assignedHabitats.remove(id);
+      _assignedHabitats.remove(this.hotel().identifyHabitat(id));
     this.hotel().identifyHabitat(id).removeKeeper(this);
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownResponsibilityIdException(id,e);
+      throw new UnknownResponsibilityIdException(id, e);
     }
   }
 
@@ -88,10 +87,8 @@ public class ZooKeeper extends Employee {
    */
   @Override
   String getIdResponsibilities() {
-    return _assignedHabitats.values().stream()
-    .sorted()
-    .map(Habitat::id)
-    .reduce((id1, id2) -> id1 + "," + id2)
+    return _assignedHabitats.stream()
+    .sorted().map(Habitat::id).reduce((id1, id2) -> id1 + "," + id2)
     .orElse(null);
   }
 

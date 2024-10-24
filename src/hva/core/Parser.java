@@ -14,6 +14,7 @@ import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.exception.UnknownSpeciesIdException;
 import hva.core.exception.UnrecognizedEntryException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -69,8 +70,8 @@ class Parser {
     case "TRATADOR" -> parseEmployee(components, "TRT");
     case "VETERINÁRIO" -> parseEmployee(components, "VET");
     case "VACINA" -> parseVaccine(components);
-    default -> throw new UnrecognizedEntryException (
-      "tipo de entrada inválido: " + components[0]);
+    default -> throw new UnrecognizedEntryException
+    ("tipo de entrada inválido: " + components[0]);
     }
   }
 
@@ -127,10 +128,9 @@ class Parser {
       String id = components[1];
       String name = components[2];
       _hotel.registerEmployee(id, name, empType);
-      if (components.length == 4) {
+      if (components.length == 4)
         for(String responsibility : components[3].split(","))
           _hotel.addResponsibility(components[1], responsibility);
-      }
 		} catch (DuplicateEmployeeIdException | InvalidEmployeeTypeException |
     UnknownResponsibilityIdException | UnknownEmployeeIdException e) {
       throw new UnrecognizedEntryException("Invalid entry: " + e.getMessage());
@@ -170,19 +170,14 @@ class Parser {
     String name = components[2];
     int age = Integer.parseInt(components[3]);
     int diff = Integer.parseInt(components[4]);
-    String type = components[5];
-    Tree tree;
-    if(!(type.equals("PERENE") || type.equals( "CADUCA")))
-      throw new UnrecognizedEntryException("Invalid entry: Invalid Tree type: "
-      + type);
-    if(type.equals("PERENE")) {
-      tree = new Evergreen(id, name, age, diff, null);
-      _tempTreesNoHabitat.put(id, tree);
-    }
-    if(type.equals("CADUCA")) {
-      tree = new Deciduous(id, name, age, diff, null);
-      _tempTreesNoHabitat.put(id, tree);
-    }
+    TreeType type = TreeType.stringToEnum(components[5]);
+    if(type.equals(null))
+      throw new UnrecognizedEntryException
+      ("Invalid entry: Invalid Tree type: " + type);
+    if(type.equals(TreeType.EVERGREEN))
+      _tempTreesNoHabitat.put(id, new Evergreen(id, name, age, diff, null));
+    if(type.equals(TreeType.DECIDUOUS))
+      _tempTreesNoHabitat.put(id, new Deciduous(id, name, age, diff, null));
   }
 
   /**
@@ -198,12 +193,12 @@ class Parser {
       String id = components[1];
       String name = components[2];
       int area = Integer.parseInt(components[3]);
-      Habitat hab = _hotel.registerHabitat(id, name, area);
+      Habitat habitat = _hotel.registerHabitat(id, name, area);
       if (components.length == 5) {
         String[] listOfTree = components[4].split(",");
         for (String treeKey : listOfTree) {
           Tree tree =_tempTreesNoHabitat.get(treeKey);
-          hab.plantTree(tree.id(), tree.name(), tree.age(),
+          habitat.plantTree(tree.id(), tree.name(), tree.age(),
           tree.baseCleaningDifficulty(), tree.treeType().toString(),
           _hotel.currentSeason(), _hotel);
         }

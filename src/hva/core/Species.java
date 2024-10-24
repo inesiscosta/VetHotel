@@ -32,6 +32,15 @@ class Species extends NamedEntity {
   }
 
   /**
+   * Adds an animal to the collection of animals of the species.
+   *
+   * @param animal the animal to add to the collection
+   */
+  void addAnimal(Animal animal) {
+    _animals.put(animal.id(), animal);
+  }
+
+  /**
    * Gets the number of veterinarians qualified to treat the species.
    * Used to calculate vet satisfaction.
    *
@@ -39,15 +48,6 @@ class Species extends NamedEntity {
    */
   int getNumQualifiedVets() {
     return _qualifiedVets.size();
-  }
-
-  /**
-   * Adds an animal to the collection of animals of the species.
-   *
-   * @param animal the animal to add to the collection
-   */
-  void addAnimal(Animal animal) {
-    _animals.put(animal.id(), animal);
   }
 
   /**

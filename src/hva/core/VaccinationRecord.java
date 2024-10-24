@@ -76,11 +76,12 @@ class VaccinationRecord implements Serializable {
    */
   @Override
   public String toString() {
+    // REGISTO-VACINA|vaccineId|vetId|animalSpeciesId
     StringBuilder result = new StringBuilder();
-    result.append("REGISTO-VACINA|")
-      .append(_administeredVaccine.id()).append("|")
-      .append(_administeringVet.id()).append("|")
-      .append(_vaccinatedAnimal.species().id());
-    return result.toString();
+    return result.append("REGISTO-VACINA|")
+    .append(_administeredVaccine.id()).append("|")
+    .append(_administeringVet.id()).append("|")
+    .append(_vaccinatedAnimal.species().id())
+    .toString();
   }
 }

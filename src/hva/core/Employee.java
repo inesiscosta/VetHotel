@@ -41,26 +41,6 @@ abstract class Employee extends NamedEntity {
   }
 
   /**
-   * Gets the Employee object representation as a string.
-   * Contains information that describes said employee.
-   * 
-   * @return the Employee object string representation
-   */
-  @Override
-  public String toString() {
-    StringBuilder result = new StringBuilder();
-    result.append(this.type().toString())
-      .append("|")
-      .append(this.id())
-      .append("|")
-      .append(this.name());
-    String responsibilities = this.getIdResponsibilities();
-    if (responsibilities != null)
-      result.append("|").append(responsibilities);
-    return result.toString();
-  }
-
-  /**
    * Calculates the employee's satisfaction level.
    * Calculations differ based on the type of employee.
    * 
@@ -97,4 +77,22 @@ abstract class Employee extends NamedEntity {
    * @return the unique identifiers of the employee's responsibilities
    */
   abstract String getIdResponsibilities();
+
+  /**
+   * Gets the Employee object representation as a string.
+   * Contains information that describes said employee.
+   * 
+   * @return the Employee object string representation
+   */
+  @Override
+  public String toString() {
+    // EMPLOYEE|id|name|idResponsibility1,idResponsibility2,...
+    StringBuilder result = new StringBuilder();
+    result.append(this.type().toString()).append("|")
+    .append(this.id()).append("|")
+    .append(this.name());
+    String responsibilities = this.getIdResponsibilities();
+    result.append(responsibilities != null ? "|" + responsibilities : "");
+    return result.toString();
+  }
 }

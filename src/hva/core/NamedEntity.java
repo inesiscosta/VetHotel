@@ -51,7 +51,7 @@ Comparable<NamedEntity>, Serializable {
    * Determine whether two namedEntity objects are equal. 
    * Two namedEntity objects are equal if their identifiers are equal.
    *
-   * @return true if the two namedEntity objects are equal, false otherwise
+   * @return true if the two namedEntity objects are equal, false otherwise.
    */
   @Override
   public boolean equals(Object obj) {

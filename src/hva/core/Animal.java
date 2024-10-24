@@ -54,31 +54,18 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Gets the Animal object representation as a string. 
-   * Contains information that describes the animal.
-   *
-   * @return the Animal object string representation
+   * Changes the animal to a different habitat. 
+   * If the animal already is in the destination habitat it doesnt 
+   * change anything.
+   * 
+   * @param newHabitat the new habitat to move the animal to
    */
-  @Override
-  public String toString() {
-    StringBuilder result = new StringBuilder();
-    result.append("ANIMAL|")
-      .append(this.id()).append("|")  
-      .append(this.name()).append("|")
-      .append(_species.id()).append("|")
-      .append(healthHistoryToString())
-      .append("|").append(_habitat.id());
-    return result.toString();
-  }
-
-  private String healthHistoryToString() {
-    if (_healthHistory.isEmpty())
-      return "VOID";
-    StringBuilder result = new StringBuilder();
-    for (HealthStatus healthStatus : _healthHistory)
-      result.append(healthStatus.toString()).append(",");
-    result.setLength(result.length() - 1); // Removes the last comma
-    return result.toString();
+  void changeHabitat(Habitat newHabitat) { 
+    if (!_habitat.equals(newHabitat)) {
+      _habitat.removeAnimal(this);
+      newHabitat.addAnimal(this);
+      _habitat = newHabitat;
+    }
   }
 
   /**
@@ -112,18 +99,29 @@ public class Animal extends NamedEntity {
     _healthHistory.add(vaccineEffect);
   }
 
+  private String healthHistoryToString() {
+    return _healthHistory.isEmpty() ? "VOID" : _healthHistory.stream()
+    .map(HealthStatus::toString)
+    .reduce((status1, status2) -> status1 + "," + status2)
+    .orElse("");
+  }
+
   /**
-   * Changes the animal to a different habitat. 
-   * If the animal already is in the destination habitat it doesnt 
-   * change anything.
-   * 
-   * @param newHabitat the new habitat to move the animal to
+   * Gets the Animal object representation as a string. 
+   * Contains information that describes the animal.
+   *
+   * @return the Animal object string representation
    */
-  void changeHabitat(Habitat newHabitat) { 
-    if(_habitat.equals(newHabitat))
-      return;
-    _habitat.removeAnimal(this);
-    newHabitat.addAnimal(this);
-    _habitat = newHabitat;
+  @Override
+  public String toString() {
+    // ANIMAL|id|name|speciesId|healthHistory|habitatId
+    StringBuilder result = new StringBuilder();
+    return result.append("ANIMAL|")
+    .append(this.id()).append("|")  
+    .append(this.name()).append("|")
+    .append(this.species().id()).append("|")
+    .append(healthHistoryToString()).append("|")
+    .append(this.habitat().id())
+    .toString();
   }
 }

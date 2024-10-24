@@ -25,6 +25,16 @@ public class Veterinarian extends Employee {
     _knowsHowToVaccinate = new HashSet<>();
     _satisfactionMethod = new CalculateEmployeeSatisfaction();
   }
+
+  /**
+   * Returns the assing habitats collection it is used in the strategy pattern
+   * for calculating the keeper satisfaction.
+   * 
+   * @return the collection of assign habitats
+   */
+  Collection<Species> getKnownSpecies() {
+    return _knowsHowToVaccinate;
+  } 
     
   /**
    * Calculates the Vet's satisfaction level which depends on the number of
@@ -39,16 +49,6 @@ public class Veterinarian extends Employee {
   }
 
   /**
-   * Returns the assing habitats collection it is used in the strategy pattern
-   * for calculating the keeper satisfaction.
-   * 
-   * @return the collection of assign habitats
-   */
-  Collection<Species> getKnownSpecies() {
-    return _knowsHowToVaccinate;
-  } 
-
-  /**
    * Adds a new species to the list of species the veterinarian
    * knows how to vaccinate.
    * 
@@ -59,7 +59,7 @@ public class Veterinarian extends Employee {
   void addResponsibility(String id) throws UnknownResponsibilityIdException {
     try {
       _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
-    this.hotel().identifySpecies(id).addQualifiedVet(this);
+      this.hotel().identifySpecies(id).addQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
       throw new UnknownResponsibilityIdException(id, e);
     }
@@ -92,9 +92,7 @@ public class Veterinarian extends Employee {
   @Override
   String getIdResponsibilities() {
     return _knowsHowToVaccinate.stream()
-    .sorted()
-    .map(Species::id)
-    .reduce((id1, id2) -> id1 + "," + id2)
+    .sorted().map(Species::id).reduce((id1, id2) -> id1 + "," + id2)
     .orElse(null);
   }
 
@@ -115,7 +113,7 @@ public class Veterinarian extends Employee {
     return new VaccinationRecord(vaccine, this, animal);
   }
 
-   /**
+  /**
    * Sets the method used to calculate the satisfaction of the Veterinarian.
    * 
    * @param satisfactionMethod the new method to use for the calculation
