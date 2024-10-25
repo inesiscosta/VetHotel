@@ -66,15 +66,11 @@ class Vaccine extends NamedEntity {
   private int calculateVaccineDamage(Animal animal) {
     String biggestSpeciesName = 
     animal.species().name().length() > speciesBiggestName().name().length()
-    ? animal.species().name()
-    : speciesBiggestName().name();
+    ? animal.species().name() : speciesBiggestName().name();
     int maxCommonCharacters = _appropiateSpecies.stream()
     .mapToInt(species -> (int) animal.species().name().chars()
-    .mapToObj(c -> (char) c)
-    .filter(c -> species.name().indexOf(c) >= 0)
-    .count())
-    .max()
-    .orElse(0);
+    .mapToObj(c -> (char) c).filter(c -> species.name().indexOf(c) >= 0)
+    .count()).max().orElse(0);
     return biggestSpeciesName.length() - maxCommonCharacters;
   }
 
