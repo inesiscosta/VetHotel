@@ -1,4 +1,4 @@
-name: Run Tests Private Final
+name: Run Public Intermediate Tests
 
 on:
   push:
@@ -35,10 +35,9 @@ jobs:
     
     - name: Download closed-source JAR from B2
       run: |
-        b2 download-file-by-name ${{ secrets.B2_BUCKET_NAME }} ${{ secrets.B2_FILE_NAME }} ./src/lib/po-uilib.jar
-    
+        b2 file download ${{ secrets.B2_BUCKET_NAME }} ${{ secrets.B2_FILE_NAME }} ./src/lib/po-uilib.jar
 
-    - name: Run the private test script
+    - name: Run the intermediate public tests script
       run: |
         chmod +x ./scripts/runtestspublic.sh
         ./scripts/runtestspublic.sh
