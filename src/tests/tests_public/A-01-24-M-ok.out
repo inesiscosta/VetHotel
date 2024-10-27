@@ -10,15 +10,13 @@ Menu Principal
 9 - Gestão de vacinas
 10 - Consultas
 0 - Sair
-Escolha uma opção: 9
-Gestão de Vacinas
+Escolha uma opção: Gestão de Vacinas
 1 - Visualizar todas as vacinas
 2 - Registar vacina
 3 - Vacinar animal
 4 - Mostrar vacinações
 0 - Sair
-Escolha uma opção: 1
-VACINA|V3|Tétano|0|E1,E2,E3
+Escolha uma opção: VACINA|V3|Tétano|0|E1,E2,E3
 VACINA|V4|Tétano 2|0|E1,E2
 VACINA|V5|Tétano 3|0|E1,E2
 Gestão de Vacinas
@@ -27,8 +25,7 @@ Gestão de Vacinas
 3 - Vacinar animal
 4 - Mostrar vacinações
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Criar ficheiro
 2 - Abrir ficheiro
 3 - Guardar ficheiro
@@ -40,4 +37,4 @@ Menu Principal
 9 - Gestão de vacinas
 10 - Consultas
 0 - Sair
-Escolha uma opção: 0
+Escolha uma opção: 

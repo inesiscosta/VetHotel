@@ -1,4 +1,5 @@
 #!/bin/bash
+
 let total=0;
 let correct=0;
 
@@ -7,15 +8,15 @@ javac -cp ./lib/po-uilib.jar:. `find hva -name "*.java"`
 
 for x in tests/tests_public/*.in; do
   if [ -e ${x%.in}.import ]; then
-    java -cp ./lib/po-uilib.jar:. -Dimport=${x%.in}.import -Din=$x -DwriteInput=true -Dout=${x%.in}.outhyp hva.app.App;
+    java -cp ./lib/po-uilib.jar:. -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp hva.app.App;
   else
-    java -cp ./lib/po-uilib.jar:. -Din=$x -DwriteInput=true -Dout=${x%.in}.outhyp hva.app.App;
+    java -cp ./lib/po-uilib.jar:. -Din=$x -Dout=${x%.in}.outhyp hva.app.App;
   fi
 
   diff -cwB ${x%.in}.out ${x%.in}.outhyp > ${x%.in}.diff ;
   if [ -s ${x%.in}.diff ]; then
     echo -n "F"
-    failures=$failures"Fail: $x: See file src/${x%.in}.diff\n" ;
+  failures=$failures"Fail: $x: See file src/${x%.in}.diff\n" ;
   else
     let correct++;
     echo -n "."

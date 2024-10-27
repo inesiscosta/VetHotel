@@ -10,7 +10,14 @@ Menu Principal
 9 - Gestão de vacinas
 10 - Consultas
 0 - Sair
-Escolha uma opção: 7
+Escolha uma opção: Gestão de Funcionários
+1 - Visualizar todos os funcionários
+2 - Registar funcionário
+3 - Atribuir responsabilidade
+4 - Retirar responsabilidade
+5 - Calcular satisfação de funcionário
+0 - Sair
+Escolha uma opção: TRT|W24|Rohit Figueiredo
 Gestão de Funcionários
 1 - Visualizar todos os funcionários
 2 - Registar funcionário
@@ -18,17 +25,7 @@ Gestão de Funcionários
 4 - Retirar responsabilidade
 5 - Calcular satisfação de funcionário
 0 - Sair
-Escolha uma opção: 1
-TRT|W24|Rohit Figueiredo
-Gestão de Funcionários
-1 - Visualizar todos os funcionários
-2 - Registar funcionário
-3 - Atribuir responsabilidade
-4 - Retirar responsabilidade
-5 - Calcular satisfação de funcionário
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Criar ficheiro
 2 - Abrir ficheiro
 3 - Guardar ficheiro
@@ -40,4 +37,4 @@ Menu Principal
 9 - Gestão de vacinas
 10 - Consultas
 0 - Sair
-Escolha uma opção: 0
+Escolha uma opção: 
