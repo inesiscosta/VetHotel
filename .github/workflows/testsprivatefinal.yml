@@ -32,6 +32,9 @@ jobs:
       run: |
         b2 account authorize ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
     
+        - name: Create directory for JAR file
+      run: mkdir -p ./src/lib
+
     - name: Download closed-source JAR from B2
       run: |
         b2 file download b2id://4_z3bc43694712ac5f29a2a091a_f10565276cab17389_d20241027_m192901_c003_v0312000_t0002_u01730057341715 ./src/lib/po-uilib.jar

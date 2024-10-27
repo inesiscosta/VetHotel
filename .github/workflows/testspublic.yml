@@ -1,5 +1,3 @@
-name: Run Public Intermediate Tests
-
 on:
   push:
     branches:
@@ -30,7 +28,10 @@ jobs:
     
     - name: Configure Backblaze B2 credentials
       run: |
-        b2 account authorize ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
+        b2 authorize-account ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
+
+    - name: Create directory for JAR file
+      run: mkdir -p ./src/lib
 
     - name: Download closed-source JAR from B2
       run: |
