@@ -1,0 +1,6 @@
+ESPÉCIE|C1|ave
+ESPÉCIE|C2|cão
+HABITAT|h1|nome2|12
+HABITAT|h2|outro nome|122
+ANIMAL|a1|Farrusco|C2|h1
+ANIMAL|a2|Farrusco 2|C2|h2

@@ -1,0 +1,49 @@
+Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: Gestão de Habitats
+1 - Visualizar todos os habitats
+2 - Registar habitat
+3 - Alterar área de habitat
+4 - Alterar influência de habitat sobre espécie
+5 - Plantar árvore
+6 - Mostrar árvores de habitat
+0 - Sair
+Escolha uma opção: HABITAT|AA1|Aldeia dos Macacos 4|50|0
+HABITAT|ab1|Aldeia dos Macacos 7|50|0
+HABITAT|AR2|Aldeia dos Macacos 1|200|0
+HABITAT|BB2|Aldeia dos Macacos 3|200|0
+HABITAT|MM1|Aldeia dos Macacos 2|200|0
+HABITAT|mm2|Aldeia dos Macacos 6|200|0
+HABITAT|yy1|Aldeia dos Macacos 8|50|0
+HABITAT|ZZ1|Aldeia dos Macacos|20|0
+Gestão de Habitats
+1 - Visualizar todos os habitats
+2 - Registar habitat
+3 - Alterar área de habitat
+4 - Alterar influência de habitat sobre espécie
+5 - Plantar árvore
+6 - Mostrar árvores de habitat
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: 

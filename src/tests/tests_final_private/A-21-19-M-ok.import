@@ -1,0 +1,20 @@
+ESPÉCIE|E1|gato
+ESPÉCIE|E2|elefante
+ESPÉCIE|E3|gota
+ESPÉCIE|E4|caco
+ESPÉCIE|E5|Macaco
+HABITAT|H1|Aldeia dos Macacos 5|420
+HABITAT|H2|Aldeia dos Macacos 2|420
+ANIMAL|AA1|Patudo|E1|H1
+ANIMAL|AA2|Patudo 2|E1|H1
+ANIMAL|AA3|Malhado|E3|H1
+ANIMAL|AA4|Malhado|E4|H1
+VACINA|Vac1|nome 1|E1
+VACINA|Vac2|nome 2|E2
+VACINA|Vac3|nome 3|E1,E2
+VACINA|Vac4|nome 3|E5
+VETERINÁRIO|Vet1|Vet One|E1
+VETERINÁRIO|Vet2|Vet Two|E2
+VETERINÁRIO|Vet3|Vet Three|E3
+VETERINÁRIO|Vet4|Vet Three|E4
+TRATADOR|Trt1|Trt Three|H1

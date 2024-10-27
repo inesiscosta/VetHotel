@@ -1,0 +1,31 @@
+ESPÉCIE|E1|Cão
+ESPÉCIE|E2|Gato
+ESPÉCIE|E3|Leão
+ÁRVORE|AR1|Figueira|1|5|CADUCA
+ÁRVORE|AR2|Oliveira|1|5|PERENE
+ÁRVORE|AR3|Figueira 2|1|5|CADUCA
+ÁRVORE|AR4|Oliveira 2|1|5|PERENE
+ÁRVORE|AR5|Figueira 3|1|5|CADUCA
+ÁRVORE|AR6|Oliveira 3|1|5|PERENE
+HABITAT|H1|Aldeia dos Macacos 5|420
+HABITAT|H2|Aldeia dos Macacos 2|420
+HABITAT|H3|Aldeia dos Macacos 3|420|AR5,AR6
+HABITAT|H4|Aldeia dos Macacos 4|100|AR1,AR2,AR3,AR4
+VACINA|V3|Tétano|E1
+VACINA|V4|Tétano 2|E1
+VACINA|V5|Tétano 3|E1
+TRATADOR|T1|Rohit Figueiredo|H2
+TRATADOR|T2|Rohit Figueiredo 3|H3,H4
+TRATADOR|T3|Rohit Figueiredo 6|H2
+TRATADOR|T4|Rohit Figueiredo 7|H1
+TRATADOR|T5|Rohit Figueiredo 7|H2
+VETERINÁRIO|V1|Rohit Figueiredo 2|E1,E2
+VETERINÁRIO|V2|Rohit Figueiredo 4|E1,E2
+VETERINÁRIO|V3|Rohit Figueiredo 5|E1
+VETERINÁRIO|V4|Rohit Figueiredo 9|E2
+ANIMAL|A1|Nome 1|E1|H1
+ANIMAL|A2|Nome 2|E3|H2
+ANIMAL|A3|Nome 3|E3|H1
+ANIMAL|A4|Nome 4|E2|H2
+ANIMAL|A6|Nome 6|E2|H2
+ANIMAL|A7|Nome 7|E3|H1

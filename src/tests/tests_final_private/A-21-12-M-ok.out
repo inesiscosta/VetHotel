@@ -1,0 +1,59 @@
+Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: Ficheiro a abrir: Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: Gestão de Vacinas
+1 - Visualizar todas as vacinas
+2 - Registar vacina
+3 - Vacinar animal
+4 - Mostrar vacinações
+0 - Sair
+Escolha uma opção: VACINA|Vac1|nome 1|1|E1
+VACINA|Vac2|nome 2|0|E2
+VACINA|Vac3|nome 3|0|E1,E2
+Gestão de Vacinas
+1 - Visualizar todas as vacinas
+2 - Registar vacina
+3 - Vacinar animal
+4 - Mostrar vacinações
+0 - Sair
+Escolha uma opção: REGISTO-VACINA|Vac1|Vet1|E1
+Gestão de Vacinas
+1 - Visualizar todas as vacinas
+2 - Registar vacina
+3 - Vacinar animal
+4 - Mostrar vacinações
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Criar ficheiro
+2 - Abrir ficheiro
+3 - Guardar ficheiro
+4 - Avançar estação do ano
+5 - Ver satisfação global
+6 - Gestão de animais
+7 - Gestão de funcionários
+8 - Gestão de habitats
+9 - Gestão de vacinas
+10 - Consultas
+0 - Sair
+Escolha uma opção: 
