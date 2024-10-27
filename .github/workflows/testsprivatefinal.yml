@@ -1,4 +1,4 @@
-name: Run Tests Private Final
+name: Run Private Final Tests
 
 on:
   push:
@@ -31,13 +31,13 @@ jobs:
     
     - name: Configure Backblaze B2 credentials
       run: |
-        b2 authorize-account ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
+        b2 account authorize ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
     
     - name: Download closed-source JAR from B2
       run: |
-        b2 download-file-by-name ${{ secrets.B2_BUCKET_NAME }} ${{ secrets.B2_FILE_NAME }} ./src/lib/po-uilib.jar
+        b2 file download b2://${{ secrets.B2_BUCKET_NAME }}/${{ secrets.B2_FILE_NAME }} ./src/lib/po-uilib.jar
     
-    - name: Run the private test script
+    - name: Run the private final test script
       run: |
         chmod +x ./scripts/runtestsfinalprivate.sh
         ./scripts/runtestsfinalprivate.sh
