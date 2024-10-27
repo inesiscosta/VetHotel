@@ -210,11 +210,21 @@ class Habitat extends NamedEntity implements TreeSubject {
    * @param newInfluence the new influence value the habitat has on the
    * species
    */
+  /*
   void changeInfluence(Species species, Influence newInfluence) {
     if(newInfluence.equals(Influence.NEU) && _influences.containsKey(species))
       _influences.remove(species);
     if (newInfluence.equals(Influence.NEU))
       return;
+    _influences.put(species, newInfluence);
+  } */
+ // FIXME: Show miguel then delete.
+  void changeInfluence(Species species, Influence newInfluence) {
+    if(newInfluence.equals(Influence.NEU)) {
+      if (_influences.containsKey(species))
+        _influences.remove(species);
+      return;
+    }
     _influences.put(species, newInfluence);
   }
 
@@ -233,7 +243,7 @@ class Habitat extends NamedEntity implements TreeSubject {
    */
   Tree plantTree(String id, String name, int age,
   int baseCleaningDifficulty, String treeType, Season currentSeason,
-  Hotel hotel) throws DuplicateTreeIdException, InvalidTreeTypeException {
+  Hotel hotel) throws DuplicateTreeIdException, InvalidTreeTypeException{
     Tree tree;
     if(hotel.treeAlreadyExists(id))
       throw new DuplicateTreeIdException(id);
@@ -250,7 +260,7 @@ class Habitat extends NamedEntity implements TreeSubject {
         throw new InvalidTreeTypeException(treeType);
     }
     _trees.put(id,tree);
-    addTreeObserver(tree); //It adds the new Tree observer
+    addTreeObserver(tree); // Adds the new Tree observer
     hotel.notifyHotelObservers();
     return tree;
   }

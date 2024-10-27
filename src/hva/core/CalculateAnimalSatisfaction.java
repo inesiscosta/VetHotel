@@ -23,9 +23,11 @@ class CalculateAnimalSatisfaction implements AnimalSatisfaction {
   public double calculateSatisfaction(Animal animal) {
     Species species = animal.species();
     Habitat habitat = animal.habitat();
-    return 20 + (3 * (habitat.getNumAnimalsSameSpecies(species)-1))
+    
+    double Satisfaction = 20 + (3 * (habitat.getNumAnimalsSameSpecies(species)-1))
     - (2 * (habitat.getNumAnimals() - habitat.getNumAnimalsSameSpecies(species)))
-    + (habitat.area() / habitat.getNumAnimals())
+    + ((double)habitat.area() / habitat.getNumAnimals())
     + habitat.identifyInfluence(species).value();
+    return Satisfaction;
   } 
 }

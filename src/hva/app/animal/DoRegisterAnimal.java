@@ -36,13 +36,13 @@ class DoRegisterAnimal extends Command<Hotel> {
         _receiver.registerSpecies(idSpecies,
         Form.requestString(Prompt.speciesName()));
       _receiver.registerAnimal(idAnimal, name, idSpecies, idHabitat);
-    } catch (DuplicateAnimalIdException e) {
+    }catch (DuplicateAnimalIdException e) {
       throw new DuplicateAnimalKeyException(idAnimal);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownHabitatKeyException(idHabitat);
     } catch (UnknownSpeciesIdException | DuplicateSpeciesIdException |
     DuplicateSpeciesNameException e) {
-      // Duplicate Species Name never tested.
+      // Duplicate Species Name and never tested.
       e.printStackTrace();
     }
   }

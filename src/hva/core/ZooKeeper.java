@@ -1,11 +1,13 @@
 package hva.core;
 
+import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownHabitatIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 import hva.core.satisfaction.ZooKeeperSatisfaction;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -38,7 +40,7 @@ public class ZooKeeper extends Employee {
    * @return the collection of assign habitats
    */
   Collection<Habitat> getAssingHabitats() {
-    return _assignedHabitats;
+    return Collections.unmodifiableCollection(_assignedHabitats);
   } 
 
   /**
@@ -76,10 +78,15 @@ public class ZooKeeper extends Employee {
    * @throws UnknownResponsabilityException if the habitat's id is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownResponsibilityIdException {
+  void removeResponsibility(String id) throws EmployeeNotResponsibleException,
+  UnknownResponsibilityIdException {
     try {
-      _assignedHabitats.remove(this.hotel().identifyHabitat(id));
-    this.hotel().identifyHabitat(id).removeKeeper(this);
+      Habitat habitat = this.hotel().identifyHabitat(id);
+      if (!_assignedHabitats.contains(habitat)) {
+        throw new EmployeeNotResponsibleException(id);
+      }
+      _assignedHabitats.remove(habitat);
+      habitat.removeKeeper(this);
     } catch (UnknownHabitatIdException e) {
       throw new UnknownResponsibilityIdException(id, e);
     }

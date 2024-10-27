@@ -59,25 +59,23 @@ class Vaccine extends NamedEntity {
   HealthStatus determineVaccineEffect(Animal animal) throws
   IllegalStateException {
     boolean correctSpecies = _appropiateSpecies.contains(animal.species());
-      return HealthStatus.determineHealthStatus(
-      calculateVaccineDamage(animal), correctSpecies);
-    }
-
-  private int calculateVaccineDamage(Animal animal) {
-    String biggestSpeciesName = 
-    animal.species().name().length() > speciesBiggestName().name().length()
-    ? animal.species().name() : speciesBiggestName().name();
-    int maxCommonCharacters = _appropiateSpecies.stream()
-    .mapToInt(species -> (int) animal.species().name().chars()
-    .mapToObj(c -> (char) c).filter(c -> species.name().indexOf(c) >= 0)
-    .count()).max().orElse(0);
-    return biggestSpeciesName.length() - maxCommonCharacters;
+    return HealthStatus.determineHealthStatus(
+    calculateVaccineDamage(animal), correctSpecies);
   }
 
-  private Species speciesBiggestName() {
-    return _appropiateSpecies.stream()
-    .max((species1, species2) -> Integer
-    .compare(species1.name().length(), species2.name().length())).orElse(null);
+  private int calculateVaccineDamage(Animal animal) {
+    return _appropiateSpecies.stream().mapToInt(species -> {
+      String speciesName = species.name();
+      long commonCharsCount = animal.species().name().chars()
+      .filter(ch -> speciesName.indexOf(ch) >= 0).count();
+      return Math.abs(lengthBiggestName(animal.species()) - (int) commonCharsCount);
+      }).max().orElse(0);
+  }
+
+  private int lengthBiggestName(Species animalSpecies) {
+    return Math.max(_appropiateSpecies.stream()
+    .mapToInt(species -> species.name().length())
+    .max().orElse(0), animalSpecies.name().length());
   }
 
   private String suitableSpeciesToString() {

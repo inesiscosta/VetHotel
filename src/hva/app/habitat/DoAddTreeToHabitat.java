@@ -40,6 +40,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     } catch (DuplicateTreeIdException e) {
       throw new DuplicateTreeKeyException(idTree);
     } catch (InvalidTreeTypeException e) {
+      // Should never happen since the type is selected from an optionField.
       e.printStackTrace();
     }
   }

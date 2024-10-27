@@ -401,6 +401,17 @@ public class Hotel implements  HotelSubject {
     return vaccine.isSpeciesApropriated(animal.species());
   }
 
+  public String idSpeciesAnimal(String idAnimal) {
+    try {
+      Animal animal = identifyAnimal(idAnimal);
+      return animal.species().id();
+    } catch (UnknownAnimalIdException e) {
+      /* This should never happen since we already checked
+      if the habitat contains the animal*/
+      return null;
+    }
+  }
+
   /**
    * Adds a responsibility to an employee.
    * 
@@ -426,7 +437,7 @@ public class Hotel implements  HotelSubject {
    * is not found
    */
   public void removeResponsibility(String idEmployee, String idReponsibility)
-  throws UnknownEmployeeIdException, UnknownResponsibilityIdException {
+  throws EmployeeNotResponsibleException, UnknownEmployeeIdException, UnknownResponsibilityIdException {
     identifyEmployee(idEmployee).removeResponsibility(idReponsibility);
     notifyHotelObservers();
   }

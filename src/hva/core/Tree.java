@@ -2,7 +2,6 @@ package hva.core;
 
 import hva.core.observers.TreeObserver;
 import hva.core.season.Season;
-
 import java.io.Serial;
 import static java.lang.Math.log;
 

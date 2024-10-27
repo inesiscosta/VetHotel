@@ -30,7 +30,7 @@ for x in tests/tests_final_private/*.in; do
     fi
     if [ -s ${x%.in}.diff ]; then
         echo -n "F"
-        failures=$failures"Fail: $x: See file ${x%.in}.diff\n" ;
+        failures=$failures"Fail: $x: See file src/${x%.in}.diff\n" ;
 #       echo "FAIL: $x. See file ${x%.in}.diff " ;
     else
         let correct++;

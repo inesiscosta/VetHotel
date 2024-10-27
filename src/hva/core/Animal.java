@@ -1,7 +1,6 @@
 package hva.core;
 
 import hva.core.satisfaction.AnimalSatisfaction;
-
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;

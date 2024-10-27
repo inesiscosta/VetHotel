@@ -7,6 +7,7 @@ import hva.core.satisfaction.VeterinarianSatisfaction;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -39,7 +40,7 @@ public class Veterinarian extends Employee {
    * @return the collection of assign habitats
    */
   Collection<Species> getKnownSpecies() {
-    return _knowsHowToVaccinate;
+    return Collections.unmodifiableCollection(_knowsHowToVaccinate);
   } 
     
   /**
@@ -79,10 +80,13 @@ public class Veterinarian extends Employee {
    * @throws UnknownResponsabilityException if the species' id is unknown
    */
   @Override
-  void removeResponsibility(String id) throws UnknownResponsibilityIdException {
+  void removeResponsibility(String id) throws EmployeeNotResponsibleException, UnknownResponsibilityIdException {
     try {
-      _knowsHowToVaccinate.remove(this.hotel().identifySpecies(id));
-      this.hotel().identifySpecies(id).removeQualifiedVet(this);
+      Species species = this.hotel().identifySpecies(id);
+      if (!_knowsHowToVaccinate.contains(species))
+        throw new EmployeeNotResponsibleException(species.id());
+      _knowsHowToVaccinate.remove(species);
+      species.removeQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
       throw new UnknownResponsibilityIdException(id, e);
     }

@@ -22,8 +22,9 @@ Comparable<NamedEntity>, Serializable {
    *
    * @param id the entity's unique identifier
    * @param name the entity's name
+   * @throws NullEntryException if id or name is null
    */
-  NamedEntity(String id, String name) {
+  NamedEntity(String id, String name){
     _id = id;
     _name = name;
   }
@@ -75,8 +76,8 @@ Comparable<NamedEntity>, Serializable {
   /**
    * Returns a hash code value for the object.
    */
-  @Override
+  /*@Override
   public int hashCode() {
-    return this._id.toLowerCase().hashCode();
-  }
+    return this.id().toLowerCase().hashCode();
+  }*/
 }

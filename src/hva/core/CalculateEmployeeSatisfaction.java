@@ -27,7 +27,7 @@ ZooKeeperSatisfaction {
   public double calculateSatisfaction(ZooKeeper keeper) {
     double work = 0;
     for (Habitat habitat : keeper.getAssingHabitats())
-      work += (workEffort(habitat, keeper) / habitat.getNumKeepers());
+      work += ((double) workEffort(habitat, keeper) / habitat.getNumKeepers());
     return 300 - work;
   }
 
@@ -46,9 +46,9 @@ ZooKeeperSatisfaction {
    */
   @Override
   public double calculateSatisfaction(Veterinarian vet) {
-    int work = 0;
+    double work = 0;
     for (Species species : vet.getKnownSpecies())
-      work += (species.getNumAnimals()) / species.getNumQualifiedVets();
+      work += ((double) species.getNumAnimals()) / species.getNumQualifiedVets();
     return 20 - work;
   }
 }

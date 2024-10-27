@@ -1,5 +1,6 @@
 package hva.core;
 
+import hva.core.exception.EmployeeNotResponsibleException;
 import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 
@@ -75,7 +76,7 @@ abstract class Employee extends NamedEntity {
    * a responsibility
    */
   abstract void removeResponsibility(String id)
-  throws UnknownResponsibilityIdException;
+  throws EmployeeNotResponsibleException, UnknownResponsibilityIdException;
   
   /**
    * Gets the unique identifiers of the employee's responsibilities
