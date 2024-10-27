@@ -32,7 +32,7 @@ jobs:
       run: |
         b2 account authorize ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
     
-        - name: Create directory for JAR file
+    - name: Create directory for JAR file
       run: mkdir -p ./src/lib
 
     - name: Download closed-source JAR from B2
