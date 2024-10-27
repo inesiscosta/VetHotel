@@ -31,7 +31,7 @@ jobs:
     
     - name: Configure Backblaze B2 credentials
       run: |
-        b2 authorize-account ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
+        b2 account authorize ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
 
     - name: Download closed-source JAR from B2
       run: |
