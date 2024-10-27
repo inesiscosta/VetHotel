@@ -22,10 +22,20 @@ jobs:
         distribution: 'temurin'
         java-version: '23'
     
-    - name: Download and decode closed-source JAR
+    - name: Install B2 CLI
       run: |
-        echo "${{ secrets.CLOSED_SOURCE_PO_UILIB }}" | base64 --decode > /src/lib/po-uilib.jar
-
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        pip3 install b2
+    
+    - name: Configure Backblaze B2 credentials
+      run: |
+        b2 authorize-account ${{ secrets.B2_APPLICATION_KEY_ID }} ${{ secrets.B2_APPLICATION_KEY }}
+    
+    - name: Download closed-source JAR from B2
+      run: |
+        b2 download-file-by-name ${{ secrets.B2_BUCKET_NAME }} ${{ secrets.B2_FILE_NAME }} ./src/lib/po-uilib.jar
+    
     - name: Run the private test script
       run: |
         chmod +x ./scripts/runtestsfinalpublic.sh
