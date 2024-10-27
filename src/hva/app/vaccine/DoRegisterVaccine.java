@@ -25,7 +25,7 @@ class DoRegisterVaccine extends Command<Hotel> {
     var id = stringField("id");
     var name = stringField("name");
     var species = stringField("species");
-    /*Split the species string into an array of species ids
+    /* Split the species string into an array of species ids
     ignoring leading and trailing spaces*/
     String[] speciesArray = species.split("\\s*,\\s*");
     try {
@@ -33,7 +33,8 @@ class DoRegisterVaccine extends Command<Hotel> {
     } catch (DuplicateVaccineIdException e) {
       throw new DuplicateVaccineKeyException(id);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownSpeciesKeyException(e.getMessage()); // FIXME: should not use getMessage
+      throw new UnknownSpeciesKeyException(
+        _receiver.whichSpeciesIdDoesntExist(speciesArray));
     }
   }
 }

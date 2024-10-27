@@ -63,8 +63,8 @@ abstract class Tree extends NamedEntity implements TreeObserver {
    */
   @Override
   public void updateAge() {
-    if (equalsCreationSeason(_currentSeason))
-    _age++;
+    if (_creationSeason == _currentSeason)
+      _age++;
   }
 
   /**
@@ -88,20 +88,6 @@ abstract class Tree extends NamedEntity implements TreeObserver {
   }
 
   /**
-   * Gets the season in which the tree was created.
-   * Used to increment the tree's age.
-   * 
-   * @return the season in which the tree was created
-   */
-  Season seasonAtCreation() {
-    return _creationSeason;
-  }
-
-  private boolean equalsCreationSeason(Season currentSeason) {
-    return _creationSeason == currentSeason;
-  }
-
-  /**
    * Calculates the effort required to clean the tree.
    * Used to determine the satisfaction level of the ZooKeepers.
    * 
@@ -110,7 +96,7 @@ abstract class Tree extends NamedEntity implements TreeObserver {
    */
   double calculateCleaningEffort(Season currentSeason) {
     return _baseCleaningDifficulty * seasonalEffort(currentSeason)
-    * log(age() + 1);
+    * log(_age + 1);
   }
 
   /**
@@ -152,10 +138,10 @@ abstract class Tree extends NamedEntity implements TreeObserver {
     return result.append("ÁRVORE|")
     .append(id()).append("|")
     .append(name()).append("|")
-    .append(age()).append("|")
-    .append(baseCleaningDifficulty()).append("|")
-    .append(treeType()).append("|")
-    .append(getBioCycle(currentSeason()).toString())
+    .append(_age).append("|")
+    .append(_baseCleaningDifficulty).append("|")
+    .append(_treeType).append("|")
+    .append(getBioCycle(_currentSeason))
     .toString();
   }
 }

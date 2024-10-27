@@ -210,22 +210,12 @@ class Habitat extends NamedEntity implements TreeSubject {
    * @param newInfluence the new influence value the habitat has on the
    * species
    */
-  /*
   void changeInfluence(Species species, Influence newInfluence) {
-    if(newInfluence.equals(Influence.NEU) && _influences.containsKey(species))
+    if(newInfluence == Influence.NEU) {
       _influences.remove(species);
-    if (newInfluence.equals(Influence.NEU))
-      return;
-    _influences.put(species, newInfluence);
-  } */
- // FIXME: Show miguel then delete.
-  void changeInfluence(Species species, Influence newInfluence) {
-    if(newInfluence.equals(Influence.NEU)) {
-      if (_influences.containsKey(species))
-        _influences.remove(species);
-      return;
+    } else {
+      _influences.put(species, newInfluence);
     }
-    _influences.put(species, newInfluence);
   }
 
   /**
@@ -339,7 +329,7 @@ class Habitat extends NamedEntity implements TreeSubject {
     return result.append("HABITAT|")
     .append(this.id()).append("|")
     .append(this.name()).append("|")
-    .append(this.area()).append("|")
+    .append(this._area).append("|")
     .append(_trees.size())
     .toString();
   }

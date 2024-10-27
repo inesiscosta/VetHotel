@@ -92,17 +92,15 @@ public class ZooKeeper extends Employee {
     }
   }
 
-  /**
-   * Gets the ids of the habitats the zookeeper is responsible for.
-   * Used for the String representation of the ZooKeeper object.
-   * 
-   * @return a string with the ids of the habitats
-   */
+
   @Override
-  String getIdResponsibilities() {
-    return _assignedHabitats.stream()
-    .sorted().map(Habitat::id).reduce((id1, id2) -> id1 + "," + id2)
-    .orElse(null);
+  /**
+   * Gets a collection of the zookeeper's responsibilities.
+   * 
+   * @return the zookeeper's responsibilities
+   */
+  Collection<NamedEntity> responsibilities() {
+    return Collections.unmodifiableCollection(_assignedHabitats);
   }
 
   /**

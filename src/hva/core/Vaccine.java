@@ -67,9 +67,9 @@ class Vaccine extends NamedEntity {
     return _appropiateSpecies.stream().mapToInt(species -> {
       String speciesName = species.name();
       long commonCharsCount = animal.species().name().chars()
-      .filter(ch -> speciesName.indexOf(ch) >= 0).count();
+      .filter(c -> speciesName.indexOf(c) >= 0).count();
       return Math.abs(lengthBiggestName(animal.species()) - (int) commonCharsCount);
-      }).max().orElse(0);
+    }).max().orElse(0);
   }
 
   private int lengthBiggestName(Species animalSpecies) {

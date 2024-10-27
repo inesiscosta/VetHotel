@@ -93,17 +93,13 @@ public class Veterinarian extends Employee {
   }
 
   /**
-   * Gets the ids of the species the veterinarian knows how to vaccinate.
-   * Used for the String representation of the Veterinarian object.
+   * Gets a collection of the veterinarian's responsibilities.
    * 
-   * @return a string with the ids of the species the veterinarian
-   * knows how to vaccinate
+   * @return the veterinarian's responsibilities
    */
   @Override
-  String getIdResponsibilities() {
-    return _knowsHowToVaccinate.stream()
-    .sorted().map(Species::id).reduce((id1, id2) -> id1 + "," + id2)
-    .orElse(null);
+  Collection<NamedEntity> responsibilities() {
+    return Collections.unmodifiableCollection(_knowsHowToVaccinate);
   }
 
   /**

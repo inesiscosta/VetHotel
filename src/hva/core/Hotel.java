@@ -238,7 +238,7 @@ public class Hotel implements  HotelSubject {
   public Veterinarian identifyVet(String idVet)
   throws UnknownEmployeeIdException {
     Employee employee = identifyEmployee(idVet);
-    if (!(employee.type().equals(EmployeeType.VETERINARIAN)))
+    if (!(employee.type() == EmployeeType.VETERINARIAN))
       throw new UnknownEmployeeIdException(idVet);
     return (Veterinarian) employee;
   }
@@ -305,8 +305,26 @@ public class Hotel implements  HotelSubject {
     .anyMatch(habitat -> habitat.containsAnimal(idAnimal));
   }
 
+  /**
+   * Checks if a species already exists in the hotel.
+   * 
+   * @param idSpecies the species' id to check
+   * @return true if the species already exists, false otherwise
+   */
   public boolean speciesAlreadyExists(String idSpecies) {
     return _species.containsKey(idSpecies);
+  }
+
+  /**
+   * Checks which species id doesn't exist in the hotel.
+   * @param ids the species' ids to check
+   * @return the first species id that doesn't exist, or null if all do exist
+   */
+  public String whichSpeciesIdDoesntExist(String[] ids) {
+    for (String id : ids)
+      if (!speciesAlreadyExists(id))
+        return id;
+    return null;
   }
 
   /**
@@ -401,6 +419,11 @@ public class Hotel implements  HotelSubject {
     return vaccine.isSpeciesApropriated(animal.species());
   }
 
+  /**
+   * 
+   * @param idAnimal
+   * @return
+   */
   public String idSpeciesAnimal(String idAnimal) {
     try {
       Animal animal = identifyAnimal(idAnimal);
@@ -636,7 +659,7 @@ public class Hotel implements  HotelSubject {
    */
   public Collection<VaccinationRecord> listErroneousVaccinations() {
     return _vaccinationRecords.stream()
-    .filter(record -> !record.damage().equals(HealthStatus.NORMAL.toString()))
+    .filter(record -> record.damage() != HealthStatus.NORMAL)
     .collect(Collectors.toUnmodifiableList());
   }
 

@@ -124,9 +124,9 @@ public class Animal extends NamedEntity {
     return result.append("ANIMAL|")
     .append(this.id()).append("|")  
     .append(this.name()).append("|")
-    .append(this.species().id()).append("|")
-    .append(healthHistoryToString()).append("|")
-    .append(this.habitat().id())
+    .append(this._species.id()).append("|")
+    .append(this.healthHistoryToString()).append("|")
+    .append(this._habitat.id())
     .toString();
   }
 }

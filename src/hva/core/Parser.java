@@ -170,12 +170,12 @@ class Parser {
     int age = Integer.parseInt(components[3]);
     int diff = Integer.parseInt(components[4]);
     TreeType type = TreeType.stringToEnum(components[5]);
-    if(type.equals(null))
+    if(type == null)
       throw new UnrecognizedEntryException
       ("Invalid entry: Invalid Tree type: " + type);
-    if(type.equals(TreeType.EVERGREEN))
+    if(type == TreeType.EVERGREEN)
       _tempTreesNoHabitat.put(id, new Evergreen(id, name, age, diff, null));
-    if(type.equals(TreeType.DECIDUOUS))
+    if(type == TreeType.DECIDUOUS)
       _tempTreesNoHabitat.put(id, new Deciduous(id, name, age, diff, null));
   }
 

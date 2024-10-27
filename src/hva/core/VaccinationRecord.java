@@ -46,8 +46,8 @@ class VaccinationRecord implements Serializable {
    * @return the damage caused by the vaccine /
    * the effect of the vaccine on the animal's health
    */
-  String damage() {
-    return _damage.toString();
+  HealthStatus damage() {
+    return _damage;
   }
 
   /**

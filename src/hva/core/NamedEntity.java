@@ -48,6 +48,18 @@ Comparable<NamedEntity>, Serializable {
   }
 
   /**
+   * Compares this entity to another entity by their IDs, ignoring case.
+   *
+   * @param other the other entity to compare to
+   * @return a negative integer, zero, or positive integer as this entity's id
+   *         is less than, equal to, or greater than the other entity's ID.
+   */
+  @Override
+  public int compareTo(NamedEntity other) {
+    return this._id.compareToIgnoreCase(other.id());
+  }
+
+  /**
    * Determine whether two namedEntity objects are equal. 
    * Two namedEntity objects are equal if their identifiers are equal.
    *
@@ -62,22 +74,14 @@ Comparable<NamedEntity>, Serializable {
   }
 
   /**
-   * Compares this entity to another entity by their IDs, ignoring case.
+   * Returns a hash code value for a named entity object.
    *
-   * @param other the other entity to compare to
-   * @return a negative integer, zero, or positive integer as this entity's id
-   *         is less than, equal to, or greater than the other entity's ID.
+   * @return a hash code value for this object.
    */
+  /*
   @Override
-  public int compareTo(NamedEntity other) {
-    return this._id.compareToIgnoreCase(other.id());
-  }
-
-  /**
-   * Returns a hash code value for the object.
-   */
-  /*@Override
   public int hashCode() {
-    return this.id().toLowerCase().hashCode();
-  }*/
+    return _id.toLowerCase().hashCode();
+  } 
+  */
 }

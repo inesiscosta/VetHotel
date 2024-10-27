@@ -5,6 +5,8 @@ import hva.core.exception.UnknownIdException;
 import hva.core.exception.UnknownResponsibilityIdException;
 
 import java.io.Serial;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * Represents an employee working in a Vet Hotel.
@@ -14,7 +16,7 @@ abstract class Employee extends NamedEntity {
   @Serial
   private static final long serialVersionUID = 202410242344L;
 
-  private final EmployeeType _employeeType;
+  private final EmployeeType _type;
   private Hotel _hotel;
 
   /**
@@ -22,11 +24,11 @@ abstract class Employee extends NamedEntity {
    *
    * @param id the employee's unique identifier
    * @param name the employee's name
-   * @param employeeType the type of employee (Veterinarian or Zookeeper)
+   * @param type the type of employee (Veterinarian or Zookeeper)
    */
-  Employee(String id, String name, EmployeeType employeeType, Hotel hotel) {
+  Employee(String id, String name, EmployeeType type, Hotel hotel) {
     super(id, name);
-    _employeeType = employeeType;
+    _type = type;
     _hotel = hotel;
   }
 
@@ -36,7 +38,7 @@ abstract class Employee extends NamedEntity {
    * @return the employee type (employee's specialization)
    */
   EmployeeType type() {
-    return _employeeType;
+    return _type;
   }
 
   /**
@@ -84,7 +86,18 @@ abstract class Employee extends NamedEntity {
    * 
    * @return the unique identifiers of the employee's responsibilities
    */
-  abstract String getIdResponsibilities();
+  abstract Collection<NamedEntity> responsibilities();
+
+  /**
+   * Gets the employees responsibilities representation as a string.
+   * Comma separated list of the responsibilities' ids.
+   * 
+   * @return the employee's responsibilities as a string
+   */
+  String responsibilitiesToString() {
+    return this.responsibilities().isEmpty() ? "" : "|" + this.responsibilities().stream()
+    .sorted().map(NamedEntity::id).collect(Collectors.joining(","));
+  }
 
   /**
    * Gets the Employee object representation as a string.
@@ -96,11 +109,10 @@ abstract class Employee extends NamedEntity {
   public String toString() {
     // EMPLOYEE|id|name|idResponsibility1,idResponsibility2,...
     StringBuilder result = new StringBuilder();
-    result.append(this.type().toString()).append("|")
+    return result.append(this._type).append("|")
     .append(this.id()).append("|")
-    .append(this.name());
-    String responsibilities = this.getIdResponsibilities();
-    result.append(responsibilities != null ? "|" + responsibilities : "");
-    return result.toString();
+    .append(this.name())
+    .append(responsibilitiesToString())
+    .toString();
   }
 }
