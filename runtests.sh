@@ -1,2 +1,4 @@
+./runtestspublic.sh
+./runtestsfinalpublic.sh
 ./runtestsprivate.sh
-./runtestsfinal_private.sh
+./runtestsfinalprivate.sh
