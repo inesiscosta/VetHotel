@@ -39,7 +39,7 @@ jobs:
       run: |
         b2 file download b2id://4_z3bc43694712ac5f29a2a091a_f10565276cab17389_d20241027_m192901_c003_v0312000_t0002_u01730057341715 ./src/lib/po-uilib.jar
     
-    - name: Run the private final test script
+    - name: Run the Private Final Tests script
       run: |
         chmod +x ./scripts/runtestsfinalprivate.sh
         ./scripts/runtestsfinalprivate.sh
