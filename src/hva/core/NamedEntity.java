@@ -1,5 +1,7 @@
 package hva.core;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -78,10 +80,12 @@ Comparable<NamedEntity>, Serializable {
    *
    * @return a hash code value for this object.
    */
-  /*
   @Override
   public int hashCode() {
     return _id.toLowerCase().hashCode();
-  } 
-  */
+  }
+
+  private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+    in.defaultReadObject();
+  }
 }
