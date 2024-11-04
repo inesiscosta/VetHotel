@@ -68,7 +68,7 @@ public class Veterinarian extends Employee {
       _knowsHowToVaccinate.add(this.hotel().identifySpecies(id));
       this.hotel().identifySpecies(id).addQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownResponsibilityIdException(id, e);
+      throw new UnknownResponsibilityIdException(id, this.id(), e);
     }
   }
 
@@ -84,11 +84,11 @@ public class Veterinarian extends Employee {
     try {
       Species species = this.hotel().identifySpecies(id);
       if (!_knowsHowToVaccinate.contains(species))
-        throw new EmployeeNotResponsibleException(species.id());
+        throw new EmployeeNotResponsibleException(species.id(), this.id());
       _knowsHowToVaccinate.remove(species);
       species.removeQualifiedVet(this);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownResponsibilityIdException(id, e);
+      throw new UnknownResponsibilityIdException(id, this.id(), e);
     }
   }
 
@@ -113,7 +113,7 @@ public class Veterinarian extends Employee {
   VaccinationRecord vaccinate(Vaccine vaccine, Animal animal)
   throws EmployeeNotResponsibleException {
     if(!_knowsHowToVaccinate.contains(animal.species()))
-      throw new EmployeeNotResponsibleException(animal.species().id());
+      throw new EmployeeNotResponsibleException(animal.species().id(), this.id());
     animal.updateHealthHistory(vaccine.determineVaccineEffect(animal));
     vaccine.incrementNumApplications();
     return new VaccinationRecord(vaccine, this, animal);

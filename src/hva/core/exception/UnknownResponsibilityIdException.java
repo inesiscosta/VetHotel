@@ -6,14 +6,16 @@ package hva.core.exception;
 public class UnknownResponsibilityIdException extends UnknownIdException {
 
   private static final String SPECIFIC_ERROR_MESSAGE = "Reponsibility id";
+  private final String _idEmployee;
 
   /**
    * Constructor for the exception.
    * 
    * @param id the id that doesnt exist
    **/
-  public UnknownResponsibilityIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id, id);
+  public UnknownResponsibilityIdException(String idResp, String idEmployee) {
+    super(SPECIFIC_ERROR_MESSAGE + idResp, idResp);
+    this._idEmployee = idEmployee;
   }
 
   /**
@@ -22,7 +24,17 @@ public class UnknownResponsibilityIdException extends UnknownIdException {
    * @param id the id that doesnt exist
    * @param cause The cause of the exception
    **/
-  public UnknownResponsibilityIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
+  public UnknownResponsibilityIdException(String idResp, String idEmployee, Exception cause) {
+    super(SPECIFIC_ERROR_MESSAGE + idResp, idResp, cause);
+    this._idEmployee = idEmployee;
+  }
+
+  /**
+   * Gets the id of the employee.
+   * 
+   * @return the id of the employee
+   */
+  public String idEmployee() {
+    return _idEmployee;
   }
 }

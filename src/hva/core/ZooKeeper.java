@@ -67,7 +67,7 @@ public class ZooKeeper extends Employee {
       _assignedHabitats.add(this.hotel().identifyHabitat(id));
       this.hotel().identifyHabitat(id).addKeeper(this);
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownResponsibilityIdException(id,e);
+      throw new UnknownResponsibilityIdException(id, this.id(), e);
     }
   }
 
@@ -83,12 +83,12 @@ public class ZooKeeper extends Employee {
     try {
       Habitat habitat = this.hotel().identifyHabitat(id);
       if (!_assignedHabitats.contains(habitat)) {
-        throw new EmployeeNotResponsibleException(id);
+        throw new EmployeeNotResponsibleException(id, this.id());
       }
       _assignedHabitats.remove(habitat);
       habitat.removeKeeper(this);
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownResponsibilityIdException(id, e);
+      throw new UnknownResponsibilityIdException(id, this.id(), e);
     }
   }
 
