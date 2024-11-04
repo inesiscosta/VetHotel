@@ -13,7 +13,7 @@ public class UnknownEmployeeIdException extends UnknownIdException {
    * @param id the id that doesnt exist
    **/
   public UnknownEmployeeIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id);
+    super(SPECIFIC_ERROR_MESSAGE + id, id);
   }
 
   /**
@@ -23,6 +23,6 @@ public class UnknownEmployeeIdException extends UnknownIdException {
    * @param cause The cause of the exception
    **/
   public UnknownEmployeeIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
   }
 }

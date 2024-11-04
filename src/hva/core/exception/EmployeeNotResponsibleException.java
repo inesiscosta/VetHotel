@@ -6,6 +6,7 @@ package hva.core.exception;
 public class EmployeeNotResponsibleException extends Exception {
 
   private static final String ERROR_MESSAGE = "Employee is not responsible for: ";
+  private final String _id;
   
   /**
    * Constructor for the exception.
@@ -14,6 +15,7 @@ public class EmployeeNotResponsibleException extends Exception {
    **/
   public EmployeeNotResponsibleException(String id) {
     super(ERROR_MESSAGE + id);
+    this._id = id;
   }
 
   /**
@@ -24,5 +26,15 @@ public class EmployeeNotResponsibleException extends Exception {
    **/
   public EmployeeNotResponsibleException(String id, Exception cause) {
     super(ERROR_MESSAGE + id, cause);
+    this._id = id;
+  }
+  
+  /**
+   * Gets the duplicated id.
+   * 
+   * @return the duplicated id
+   */
+  public String id() {
+    return _id;
   }
 }

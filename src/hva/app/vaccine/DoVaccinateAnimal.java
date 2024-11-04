@@ -32,14 +32,13 @@ class DoVaccinateAnimal extends Command<Hotel> {
       if(!(_receiver.addVaccinationRecord(idVaccine, idVet, idAnimal)))
         _display.popup(Message.wrongVaccine(idVaccine, idAnimal));
     } catch (UnknownVaccineIdException e) {
-      throw new UnknownVaccineKeyException(idVaccine);
+      throw new UnknownVaccineKeyException(e.id());
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownVeterinarianKeyException(idVet);
+      throw new UnknownVeterinarianKeyException(e.id());
     } catch (UnknownAnimalIdException e) { 
-      throw new UnknownAnimalKeyException(idAnimal);
+      throw new UnknownAnimalKeyException(e.id());
     } catch (EmployeeNotResponsibleException e) {
-      throw new VeterinarianNotAuthorizedException(
-      idVet, _receiver.idSpeciesAnimal(idAnimal));
+      throw new VeterinarianNotAuthorizedException(idVet, e.id()); //FIXME Same thing as other fixme
     }
   }
 }

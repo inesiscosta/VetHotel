@@ -22,7 +22,7 @@ class DoShowMedicalActsOnAnimal extends Command<Hotel> {
     try {
       _display.popup(_receiver.listAnimalVaccinationHistory(id));
     } catch (UnknownAnimalIdException e) {
-      throw new UnknownAnimalKeyException(id);
+      throw new UnknownAnimalKeyException(e.id());
     }
   }
 }

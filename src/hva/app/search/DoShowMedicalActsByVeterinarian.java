@@ -23,7 +23,7 @@ class DoShowMedicalActsByVeterinarian extends Command<Hotel> {
     try {
       _display.popup(_receiver.listVetVaccinationRecords(id));
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownVeterinarianKeyException(id);
+      throw new UnknownVeterinarianKeyException(e.id());
     }
   }
 }

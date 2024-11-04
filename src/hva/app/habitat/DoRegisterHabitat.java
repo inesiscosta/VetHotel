@@ -26,7 +26,7 @@ class DoRegisterHabitat extends Command<Hotel> {
     try {
       _receiver.registerHabitat(id, name, area);
     } catch (DuplicateHabitatIdException e) {
-      throw new DuplicateHabitatKeyException(id);
+      throw new DuplicateHabitatKeyException(e.id());
     }
   }
 }

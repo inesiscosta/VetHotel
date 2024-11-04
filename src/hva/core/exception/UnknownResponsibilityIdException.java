@@ -13,7 +13,7 @@ public class UnknownResponsibilityIdException extends UnknownIdException {
    * @param id the id that doesnt exist
    **/
   public UnknownResponsibilityIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id);
+    super(SPECIFIC_ERROR_MESSAGE + id, id);
   }
 
   /**
@@ -23,6 +23,6 @@ public class UnknownResponsibilityIdException extends UnknownIdException {
    * @param cause The cause of the exception
    **/
   public UnknownResponsibilityIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
   }
 }

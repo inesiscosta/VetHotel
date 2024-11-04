@@ -27,9 +27,9 @@ class DoAddResponsibility extends Command<Hotel> {
     try {
       _receiver.addResponsibility(idEmployee, idResponsibility);
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownEmployeeKeyException(idEmployee);
+      throw new UnknownEmployeeKeyException(e.id());
     } catch (UnknownResponsibilityIdException e) {
-      throw new NoResponsibilityException(idEmployee, idResponsibility);
+      throw new NoResponsibilityException(idEmployee, e.id()); //FIXME Inês didnt like how this is made maybe a better way store in this exception both the resp id and employee id Maybe??
     }
   }
 }

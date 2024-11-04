@@ -28,9 +28,9 @@ class DoRemoveResponsibility extends Command<Hotel> {
       _receiver.removeResponsibility(id, responsibility);
     } catch (UnknownResponsibilityIdException |
     EmployeeNotResponsibleException e) {
-      throw new NoResponsibilityException(id, responsibility);
+      throw new NoResponsibilityException(id, responsibility); //FIXME Same thing as the other one
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownEmployeeKeyException(id);
+      throw new UnknownEmployeeKeyException(e.id());
     }
   }
 }

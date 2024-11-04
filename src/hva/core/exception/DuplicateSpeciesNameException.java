@@ -6,14 +6,16 @@ package hva.core.exception;
 public class DuplicateSpeciesNameException extends Exception {
 
   private static final String ERROR_MESSAGE = "Duplicated Species name: ";
+  private final String _name;
   
   /**
    * Constructor for the exception.
    * 
-   * @param id the name that already exists
+   * @param name the name that already exists
    **/
-  public DuplicateSpeciesNameException(String id) {
-    super(ERROR_MESSAGE + id);
+  public DuplicateSpeciesNameException(String name) {
+    super(ERROR_MESSAGE + name);
+    this._name = name;
   }
 
   /**
@@ -24,5 +26,15 @@ public class DuplicateSpeciesNameException extends Exception {
    **/
   public DuplicateSpeciesNameException(String name, Exception cause) {
     super(ERROR_MESSAGE + name, cause);
+    this._name = name;
+  }
+
+  /**
+   * Gets the duplicated species name.
+   * 
+   * @return the duplicated species name
+   */
+  public String name() {
+    return _name;
   }
 }

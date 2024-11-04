@@ -33,8 +33,7 @@ class DoRegisterVaccine extends Command<Hotel> {
     } catch (DuplicateVaccineIdException e) {
       throw new DuplicateVaccineKeyException(id);
     } catch (UnknownSpeciesIdException e) {
-      throw new UnknownSpeciesKeyException(
-        _receiver.whichSpeciesIdDoesntExist(speciesArray));
+      throw new UnknownSpeciesKeyException(e.id());
     }
   }
 }

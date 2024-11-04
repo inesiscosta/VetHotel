@@ -23,7 +23,7 @@ class DoShowSatisfactionOfEmployee extends Command<Hotel> {
       _display.popup((int) Math.round(
       _receiver.calculateEmployeeSatisfaction(id)));
     } catch (UnknownEmployeeIdException e) {
-      throw new UnknownEmployeeKeyException(id);
+      throw new UnknownEmployeeKeyException(e.id());
     }
   }
 }

@@ -24,7 +24,7 @@ class DoChangeHabitatArea extends Command<Hotel> {
     try {
       _receiver.changeHabitatArea(id, area);
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownHabitatKeyException(id);
+      throw new UnknownHabitatKeyException(e.id());
     }
   }
 }

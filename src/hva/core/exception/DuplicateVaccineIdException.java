@@ -13,7 +13,7 @@ public class DuplicateVaccineIdException extends DuplicateIdException {
    * @param id the id that already exists
    **/
   public DuplicateVaccineIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id);
+    super(SPECIFIC_ERROR_MESSAGE + id, id);
   }
 
   /**
@@ -23,6 +23,6 @@ public class DuplicateVaccineIdException extends DuplicateIdException {
    * @param cause exception that triggered this one
    **/
   public DuplicateVaccineIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
   }
 }

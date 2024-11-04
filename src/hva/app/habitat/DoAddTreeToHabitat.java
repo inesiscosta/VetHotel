@@ -36,9 +36,9 @@ class DoAddTreeToHabitat extends Command<Hotel> {
       _display.popup(_receiver.addTreeToHabitat(
       idHabitat, idTree, name, age, difficulty, type));
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownHabitatKeyException(idHabitat);
+      throw new UnknownHabitatKeyException(e.id());
     } catch (DuplicateTreeIdException e) {
-      throw new DuplicateTreeKeyException(idTree);
+      throw new DuplicateTreeKeyException(e.id());
     } catch (InvalidTreeTypeException e) {
       // Should never happen since the type is selected from an optionField.
       e.printStackTrace();

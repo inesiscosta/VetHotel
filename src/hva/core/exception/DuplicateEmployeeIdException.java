@@ -13,7 +13,7 @@ public class DuplicateEmployeeIdException extends DuplicateIdException {
    * @param message the id that already exists
    **/
   public DuplicateEmployeeIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id);
+    super(SPECIFIC_ERROR_MESSAGE + id, id);
   }
 
   /**
@@ -23,6 +23,6 @@ public class DuplicateEmployeeIdException extends DuplicateIdException {
    * @param cause exception that triggered this one
    **/
   public DuplicateEmployeeIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
   }
 }

@@ -23,7 +23,7 @@ class DoShowSatisfactionOfAnimal extends Command<Hotel> {
       _display.popup((int) Math.round(
       _receiver.calculateAnimalSatisfaction(id)));
     } catch (UnknownAnimalIdException e) {
-      throw new UnknownAnimalKeyException(id);
+      throw new UnknownAnimalKeyException(e.id());
     }
   }
 }

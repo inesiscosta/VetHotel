@@ -27,7 +27,7 @@ class DoShowAnimalsInHabitat extends Command<Hotel> {
       _display.popup( _receiver.listAnimalsInHabitat(idHabitat).stream()
       .sorted().collect(Collectors.toList()));
     } catch (UnknownHabitatIdException e) {
-      throw new UnknownHabitatKeyException(idHabitat);
+      throw new UnknownHabitatKeyException(e.id());
     }
   }
 }

@@ -293,7 +293,7 @@ public class Hotel implements  HotelSubject {
   String idHabitat) throws UnknownHabitatIdException,
   DuplicateAnimalIdException, UnknownSpeciesIdException {
     if(animalAlreadyExists(idAnimal))
-      throw new DuplicateAnimalIdException(idHabitat);
+      throw new DuplicateAnimalIdException(idAnimal);
     Habitat habitat = identifyHabitat(idHabitat);
     Species species = identifySpecies(idSpecies);
     new Animal(idAnimal, name, species, habitat);
@@ -313,18 +313,6 @@ public class Hotel implements  HotelSubject {
    */
   public boolean speciesAlreadyExists(String idSpecies) {
     return _species.containsKey(idSpecies);
-  }
-
-  /**
-   * Checks which species id doesn't exist in the hotel.
-   * @param ids the species' ids to check
-   * @return the first species id that doesn't exist, or null if all do exist
-   */
-  public String whichSpeciesIdDoesntExist(String[] ids) {
-    for (String id : ids)
-      if (!speciesAlreadyExists(id))
-        return id;
-    return null;
   }
 
   /**

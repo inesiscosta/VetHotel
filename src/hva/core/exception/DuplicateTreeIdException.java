@@ -13,7 +13,7 @@ public class DuplicateTreeIdException extends DuplicateIdException {
    * @param id the id that already exists
    **/
   public DuplicateTreeIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id);
+    super(SPECIFIC_ERROR_MESSAGE + id, id);
   }
 
   /**
@@ -23,6 +23,6 @@ public class DuplicateTreeIdException extends DuplicateIdException {
    * @param cause exception that triggered this one
    **/
   public DuplicateTreeIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
   }
 }

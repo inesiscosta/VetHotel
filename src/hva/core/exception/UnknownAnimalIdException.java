@@ -13,7 +13,7 @@ public class UnknownAnimalIdException extends UnknownIdException {
    * @param id the id that doesnt exist
    **/
   public UnknownAnimalIdException(String id) {
-    super(SPECIFIC_ERROR_MESSAGE + id);
+    super(SPECIFIC_ERROR_MESSAGE + id, id);
   }
 
   /**
@@ -23,6 +23,6 @@ public class UnknownAnimalIdException extends UnknownIdException {
    * @param cause The cause of the exception
    **/
   public UnknownAnimalIdException(String id, Exception cause) {
-    super(SPECIFIC_ERROR_MESSAGE + id, cause);
+    super(SPECIFIC_ERROR_MESSAGE + id, id, cause);
   }
 }
