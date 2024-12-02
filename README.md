@@ -15,18 +15,18 @@ Object-Oriented Programming class project. A Veterinary Hotel Management System 
 ## Main Menu
 
 An example of the main menu of the Management System:
-   ```
-    Menu Principal
-    1 - Criar ficheiro
-    2 - Abrir ficheiro
-    3 - Guardar ficheiro
-    4 - Avançar estação do ano
-    5 - Ver satisfação global
-    6 - Gestão de animais
-    7 - Gestão de funcionários
-    8 - Gestão de habitats
-    9 - Gestão de vacinas
-    10 - Consultas
-    0 - Sair
-    Escolha uma opção: 
-   ```
+<pre>
+ Menu Principal
+ 1 - Criar ficheiro
+ 2 - Abrir ficheiro
+ 3 - Guardar ficheiro
+ 4 - Avançar estação do ano
+ 5 - Ver satisfação global
+ 6 - Gestão de animais
+ 7 - Gestão de funcionários
+ 8 - Gestão de habitats
+ 9 - Gestão de vacinas
+ 10 - Consultas
+ 0 - Sair
+ Escolha uma opção: 
+</pre>
