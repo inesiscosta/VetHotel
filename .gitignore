@@ -27,5 +27,8 @@ replay_pid*
 *.outhyp
 *.dat
 
-#MacOS
+#macOS
 .DS_Store
+
+#VsCode
+.vscode
