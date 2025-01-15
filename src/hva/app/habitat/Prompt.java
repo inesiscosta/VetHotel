@@ -3,42 +3,42 @@ package hva.app.habitat;
 public interface Prompt {
 
   static String habitatKey() {
-    return "Identificador único do habitat: ";
+    return "Habitat ID: ";
   }
 
   static String habitatName() {
-    return "Nome do habitat: ";
+    return "Habitat Name: ";
   }
 
   static String habitatArea() {
-    return "Área do habitat: ";
+    return "Habitat Area: ";
   }
 
   static String habitatInfluence() {
-    return "Influência (positiva, negativa, neutra: POS, NEG, NEU): ";
+    return "Influence (Positive (POS), Negative (NEG), Neutral (NEU)): ";
   }
 
   static String treeKey() {
-    return "Identificador único da árvore: ";
+    return "Tree ID: ";
   }
 
   static String treeName() {
-    return "Nome da árvore: ";
+    return "Tree Name: ";
   }
 
   static String treeAge() {
-    return "Idade da árvore: ";
+    return "Tree Age: ";
   }
 
   static String treeDifficulty() {
-    return "Dificuldade de limpeza da árvore: ";
+    return "Tree's Difficulty to Clean: ";
   }
 
   static String treeType() {
-    return "Tipo de árvore: (CADUCA ou PERENE) ";
+    return "Tree Type: (DECIDUOUS or EVERGREEN) ";
   }
 
   static String treeState() {
-    return "A nova situação biológica passa a ser: ";
+    return "The new biology state becomes: ";
   }
 }

@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -16,14 +16,14 @@ Escolha uma opção: Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do funcionário: Vaccines Administered by Veterinarian: Operação inválida: O veterinário 'vet22' não existe.
+Escolha uma opção: Employee ID: Vaccines Administered by Veterinarian: Operação inválida: The Veterinarian 'vet22' doesn't exist.
 Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do funcionário: Search
+Escolha uma opção: Employee ID: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
@@ -36,7 +36,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

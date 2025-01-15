@@ -23,7 +23,7 @@ An example of the main menu of the Management System:
  4 - Next Season
  5 - Calculate Global Satisfaction
  6 - Manage Animals
- 7 - Manage Workers
+ 7 - Manage Employees
  8 - Manage Habitats
  9 - Manage Vaccines
  10 - Search

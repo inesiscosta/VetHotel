@@ -2,22 +2,22 @@ package hva.app.animal;
 
 public interface Prompt {
   static String animalKey() {
-    return "Identificador único do animal: ";
+    return "Animal ID: ";
   }
 
   static String animalName() {
-    return "Nome do animal: ";
+    return "Animal Name: ";
   }
   
   static String speciesKey() {
-    return "Identificador único da espécie: ";
+    return "Species ID: ";
   }
   
   static String speciesKeys() {
-    return "Lista de identificadores de espécies: ";
+    return "List of Species IDs: ";
   }
 
   static String speciesName() {
-    return "Nome da espécie: ";
+    return "Name Species: ";
   }
 }

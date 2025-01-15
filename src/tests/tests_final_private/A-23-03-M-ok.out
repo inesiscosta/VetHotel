@@ -5,19 +5,19 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
 0 - Sair
-Escolha uma opção: Ficheiro a abrir: Main Menu
+Escolha uma opção: Name of the File to Open: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -28,45 +28,45 @@ Escolha uma opção: Manage Vaccines
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Nome da vacina: Identificadores das espécies que podem receber a vacina: Manage Vaccines
+Escolha uma opção: Vaccine ID: Vaccine Name: IDs of the Species that can take the Vaccine: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Manage Vaccines
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: A vacina 'Vac2' não é apropiada para o animal 'AA2'.
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA2'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: A vacina 'Vac3' não é apropiada para o animal 'AA3'.
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac3' is not adapted to Animal'AA3'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Manage Vaccines
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Manage Vaccines
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Manage Vaccines
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
@@ -79,7 +79,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -90,7 +90,7 @@ Escolha uma opção: Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do animal: REGISTO-VACINA|Vac1|Vet1|E1
+Escolha uma opção: Animal ID: REGISTO-VACINA|Vac1|Vet1|E1
 REGISTO-VACINA|Vac2|Vet1|E1
 REGISTO-VACINA|Vac3|Vet1|E1
 REGISTO-VACINA|Vac2|Vet1|E1
@@ -102,7 +102,7 @@ Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do animal: REGISTO-VACINA|Vac3|Vet2|E2
+Escolha uma opção: Animal ID: REGISTO-VACINA|Vac3|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 Search
@@ -118,7 +118,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -129,7 +129,7 @@ Escolha uma opção: Manage Vaccines
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Manage Vaccines
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
@@ -142,7 +142,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -153,7 +153,7 @@ Escolha uma opção: Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do animal: REGISTO-VACINA|Vac3|Vet2|E2
+Escolha uma opção: Animal ID: REGISTO-VACINA|Vac3|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 REGISTO-VACINA|Vac4|Vet3|E2
@@ -170,7 +170,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -182,7 +182,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -16,21 +16,21 @@ Escolha uma opção: Manage Vaccines
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: A vacina 'Vac1' não é apropiada para o animal 'AA3'.
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac1' is not adapted to Animal'AA3'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: A vacina 'Vac2' não é apropiada para o animal 'AA1'.
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA1'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Manage Vaccines
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
@@ -43,7 +43,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -69,7 +69,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

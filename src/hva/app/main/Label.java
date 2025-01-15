@@ -8,7 +8,7 @@ public interface Label {
   String SAVE_FILE = "Save File";
 
   String MENU_ANIMALS = "Manage Animals";
-  String MENU_EMPLOYEES = "Manage Workers";
+  String MENU_EMPLOYEES = "Manage Employees";
   String MENU_HABITATS = "Manage Habitats";
   String MENU_VACCINES = "Manage Vaccines";
   String MENU_LOOKUPS = "Search";

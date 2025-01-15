@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -16,7 +16,7 @@ Escolha uma opção: Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ANIMAL|A1|Nome 1|E1|VOID|H1
+Escolha uma opção: Habitat ID: ANIMAL|A1|Nome 1|E1|VOID|H1
 ANIMAL|A2|Nome 1|E1|VOID|H1
 ANIMAL|A3|Nome 1|E1|VOID|H1
 ANIMAL|A7|Nome 1|E1|VOID|H1
@@ -36,7 +36,7 @@ Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ANIMAL|A4|Nome 1|E3|VOID|H2
+Escolha uma opção: Habitat ID: ANIMAL|A4|Nome 1|E3|VOID|H2
 ANIMAL|A6|Nome 1|E1|VOID|H2
 ANIMAL|AA1|Nome 1|E1|VOID|H2
 ANIMAL|B2|Nome 1|E1|VOID|H2
@@ -47,7 +47,7 @@ Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ANIMAL|A1|Nome 1|E1|VOID|H1
+Escolha uma opção: Habitat ID: ANIMAL|A1|Nome 1|E1|VOID|H1
 ANIMAL|A2|Nome 1|E1|VOID|H1
 ANIMAL|A3|Nome 1|E1|VOID|H1
 ANIMAL|A7|Nome 1|E1|VOID|H1
@@ -67,7 +67,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -78,7 +78,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: Nome do animal: Identificador único da espécie: Identificador único do habitat: Manage Animals
+Escolha uma opção: Animal ID: Animal Name: Species ID: Habitat ID: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
@@ -91,7 +91,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -102,7 +102,7 @@ Escolha uma opção: Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ANIMAL|A0|novo nome|E1|VOID|H1
+Escolha uma opção: Habitat ID: ANIMAL|A0|novo nome|E1|VOID|H1
 ANIMAL|A1|Nome 1|E1|VOID|H1
 ANIMAL|A2|Nome 1|E1|VOID|H1
 ANIMAL|A3|Nome 1|E1|VOID|H1
@@ -123,7 +123,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

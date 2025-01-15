@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -18,7 +18,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|t1|t1|1|1|CADUCA|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|t1|t1|1|1|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -34,7 +34,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -47,7 +47,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -60,7 +60,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ÁRVORE|t1|t1|1|1|CADUCA|COMFOLHAS
+Escolha uma opção: Habitat ID: ÁRVORE|t1|t1|1|1|DECIDUOUS|COMFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -76,7 +76,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -89,7 +89,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -102,7 +102,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ÁRVORE|t1|t1|1|1|CADUCA|LARGARFOLHAS
+Escolha uma opção: Habitat ID: ÁRVORE|t1|t1|1|1|DECIDUOUS|LARGARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -118,7 +118,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -131,7 +131,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -144,7 +144,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ÁRVORE|t1|t1|1|1|CADUCA|SEMFOLHAS
+Escolha uma opção: Habitat ID: ÁRVORE|t1|t1|1|1|DECIDUOUS|SEMFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -160,7 +160,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

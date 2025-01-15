@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -16,7 +16,7 @@ Escolha uma opção: Manage Vaccines
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: Vaccinate Animal: Operação inválida: O veterinário 'Trt1' não existe.
+Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccinate Animal: Operação inválida: The Veterinarian 'ZKP1' doesn't exist.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
@@ -30,7 +30,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

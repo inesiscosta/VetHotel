@@ -66,7 +66,7 @@ class Parser {
     case "ANIMAL" -> parseAnimal(components);
     case "ÁRVORE" -> parseTree(components);
     case "HABITAT" -> parseHabitat(components);
-    case "TRATADOR" -> parseEmployee(components, "TRT");
+    case "TRATADOR" -> parseEmployee(components, "ZKP");
     case "VETERINÁRIO" -> parseEmployee(components, "VET");
     case "VACINA" -> parseVaccine(components);
     default -> throw new UnrecognizedEntryException
@@ -118,7 +118,7 @@ class Parser {
    * 
    * @param components the components of the line to parse (id, name, 
    * habitatIds or speciesIds)
-   * @param empType the type of employee to parse (TRT or VET)
+   * @param empType the type of employee to parse (ZKP or VET)
    * @throws UnrecognizedEntryException if the line contains an invalid entry
    */
   private void parseEmployee(String[] components, String empType) throws

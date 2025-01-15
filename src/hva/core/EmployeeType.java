@@ -8,20 +8,20 @@ import java.util.Arrays;
  */
 enum EmployeeType {
   VETERINARIAN ("VET"),
-  ZOOKEEPER ("TRT");
+  ZOOKEEPER ("ZKP");
 
   @Serial
   private static final long serialVersionUID = 202410242359L;
 
-  private final String _pt;
+  private final String _string;
   
   /**
    * Creates a new EmployeeType.
    * 
-   * @param pt the employee type String representation in Portuguese
+   * @param EmployeeType the employee type String representation.
    */
-  EmployeeType(String pt) {
-    this._pt = pt;
+  EmployeeType(String EmployeeType) {
+    this._string = EmployeeType;
   }
 
   /**
@@ -31,7 +31,7 @@ enum EmployeeType {
    */
   @Override
   public String toString() {
-    return _pt;
+    return _string;
   }
 
   /**

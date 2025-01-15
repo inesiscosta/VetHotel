@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -16,7 +16,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: Identificador único do habitat: Manage Animals
+Escolha uma opção: Animal ID: Habitat ID: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
@@ -39,7 +39,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -50,7 +50,7 @@ Escolha uma opção: Search
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ANIMAL|A3|Macaco 1|C2|VOID|AR1
+Escolha uma opção: Habitat ID: ANIMAL|A3|Macaco 1|C2|VOID|AR1
 ANIMAL|A4|Macaco 2|C2|VOID|AR1
 Search
 1 - Animals in Habitat
@@ -65,7 +65,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -76,7 +76,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: Identificador único do habitat: Manage Animals
+Escolha uma opção: Animal ID: Habitat ID: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
@@ -99,7 +99,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

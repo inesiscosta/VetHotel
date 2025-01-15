@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -18,7 +18,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Manage Habitats
+Escolha uma opção: Habitat ID: Habitat Name: Habitat Area: Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -42,7 +42,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

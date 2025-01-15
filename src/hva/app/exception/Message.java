@@ -2,63 +2,63 @@ package hva.app.exception;
 
 public interface Message {
   static String problemOpeningFile(Exception cause) {
-    return "Problema ao Open File: " + cause.getMessage();
+    return "Problem Opening File: " + cause.getMessage();
   }
   
   static String unknownAnimalKey(String key) {
-    return "O animal '" + key + "' não existe.";
+    return "The Animal'" + key + "' doesn't exist.";
   }
   
   static String duplicateAnimalKey(String key) {
-    return "O animal '" + key + "' já existe.";
+    return "The Animal'" + key + "' already exists.";
   }
   
   static String unknownSpeciesKey(String key) {
-    return "A espécie '" + key + "' não existe.";
+    return "The Species '" + key + "' doesn't exist.";
   }
   
   static String unknownEmployeeKey(String key) {
-    return "O funcionário '" + key + "' não existe.";
+    return "The Employee'" + key + "' doesn't exist.";
   }
 
   static String unknownVeterinarianKey(String key) {
-    return "O veterinário '" + key + "' não existe.";
+    return "The Veterinarian '" + key + "' doesn't exist.";
   }
 
   static String duplicateEmployeeKey(String key) {
-    return "O funcionário '" + key + "' já existe.";
+    return "The Employee'" + key + "' already exists.";
   }
   
   static String unknownHabitatKey(String key) {
-    return "O habitat '" + key + "' não existe.";
+    return "The Habitat '" + key + "' doesn't exist.";
   }
   
   static String duplicateHabitatKey(String key) {
-    return "O habitat '" + key + "' já existe.";
+    return "The Habitat '" + key + "' already exists.";
   }
   
   static String unknownTreeKey(String key) {
-    return "A árvore '" + key + "' não existe.";
+    return "The Tree '" + key + "' doesn't exist.";
   }
   
   static String duplicateTreeKey(String key) {
-    return "A árvore '" + key + "' já existe.";
+    return "The Tree '" + key + "' already exists.";
   }
   
   static String unknownVaccineKey(String key) {
-    return "A vacina '" + key + "' não existe.";
+    return "Vaccine '" + key + "' doesn't exist.";
   }
   
   static String duplicateVaccineKey(String key) {
-    return "A vacina '" + key + "' já existe.";
+    return "Vaccine '" + key + "' already exists.";
   }
   
   static String notAuthorized(String vetKey, String speciesKey) {
-    return "O veterinário '" + vetKey + "' não pode ministrar vacinas à espécie '" + speciesKey + "'";
+    return "The Veterinarian '" + vetKey + "' can't administer Vaccines to the Species'" + speciesKey + "'";
   }
 
   static String noResponsibility(String employeeKey, String responsibilityKey) {
-    return "Responsabilidade (habitat ou espécie) '" + responsibilityKey +
-      "' não atribuída ao funcionário '" + employeeKey + "'.";
+    return "Responsibility (Habitat or Species) '" + responsibilityKey +
+      "' not attributed to Employee '" + employeeKey + "'.";
   }
 }

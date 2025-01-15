@@ -16,7 +16,7 @@ class DoRegisterEmployee extends Command<Hotel> {
     super(Label.REGISTER_EMPLOYEE, receiver);
     addStringField("id", Prompt.employeeKey());
     addStringField("name", Prompt.employeeName());
-    addOptionField("type", Prompt.employeeType(), "TRT", "VET");
+    addOptionField("type", Prompt.employeeType(), "ZKP", "VET");
   }
   
   @Override

@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -23,14 +23,14 @@ Manage Vaccines
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Nome da vacina: Identificadores das espécies que podem receber a vacina: Register Vaccine: Operação inválida: A vacina 'V1' já existe.
+Escolha uma opção: Vaccine ID: Vaccine Name: IDs of the Species that can take the Vaccine: Register Vaccine: Operação inválida: Vaccine 'V1' already exists.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Identificador da vacina: Nome da vacina: Identificadores das espécies que podem receber a vacina: Register Vaccine: Operação inválida: A vacina 'v1' já existe.
+Escolha uma opção: Vaccine ID: Vaccine Name: IDs of the Species that can take the Vaccine: Register Vaccine: Operação inválida: Vaccine 'v1' already exists.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
@@ -44,7 +44,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

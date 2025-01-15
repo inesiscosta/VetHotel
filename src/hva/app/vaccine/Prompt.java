@@ -2,18 +2,18 @@ package hva.app.vaccine;
 
 public interface Prompt {
   static String vaccineKey() {
-    return "Identificador da vacina: ";
+    return "Vaccine ID: ";
   }
 
   static String vaccineName() {
-    return "Nome da vacina: ";
+    return "Vaccine Name: ";
   }
 
   static String veterinarianKey() {
-    return "Identficador do veterinário a ministrar a vacina: ";
+    return "ID of the Veterinarian administering the Vaccine: ";
   }
 
   static String listOfSpeciesKeys() {
-    return "Identificadores das espécies que podem receber a vacina: ";
+    return "IDs of the Species that can take the Vaccine: ";
   }
 }

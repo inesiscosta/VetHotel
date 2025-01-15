@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -18,7 +18,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|B1|b1|2|3|CADUCA|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|B1|b1|2|3|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -27,7 +27,7 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|P1|p1|3|4|PERENE|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|P1|p1|3|4|EVERGREEN|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -36,7 +36,7 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|R1|r1|6|7|PERENE|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|R1|r1|6|7|EVERGREEN|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -45,7 +45,7 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|X1|x1|10|12|CADUCA|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|X1|x1|10|12|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -54,11 +54,11 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ÁRVORE|A1|Pinheiro 1|5|20|PERENE|GERARFOLHAS
-ÁRVORE|B1|b1|2|3|CADUCA|GERARFOLHAS
-ÁRVORE|P1|p1|3|4|PERENE|GERARFOLHAS
-ÁRVORE|R1|r1|6|7|PERENE|GERARFOLHAS
-ÁRVORE|X1|x1|10|12|CADUCA|GERARFOLHAS
+Escolha uma opção: Habitat ID: ÁRVORE|A1|Pinheiro 1|5|20|EVERGREEN|GERARFOLHAS
+ÁRVORE|B1|b1|2|3|DECIDUOUS|GERARFOLHAS
+ÁRVORE|P1|p1|3|4|EVERGREEN|GERARFOLHAS
+ÁRVORE|R1|r1|6|7|EVERGREEN|GERARFOLHAS
+ÁRVORE|X1|x1|10|12|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -74,7 +74,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

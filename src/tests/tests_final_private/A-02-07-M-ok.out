@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -19,10 +19,10 @@ Escolha uma opção: Manage Habitats
 6 - List Trees in Habitat
 0 - Sair
 Escolha uma opção: HABITAT|h1|nome2|12|4
-ÁRVORE|T1|Pinheiro 4|60|20|PERENE|GERARFOLHAS
-ÁRVORE|T2|Oliveira|120|10|PERENE|GERARFOLHAS
-ÁRVORE|T3|Figueira|5|10|CADUCA|GERARFOLHAS
-ÁRVORE|T4|Plátano|30|20|CADUCA|GERARFOLHAS
+ÁRVORE|T1|Pinheiro 4|60|20|EVERGREEN|GERARFOLHAS
+ÁRVORE|T2|Oliveira|120|10|EVERGREEN|GERARFOLHAS
+ÁRVORE|T3|Figueira|5|10|DECIDUOUS|GERARFOLHAS
+ÁRVORE|T4|Plátano|30|20|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -38,7 +38,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

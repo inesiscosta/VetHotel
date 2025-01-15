@@ -5,33 +5,33 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
 0 - Sair
-Escolha uma opção: Manage Workers
-1 - List all Workers
-2 - Register Worker
+Escolha uma opção: Manage Employees
+1 - List all Employees
+2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
-5 - Calculate Worker Satisfaction
+5 - Calculate Employee Satisfaction
 0 - Sair
-Escolha uma opção: TRT|A24|Rohit Figueiredo
+Escolha uma opção: ZKP|A24|Rohit Figueiredo
 VET|A25|Rohit Figueiredo 2
-TRT|A34|Rohit Figueiredo 3
+ZKP|A34|Rohit Figueiredo 3
 VET|A85|Rohit Figueiredo 4
 VET|A95|Rohit Figueiredo 5
-TRT|B24|Rohit Figueiredo 6
-TRT|D24|Rohit Figueiredo 7
-TRT|X24|Rohit Figueiredo 8
+ZKP|B24|Rohit Figueiredo 6
+ZKP|D24|Rohit Figueiredo 7
+ZKP|X24|Rohit Figueiredo 8
 VET|X25|Rohit Figueiredo 9
-Manage Workers
-1 - List all Workers
-2 - Register Worker
+Manage Employees
+1 - List all Employees
+2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
-5 - Calculate Worker Satisfaction
+5 - Calculate Employee Satisfaction
 0 - Sair
 Escolha uma opção: Main Menu
 1 - New File
@@ -40,7 +40,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

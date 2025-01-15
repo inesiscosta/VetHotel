@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -16,7 +16,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -30,7 +30,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -43,7 +43,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -58,7 +58,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -69,14 +69,14 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 44
+Escolha uma opção: Animal ID: 44
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -90,7 +90,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -103,7 +103,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -118,7 +118,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -129,7 +129,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -143,7 +143,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -156,7 +156,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -171,7 +171,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -191,7 +191,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -202,7 +202,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 44
+Escolha uma opção: Animal ID: 44
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -216,7 +216,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -229,7 +229,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -244,7 +244,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -264,7 +264,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -275,14 +275,14 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 4
+Escolha uma opção: Animal ID: 4
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -296,7 +296,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -309,7 +309,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -324,7 +324,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -335,7 +335,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -349,7 +349,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -362,7 +362,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -377,7 +377,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -388,7 +388,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 4
+Escolha uma opção: Animal ID: 4
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -402,7 +402,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -415,7 +415,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -423,7 +423,7 @@ Escolha uma opção: Identificador único do habitat: Identificador único da es
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da espécie: Influência (positiva, negativa, neutra: POS, NEG, NEU): Manage Habitats
+Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
@@ -438,7 +438,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -449,7 +449,7 @@ Escolha uma opção: Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -463,7 +463,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

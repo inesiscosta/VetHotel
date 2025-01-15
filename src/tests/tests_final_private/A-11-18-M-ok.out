@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -31,35 +31,35 @@ Manage Animals
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 24
+Escolha uma opção: Animal ID: 24
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 19
+Escolha uma opção: Animal ID: 19
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 50
+Escolha uma opção: Animal ID: 50
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Identificador único do animal: 50
+Escolha uma opção: Animal ID: 50
 Manage Animals
 1 - List all Animals
 2 - Register Animal
@@ -73,7 +73,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

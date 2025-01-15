@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -25,7 +25,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -38,7 +38,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|a1|a1|1|1|CADUCA|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a1|a1|1|1|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -54,7 +54,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -67,7 +67,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -80,7 +80,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|a2|a2|2|3|PERENE|COMFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a2|a2|2|3|EVERGREEN|COMFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -89,7 +89,7 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|a4|a4|4|3|CADUCA|COMFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a4|a4|4|3|DECIDUOUS|COMFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -98,9 +98,9 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ÁRVORE|a1|a1|1|1|CADUCA|COMFOLHAS
-ÁRVORE|a2|a2|2|3|PERENE|COMFOLHAS
-ÁRVORE|a4|a4|4|3|CADUCA|COMFOLHAS
+Escolha uma opção: Habitat ID: ÁRVORE|a1|a1|1|1|DECIDUOUS|COMFOLHAS
+ÁRVORE|a2|a2|2|3|EVERGREEN|COMFOLHAS
+ÁRVORE|a4|a4|4|3|DECIDUOUS|COMFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -116,7 +116,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -129,7 +129,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -142,9 +142,9 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: ÁRVORE|a1|a1|1|1|CADUCA|LARGARFOLHAS
-ÁRVORE|a2|a2|2|3|PERENE|COMFOLHAS
-ÁRVORE|a4|a4|4|3|CADUCA|LARGARFOLHAS
+Escolha uma opção: Habitat ID: ÁRVORE|a1|a1|1|1|DECIDUOUS|LARGARFOLHAS
+ÁRVORE|a2|a2|2|3|EVERGREEN|COMFOLHAS
+ÁRVORE|a4|a4|4|3|DECIDUOUS|LARGARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -160,7 +160,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search

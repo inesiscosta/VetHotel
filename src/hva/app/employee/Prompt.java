@@ -2,18 +2,18 @@ package hva.app.employee;
 
 public interface Prompt {
   static String employeeKey() {
-    return "Identificador único do funcionário: ";
+    return "Employee ID: ";
   }
   
   static String employeeName() {
-    return "Nome do funcionário: ";
+    return "Employee Name: ";
   }
   
   static String employeeType() {
-    return "Tipo do funcionário? (VET ou TRT) ";
+    return "Type of Employee? (VET or ZKP) ";
   }
   
   static String responsibilityKey() {
-    return "Identificador único da responsabilidade: ";
+    return "Responsibility ID: ";
   }
 }

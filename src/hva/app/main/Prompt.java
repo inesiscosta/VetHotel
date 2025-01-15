@@ -2,18 +2,18 @@ package hva.app.main;
 
 public interface Prompt {
   static String openFile() {
-    return "Ficheiro a abrir: ";
+    return "Name of the File to Open: ";
   }
 
   static String saveAs() {
-    return "Save File como: ";
+    return "Save File As: ";
   }
   
   static String newSaveAs() {
-    return "Ficheiro sem nome. " + saveAs();
+    return "Unnamed File. " + saveAs();
   }
 
   static String saveBeforeExit() {
-    return "Guardar antes de fechar? ";
+    return "Save before exiting? ";
   }
 }

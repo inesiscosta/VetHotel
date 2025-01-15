@@ -2,11 +2,11 @@ package hva.app.main;
 
 public interface Message {
   static String fileNotFound() {
-    return "O ficheiro não existe.";
+    return "The File doesn't exist.";
   }
 
   static String fileNotFound(String filename) {
-    return "O ficheiro '" + filename + "' não existe.";
+    return "The File '" + filename + "' doesn't exist.";
   }
 
   static String openFile() {
@@ -14,6 +14,6 @@ public interface Message {
   }
 
   static String saveAs() {
-    return "Save File como: ";
+    return "Save File As: ";
   }
 }

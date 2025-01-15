@@ -7,21 +7,21 @@ import java.util.Arrays;
  * Enumeration of the possible types of trees.
  */
 enum TreeType {
-  DECIDUOUS("CADUCA"),
-  EVERGREEN("PERENE");
+  DECIDUOUS("DECIDUOUS"),
+  EVERGREEN("EVERGREEN");
 
   @Serial
   private static final long serialVersionUID = 202410242355L;
 
-  private final String _pt;
+  private final String _string;
 
   /**
    * Creates a new TreeType.
    * 
-   * @param pt the tree type String representation in Portuguese
+   * @param TreeType the tree type String representation.
    */
-  TreeType(String pt) {
-    this._pt = pt;
+  TreeType(String TreeType) {
+    this._string = TreeType;
   }
 
   /**
@@ -31,7 +31,7 @@ enum TreeType {
    */
   @Override
   public String toString() {
-    return _pt;
+    return _string;
   }
 
   /**

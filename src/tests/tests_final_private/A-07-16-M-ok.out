@@ -5,7 +5,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -18,7 +18,7 @@ Escolha uma opção: Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|a1|a1|1|3|CADUCA|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a1|a1|1|3|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -27,7 +27,7 @@ Manage Habitats
 5 - Plant Tree
 6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Identificador único da árvore: Nome da árvore: Idade da árvore: Dificuldade de limpeza da árvore: Tipo de árvore: (CADUCA ou PERENE) ÁRVORE|a2|a2|10|4|PERENE|GERARFOLHAS
+Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a2|a2|10|4|EVERGREEN|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -37,9 +37,9 @@ Manage Habitats
 6 - List Trees in Habitat
 0 - Sair
 Escolha uma opção: HABITAT|h1|nome2|12|1
-ÁRVORE|a2|a2|10|4|PERENE|GERARFOLHAS
+ÁRVORE|a2|a2|10|4|EVERGREEN|GERARFOLHAS
 HABITAT|h2|outro nome|122|1
-ÁRVORE|a1|a1|1|3|CADUCA|GERARFOLHAS
+ÁRVORE|a1|a1|1|3|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -55,7 +55,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -68,7 +68,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -81,7 +81,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -94,7 +94,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -108,9 +108,9 @@ Escolha uma opção: Manage Habitats
 6 - List Trees in Habitat
 0 - Sair
 Escolha uma opção: HABITAT|h1|nome2|12|1
-ÁRVORE|a2|a2|10|4|PERENE|LARGARFOLHAS
+ÁRVORE|a2|a2|10|4|EVERGREEN|LARGARFOLHAS
 HABITAT|h2|outro nome|122|1
-ÁRVORE|a1|a1|1|3|CADUCA|SEMFOLHAS
+ÁRVORE|a1|a1|1|3|DECIDUOUS|SEMFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -126,7 +126,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -139,7 +139,7 @@ Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
@@ -153,9 +153,9 @@ Escolha uma opção: Manage Habitats
 6 - List Trees in Habitat
 0 - Sair
 Escolha uma opção: HABITAT|h1|nome2|12|1
-ÁRVORE|a2|a2|11|4|PERENE|GERARFOLHAS
+ÁRVORE|a2|a2|11|4|EVERGREEN|GERARFOLHAS
 HABITAT|h2|outro nome|122|1
-ÁRVORE|a1|a1|2|3|CADUCA|GERARFOLHAS
+ÁRVORE|a1|a1|2|3|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -171,7 +171,7 @@ Escolha uma opção: Main Menu
 4 - Next Season
 5 - Calculate Global Satisfaction
 6 - Manage Animals
-7 - Manage Workers
+7 - Manage Employees
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
