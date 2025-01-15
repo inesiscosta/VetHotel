@@ -28,7 +28,7 @@ Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: 
 3 - Vaccinate Animal
 4 - List Vaccination Records
 0 - Exit
-Choose an option: Número inválido!
+Choose an option: Invalid Number
 Choose an option: Main Menu
 1 - New File
 2 - Open File

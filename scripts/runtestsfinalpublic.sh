@@ -34,3 +34,7 @@ printf "$failures"
 echo "Done."
 find .  -name "*.class" -type f -delete
 find .  -name "*.dat" -type f -delete
+
+if [ $correct -ne $total ]; then
+  exit 1
+fi
