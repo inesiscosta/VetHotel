@@ -10,10 +10,10 @@ public interface Message {
   }
 
   static String openFile() {
-    return "Abrir ficheiro";
+    return "Open File";
   }
 
   static String saveAs() {
-    return "Guardar ficheiro como: ";
+    return "Save File como: ";
   }
 }

@@ -1,18 +1,18 @@
 package hva.app.main;
 
 public interface Label {
-  String TITLE = "Menu Principal";
+  String TITLE = "Main Menu";
   
-  String NEW_FILE = "Criar ficheiro";
-  String OPEN_FILE = "Abrir ficheiro";
-  String SAVE_FILE = "Guardar ficheiro";
+  String NEW_FILE = "New File";
+  String OPEN_FILE = "Open File";
+  String SAVE_FILE = "Save File";
 
-  String MENU_ANIMALS = "Gestão de animais";
-  String MENU_EMPLOYEES = "Gestão de funcionários";
-  String MENU_HABITATS = "Gestão de habitats";
-  String MENU_VACCINES = "Gestão de vacinas";
-  String MENU_LOOKUPS = "Consultas";
+  String MENU_ANIMALS = "Manage Animals";
+  String MENU_EMPLOYEES = "Manage Workers";
+  String MENU_HABITATS = "Manage Habitats";
+  String MENU_VACCINES = "Manage Vaccines";
+  String MENU_LOOKUPS = "Search";
 
-  String ADVANCE_SEASON = "Avançar estação do ano";
-  String SHOW_GLOBAL_SATISFACTION = "Ver satisfação global";
+  String ADVANCE_SEASON = "Next Season";
+  String SHOW_GLOBAL_SATISFACTION = "Calculate Global Satisfaction";
 }

@@ -2,7 +2,7 @@ package hva.app.exception;
 
 public interface Message {
   static String problemOpeningFile(Exception cause) {
-    return "Problema ao abrir ficheiro: " + cause.getMessage();
+    return "Problema ao Open File: " + cause.getMessage();
   }
   
   static String unknownAnimalKey(String key) {

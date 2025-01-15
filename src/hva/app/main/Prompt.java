@@ -6,7 +6,7 @@ public interface Prompt {
   }
 
   static String saveAs() {
-    return "Guardar ficheiro como: ";
+    return "Save File como: ";
   }
   
   static String newSaveAs() {

@@ -1,44 +1,44 @@
-Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
-Escolha uma opção: Consultas
-1 - Animais de um habitat
-2 - Actos médicos num animal
-3 - Actos médicos de um veterinário
-4 - Vacinações com problemas
+Escolha uma opção: Search
+1 - Animals in Habitat
+2 - Animal's Medical History
+3 - Vaccines Administered by Veterinarian
+4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do funcionário: Actos médicos de um veterinário: Operação inválida: O veterinário 'vet22' não existe.
-Consultas
-1 - Animais de um habitat
-2 - Actos médicos num animal
-3 - Actos médicos de um veterinário
-4 - Vacinações com problemas
+Escolha uma opção: Identificador único do funcionário: Vaccines Administered by Veterinarian: Operação inválida: O veterinário 'vet22' não existe.
+Search
+1 - Animals in Habitat
+2 - Animal's Medical History
+3 - Vaccines Administered by Veterinarian
+4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Identificador único do funcionário: Consultas
-1 - Animais de um habitat
-2 - Actos médicos num animal
-3 - Actos médicos de um veterinário
-4 - Vacinações com problemas
+Escolha uma opção: Identificador único do funcionário: Search
+1 - Animals in Habitat
+2 - Animal's Medical History
+3 - Vaccines Administered by Veterinarian
+4 - Vaccinations with Side Effects
 0 - Sair
-Escolha uma opção: Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Escolha uma opção: Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
 Escolha uma opção: 

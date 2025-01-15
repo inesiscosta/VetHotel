@@ -1,108 +1,108 @@
-Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
-Escolha uma opção: Gestão de Vacinas
-1 - Visualizar todas as vacinas
-2 - Registar vacina
-3 - Vacinar animal
-4 - Mostrar vacinações
+Escolha uma opção: Manage Vaccines
+1 - List all Vaccines
+2 - Register Vaccine
+3 - Vaccinate Animal
+4 - List Vaccination Records
 0 - Sair
 Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: A vacina 'Vac1' não é apropiada para o animal 'AA3'.
-Gestão de Vacinas
-1 - Visualizar todas as vacinas
-2 - Registar vacina
-3 - Vacinar animal
-4 - Mostrar vacinações
+Manage Vaccines
+1 - List all Vaccines
+2 - Register Vaccine
+3 - Vaccinate Animal
+4 - List Vaccination Records
 0 - Sair
 Escolha uma opção: Identificador da vacina: Identficador do veterinário a ministrar a vacina: Identificador único do animal: A vacina 'Vac2' não é apropiada para o animal 'AA1'.
-Gestão de Vacinas
-1 - Visualizar todas as vacinas
-2 - Registar vacina
-3 - Vacinar animal
-4 - Mostrar vacinações
+Manage Vaccines
+1 - List all Vaccines
+2 - Register Vaccine
+3 - Vaccinate Animal
+4 - List Vaccination Records
 0 - Sair
-Escolha uma opção: Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Escolha uma opção: Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
-Escolha uma opção: Gestão de Animais
-1 - Visualizar todos os animais
-2 - Registar animal
-3 - Transferir para habitat
-4 - Calcular satisfação de animal
+Escolha uma opção: Manage Animals
+1 - List all Animals
+2 - Register Animal
+3 - Transfer to Habitat
+4 - Calculate Animal Satisfaction
 0 - Sair
 Escolha uma opção: ANIMAL|AA1|Patudo|E1|ERRO|H1
 ANIMAL|AA2|Patudo 2|E1|VOID|H1
 ANIMAL|AA3|Malhado|E2|ERRO|H1
-Gestão de Animais
-1 - Visualizar todos os animais
-2 - Registar animal
-3 - Transferir para habitat
-4 - Calcular satisfação de animal
+Manage Animals
+1 - List all Animals
+2 - Register Animal
+3 - Transfer to Habitat
+4 - Calculate Animal Satisfaction
 0 - Sair
-Escolha uma opção: Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Escolha uma opção: Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
-Escolha uma opção: Gestão de Vacinas
-1 - Visualizar todas as vacinas
-2 - Registar vacina
-3 - Vacinar animal
-4 - Mostrar vacinações
+Escolha uma opção: Manage Vaccines
+1 - List all Vaccines
+2 - Register Vaccine
+3 - Vaccinate Animal
+4 - List Vaccination Records
 0 - Sair
 Escolha uma opção: REGISTO-VACINA|Vac1|Vet2|E2
 REGISTO-VACINA|Vac2|Vet1|E1
-Gestão de Vacinas
-1 - Visualizar todas as vacinas
-2 - Registar vacina
-3 - Vacinar animal
-4 - Mostrar vacinações
+Manage Vaccines
+1 - List all Vaccines
+2 - Register Vaccine
+3 - Vaccinate Animal
+4 - List Vaccination Records
 0 - Sair
 Escolha uma opção: VACINA|Vac1|nome 1|1|E1
 VACINA|Vac2|nome 2|1|E2
 VACINA|Vac3|nome 3|0|E1,E2
-Gestão de Vacinas
-1 - Visualizar todas as vacinas
-2 - Registar vacina
-3 - Vacinar animal
-4 - Mostrar vacinações
+Manage Vaccines
+1 - List all Vaccines
+2 - Register Vaccine
+3 - Vaccinate Animal
+4 - List Vaccination Records
 0 - Sair
 Escolha uma opção: Número inválido!
-Escolha uma opção: Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Escolha uma opção: Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
 Escolha uma opção: 

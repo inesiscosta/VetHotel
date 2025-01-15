@@ -1,86 +1,86 @@
-Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
-Escolha uma opção: Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Escolha uma opção: Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Escolha uma opção: Identificador único do habitat: Nome do habitat: Área do habitat: Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
 Escolha uma opção: HABITAT|a|primeiro|1|0
 HABITAT|c|verdadeiro 2º|23|0
 HABITAT|d|segundo|4|0
 HABITAT|v|pnúltimo|23|0
 HABITAT|zz|último|50|0
-Gestão de Habitats
-1 - Visualizar todos os habitats
-2 - Registar habitat
-3 - Alterar área de habitat
-4 - Alterar influência de habitat sobre espécie
-5 - Plantar árvore
-6 - Mostrar árvores de habitat
+Manage Habitats
+1 - List all Habitats
+2 - Register Habitats
+3 - Change Habitat Area
+4 - Change Habitat Influence over Species
+5 - Plant Tree
+6 - List Trees in Habitat
 0 - Sair
-Escolha uma opção: Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Escolha uma opção: Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
 Escolha uma opção: 

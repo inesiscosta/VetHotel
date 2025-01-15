@@ -1,43 +1,43 @@
-Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
-Escolha uma opção: Gestão de Funcionários
-1 - Visualizar todos os funcionários
-2 - Registar funcionário
-3 - Atribuir responsabilidade
-4 - Retirar responsabilidade
-5 - Calcular satisfação de funcionário
+Escolha uma opção: Manage Workers
+1 - List all Workers
+2 - Register Worker
+3 - Add Responsibility
+4 - Remove Responsibility
+5 - Calculate Worker Satisfaction
 0 - Sair
 Escolha uma opção: TRT|T1|Trt one|H1,H2,H3
 TRT|T2|Trt two|H1,H3
 VET|V1|Vet one|C1,C3,C4
 VET|V2|Vet two
-Gestão de Funcionários
-1 - Visualizar todos os funcionários
-2 - Registar funcionário
-3 - Atribuir responsabilidade
-4 - Retirar responsabilidade
-5 - Calcular satisfação de funcionário
+Manage Workers
+1 - List all Workers
+2 - Register Worker
+3 - Add Responsibility
+4 - Remove Responsibility
+5 - Calculate Worker Satisfaction
 0 - Sair
-Escolha uma opção: Menu Principal
-1 - Criar ficheiro
-2 - Abrir ficheiro
-3 - Guardar ficheiro
-4 - Avançar estação do ano
-5 - Ver satisfação global
-6 - Gestão de animais
-7 - Gestão de funcionários
-8 - Gestão de habitats
-9 - Gestão de vacinas
-10 - Consultas
+Escolha uma opção: Main Menu
+1 - New File
+2 - Open File
+3 - Save File
+4 - Next Season
+5 - Calculate Global Satisfaction
+6 - Manage Animals
+7 - Manage Workers
+8 - Manage Habitats
+9 - Manage Vaccines
+10 - Search
 0 - Sair
 Escolha uma opção: 
