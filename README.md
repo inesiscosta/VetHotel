@@ -1,5 +1,5 @@
 # Veterinary Hotel Management System
-Object-Oriented Programming class project. A Veterinary Hotel Management System written in Java.
+Object-Oriented Programming class project. A text-based Veterinary Hotel Management System written in Java.
 
 ## Features
 
