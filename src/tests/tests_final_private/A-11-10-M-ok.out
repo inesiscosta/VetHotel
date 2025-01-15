@@ -9,21 +9,21 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Animals
+0 - Exit
+Choose an option: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Animal ID: 34
+0 - Exit
+Choose an option: Animal ID: 34
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -34,24 +34,24 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Habitats
+0 - Exit
+Choose an option: Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
+0 - Exit
+Choose an option: Habitat ID: Species ID: Influence (Positive (POS), Negative (NEG), Neutral (NEU)): Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -62,28 +62,28 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Animals
+0 - Exit
+Choose an option: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Animal ID: 54
+0 - Exit
+Choose an option: Animal ID: 54
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Animal ID: 54
+0 - Exit
+Choose an option: Animal ID: 54
 Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -94,5 +94,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

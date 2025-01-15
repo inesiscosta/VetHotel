@@ -9,14 +9,14 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Habitat ID: ANIMAL|A1|Nome 1|E1|VOID|H1
+0 - Exit
+Choose an option: Habitat ID: ANIMAL|A1|Nome 1|E1|VOID|H1
 ANIMAL|A2|Nome 1|E1|VOID|H1
 ANIMAL|A3|Nome 1|E1|VOID|H1
 ANIMAL|A7|Nome 1|E1|VOID|H1
@@ -28,15 +28,15 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Opção inválida!
+0 - Exit
+Choose an option: Invalid Option
 Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Habitat ID: ANIMAL|A4|Nome 1|E3|VOID|H2
+0 - Exit
+Choose an option: Habitat ID: ANIMAL|A4|Nome 1|E3|VOID|H2
 ANIMAL|A6|Nome 1|E1|VOID|H2
 ANIMAL|AA1|Nome 1|E1|VOID|H2
 ANIMAL|B2|Nome 1|E1|VOID|H2
@@ -46,8 +46,8 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Habitat ID: ANIMAL|A1|Nome 1|E1|VOID|H1
+0 - Exit
+Choose an option: Habitat ID: ANIMAL|A1|Nome 1|E1|VOID|H1
 ANIMAL|A2|Nome 1|E1|VOID|H1
 ANIMAL|A3|Nome 1|E1|VOID|H1
 ANIMAL|A7|Nome 1|E1|VOID|H1
@@ -59,8 +59,8 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -71,20 +71,20 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Animals
+0 - Exit
+Choose an option: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Animal ID: Animal Name: Species ID: Habitat ID: Manage Animals
+0 - Exit
+Choose an option: Animal ID: Animal Name: Species ID: Habitat ID: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -95,14 +95,14 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Habitat ID: ANIMAL|A0|novo nome|E1|VOID|H1
+0 - Exit
+Choose an option: Habitat ID: ANIMAL|A0|novo nome|E1|VOID|H1
 ANIMAL|A1|Nome 1|E1|VOID|H1
 ANIMAL|A2|Nome 1|E1|VOID|H1
 ANIMAL|A3|Nome 1|E1|VOID|H1
@@ -115,8 +115,8 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -127,5 +127,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

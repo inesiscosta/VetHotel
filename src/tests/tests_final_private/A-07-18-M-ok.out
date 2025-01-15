@@ -9,16 +9,16 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Habitats
+0 - Exit
+Choose an option: Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a1|a1|1|3|DECIDUOUS|GERARFOLHAS
+0 - Exit
+Choose an option: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a1|a1|1|3|DECIDUOUS|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -26,8 +26,8 @@ Manage Habitats
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a2|a2|10|4|EVERGREEN|GERARFOLHAS
+0 - Exit
+Choose an option: Habitat ID: Tree ID: Tree Name: Tree Age: Tree's Difficulty to Clean: Tree Type: (DECIDUOUS or EVERGREEN) ÁRVORE|a2|a2|10|4|EVERGREEN|GERARFOLHAS
 Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
@@ -35,8 +35,8 @@ Manage Habitats
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: HABITAT|h1|nome2|12|1
+0 - Exit
+Choose an option: HABITAT|h1|nome2|12|1
 ÁRVORE|a2|a2|10|4|EVERGREEN|GERARFOLHAS
 HABITAT|h2|outro nome|122|1
 ÁRVORE|a1|a1|1|3|DECIDUOUS|GERARFOLHAS
@@ -47,8 +47,8 @@ Manage Habitats
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -59,8 +59,8 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 1
+0 - Exit
+Choose an option: 1
 Main Menu
 1 - New File
 2 - Open File
@@ -72,8 +72,8 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 2
+0 - Exit
+Choose an option: 2
 Main Menu
 1 - New File
 2 - Open File
@@ -85,8 +85,8 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Unnamed File. Save File As: Main Menu
+0 - Exit
+Choose an option: Unnamed File. Save File As: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -97,5 +97,5 @@ Escolha uma opção: Unnamed File. Save File As: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

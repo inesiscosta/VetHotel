@@ -9,31 +9,31 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Employees
+0 - Exit
+Choose an option: Manage Employees
 1 - List all Employees
 2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
 5 - Calculate Employee Satisfaction
-0 - Sair
-Escolha uma opção: Employee ID: Responsibility ID: Add Responsibility: Operação inválida: Responsibility (Habitat or Species) 'H1' not attributed to Employee 'V1'.
+0 - Exit
+Choose an option: Employee ID: Responsibility ID: Add Responsibility: Invalid Operation: Responsibility (Habitat or Species) 'H1' not attributed to Employee 'V1'.
 Manage Employees
 1 - List all Employees
 2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
 5 - Calculate Employee Satisfaction
-0 - Sair
-Escolha uma opção: Employee ID: Responsibility ID: Add Responsibility: Operação inválida: Responsibility (Habitat or Species) 'C1' not attributed to Employee 'T1'.
+0 - Exit
+Choose an option: Employee ID: Responsibility ID: Add Responsibility: Invalid Operation: Responsibility (Habitat or Species) 'C1' not attributed to Employee 'T1'.
 Manage Employees
 1 - List all Employees
 2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
 5 - Calculate Employee Satisfaction
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -44,5 +44,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

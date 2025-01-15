@@ -9,8 +9,8 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Name of the File to Open: Main Menu
+0 - Exit
+Choose an option: Name of the File to Open: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -21,58 +21,58 @@ Escolha uma opção: Name of the File to Open: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Vaccines
+0 - Exit
+Choose an option: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: Vaccine Name: IDs of the Species that can take the Vaccine: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: Vaccine Name: IDs of the Species that can take the Vaccine: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA2'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA2'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac3' is not adapted to Animal'AA3'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac3' is not adapted to Animal'AA3'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -83,14 +83,14 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Animal ID: REGISTO-VACINA|Vac1|Vet1|E1
+0 - Exit
+Choose an option: Animal ID: REGISTO-VACINA|Vac1|Vet1|E1
 REGISTO-VACINA|Vac2|Vet1|E1
 REGISTO-VACINA|Vac3|Vet1|E1
 REGISTO-VACINA|Vac2|Vet1|E1
@@ -101,8 +101,8 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Animal ID: REGISTO-VACINA|Vac3|Vet2|E2
+0 - Exit
+Choose an option: Animal ID: REGISTO-VACINA|Vac3|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 Search
@@ -110,8 +110,8 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -122,20 +122,20 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Vaccines
+0 - Exit
+Choose an option: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -146,14 +146,14 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Animal ID: REGISTO-VACINA|Vac3|Vet2|E2
+0 - Exit
+Choose an option: Animal ID: REGISTO-VACINA|Vac3|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 REGISTO-VACINA|Vac4|Vet2|E2
 REGISTO-VACINA|Vac4|Vet3|E2
@@ -162,8 +162,8 @@ Search
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -174,8 +174,8 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -186,5 +186,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

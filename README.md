@@ -27,6 +27,6 @@ An example of the main menu of the Management System:
  8 - Manage Habitats
  9 - Manage Vaccines
  10 - Search
- 0 - Sair
- Escolha uma opção: 
+ 0 - Exit
+ Choose an option: 
 </pre>

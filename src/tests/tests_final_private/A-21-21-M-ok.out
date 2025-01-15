@@ -9,54 +9,54 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Vaccines
+0 - Exit
+Choose an option: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac1' is not adapted to Animal'AA1'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac1' is not adapted to Animal'AA1'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA1'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA1'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA1'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA1'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac1' is not adapted to Animal'AA1'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac1' is not adapted to Animal'AA1'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: REGISTO-VACINA|Vac1|Vet1|E1
+0 - Exit
+Choose an option: REGISTO-VACINA|Vac1|Vet1|E1
 REGISTO-VACINA|Vac2|Vet1|E1
 REGISTO-VACINA|Vac3|Vet1|E1
 REGISTO-VACINA|Vac2|Vet1|E1
@@ -67,8 +67,8 @@ Manage Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: VACINA|Vac1|nome 1|2|E4
+0 - Exit
+Choose an option: VACINA|Vac1|nome 1|2|E4
 VACINA|Vac2|nome 2|2|E3
 VACINA|Vac3|nome 3|2|E1
 Manage Vaccines
@@ -76,8 +76,8 @@ Manage Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -88,14 +88,14 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Animals
+0 - Exit
+Choose an option: Manage Animals
 1 - List all Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: ANIMAL|AA1|Patudo|E1|ERROR,ACCIDENT,NORMAL,ACCIDENT,NORMAL,ERROR|H1
+0 - Exit
+Choose an option: ANIMAL|AA1|Patudo|E1|ERROR,ACCIDENT,NORMAL,ACCIDENT,NORMAL,ERROR|H1
 ANIMAL|AA2|Patudo 2|E1|VOID|H1
 ANIMAL|AA3|Malhado|E2|VOID|H1
 Manage Animals
@@ -103,8 +103,8 @@ Manage Animals
 2 - Register Animal
 3 - Transfer to Habitat
 4 - Calculate Animal Satisfaction
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -115,8 +115,8 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Unnamed File. Save File As: Main Menu
+0 - Exit
+Choose an option: Unnamed File. Save File As: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -127,5 +127,5 @@ Escolha uma opção: Unnamed File. Save File As: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

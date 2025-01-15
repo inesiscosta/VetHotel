@@ -9,16 +9,16 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Habitats
+0 - Exit
+Choose an option: Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: HABITAT|H1|Aldeia dos Macacos|20|3
+0 - Exit
+Choose an option: HABITAT|H1|Aldeia dos Macacos|20|3
 ÁRVORE|T1|Pinheiro 1|5|20|EVERGREEN|GERARFOLHAS
 ÁRVORE|T2|Oliveira|1200|10|EVERGREEN|GERARFOLHAS
 ÁRVORE|T4|Pinheiro 4|60|20|EVERGREEN|GERARFOLHAS
@@ -31,8 +31,8 @@ Manage Habitats
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -43,23 +43,23 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Employees
+0 - Exit
+Choose an option: Manage Employees
 1 - List all Employees
 2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
 5 - Calculate Employee Satisfaction
-0 - Sair
-Escolha uma opção: ZKP|W2SO4|John Figueiredo|H1,H2
+0 - Exit
+Choose an option: ZKP|W2SO4|John Figueiredo|H1,H2
 Manage Employees
 1 - List all Employees
 2 - Register Employee
 3 - Add Responsibility
 4 - Remove Responsibility
 5 - Calculate Employee Satisfaction
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -70,5 +70,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

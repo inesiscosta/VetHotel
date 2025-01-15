@@ -9,16 +9,16 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Habitats
+0 - Exit
+Choose an option: Manage Habitats
 1 - List all Habitats
 2 - Register Habitats
 3 - Change Habitat Area
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: HABITAT|AA1|Aldeia dos Macacos 4|50|0
+0 - Exit
+Choose an option: HABITAT|AA1|Aldeia dos Macacos 4|50|0
 HABITAT|ab1|Aldeia dos Macacos 7|50|0
 HABITAT|AR2|Aldeia dos Macacos 1|200|0
 HABITAT|BB2|Aldeia dos Macacos 3|200|0
@@ -33,8 +33,8 @@ Manage Habitats
 4 - Change Habitat Influence over Species
 5 - Plant Tree
 6 - List Trees in Habitat
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -45,5 +45,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 

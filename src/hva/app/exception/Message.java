@@ -6,43 +6,43 @@ public interface Message {
   }
   
   static String unknownAnimalKey(String key) {
-    return "The Animal'" + key + "' doesn't exist.";
+    return "Animal '" + key + "' doesn't exist.";
   }
   
   static String duplicateAnimalKey(String key) {
-    return "The Animal'" + key + "' already exists.";
+    return "Animal '" + key + "' already exists.";
   }
   
   static String unknownSpeciesKey(String key) {
-    return "The Species '" + key + "' doesn't exist.";
+    return "Species '" + key + "' doesn't exist.";
   }
   
   static String unknownEmployeeKey(String key) {
-    return "The Employee'" + key + "' doesn't exist.";
+    return "Employee '" + key + "' doesn't exist.";
   }
 
   static String unknownVeterinarianKey(String key) {
-    return "The Veterinarian '" + key + "' doesn't exist.";
+    return "Veterinarian '" + key + "' doesn't exist.";
   }
 
   static String duplicateEmployeeKey(String key) {
-    return "The Employee'" + key + "' already exists.";
+    return "Employee '" + key + "' already exists.";
   }
   
   static String unknownHabitatKey(String key) {
-    return "The Habitat '" + key + "' doesn't exist.";
+    return "Habitat '" + key + "' doesn't exist.";
   }
   
   static String duplicateHabitatKey(String key) {
-    return "The Habitat '" + key + "' already exists.";
+    return "Habitat '" + key + "' already exists.";
   }
   
   static String unknownTreeKey(String key) {
-    return "The Tree '" + key + "' doesn't exist.";
+    return "Tree '" + key + "' doesn't exist.";
   }
   
   static String duplicateTreeKey(String key) {
-    return "The Tree '" + key + "' already exists.";
+    return "Tree '" + key + "' already exists.";
   }
   
   static String unknownVaccineKey(String key) {
@@ -54,7 +54,7 @@ public interface Message {
   }
   
   static String notAuthorized(String vetKey, String speciesKey) {
-    return "The Veterinarian '" + vetKey + "' can't administer Vaccines to the Species'" + speciesKey + "'";
+    return "Veterinarian '" + vetKey + "' can't administer Vaccines to the Species'" + speciesKey + "'";
   }
 
   static String noResponsibility(String employeeKey, String responsibilityKey) {

@@ -9,20 +9,20 @@ Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -33,26 +33,26 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Vaccines
+0 - Exit
+Choose an option: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -63,20 +63,20 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -87,14 +87,14 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -105,21 +105,21 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Manage Vaccines
+0 - Exit
+Choose an option: Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA3'.
+0 - Exit
+Choose an option: Vaccine ID: ID of the Veterinarian administering the Vaccine: Animal ID: Vaccine 'Vac2' is not adapted to Animal'AA3'.
 Manage Vaccines
 1 - List all Vaccines
 2 - Register Vaccine
 3 - Vaccinate Animal
 4 - List Vaccination Records
-0 - Sair
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -130,22 +130,22 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: Search
+0 - Exit
+Choose an option: Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: REGISTO-VACINA|Vac2|Vet2|E2
+0 - Exit
+Choose an option: REGISTO-VACINA|Vac2|Vet2|E2
 Search
 1 - Animals in Habitat
 2 - Animal's Medical History
 3 - Vaccines Administered by Veterinarian
 4 - Vaccinations with Side Effects
-0 - Sair
-Escolha uma opção: Número inválido!
-Escolha uma opção: Main Menu
+0 - Exit
+Choose an option: Número inválido!
+Choose an option: Main Menu
 1 - New File
 2 - Open File
 3 - Save File
@@ -156,5 +156,5 @@ Escolha uma opção: Main Menu
 8 - Manage Habitats
 9 - Manage Vaccines
 10 - Search
-0 - Sair
-Escolha uma opção: 
+0 - Exit
+Choose an option: 
