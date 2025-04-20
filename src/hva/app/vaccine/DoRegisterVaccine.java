@@ -25,7 +25,7 @@ class DoRegisterVaccine extends Command<Hotel> {
     var id = stringField("id");
     var name = stringField("name");
     var species = stringField("species");
-    /* Split The Species string into an array of species ids
+    /* Split the species string into an array of species ids
     ignoring leading and trailing spaces*/
     String[] speciesArray = species.split("\\s*,\\s*");
     try {

@@ -6,7 +6,8 @@ import pt.tecnico.uilib.Dialog;
 public class App {
 
   public static void main(String[] args) {
-    try (var ui = Dialog.UI) {
+    final var ui = Dialog.UI;
+    try (ui) {
       var manager = new hva.core.HotelManager();
       String datafile = System.getProperty("import");
       if (datafile != null) {

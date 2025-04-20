@@ -23,7 +23,7 @@ public class Animal extends NamedEntity {
    * 
    * @param id the animal's unique identifier
    * @param name the animal's name
-   * @param species The Species the animal belongs to
+   * @param species the species the animal belongs to
    * @param habitat the habitat the animal is in
    */
   Animal(String id, String name, Species species, Habitat habitat) {
@@ -41,9 +41,9 @@ public class Animal extends NamedEntity {
   }
 
   /**
-   * Gets The Species the animal belongs to.
+   * Gets the species the animal belongs to.
    *
-   * @return The Species object the animal belongs to
+   * @return the Species object the animal belongs to
    */
   Species species() {
     return _species;
@@ -60,7 +60,7 @@ public class Animal extends NamedEntity {
 
   /**
    * Changes the animal to a different habitat. 
-   * If the animal already is in the destination habitat it doesnt 
+   * If the animal already is in the destination habitat it doesn't 
    * change anything.
    * 
    * @param newHabitat the new habitat to move the animal to

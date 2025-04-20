@@ -39,10 +39,10 @@ enum HealthStatus {
 
   /**
    * Determines the health status of an animal based on the damage incurred
-   * by the vaccine and wether The Species is correct.
+   * by the vaccine and whether the species is correct.
    * 
    * @param damage the damage suffered by the animal as the result of a vaccine
-   * @param correctSpecies a boolean indicating whether The Species is correct
+   * @param correctSpecies a boolean indicating whether the species is correct
    * @return the effect on an animal's health as a result of the vaccine
    * @throws InvalidDamageValueException if the damage is invalid
    * (if the damage is less than 0)

@@ -22,7 +22,7 @@ class Vaccine extends NamedEntity {
    *
    * @param id the vaccine's unique identifier
    * @param name the vaccine's name
-   * @param appropiateSpecies a list of The Species the vaccine is suitable for
+   * @param appropiateSpecies a list of the species the vaccine is suitable for
    */
   Vaccine(String id, String name, List<Species> appropiateSpecies) {
     super(id, name);
@@ -36,7 +36,7 @@ class Vaccine extends NamedEntity {
     return _numApplications;
   }
 
-  boolean isSpeciesApropriated(Species species) {
+  boolean isSpeciesAppropriate(Species species) {
     return _appropiateSpecies.contains(species);
   }
 

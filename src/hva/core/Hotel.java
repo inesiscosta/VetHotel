@@ -200,9 +200,9 @@ public class Hotel implements  HotelSubject {
   /**
    * Identifies a species by its id.
    * 
-   * @param idSpecies the id of The Species to identify
-   * @return The Species object with the given id
-   * @throws UnknownSpeciesIdException if The Species with the given id
+   * @param idSpecies the id of the species to identify
+   * @return the Species object with the given id
+   * @throws UnknownSpeciesIdException if the species with the given id
    * is not found
    */
   public Species identifySpecies(String idSpecies)
@@ -232,7 +232,7 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idVet the id of the veterinarian to identify
    * @return the veterinarian object with the given id
-   * @throws UnknownVeterinarianIdException
+   * @throws UnknownEmployeeIdException
    * if the veterinarian with the given id is not found
    */
   public Veterinarian identifyVet(String idVet)
@@ -286,7 +286,7 @@ public class Hotel implements  HotelSubject {
    * @throws UnknownHabitatIdException if the habitat with the given id
    * is not found
    * @throws DuplicateAnimalIdException if the id is already used
-   * @throws UnknownSpeciesIdException if The Species with the given id
+   * @throws UnknownSpeciesIdException if the species with the given id
    * is not found
    */
   public void registerAnimal(String idAnimal, String name, String idSpecies,
@@ -309,7 +309,7 @@ public class Hotel implements  HotelSubject {
    * Checks if a species already exists in the hotel.
    * 
    * @param idSpecies the species' id to check
-   * @return true if The Species already exists, false otherwise
+   * @return true if the species already exists, false otherwise
    */
   public boolean speciesAlreadyExists(String idSpecies) {
     return _species.containsKey(idSpecies);
@@ -329,7 +329,7 @@ public class Hotel implements  HotelSubject {
       throw new DuplicateSpeciesIdException(id);
     if (_speciesByName.containsKey(name))
       throw new DuplicateSpeciesNameException(name);
-    // Only adds The Species if both the id and the name are unique
+    // Only adds the species if both the id and the name are unique
     Species newSpecies = new Species(id, name);
     _species.put(id, newSpecies);
     _speciesByName.put(name, newSpecies);
@@ -372,7 +372,7 @@ public class Hotel implements  HotelSubject {
    * @param idVaccine the vaccine's unique identifier
    * @param name the vaccine's name
    * @param speciesIds the species' ids that the vaccine is suitable for
-   * @throws UnknownSpeciesIdException if The Species with the given id
+   * @throws UnknownSpeciesIdException if the species with the given id
    * is not found
    * @throws DuplicateVaccineIdException if a vaccine with the same id
    * already exists
@@ -404,7 +404,7 @@ public class Hotel implements  HotelSubject {
     Animal animal = identifyAnimal(idAnimal);
     _vaccinationRecords.add(vet.vaccinate(identifyVaccine(idVaccine), animal));
     notifyHotelObservers();
-    return vaccine.isSpeciesApropriated(animal.species());
+    return vaccine.isSpeciesAppropriate(animal.species());
   }
 
   /**
@@ -427,14 +427,15 @@ public class Hotel implements  HotelSubject {
    * Adds a responsibility to an employee.
    * 
    * @param idEmployee the employee's unique identifier
-   * @param idReponsibility the responsibility's unique identifier
-   * @throws UnknownIdException if the employee with the given id is not found
+   * @param idResponsibility the responsibility's unique identifier
+   * @throws UnknownEmployeeIdException if the employee with the given id is
+   * not found
    * @throws UnknownResponsibilityException if responsibility with the given id
    * is not found
    */
-  public void addResponsibility(String idEmployee, String idReponsibility)
+  public void addResponsibility(String idEmployee, String idResponsibility)
   throws UnknownEmployeeIdException, UnknownResponsibilityIdException {
-    identifyEmployee(idEmployee).addResponsibility(idReponsibility);
+    identifyEmployee(idEmployee).addResponsibility(idResponsibility);
     notifyHotelObservers();
   }
 
@@ -442,14 +443,15 @@ public class Hotel implements  HotelSubject {
    * Removes a responsibility of an employee.
    * 
    * @param idEmployee the employee's unique identifier
-   * @param idReponsibility the responsibility's unique identifier
+   * @param idResponsibility the responsibility's unique identifier
    * @throws UnknownIdException if the employee with the given id is not found
    * @throws UnknownResponsibilityException if responsibility with the given id
    * is not found
    */
-  public void removeResponsibility(String idEmployee, String idReponsibility)
-  throws EmployeeNotResponsibleException, UnknownEmployeeIdException, UnknownResponsibilityIdException {
-    identifyEmployee(idEmployee).removeResponsibility(idReponsibility);
+  public void removeResponsibility(String idEmployee, String idResponsibility)
+  throws EmployeeNotResponsibleException, UnknownEmployeeIdException,
+  UnknownResponsibilityIdException {
+    identifyEmployee(idEmployee).removeResponsibility(idResponsibility);
     notifyHotelObservers();
   }
 
@@ -494,11 +496,11 @@ public class Hotel implements  HotelSubject {
    * Change the influence that a habitat has over a species
    * 
    * @param idHabitat the habitat to add the influence
-   * @param idSpecies The Species it will affected
+   * @param idSpecies the species it will affected
    * @param influence the new influence the habitat will have over the
    * species in question
-   * @throws UnknownHabitatIdException if the habitat doesnt exist in the hotel
-   * @throws UnknownSpeciesIdException if The Species doesnt exist
+   * @throws UnknownHabitatIdException if the habitat doesn't exist in the hotel
+   * @throws UnknownSpeciesIdException if the species doesn't exist
    */
   public void changeHabitatInfluence(String idHabitat, String idSpecies,
   String influence) throws UnknownHabitatIdException,
@@ -513,7 +515,7 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idAnimal the animal to transfer to another habitat
    * @param idHabitat the destination habitat
-   * @throws UnknownAnimalIdException if the animal doesnt exist in any of
+   * @throws UnknownAnimalIdException if the animal doesn't exist in any of
    * the habitats in the hotel
    * @throws UnknownHabitatIdException if the destination habitat doesnt exist
    * in the hotel
@@ -577,7 +579,7 @@ public class Hotel implements  HotelSubject {
    * 
    * @param idHabitat the habitat to list all animals from
    * @return an unmodifiableCollection of all animals from the habitat
-   * @throws UnknownHabitatIdException if the habitat doesnt exist in this
+   * @throws UnknownHabitatIdException if the habitat doesn't exist in this
    * hotel
    */
   public Collection<Animal> listAnimalsInHabitat(String idHabitat)
@@ -610,8 +612,8 @@ public class Hotel implements  HotelSubject {
    * Lists all vaccination records of vaccines given to a given
    * animal in a string containing information about each record.
    * 
-   * @param animal the animal to list the vaccination records of
-   * @return  an unmodifiable List containing the VaccinationRecord objects
+   * @param id the id of the animal to list the vaccination records of
+   * @return an unmodifiable List containing the VaccinationRecord objects
    * of a specific animal
    */
   public Collection<VaccinationRecord> listAnimalVaccinationHistory(String id)
@@ -626,7 +628,7 @@ public class Hotel implements  HotelSubject {
    * Lists all vaccination records of vaccines administered by a given vet
    * in a string containing information about each record.
    * 
-   * @param vet the veterinarian to list the vaccination records of
+   * @param id the id of the veterinarian to list the vaccination records of
    * @return an unmodifiable List containing the VaccinationRecord object
    * of all vaccination records of vaccines administered by the given vet
    */

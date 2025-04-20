@@ -4,9 +4,9 @@ import java.io.Serial;
 import java.util.HashMap;
 
 /**
- * Custom HasMap override that trets all the ids strings as case insensitive
- * it doesnt distingues between lower and upper case, it makes all the ids 
- * lower case before calling the super methods provided by the HashMap class.
+ * Custom HashMap override that treats all the id strings as case insensitive
+ * it does so by forcing all ids to be lowercase before calling the super
+ * methods provided by the HashMap class.
  */
 public class CaseInsensitiveHashMap<T extends NamedEntity>
 extends HashMap<String, T> {
@@ -15,7 +15,7 @@ extends HashMap<String, T> {
   private static final long serialVersionUID = 202410250009L;
 
   /**
-  * Puts the object in the map with the key in lower case.
+  * Puts the object in the map given a key.
   */
   @Override
   public T put(String key, T value) {
@@ -23,7 +23,7 @@ extends HashMap<String, T> {
   }
 
   /**
-  * Gets the object from the map with the key in lower case.
+  * Gets the object from the map given a key.
   */
   @Override
   public T get(Object key) {
@@ -31,7 +31,7 @@ extends HashMap<String, T> {
   }
 
   /**
-   * Checks if the map contains the key in lower case.
+   * Checks if the map contains the key given a key.
    */
   @Override
   public boolean containsKey(Object key) {
@@ -44,7 +44,7 @@ extends HashMap<String, T> {
   }
 
   /**
-   * Removes the object from the map with the key in lower case.
+   * Removes the object from the map given a key.
    */
   @Override
   public T remove(Object key) {

@@ -195,18 +195,18 @@ class Habitat extends NamedEntity implements TreeSubject {
    * Gets the influence of the habitat on a species. 
    * Used to calculate an animal's satisfaction.
    *
-   * @param species The Species to get the influence of the habitat on
+   * @param species the species to get the influence of the habitat on
    * @return the influence of the habitat on the species
    */
   Influence identifyInfluence(Species species) {
-    // Returns NEU if The Species isn't in the map, indicating neutral influence.
+    // Returns NEU if the species isn't in the map, indicating neutral influence.
     return _influences.getOrDefault(species, Influence.NEU);
   }
 
   /**
    * Changes the influence value a habitat has on a given species.
    * 
-   * @param species The Species influenced (POS, NEG, NEU) by the habitat
+   * @param species the species influenced (POS, NEG, NEU) by the habitat
    * @param newInfluence the new influence value the habitat has on the
    * species
    */
@@ -305,7 +305,7 @@ class Habitat extends NamedEntity implements TreeSubject {
   /**
    * Counts the number of animals of a given species in a habitat.
    * 
-   * @param species The Species to count the number of animals of
+   * @param species the species to count the number of animals of
    * @return the total number of animals of the given species in the habitat
    */
   int getNumAnimalsSameSpecies(Species species) {
