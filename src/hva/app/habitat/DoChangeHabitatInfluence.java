@@ -21,7 +21,7 @@ class DoChangeHabitatInfluence extends Command<Hotel> {
     addOptionField("influenceString", 
     Prompt.habitatInfluence(),"POS", "NEG", "NEU");
   }
-  
+
   @Override
   protected void execute() throws CommandException {
     var idHabitat = stringField("idHabitat");

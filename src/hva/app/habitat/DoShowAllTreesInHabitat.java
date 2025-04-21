@@ -17,7 +17,7 @@ class DoShowAllTreesInHabitat extends Command<Hotel> {
     super(Label.SHOW_TREES_IN_HABITAT, receiver);
     addStringField("id", Prompt.habitatKey());
   }
-  
+
   @Override
   protected void execute() throws CommandException {
     var id = stringField("id");

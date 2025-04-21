@@ -16,7 +16,7 @@ class DoChangeHabitatArea extends Command<Hotel> {
     addStringField("id", Prompt.habitatKey());
     addIntegerField("area", Prompt.habitatArea());
   }
-  
+
   @Override
   protected void execute() throws CommandException {
     var id = stringField("id");

@@ -8,7 +8,7 @@ public interface Prompt {
   static String saveAs() {
     return "Save File As: ";
   }
-  
+
   static String newSaveAs() {
     return "Unnamed File. " + saveAs();
   }

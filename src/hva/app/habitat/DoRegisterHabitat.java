@@ -17,7 +17,7 @@ class DoRegisterHabitat extends Command<Hotel> {
     addStringField("name", Prompt.habitatName());
     addIntegerField("area", Prompt.habitatArea());
   }
-  
+
   @Override
   protected void execute() throws CommandException {
     var id = stringField("id");

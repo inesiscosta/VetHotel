@@ -14,7 +14,7 @@ class DoShowAllHabitats extends Command<Hotel> {
   DoShowAllHabitats(Hotel receiver) {
     super(Label.SHOW_ALL_HABITATS, receiver);
   }
-  
+
   @Override
   protected void execute() {
     var habitatsAndTheirTrees = _receiver.listHabitats().stream().sorted()

@@ -30,12 +30,12 @@ public abstract class UnknownIdException extends Exception {
     this._id = id;
   }
 
-/**
- * Gets the duplicated id.
- * 
- * @return the duplicated id
- */
-public String id() {
-  return _id;
-}
+  /**
+  * Gets the duplicated id.
+  * 
+  * @return the duplicated id
+  */
+  public String id() {
+    return _id;
+  }
 }

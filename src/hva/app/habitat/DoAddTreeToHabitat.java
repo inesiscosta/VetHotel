@@ -23,7 +23,7 @@ class DoAddTreeToHabitat extends Command<Hotel> {
     addIntegerField("difficulty", Prompt.treeDifficulty());
     addOptionField("type", Prompt.treeType(), "EVERGREEN", "DECIDUOUS");
   }
-  
+
   @Override
   protected void execute() throws CommandException {
     var idHabitat = stringField("idHabitat");

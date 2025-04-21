@@ -11,4 +11,3 @@ public interface TreeObserver extends Serializable{
   void updateAge();
   void advanceSeason(Season currentSeason);
 }
-    
