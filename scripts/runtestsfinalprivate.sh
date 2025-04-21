@@ -14,8 +14,6 @@ for x in tests/tests_final_private/*.in; do
     java -cp ./lib/po-uilib.jar:. -Din=$x -Dout=${x%.in}.outhyp hva.app.App;
   fi
 
-  sed -i '' '/^[[:space:]]*$/d' ${x%.in}.outhyp
-
   diff -w ${x%.in}.out ${x%.in}.outhyp > /dev/null
   res=$? ;
   if [ $res -ne 0 ]; then
@@ -37,7 +35,6 @@ for x in tests/tests_final_private/*.in; do
   let total++;
 done
 
-rm -f saved*
 let res=100*$correct/$total
 echo ""
 echo "Total Tests = " $total

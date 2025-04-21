@@ -25,7 +25,6 @@ for x in tests/tests_private/*.in; do
   let total++;
 done
 
-rm -f saved*
 let res=100*$correct/$total
 echo ""
 echo "Total Tests = " $total

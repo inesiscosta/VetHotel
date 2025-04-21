@@ -1,4 +1,4 @@
 ./scripts/runtestspublic.sh
-./scripts/runtestsfinalpublic.sh
 ./scripts/runtestsprivate.sh
+./scripts/runtestsfinalpublic.sh
 ./scripts/runtestsfinalprivate.sh
